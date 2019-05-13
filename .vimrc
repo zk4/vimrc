@@ -240,6 +240,23 @@ nnoremap <C-H> <C-W><C-H>
 "Quick Run
 """"""""""""""""""""""
 noremap <F5> :call CompileRunGcc()<CR>
+"function! IfPomXmlExists()
+		"" define your commands here..
+		"map <buffer> <C-F9> :echo "hello pom!"<CR>
+	"endif
+"endfunction
+function! FindProjectRoot(lookFor)
+    let pathMaker='%:p'
+    while(len(expand(pathMaker))>len(expand(pathMaker.':h')))
+        let pathMaker=pathMaker.':h'
+        let fileToCheck=expand(pathMaker).'/'.a:lookFor
+        if filereadable(fileToCheck)||isdirectory(fileToCheck)
+            return expand(pathMaker)
+        endif
+    endwhile
+    return 0
+endfunction
+
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'c'
@@ -250,13 +267,20 @@ func! CompileRunGcc()
 	elseif &filetype == 'cpp'
 		exec "!g++ % -o %<"
 		exec "!time ./%<"
-	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
+	"elseif &filetype == 'java'
+		""exec "!clear && source ~/.bash_profile &&    mvnexec"
+		"exec "!clear && javac % && java %<"
+         ""exec "!time java %<"
+	elseif &filetype == 'xml'
+		exec "!clear && pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
+		"exec "!clear && source ~/.bash_profile &&    mvnexec"
+         "exec "!time java %<"
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
-		exec "!clear && python3 % "
+
+
+		exec "!clear &&  python3 % -10"
 	elseif &filetype == 'html'
 		exec "!open % &"
 	elseif &filetype == 'go'
@@ -320,8 +344,6 @@ nnoremap <C-\> :NERDTreeToggle<CR>
 inoremap <C-\> <esc>:NERDTreeToggle<CR>
 
 
-"tagbar
-map <F8> :TagbarToggle<CR>
 
 
 nnoremap <Leader><leader> :Commands<CR>
@@ -355,7 +377,10 @@ inoremap jk <esc>
 
 
 call plug#begin('~/.vim/plugged')
-Plug 'zephod/vim-iterm2-navigator'
+" 写 vim wiki 的好工具
+"Plug 'vimwiki/vimwiki'
+
+"https://github.com/justinmk/vim-sneak
 Plug 'justinmk/vim-sneak'
 let g:sneak#label = 1
 nnoremap f <Plug>Sneak_s
@@ -364,6 +389,7 @@ nnoremap f <Plug>Sneak_f
 nnoremap F <Plug>Sneak_F
 nnoremap t <Plug>Sneak_t
 nnoremap T <Plug>Sneak_T
+
 "====================================================================================================
 Plug 'vim-scripts/mru.vim'
 "====================================================================================================
@@ -453,7 +479,10 @@ Plug 'ferrine/md-img-paste.vim'
 autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
 "====================================================================================================
+" 不建议使用https://www.zhihu.com/search?type=content&q=vim
+" 建议使用 LeaderfFunction
 "Plug 'majutsushi/tagbar'
+"map <F8> :TagbarToggle<CR>
 "====================================================================================================
 Plug 'posva/vim-vue'
 "====================================================================================================
@@ -477,6 +506,8 @@ Plug 'junegunn/seoul256.vim'
 "====================================================================================================
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ShortcutF = '<c-P>'
+
+nnoremap π :LeaderfFunction!<cr>
 "let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|bower_components'
 "====================================================================================================
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
@@ -585,6 +616,40 @@ let g:fzf_colors =
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
 
+"Plug 'ludovicchabant/vim-gutentags'
+"set tags=./.tags;,.tags
+
+"" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+
+"" 所生成的数据文件的名称
+"let g:gutentags_ctags_tagfile = '.tags'
+
+"" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+"let s:vim_tags = expand('~/.cache/tags')
+"let g:gutentags_cache_dir = s:vim_tags
+
+"" 配置 ctags 的参数
+"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+"" 检测 ~/.cache/tags 不存在就新建
+"if !isdirectory(s:vim_tags)
+   "silent! call mkdir(s:vim_tags, 'p')
+"endif
+"====================================================================================================
+" 在多线程程序下, 输出有问题
+"Plug 'skywind3000/asyncrun.vim'
+
+"" 自动打开 quickfix window ，高度为 6
+"let g:asyncrun_open = 6
+
+"" 任务结束时候响铃提醒
+""let g:asyncrun_bell = 1
+
+"" 设置 F10 打开/关闭 Quickfix 窗口
+"nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 "====================================================================================================
 "Plug 'ryanoasis/vim-devicons'
@@ -592,7 +657,9 @@ let g:fzf_colors =
 "====================================================================================================
 "Plug 'pangloss/vim-javascript'
 "====================================================================================================
-"Plug 'mxw/vim-jsx'
+" python object depends on  user
+Plug 'bps/vim-textobj-python'
+Plug 'kana/vim-textobj-user'
 call plug#end()
 
 
