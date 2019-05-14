@@ -10,8 +10,6 @@
 " ctrll+6 在 buffer 中来回切换
 "
 "
-"
-
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "设定 vim 的编码,
@@ -20,7 +18,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 set runtimepath+=~/.vim
 set foldmethod=indent
-
+set showbreak=↪\  
+"set showbreak=↪
 " if fold file when open . 99: don` fold   0: fold     :help foldlevelstart
 set foldlevel=99
 
@@ -78,16 +77,9 @@ set laststatus=2
 set nobackup
 set nowb
 set noswapfile
+" set text formating ------------
+set formatprg=par
 
-
-"set t_Co=256
-
-"theme
-"color monokai
-"color wombat
-"colorscheme peaksea
-
-colorscheme wombat
 " font 平滑
 "set antialias
 
@@ -102,6 +94,7 @@ set incsearch
 " 忽略大小写
 set ignorecase
 
+set magic
 " 允许不写入 buffer 时,也只可以切换 buffer
 set hidden
 
@@ -153,10 +146,6 @@ filetype on                 "
 "set nobackup                " 设置无备份文件
 "set nocompatible            " 不使用vi兼容的模式
 
-" 设置光标反色:
-"hi Cursor gui=reverse guibg=NONE guifg=NONE
-"hi CursorLine gui=reverse
-
 " netrw setting
 "let g:netrw_sizestyle= "h"
 "let g:netrw_altv          = 1
@@ -170,7 +159,7 @@ filetype on                 "
 
 " 在创建文件时,自动创建不存在的文件夹
 " nvim 时这个方法会出错
-if has('vim')
+"if has('vim')
 	function s:MkNonExDir(file, buf)
 		if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
 			let dir=fnamemodify(a:file, ':h')
@@ -179,8 +168,11 @@ if has('vim')
 			endif
 		endif
 	endfunction
-	:set guicursor=
-endif
+	augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+"endif
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -191,36 +183,39 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+	let l:saved_reg = @"
+	execute "normal! vgvy"
 
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+	let l:pattern = escape(@", "\\/.*'$^~[]")
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
+	if a:direction == 'gv'
+		call CmdLine("Ack '" . l:pattern . "' " )
+	elseif a:direction == 'replace'
+		call CmdLine("%s" . '/'. l:pattern . '/')
+	endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+	let @/ = l:pattern
+	let @" = l:saved_reg
 endfunction
 
 "====================================================================================================
 " map
 "====================================================================================================
-"编辑当前文件类型的snippet
-nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 " 全用不需要转义的正则表达式搜索
 nnoremap / ms/\v
 nnoremap ? ms?\v
+nmap dc diwlds(
+" 用的更多点  diw  而不是 cw
+"nmap dw diw 
+" 用的更多点  ciw  而不是 cw
+"nmap cw ciw 
 
 " select all
 nnoremap <leader>a  ggVG
 
 " open vifm
-nnoremap <leader>1 :!vifm<cr>
+"nnoremap <leader>1 :!vifm<cr>
 
 "map zz to za in normal mode
 nnoremap zz  za
@@ -234,27 +229,28 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 "set pastetoggle=<F9>
-
-
+" 在 yank 的时候,保持光标在最下方,而不是跳加到前面
+vnoremap y y`]
 """"""""""""""""""""""
 "Quick Run
 """"""""""""""""""""""
-noremap <F5> :call CompileRunGcc()<CR>
+nnoremap <F5> :call CompileRunGcc()<CR>
+inoremap <F5> <esc>:call CompileRunGcc()<CR>
 "function! IfPomXmlExists()
-		"" define your commands here..
-		"map <buffer> <C-F9> :echo "hello pom!"<CR>
-	"endif
+"" define your commands here..
+"map <buffer> <C-F9> :echo "hello pom!"<CR>
+"endif
 "endfunction
 function! FindProjectRoot(lookFor)
-    let pathMaker='%:p'
-    while(len(expand(pathMaker))>len(expand(pathMaker.':h')))
-        let pathMaker=pathMaker.':h'
-        let fileToCheck=expand(pathMaker).'/'.a:lookFor
-        if filereadable(fileToCheck)||isdirectory(fileToCheck)
-            return expand(pathMaker)
-        endif
-    endwhile
-    return 0
+	let pathMaker='%:p'
+	while(len(expand(pathMaker))>len(expand(pathMaker.':h')))
+		let pathMaker=pathMaker.':h'
+		let fileToCheck=expand(pathMaker).'/'.a:lookFor
+		if filereadable(fileToCheck)||isdirectory(fileToCheck)
+			return expand(pathMaker)
+		endif
+	endwhile
+	return 0
 endfunction
 
 func! CompileRunGcc()
@@ -266,21 +262,19 @@ func! CompileRunGcc()
 		exec "!clear && node %"
 	elseif &filetype == 'cpp'
 		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	"elseif &filetype == 'java'
-		""exec "!clear && source ~/.bash_profile &&    mvnexec"
+		"exec "!time ./%<"
+		"elseif &filetype == 'java'
+		"exec "!clear && source ~/.bash_profile &&    mvnexec"
 		"exec "!clear && javac % && java %<"
-         ""exec "!time java %<"
+		"exec "!time java %<"
 	elseif &filetype == 'xml'
 		exec "!clear && pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
 		"exec "!clear && source ~/.bash_profile &&    mvnexec"
-         "exec "!time java %<"
+		"exec "!time java %<"
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
-
-
-		exec "!clear &&  python3 % -10"
+		exec "AsyncRun  python %"
 	elseif &filetype == 'html'
 		exec "!open % &"
 	elseif &filetype == 'go'
@@ -319,6 +313,10 @@ noremap <S-Tab> <gv
 " switch between tab
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
+" 切换 buffer
+"nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+"nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+
 " create tab
 nnoremap <leader>te :tabe<cr>
 " close tab
@@ -331,22 +329,20 @@ nnoremap <leader>bda :bwipe<cr>
 
 
 
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
 "快速打开配置文件
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
 
-nnoremap <leader>g :Ack<space>
+"nnoremap <leader>g :Ack<space>
 nnoremap <C-\> :NERDTreeToggle<CR>
 inoremap <C-\> <esc>:NERDTreeToggle<CR>
 
 
 
-
-nnoremap <Leader><leader> :Commands<CR>
+" 这个映射用的太少了..
+nnoremap <Leader><leader> *<CR>
 
 "Alternatively, you could use this mapping so that the final /g is already entered:
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
@@ -357,8 +353,6 @@ nnoremap <leader>f mmgg=G`mzz
 nnoremap <C-f> <C-d>zz
 " move page up with cursor in the middle of screen
 nnoremap <C-b> <C-u>zz
-" mru files
-nnoremap <leader>m :Mru<CR>
 
 " define operator
 " ex dp  delete  content in ()
@@ -390,10 +384,13 @@ nnoremap F <Plug>Sneak_F
 nnoremap t <Plug>Sneak_t
 nnoremap T <Plug>Sneak_T
 
+
 "====================================================================================================
-Plug 'vim-scripts/mru.vim'
+" 还行.. 可以直接 n p 键上下
+"Plug 'vim-scripts/mru.vim'
+"nnoremap <leader>m :Mru<CR>
 "====================================================================================================
-" auto complete
+"" auto complete
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 " install coc-snippet through  CocInstall coc-snippets
 "Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
@@ -413,7 +410,43 @@ let g:coc_snippet_prev = '<S-Tab>'
 "  正确高亮 jsonc 的注释
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-"====================================================================================================
+
+"编辑当前文件类型的snippet
+"nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           ultisnips                            "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	"Track the engine.
+	Plug 'SirVer/ultisnips'
+
+	" Snippets are separated from the engine. Add this if you want them:
+	Plug 'honza/vim-snippets'
+
+	" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+	let g:UltiSnipsExpandTrigger="<tab>"
+	let g:UltiSnipsJumpForwardTrigger="<tab>"
+	let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+
+	" If you want :UltiSnipsEdit to split your window.
+	let g:UltiSnipsEditSplit="vertical"
+	let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+"编辑当前文件类型的snippet
+nnoremap <leader>es :UltiSnipsEdit<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                completor                                   "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Plug 'maralla/completor.vim'
+""inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+""inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+""inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>" 
+"let g:completor_min_chars=5
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                  lightline                                 "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
 			\ 'colorscheme': 'wombat',
@@ -506,11 +539,20 @@ Plug 'junegunn/seoul256.vim'
 "====================================================================================================
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ShortcutF = '<c-P>'
+let g:Lf_MruFileExclude = ['*.so']
 
+let g:Lf_WildIgnore = {
+			\ 'dir': ['.svn','.git','.hg'],
+			\ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+			\}
+let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 nnoremap π :LeaderfFunction!<cr>
+nnoremap <leader>m :LeaderfMru<CR>
 "let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|bower_components'
 "====================================================================================================
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" 不显示相对路径
+let g:Lf_ShowRelativePath=0
 "====================================================================================================
 Plug 'vimwiki/vimwiki'
 "====================================================================================================
@@ -527,6 +569,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'sickill/vim-monokai'
 "====================================================================================================
 Plug 'rhysd/accelerated-jk'
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
 "====================================================================================================
 Plug 'tpope/vim-fugitive'
 set diffopt+=vertical
@@ -544,6 +588,8 @@ let g:NERDTrimTrailingWhitespace = 1
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+let NERDTreeHijackNetrw=1
+
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -601,7 +647,7 @@ Plug 'junegunn/fzf.vim'
 
 set rtp+=/usr/local/opt/fzf
 
-let g:fzf_tags_command = 'ctags --extra=+f -R'
+"let g:fzf_tags_command = 'ctags --extra=+f -R'
 let g:fzf_colors =
 			\ { 'fg':      ['fg', 'Normal'],
 			\ 'bg':      ['bg', 'Normal'],
@@ -615,41 +661,55 @@ let g:fzf_colors =
 			\ 'marker':  ['fg', 'Keyword'],
 			\ 'spinner': ['fg', 'Label'],
 			\ 'header':  ['fg', 'Comment'] }
+"====================================================================================================
+Plug 'ludovicchabant/vim-gutentags'
+set tags=./.tags;,.tags
 
-"Plug 'ludovicchabant/vim-gutentags'
-"set tags=./.tags;,.tags
+" To know when Gutentags is generating tags
+set statusline+=%{gutentags#statusline()}" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_exclude_filetypes = ['.json',".xlsx",".txt"]
 
-"" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
-"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
 
-"" 所生成的数据文件的名称
-"let g:gutentags_ctags_tagfile = '.tags'
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
 
-"" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-"let s:vim_tags = expand('~/.cache/tags')
-"let g:gutentags_cache_dir = s:vim_tags
-
-"" 配置 ctags 的参数
-"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 "let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 "let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-"" 检测 ~/.cache/tags 不存在就新建
-"if !isdirectory(s:vim_tags)
-   "silent! call mkdir(s:vim_tags, 'p')
-"endif
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+	silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" go to defn of tag under the cursor
+"fun! MatchCaseTag()
+    "let ic = &ic
+    "set noic
+    "try
+        "exe 'tjump ' . expand('')
+    "finally
+       "let &ic = ic
+    "endtry
+"endfun
+"nnoremap   :call MatchCaseTag()
 "====================================================================================================
 " 在多线程程序下, 输出有问题
-"Plug 'skywind3000/asyncrun.vim'
+Plug 'skywind3000/asyncrun.vim'
 
-"" 自动打开 quickfix window ，高度为 6
-"let g:asyncrun_open = 6
+" 自动打开 quickfix window ，高度为 6
+let g:asyncrun_open = 10
 
-"" 任务结束时候响铃提醒
-""let g:asyncrun_bell = 1
+" 任务结束时候响铃提醒
+"let g:asyncrun_bell = 1
 
-"" 设置 F10 打开/关闭 Quickfix 窗口
-"nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
+" 设置 F10 打开/关闭 Quickfix 窗口
+nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
 
 "====================================================================================================
 "Plug 'ryanoasis/vim-devicons'
@@ -660,9 +720,16 @@ let g:fzf_colors =
 " python object depends on  user
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
+
+Plug 'morhetz/gruvbox'
 call plug#end()
 
 
 source ~/.vim/my_plugin/mygrep.vim
 " support <c-a>  <c-e>  in insert mode for quick jump out
 source ~/.vim/my_plugin/navigation.vim
+
+"theme
+"colorscheme peaksea
+"colorscheme wombat
+colorscheme gruvbox
