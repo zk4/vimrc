@@ -447,7 +447,6 @@ let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
 set updatetime=300
-set signcolumn=yes
 
 " Close preview window after completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
