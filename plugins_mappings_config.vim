@@ -95,38 +95,20 @@ nmap <F2> <Plug>(coc-rename)
 " Use `:Format` for format current buffer
 command! -nargs=0 CocFormat :call CocAction('format')
 
-
 augroup filetype_python
     autocmd!
     autocmd FileTYpe python  xnoremap <buffer> <leader>f :CocFormat<CR>
     autocmd FileTYpe python  nnoremap <buffer> <leader>f :CocFormat<CR>
 augroup END
-" Use `:Fold` for fold current buffer
-"command! -nargs=? CocFold :call CocAction('fold', <f-args>)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           ultisnips                            "
+"                           snippets                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 因为不能自动补全关键字,放弃.使用 coc. 加载 honza/vim-ultisnips 的库
+" 因为不能自动补全关键字,放弃ultisnips.使用 coc. 加载 honza/vim-snippets 的库
 " 功能是一样的, 也可以在里面定义代码
-
-"Track the engine.
-"Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-"let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
-""编辑当前文件类型的snippet
-"nnoremap <leader>es :UltiSnipsEdit<cr>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                  lightline                                 "
+"                                  lightline                                 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -139,47 +121,19 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head'
       \ },
       \ }
-"let g:lightline = {
-            "\ 'colorscheme': 'wombat',
-            "\ 'active': {
-            "\   'left': [ [ 'mode', 'paste' ],
-            "\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-            "\ },
-            "\ 'component_function': {
-            "\   'gitbranch': 'fugitive#head',
-            "\   'cocstatus': 'coc#status',
-            "\ }
-            "\ }
-               ""'cocstatus': 'coc#status',
-"let g:lightline = {
-      ""\ 'colorscheme': 'wombat',
-      "\ 'active': {
-      "\   'left': [ [ 'mode', 'paste' ],
-      "\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      "\ },
-      "\ 'component_function': {
-      "\   'gitbranch': 'gitbranch#name'
-      "\ }
-      "\ }
-"====================================================================================================
-"https://github.com/Chiel92/vim-autoformat
-"自动缩进,需要一系列的外部程序配合
-"Plug 'Chiel92/vim-autoformat'
-" 保存后,自动缩进
-"au BufWrite * :Autoformat
 
-"====================================================================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           auto-pairs                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'jiangmiao/auto-pairs'
 " Jump outside '"({
 "if !exists('g:AutoPairsShortcutJump')
     "let g:AutoPairsShortcutJump = '<C-g>'
 "endif
-"====================================================================================================
-"Plug 'AndrewRadev/splitjoin.vim'
-"====================================================================================================
-" normal mode 下切换输入法
-Plug 'ybian/smartim' 
-"====================================================================================================
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           buffer explorer                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 更好用的 buffer explorer
 Plug 'vim-scripts/bufexplorer.zip'
 nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
@@ -195,34 +149,24 @@ let g:bufExplorerSplitHorzSize=8
 let g:bufExplorerMaxHeight=12
 " sort by mru
 let g:bufExplorerSortBy='mru'
-"====================================================================================================
-Plug 'ferrine/md-img-paste.vim'
-autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
-"====================================================================================================
-" 不建议使用https://www.zhihu.com/search?type=content&q=vim
-" 建议使用 LeaderfFunction
-"Plug 'majutsushi/tagbar'
-"map <F8> :TagbarToggle<CR>
-"====================================================================================================
-"Plug 'posva/vim-vue'
-"====================================================================================================
-"Plug 'fatih/molokai'
-"let g:rehash256 = 1
-"let g:molokai_original = 1
-
-"====================================================================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           tabular                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 " 对齐任意符号用,visual 选择后 :Tab \:   : 可以是任何你想对齐的符号
 Plug 'godlygeek/tabular'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-easy-align                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 对齐 =号. visual 选择后, 按= 号
 Plug 'junegunn/vim-easy-align'
 vnoremap <silent> <Enter> :EasyAlign<cr> 
-"====================================================================================================
-"Plug 'plasticboy/vim-markdown'
-"====================================================================================================
-Plug 'junegunn/seoul256.vim'
-"====================================================================================================
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           leaderF                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ShortcutF = '<c-P>'
 let g:Lf_MruFileExclude = ['*.so']
@@ -232,56 +176,83 @@ let g:Lf_WildIgnore = {
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+let g:Lf_ShowRelativePath=0
 nnoremap π :LeaderfFunction!<cr>
 nnoremap <leader>m :LeaderfMru<CR>
-"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|bower_components'
-"====================================================================================================
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" 不显示相对路径
-let g:Lf_ShowRelativePath=0
-"====================================================================================================
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vimwiki                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'vimwiki/vimwiki'
-"====================================================================================================
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-surround                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-surround'
-"====================================================================================================
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           ack                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
 let g:ackhighlight = 1
 
-"====================================================================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-easygrep                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dkprice/vim-easygrep'
-"====================================================================================================
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-markdown                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'plasticboy/vim-markdown'
-"====================================================================================================
+" 只用来预览 markdown . 别用它来编辑. 用 typora
+
+set conceallevel=2
+let g:vim_markdown_math = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_autowrite = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           color-schema                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'sickill/vim-monokai'
-"====================================================================================================
+Plug 'morhetz/gruvbox'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           accelerated-jk                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'rhysd/accelerated-jk'
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
-"====================================================================================================
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           fugitive                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-" show lightline  status of git 
-"Plug 'itchyny/vim-gitbranch'
-"====================================================================================================
-" nerd tree group plugin
-"====================================================================================================
-" for quick comment
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           nerdcommenter                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'scrooloose/nerdcommenter'
+" for quick comment
+" like  <leader>c<leader>  comment  current link
+
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'start'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-"====================================================================================================
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           NERDTree                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeHijackNetrw=1
-
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-"let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
 let g:NERDTreeWinSize=35
@@ -305,10 +276,13 @@ function! SyncTree()
     endif
 endfunction
 
-"autocmd BufEnter * call SyncTree()
-"}}}
-"====================================================================================================
-" Plugin outside ~/.vim/plugged with post-update hook
+
+" 在打开 buffer 时自动将 nerdtree 滚到相应位置
+""autocmd BufEnter * call SyncTree()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           fzf                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -330,9 +304,8 @@ let g:fzf_colors =
             \ 'header':  ['fg', 'Comment'] }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                   ctags                                    "
+"                                   ctags                                    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 Plug 'ludovicchabant/vim-gutentags'
 set tags=./.tags;,.tags
 " 当filetype 是 python 时,自动加载 python3.7 的 tag
@@ -364,50 +337,40 @@ if !isdirectory(s:vim_tags)
     silent! call mkdir(s:vim_tags, 'p')
 endif
 
-"====================================================================================================
-" 在多线程程序下, 输出有问题
-"Plug 'skywind3000/asyncrun.vim'
-
-" 自动打开 quickfix window ，高度为 6
-let g:asyncrun_open = 10
-
-" 任务结束时候响铃提醒
-let g:asyncrun_bell = 1
-
-" 设置 F10 打开/关闭 Quickfix 窗口
-nnoremap <F10> :call asyncrun#quickfix_toggle(6)<cr>
-
-"====================================================================================================
-" python object depends on  user
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           object                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
-"====================================================================================================
-" colorscheme 
-Plug 'morhetz/gruvbox'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-visual-mutli                            "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'mg979/vim-visual-multi'
+"  速度很快多光标  c-left  c-right 启动
+"  ctrl-n 选择当前光标下相同的单词, 按 c 改变
 
-"====================================================================================================
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-startify                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plug 'mhinz/vim-startify'
+" 打开 vim 时的欢迎页
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim_which-key                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plug 'liuchengxu/vim-which-key'
 " show  leader key tips
-Plug 'liuchengxu/vim-which-key'
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
-Plug 'plasticboy/vim-markdown'
-set conceallevel=2
-let g:vim_markdown_math = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_strikethrough = 1
-let g:vim_markdown_autowrite = 1
+"nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           searchfold                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plug 'vim-scripts/searchfold.vim'
 
 " 在搜索高亮后, 按<leader>z 可以只显示搜索的行
 " <leader>Z 显示全部
-"Plug 'vim-scripts/searchfold.vim'
-"  速度很快多光标  c-left  c-right 启动
-"  ctrl-n 选择当前光标下相同的单词, 按 c 改变
-Plug 'mg979/vim-visual-multi'
-" 写文件时,自动创建不存在的文件夹,但是有 bug
-"Plug 'Carpetsmoker/auto_mkdir2.vim'
-
-" 打开 vim 时的欢迎页
-"Plug 'mhinz/vim-startify'
 call plug#end()
 
