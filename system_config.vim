@@ -7,8 +7,9 @@ set foldmethod=indent
 set expandtab 
 "  指定换行符
 set showbreak=↪\ 
-"显示键盘的命令
-set showcmd
+"不显示键盘的命令
+set noshowcmd
+set noruler
 " if fold file when open . 99: don` fold   0: fold     :help foldlevelstart
 set foldlevel=99
 " 设置 leader
