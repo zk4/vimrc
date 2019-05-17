@@ -53,7 +53,7 @@ augroup END
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " 在保存.vimrc 后,自动刷新
-autocmd! bufwritepost $HOME/.vimrc source %
+autocmd! bufwritepost $HOME/.zk_vimrc/.vimrc source %
 
 " 保存后格式化
 "autocmd BufWritePre * :normal gg=G
@@ -97,11 +97,12 @@ set backupskip=/tmp/*,/private/tmp/*
 " 显示行号
 "set number
 
-" 显示相对行号
+"" 显示相对行号
 "set relativenumber
 
 " 支持系统剪贴板
 set clipboard=unnamed
+set guioptions+=a
 
 " 自动保存
 set autowrite
@@ -125,7 +126,7 @@ set smartindent             " 智能自动缩进
 " 设置分割时的颜色
 "set fillchars=vert:\│
 " Override color scheme to make split the same color as tmux's default
-autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
+"autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 " 设置自动缩进,当超出 textwidth 时,根据前一行 indent
 set ai
 
@@ -209,8 +210,6 @@ nnoremap zz  za
 " select all
 nnoremap <leader>a  ggVG
 
-"set pastetoggle=<F9>
-
 " 在quickfix 里移动
 noremap ∆ :cn<cr>
 noremap ˚ :cp<cr>
@@ -219,32 +218,6 @@ noremap ˚ :cp<cr>
 nnoremap / ms/\v
 nnoremap ? ms?\v
 
-function! IsLeftMostWindow()
-    let curNr = winnr()
-    wincmd h
-    if winnr() == curNr
-        return 1
-    endif
-    wincmd p " Move back.
-    return 0
-endfunc
-
-function! PaneMove()
-if IsLeftMostWindow()
-"attach-to-user-namespace osascript -e '
-python3 << EOF
-applescript = """
-osascript -e '
-tell application "iTerm"
-		tell application "System Events" to key code 123 using {command down,option down}
-end tell '
-"""
-os.system(applescript)
-EOF
-else
-   wincmd h
-endif
-endfunc
 " navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -256,7 +229,14 @@ vnoremap y y`]
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           refactor                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" 在 filetype 为 sql 时, iunmap 所有的C-C 开头的命令, 不然C-C 好慢
+augroup sql_unmapping 
+    autocmd!
+    autocmd Filetype sql  
+\       for m in ['<C-C>R', '<C-C>L', '<C-C>l', '<C-C>c', '<C-C>v', '<C-C>p', '<C-C>t', '<C-C>s', '<C-C>T', '<C-C>o', '<C-C>f', '<C-C>k', '<C-C>a']
+\       | execute('silent! iunmap <buffer> '.m)
+\       | endfor
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                              compile & run                            "
@@ -359,7 +339,7 @@ nnoremap <leader>bda :bwipe<cr>
 
 "快速打开配置文件
 "nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap <leader>ev :e ~/.vimrc<cr>
+nnoremap <leader>ev :e ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
@@ -406,13 +386,14 @@ call plug#begin('~/.vim/plugged')
 "https://github.com/justinmk/vim-sneak
 Plug 'justinmk/vim-sneak'
 let g:sneak#label = 1
-"nnoremap f <Plug>Sneak_s
-"nnoremap F <Plug>Sneak_S
-"nnoremap f <Plug>Sneak_f
-"nnoremap F <Plug>Sneak_F
-"nnoremap t <Plug>Sneak_t
-"nnoremap T <Plug>Sneak_T
-
+let g:sneak#use_ic_scs = 1
+"let g:sneak#s_next = 1 
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 "====================================================================================================
 " 还行.. 可以直接 n p 键上下
@@ -573,9 +554,9 @@ let g:lightline = {
 "====================================================================================================
 Plug 'jiangmiao/auto-pairs'
 " Jump outside '"({
-if !exists('g:AutoPairsShortcutJump')
-    let g:AutoPairsShortcutJump = '<C-g>'
-endif
+"if !exists('g:AutoPairsShortcutJump')
+    "let g:AutoPairsShortcutJump = '<C-g>'
+"endif
 "====================================================================================================
 "Plug 'AndrewRadev/splitjoin.vim'
 "====================================================================================================
@@ -802,12 +783,12 @@ let g:vim_markdown_autowrite = 1
 
 " 在搜索高亮后, 按<leader>z 可以只显示搜索的行
 " <leader>Z 显示全部
-Plug 'vim-scripts/searchfold.vim'
+"Plug 'vim-scripts/searchfold.vim'
 "  速度很快多光标  c-left  c-right 启动
 "  ctrl-n 选择当前光标下相同的单词, 按 c 改变
 Plug 'mg979/vim-visual-multi'
 " 写文件时,自动创建不存在的文件夹,但是有 bug
-Plug 'Carpetsmoker/auto_mkdir2.vim'
+"Plug 'Carpetsmoker/auto_mkdir2.vim'
 
 " 打开 vim 时的欢迎页
 "Plug 'mhinz/vim-startify'
@@ -822,6 +803,37 @@ source ~/.vim/my_plugin/navigation.vim
 colorscheme wombat
 "colorscheme gruvbox
 
+nnoremap <leader>ps <esc>:call ProfileStart()<cr>
+nnoremap <leader>pe <esc>:call ProfileEnd()<cr>
+func! ProfileStart()
+profile start profile.log
+profile func *
+profile file *
+endfunc
+
+func! ProfileEnd()
+profile pause
+noautocmd qall!
+
+endfunc
+" rotate split
+function! Rotate()
+   " save the original position, jump to the first window
+   let initial = winnr()
+   exe 1 . "wincmd w"
+
+   wincmd l
+   if winnr() != 1
+      " succeeded moving to the right window
+      wincmd J " make it the bot window
+   else
+      " cannot move to the right, so we are at the top
+      wincmd H " make it the left window
+   endif
+
+   " restore cursor to the initial window
+   exe initial . "wincmd w"
+endfunction
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
