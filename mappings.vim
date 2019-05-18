@@ -1,7 +1,6 @@
 
 " 在选择模式下, 将 space 也强制应于 leader, 不然会导致 space 真成空格了,
-vnoremap <space> <Nop>
-nnoremap  <leader>q  <C-w><C-j>:q<cr>
+vnoremap  <space> <Nop>
 
 "Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -20,9 +19,9 @@ nnoremap zz  za
 
 " open vifm
 "nnoremap <leader>1 :!vifm<cr>
-" select all
-nnoremap <leader>a  ggVG
-
+" select all  cmd+a
+"nnoremap <leader>a  ggVG
+nnoremap  <leader>q  <C-w><C-j>:q<cr>
 " 在quickfix 里移动
 noremap ∆ :cn<cr>
 noremap ˚ :cp<cr>
@@ -49,8 +48,6 @@ noremap <F3> :cnext<CR>
 noremap <F6> :exec  '!clear && '.getline('.')<cr>
 noremap <F4> :NERDTreeToggle<CR>
 
-" select all
-nnoremap <leader>a  ggVG
 
 
 " indent without lose the selection

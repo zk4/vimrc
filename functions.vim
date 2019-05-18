@@ -99,3 +99,18 @@ endfunction
 "exec "!clear && python3 % | jq -C"
 "endif
 "endfunc
+function! SearchCount()
+  let keyString=@/
+  let pos=getpos('.')
+  try
+    redir => nth
+      silent exe '0,.s/' . keyString . '//ne'
+    redir => cnt
+      silent exe '%s/' . keyString . '//ne'
+    redir END
+    return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
+  finally
+    call setpos('.', pos)
+  endtry
+endfunction
+set statusline+=[%{SearchCount()}] " Nth of N when searching
