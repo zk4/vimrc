@@ -31,7 +31,7 @@ inoremap <silent><expr> <TAB>
             \ coc#refresh()
 
 function! s:check_back_space() abort
-    let col = col('.') - 1
+let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
@@ -136,6 +136,7 @@ Plug 'jiangmiao/auto-pairs'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 更好用的 buffer explorer
 Plug 'vim-scripts/bufexplorer.zip'
+"nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
 nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
 " if show help in buffer explorer
 let g:bufExplorerDefaultHelp=0
@@ -353,7 +354,7 @@ Plug 'mg979/vim-visual-multi'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-startify                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mhinz/vim-startify'
+"Plug 'mhinz/vim-startify'
 " 打开 vim 时的欢迎页
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key                            

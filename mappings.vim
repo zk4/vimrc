@@ -12,9 +12,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " 去除一层函数掉用  a(b)
 nmap dc diwlds(
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           read & write                            "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " sudo write
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -23,9 +20,6 @@ nnoremap zz  za
 
 " open vifm
 "nnoremap <leader>1 :!vifm<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                copy & paste  & move & select  & folder               "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " select all
 nnoremap <leader>a  ggVG
 
