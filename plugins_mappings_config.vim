@@ -57,14 +57,14 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 "inoremap <silent><expr> <C-Space> coc#refresh()
 
 
-nnoremap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
-nnoremap <silent> <leader>2 <Plug>(coc-diagnostic-next)
-nnoremap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
+nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
 " Remap keys for goto
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gy <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 "nore Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -248,7 +248,7 @@ let g:NERDTrimTrailingWhitespace = 1
 "                           NERDTree                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeHijackNetrw=1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
