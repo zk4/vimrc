@@ -70,6 +70,12 @@
 "但很明显 ctags 跳的地方不太对. 尤其是针对系统库
 "
 "
+"去除空行
+":g/^$/d
+":g will execute a command on lines which match a regex. The regex is 'blank line' and the command is :d (delete)
+"
+"背景有时出现两块色是因为 colorColumn
+"
 source ~/.zk_vimrc/system_config.vim
 source ~/.zk_vimrc/functions.vim
 source ~/.zk_vimrc/mappings.vim
