@@ -18,7 +18,8 @@ nnoremap zz  za
 "nnoremap <leader>a  ggVG
 "nnoremap  <leader>q  <C-w><C-j>:q<cr>
 nnoremap  Q  q
-nnoremap  q  <C-w><C-j>:qa!<cr>
+nnoremap  QQ  :qa!<cr>
+nnoremap  q  <esc>:q<cr>
 " 在quickfix 里移动
 noremap ∆ :cn<cr>
 noremap ˚ :cp<cr>

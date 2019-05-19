@@ -17,7 +17,7 @@
 
 " easygrep 的功能
 " 全局搜索
-" <leader> vv     
+" <leader> vv
 " 全局替换, 可以预览
 " <leader> vr      
 " 
@@ -87,5 +87,13 @@ source ~/.zk_vimrc/mappings.vim
 source ~/.zk_vimrc/autocmds.vim
 "" all plugin related will put in this file , includ install, config, mapping
 source ~/.zk_vimrc/plugins_mappings_config.vim
+"source ~/.zk_vimrc/netrw_4_nerdtree.vim
 
+
+
+
+
+
+
+nnoremap <leader>s :ToggleWorkspace<CR>
 

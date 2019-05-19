@@ -110,7 +110,7 @@ function! SearchCount()
     redir END
     return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
   finally
-    call setpos('.', pos)
+call setpos('.', pos)
   endtry
 endfunction
 set statusline+=[%{SearchCount()}] " Nth of N when searching

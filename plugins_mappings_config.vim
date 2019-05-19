@@ -277,18 +277,7 @@ function! SyncTree()
         wincmd p
     endif
 endfunction
-
-"let g:NERDTreeIndicatorMapCustom = {
-"    \ "Modified"  : "✹",
-"    \ "Staged"    : "✚",
-"    \ "Untracked" : "✭",
-"    \ "Renamed"   : "➜",
-"    \ "Unmerged"  : "═",
-"    \ "Deleted"   : "✖",
-"    \ "Dirty"     : "✗",
-"    \ "Clean"     : "✔︎",
-"    \ "Unknown"   : "?"
-"    \ }
+autocmd VimLeave * NERDTreeClose
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 ""autocmd BufEnter * call SyncTree()
 
@@ -372,8 +361,9 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'mhinz/vim-startify'
 " 打开 vim 时的欢迎页
+ Plug 'thaerkh/vim-workspace'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim_which-key                            
+"                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'liuchengxu/vim-which-key'
 " show  leader key tips
