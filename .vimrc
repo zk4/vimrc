@@ -4,8 +4,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  快速回到过去编辑的地方
 "
-"  fugitive 要好好学一下.. 好难用
-"  
+"  fugitive 要好好学一下.. 好难用 "  
 "  Session 研究
 "  
 
@@ -72,16 +71,21 @@
 "
 "去除空行
 ":g/^$/d
+"
 ":g will execute a command on lines which match a regex. The regex is 'blank line' and the command is :d (delete)
 "
 "背景有时出现两块色是因为 colorColumn
+"快速到行首字符  j-
+" 每次在这打字时,总是自动出现" ,以下设置可以暂时关闭这个功能
+"set formatoptions-=cro     或者 set fo-=cro
 "
+"
+
 source ~/.zk_vimrc/system_config.vim
 source ~/.zk_vimrc/functions.vim
 source ~/.zk_vimrc/mappings.vim
 source ~/.zk_vimrc/autocmds.vim
 "" all plugin related will put in this file , includ install, config, mapping
 source ~/.zk_vimrc/plugins_mappings_config.vim
-" netrw setting
-"let g:netrw_retmap        = 1
-"let g:netrw_silent        = 1
+
+

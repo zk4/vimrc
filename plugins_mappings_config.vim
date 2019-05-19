@@ -17,8 +17,8 @@ map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 "====================================================================================================
 " 还行.. 可以直接 n p 键上下
-"Plug 'vim-scripts/mru.vim'
-"nnoremap <leader>m :Mru<CR>
+Plug 'vim-scripts/mru.vim'
+nnoremap <leader>m :Mru<CR>
 
 
 Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
@@ -130,7 +130,7 @@ Plug 'jiangmiao/auto-pairs'
 "if !exists('g:AutoPairsShortcutJump')
     "let g:AutoPairsShortcutJump = '<C-g>'
 "endif
-
+let g:AutoPairsFlyMode = 1 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           buffer explorer                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,7 +179,7 @@ let g:Lf_WildIgnore = {
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_ShowRelativePath=0
 nnoremap π :LeaderfFunction!<cr>
-nnoremap <leader>m :LeaderfMru<CR>
+"nnoremap <leader>m :LeaderfMru<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
@@ -250,6 +250,7 @@ let g:NERDTrimTrailingWhitespace = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
+"git plugin 禁了.光标上下移动时会闪动
 let NERDTreeHijackNetrw=1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
@@ -260,7 +261,7 @@ let g:NERDTreeWinSize=35
 "open NERDTree automatically when vim starts up on opening a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-"close vim if the only window left open is a NERDTree
+""close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " sync file and nerdtree {{{  so many bugs
@@ -277,7 +278,17 @@ function! SyncTree()
     endif
 endfunction
 
-
+"let g:NERDTreeIndicatorMapCustom = {
+"    \ "Modified"  : "✹",
+"    \ "Staged"    : "✚",
+"    \ "Untracked" : "✭",
+"    \ "Renamed"   : "➜",
+"    \ "Unmerged"  : "═",
+"    \ "Deleted"   : "✖",
+"    \ "Dirty"     : "✗",
+"    \ "Clean"     : "✔︎",
+"    \ "Unknown"   : "?"
+"    \ }
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 ""autocmd BufEnter * call SyncTree()
 
@@ -361,7 +372,7 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'mhinz/vim-startify'
 " 打开 vim 时的欢迎页
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'liuchengxu/vim-which-key'

@@ -16,7 +16,9 @@ nnoremap zz  za
 "nnoremap <leader>1 :!vifm<cr>
 " select all  cmd+a
 "nnoremap <leader>a  ggVG
-nnoremap  <leader>q  <C-w><C-j>:q<cr>
+"nnoremap  <leader>q  <C-w><C-j>:q<cr>
+nnoremap  Q  q
+nnoremap  q  <C-w><C-j>:qa!<cr>
 " 在quickfix 里移动
 noremap ∆ :cn<cr>
 noremap ˚ :cp<cr>
@@ -28,6 +30,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+inoremap <C-J> <C-W><C-J>
+inoremap <C-K> <C-W><C-K>
+inoremap <C-L> <C-W><C-L>
+inoremap <C-H> <C-W><C-H>
 nnoremap <F5> :call CompileRunGcc()<CR>
 inoremap <F5> <esc>:call CompileRunGcc()<CR>
 "nnoremap <leader>c :call CompileRunGcc()<CR>
@@ -58,6 +64,7 @@ nnoremap <leader>bda :bwipe<cr>
 "nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>ev :e ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
+nnoremap <leader>ef :e ~/.zk_vimrc/plugins_mappings_config.vim<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
 "nnoremap <leader>g :Ack<space>
