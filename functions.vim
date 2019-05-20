@@ -31,30 +31,30 @@ endfunction
 func! CompileRunGcc()
     exec "w"
     if &filetype == 'c'
-        exec "silent !clear && gcc % -o %<"
+        exec "silent ! gcc % -o %<"
         exec "!./%<"
     elseif &filetype == 'javascript.jsx'
-        exec "!clear && node %"
+        exec "!node %"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
         "exec "!time ./%<"
         "elseif &filetype == 'java'
-        "exec "!clear && source ~/.bash_profile &&    mvnexec"
-        "exec "!clear && javac % && java %<"
+        "exec "!source ~/.bash_profile &&    mvnexec"
+        "exec "!javac % && java %<"
         "exec "!time java %<"
     elseif &filetype == 'xml'
-        exec "!clear && pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
-        "exec "!clear && source ~/.bash_profile &&    mvnexec"
+        exec "!pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
+        "exec "!source ~/.bash_profile &&    mvnexec"
         "exec "!time java %<"
     elseif &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'python'
-    exec "!clear && python %"
+    exec "!python %"
     elseif &filetype == 'html'
         exec "!open % &"
     elseif &filetype == 'go'
         "exec "!go build %<"
-        exec "!clear && time go run %"
+        exec "!time go run %"
     elseif &filetype == 'markdown'
     exec "!~/.vim/markdown.pl % > %.html &"
         exec "!chrome %.html &"
@@ -98,7 +98,7 @@ endfunction
 "func! CompileRunGcc()
 "exec "w"
 "if &filetype == 'python'
-"exec "!clear && python3 % | jq -C"
+"exec "!python3 % | jq -C"
 "endif
 "endfunc
 function! SearchCount()

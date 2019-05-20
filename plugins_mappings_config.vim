@@ -9,10 +9,10 @@ let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
 
 " sneak
-map f <Plug>Sneak_s
-map F <Plug>Sneak_S
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
+"map f <Plug>Sneak_s
+"map F <Plug>Sneak_S
+"map f <Plug>Sneak_f
+"map F <Plug>Sneak_F
 "map t <Plug>Sneak_t
 "map T <Plug>Sneak_T
 "====================================================================================================
@@ -355,8 +355,8 @@ Plug 'kana/vim-textobj-user'
 "                           vim-visual-mutli                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mg979/vim-visual-multi'
-nmap ∆  <C-down>  
-nmap ˚  <C-up>  
+"nmap ∆  <C-down>
+"nmap ˚  <C-up>
 " quick use
 " 速度很快多光标  c-left/right/up/down启动
 "   <tab> 进入区域选择

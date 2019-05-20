@@ -89,6 +89,7 @@
 "  启动 vim 时使用 vim -V9vim.log
 "  -V[N] N 是 debug　level
 
+" 1
 source ~/.zk_vimrc/system_config.vim
 source ~/.zk_vimrc/functions.vim
 source ~/.zk_vimrc/mappings.vim
@@ -96,10 +97,3 @@ source ~/.zk_vimrc/autocmds.vim
 "" all plugin related will put in this file , includ install, config, mapping
 source ~/.zk_vimrc/plugins_mappings_config.vim
 "source ~/.zk_vimrc/netrw_4_nerdtree.vim
-
-
-
-
-
-
-
