@@ -118,9 +118,6 @@ endfunction
 set statusline+=[%{SearchCount()}] " Nth of N when searching
 
 
-"nnoremap <C-m>m :call MaximizeToggle()<CR>
-"nnoremap <C-W>o :call MaximizeToggle()<CR>
-"nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
 
 function! MaximizeToggle()
   if exists("s:maximize_session")

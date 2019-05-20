@@ -19,7 +19,7 @@ nnoremap zz  za
 nnoremap  <leader>q  <C-w><C-j>:q<cr>
 nnoremap  Q  q
 nnoremap  QQ  :qa!<cr>
-nnoremap  q  <esc>:q<cr>
+nnoremap  q  <esc>:q!<cr>
 " 在quickfix 里移动
 noremap ∆ :cn<cr>
 noremap ˚ :cp<cr>
@@ -68,6 +68,7 @@ nnoremap <leader>ev :e ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
 nnoremap <leader>ef :e ~/.zk_vimrc/plugins_mappings_config.vim<cr>
 nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
+nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
 "nnoremap <leader>g :Ack<space>
@@ -78,6 +79,7 @@ nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+noremap <leader>w :w<cr>
 "nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
 nnoremap <leader>f mmgg=G`mzz
@@ -111,4 +113,4 @@ inoremap <c-f> <right>
 cnoremap <c-b> <left>
 cnoremap <c-f> <right>
 
-nnoremap <C-m> :call MaximizeToggle()<CR>
+"nnoremap <C-m> :call MaximizeToggle()<CR>

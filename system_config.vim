@@ -11,7 +11,7 @@ set foldmethod=indent
 " 将 tab 转化为空格
 set expandtab 
 "  指定换行符
-set showbreak=↪\ 
+"set showbreak=↪
 "不显示键盘的命令
 set noshowcmd
 set noruler
@@ -29,9 +29,6 @@ set formatprg=par   " 使用方法 gwip
 "超出 wrap-width 时显示红色
 "match ErrorMsg '\%>80v.\+'
 
-" font 平滑
-" nvim 不支持,我也看不去区别
-"set antialias
 
 " vi 打开文件时,切换到这个文件的目录
 " 换文件时,导致 ctrl-p 也会跟着变,怎么取舍吧
@@ -47,9 +44,9 @@ set magic
 " 允许不写入 buffer 时,也只可以切换 buffer
 set hidden
 " 显示行号
-"set number
-""" 显示相对行号
-"set relativenumber
+set number
+"" 显示相对行号
+set relativenumber
 "" 支持系统剪贴板
 set clipboard=unnamed
 set guioptions+=a
@@ -69,7 +66,7 @@ set cindent shiftwidth=4    " 自动缩进4空格
 set smartindent             " 智能自动缩进
 
 " 设置分割
-set fillchars=vert:\| 
+set fillchars=vert:\│
 " Override color scheme to make split the same color as tmux's default
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 
@@ -87,8 +84,3 @@ set nobackup               " 设置无备份文件
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 
-" theme
-"colorscheme peaksea
-colorscheme wombat
-"colorscheme gruvbox
-"

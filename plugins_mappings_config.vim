@@ -210,8 +210,8 @@ nnoremap <leader>m :LeaderfMru<CR>
 nnoremap <leader>o :LeaderfBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'vimwiki/vimwiki'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Plug 'vimwiki/vimwiki'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-surround                            
@@ -259,6 +259,7 @@ nmap k <Plug>(accelerated_jk_gk)
 Plug 'tpope/vim-fugitive'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+nnoremap <C-g>s <esc>:Gstatus<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           nerdcommenter                            
@@ -387,7 +388,7 @@ Plug 'mg979/vim-visual-multi'
 " 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-searchindex                            
+"                           vim-searchindex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'google/vim-searchindex'
 " 搜索时,显示当前匹配第几个与总匹配数
@@ -425,4 +426,8 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 " 在搜索高亮后, 按<leader>z 可以只显示搜索的行
 " <leader>Z 显示全部
 " .vimrc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           mini-map                            "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 call plug#end()
