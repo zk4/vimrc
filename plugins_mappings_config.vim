@@ -1,7 +1,8 @@
 
 call plug#begin('~/.vim/plugged')
-" 写 vim wiki 的好工具
-"Plug 'vimwiki/vimwiki'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-sneak                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "https://github.com/justinmk/vim-sneak
 Plug 'justinmk/vim-sneak'
@@ -15,8 +16,14 @@ let g:sneak#use_ic_scs = 1
 "map F <Plug>Sneak_F
 "map t <Plug>Sneak_t
 "map T <Plug>Sneak_T
-"====================================================================================================
-" 还行.. 可以直接 n p 键上下
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           mru(deprecated)                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 已改用 LeaderfMru 替代，可以搜索。更好用
+ 
+" 还行.. 可以直接 n p 键上下, 
 "Plug 'vim-scripts/mru.vim'
 "nnoremap <leader>m :Mru<CR>
 
@@ -24,8 +31,6 @@ let g:sneak#use_ic_scs = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
 " install coc-snippet through  CocInstall coc-snippets
 "Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
@@ -36,7 +41,7 @@ inoremap <silent><expr> <TAB>
             \ coc#refresh()
 
 function! s:check_back_space() abort
-let col = col('.') - 1
+    let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
@@ -117,15 +122,15 @@ Plug 'honza/vim-snippets'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+            \ 'colorscheme': 'wombat',
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ],
+            \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+            \ },
+            \ 'component_function': {
+            \   'gitbranch': 'fugitive#head'
+            \ },
+            \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           auto-pairs                            
@@ -133,28 +138,29 @@ let g:lightline = {
 Plug 'jiangmiao/auto-pairs'
 " Jump outside '"({
 "if !exists('g:AutoPairsShortcutJump')
-    "let g:AutoPairsShortcutJump = '<C-g>'
+"let g:AutoPairsShortcutJump = '<C-g>'
 "endif
-let g:AutoPairsFlyMode = 1 
+" flymode　可以例你输入后面的括号从而跳过括号到达尾端。但因为我们映射了c-f, c-e，这个更方便点　
+"let g:AutoPairsFlyMode = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           buffer explorer                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 更好用的 buffer explorer
-Plug 'vim-scripts/bufexplorer.zip'
-"nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
-nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
-" if show help in buffer explorer
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
-let g:bufExplorerFindActive=1
-" 将未命名 buffer 也显示
-let g:bufExplorerShowNoName=1
-" 打开时的大小
-let g:bufExplorerSplitHorzSize=8
-let g:bufExplorerMaxHeight=12
-" sort by mru
-let g:bufExplorerSortBy='mru'
+"Plug 'vim-scripts/bufexplorer.zip'
+""nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
+"nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
+"" if show help in buffer explorer
+"let g:bufExplorerDefaultHelp=0
+"let g:bufExplorerShowRelativePath=1
+"" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
+"let g:bufExplorerFindActive=1
+"" 将未命名 buffer 也显示
+"let g:bufExplorerShowNoName=1
+"" 打开时的大小
+"let g:bufExplorerSplitHorzSize=8
+"let g:bufExplorerMaxHeight=12
+"" sort by mru
+"let g:bufExplorerSortBy='mru'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           tabular                            
@@ -174,19 +180,35 @@ vnoremap <silent> <Enter> :EasyAlign<cr>
 "                           leaderF                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-let g:Lf_ShortcutF = '<c-P>'
-let g:Lf_MruFileExclude = ['*.so']
+" 搜索中文时会有乱码的情况。
+" https://github.com/Yggdroot/LeaderF/issues/203
+" 解决方法 git config --global core.quotepath false
+let g:Lf_ShortcutF = '<c-p>'
+let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
+"let g:Lf_MruFileExclude = ['*.pyc']
 
+let g:Lf_UseVersionControlTool=0
 let g:Lf_WildIgnore = {
-            \ 'dir': ['.svn','.git','.hg'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \ 'dir': [".mypy_cache",'.svn','.git','.hg',".undodir"],
+            \ 'file': [".DS_Store",'*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_ShowRelativePath=0
+let g:Lf_PreviewResult = {
+            \ 'File': 1,
+            \ 'Buffer': 1,
+            \ 'Mru': 1,
+            \ 'Tag': 1,
+            \ 'BufTag': 1,
+            \ 'Function': 1,
+            \ 'Line': 1,
+            \ 'Colorscheme': 1
+            \}
 nnoremap π :LeaderfFunction!<cr>
 nnoremap <leader>m :LeaderfMru<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>o :LeaderfBuffer<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'vimwiki/vimwiki'
@@ -373,9 +395,16 @@ Plug 'google/vim-searchindex'
 "                           vim-startify                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'mhinz/vim-startify'
-" 打开 vim 时的欢迎页
-"Plug 'thaerkh/vim-workspace'
-"nnoremap <leader>s :ToggleWorkspace<CR>
+"打开 vim 时的欢迎页
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-workspace                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"使用 leader-s 切换是否创建工程
+"在打开当前文件夹时，可以回到工程现场
+
+Plug 'thaerkh/vim-workspace'
+nnoremap <leader>s :ToggleWorkspace<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
