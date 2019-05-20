@@ -22,7 +22,7 @@ let g:sneak#use_ic_scs = 1
 "                           mru(deprecated)                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 已改用 LeaderfMru 替代，可以搜索。更好用
- 
+
 " 还行.. 可以直接 n p 键上下, 
 "Plug 'vim-scripts/mru.vim'
 "nnoremap <leader>m :Mru<CR>
@@ -34,38 +34,57 @@ let g:sneak#use_ic_scs = 1
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
 " install coc-snippet through  CocInstall coc-snippets
 "Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? coc#_select_confirm() :
-            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
+
+set updatetime=300
+
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<S-Tab>'
 
 function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-"  正确高亮 jsonc 的注释
-autocmd FileType json syntax match Comment +\/\/.\+$+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
 
+augroup coc_guard 
+    autocmd!
+    "  正确高亮 jsonc 的注释
+    autocmd FileType json syntax match Comment +\/\/.\+$+
+    " Close preview window after completion is done
+    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+    " Show signature help while editing
+    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
+
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd FileTYpe python  xnoremap <buffer> <leader>f :CocFormat<CR>
+    autocmd FileTYpe python  nnoremap <buffer> <leader>f :CocFormat<CR>
+augroup END
 " coc snippet
 "编辑当前文件类型的snippet
 nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 
-set updatetime=300
-
-" Close preview window after completion is done
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use <Tab> for confirm completion.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? coc#_select_confirm() :
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+
 " Use <c-space> for trigger completion.
 "inoremap <silent><expr> <C-Space> coc#refresh()
-
 
 nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
@@ -78,26 +97,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 "nore Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-"function! s:show_documentation()
-"if &filetype == 'vim'
-"execute 'h '.expand('<cword>')
-"else
-"call CocAction('doHover')
-"endif
-"endfunction
-
-" Show signature help while editing
-autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
@@ -105,11 +104,6 @@ nmap <F2> <Plug>(coc-rename)
 " Use `:Format` for format current buffer
 command! -nargs=0 CocFormat :call CocAction('format')
 
-augroup filetype_python
-    autocmd!
-    autocmd FileTYpe python  xnoremap <buffer> <leader>f :CocFormat<CR>
-    autocmd FileTYpe python  nnoremap <buffer> <leader>f :CocFormat<CR>
-augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           snippets                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -392,11 +386,6 @@ Plug 'mg979/vim-visual-multi'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'google/vim-searchindex'
 " 搜索时,显示当前匹配第几个与总匹配数
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-startify                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'mhinz/vim-startify'
-"打开 vim 时的欢迎页
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-workspace                            
@@ -409,10 +398,10 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'liuchengxu/vim-which-key'
-" show  leader key tips
+Plug 'liuchengxu/vim-which-key'
+" show leader key tips
 
-"nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           iterm2                            "

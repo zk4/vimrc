@@ -5,13 +5,16 @@ set fileencoding=utf-8
 set runtimepath+=~/.vim
 " 设置 leader
 let mapleader=" "
-let maplocalleader =" "
+"let maplocalleader =" "
 
+set autoread
 set foldmethod=indent
 " 将 tab 转化为空格
 set expandtab 
 "  指定换行符
-"set showbreak=↪
+if $TERM_PROGRAM  == "iTerm.app"
+    set showbreak=↪\   
+endif
 "不显示键盘的命令
 set noshowcmd
 set noruler
@@ -44,9 +47,9 @@ set magic
 " 允许不写入 buffer 时,也只可以切换 buffer
 set hidden
 " 显示行号
-set number
-"" 显示相对行号
-set relativenumber
+"set number
+""" 显示相对行号
+"set relativenumber
 "" 支持系统剪贴板
 set clipboard=unnamed
 set guioptions+=a
@@ -65,22 +68,26 @@ set backspace=2             " 设置退格键可用
 set cindent shiftwidth=4    " 自动缩进4空格
 set smartindent             " 智能自动缩进
 
-" 设置分割
+" 设置分割, 
+if $TERM_PROGRAM  == "iTerm.app"
+set fillchars=vert:\|
+else
+"kitty suppoert very well
 set fillchars=vert:\│
+endif
 " Override color scheme to make split the same color as tmux's default
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 
 
-" 显示括号配对情况
-set showmatch
+set showmatch               " 显示括号配对情况
 set wrapscan                " 搜索到文件两端时重新搜索
 "set list                   " 显示Tab符，使用一高亮竖线代替
 syntax enable               " 打开语法高亮
 syntax on                   " 开启文件类型侦测
-filetype on                 "
+filetype on                 
 "filetype indent on         " 针对不同的文件类型采用不同的缩进格式
 filetype plugin on          " 针对不同的文件类型加载对应的插件
-set nobackup               " 设置无备份文件
+set nobackup                " 设置无备份文件
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 
