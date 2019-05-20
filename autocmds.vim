@@ -22,8 +22,9 @@ augroup guard_group
                 \       | execute('silent! iunmap <buffer> '.m)
                 \       | endfor
     "  当前行背景
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
+"    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+"    au WinLeave * setlocal nocursorline
+
     "" columcolor width 与 tw  一致
     "  autocmd FileType * execute "setlocal colorcolumn=+1"
     ":hi CursorLine   cterm=NONE ctermbg=gray ctermfg=white guibg=darkred guifg=white

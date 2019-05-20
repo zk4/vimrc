@@ -30,7 +30,8 @@ set formatprg=par   " 使用方法 gwip
 "match ErrorMsg '\%>80v.\+'
 
 " font 平滑
-set antialias
+" nvim 不支持,我也看不去区别
+"set antialias
 
 " vi 打开文件时,切换到这个文件的目录
 " 换文件时,导致 ctrl-p 也会跟着变,怎么取舍吧
@@ -47,9 +48,9 @@ set magic
 set hidden
 " 显示行号
 "set number
-"" 显示相对行号
+""" 显示相对行号
 "set relativenumber
-" 支持系统剪贴板
+"" 支持系统剪贴板
 set clipboard=unnamed
 set guioptions+=a
 " 自动保存

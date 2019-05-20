@@ -16,7 +16,7 @@ nnoremap zz  za
 "nnoremap <leader>1 :!vifm<cr>
 " select all  cmd+a
 "nnoremap <leader>a  ggVG
-"nnoremap  <leader>q  <C-w><C-j>:q<cr>
+nnoremap  <leader>q  <C-w><C-j>:q<cr>
 nnoremap  Q  q
 nnoremap  QQ  :qa!<cr>
 nnoremap  q  <esc>:q<cr>
@@ -58,14 +58,16 @@ nnoremap <leader>te :tabe<cr>
 " close tab
 nnoremap <leader>tc :tabc<cr>
 " close buffer
-nnoremap <leader>bd :bd<cr>
+"nnoremap <leader>bd :bd<cr>
+nnoremap <leader>bd <C-w>c
 " close buffer
-nnoremap <leader>bda :bwipe<cr>
+nnoremap <leader>ba :bwipe<cr>
 "快速打开配置文件
 "nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>ev :e ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
 nnoremap <leader>ef :e ~/.zk_vimrc/plugins_mappings_config.vim<cr>
+nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
 "nnoremap <leader>g :Ack<space>
@@ -74,7 +76,8 @@ inoremap <C-\> <esc>:NERDTreeToggle<CR>
 " 这个映射用的太少了..
 nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
-nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
+vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
 "nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
 nnoremap <leader>f mmgg=G`mzz
@@ -107,3 +110,5 @@ inoremap <c-b> <left>
 inoremap <c-f> <right>
 cnoremap <c-b> <left>
 cnoremap <c-f> <right>
+
+nnoremap <C-m> :call MaximizeToggle()<CR>

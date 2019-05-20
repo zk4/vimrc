@@ -13,15 +13,20 @@ map f <Plug>Sneak_s
 map F <Plug>Sneak_S
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+"map t <Plug>Sneak_t
+"map T <Plug>Sneak_T
 "====================================================================================================
 " 还行.. 可以直接 n p 键上下
-Plug 'vim-scripts/mru.vim'
-nnoremap <leader>m :Mru<CR>
+"Plug 'vim-scripts/mru.vim'
+"nnoremap <leader>m :Mru<CR>
 
 
-Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           coc                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
 " install coc-snippet through  CocInstall coc-snippets
 "Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 inoremap <silent><expr> <TAB>
@@ -179,7 +184,7 @@ let g:Lf_WildIgnore = {
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_ShowRelativePath=0
 nnoremap π :LeaderfFunction!<cr>
-"nnoremap <leader>m :LeaderfMru<CR>
+nnoremap <leader>m :LeaderfMru<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
@@ -277,7 +282,9 @@ function! SyncTree()
         wincmd p
     endif
 endfunction
-autocmd VimLeave * NERDTreeClose
+if exists("g:NERDTree") && g:NERDTree.IsOpen()
+    autocmd VimLeavePre * NERDTreeClose
+endif
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 ""autocmd BufEnter * call SyncTree()
 
@@ -348,8 +355,13 @@ Plug 'kana/vim-textobj-user'
 "                           vim-visual-mutli                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mg979/vim-visual-multi'
-"  速度很快多光标  c-left  c-right 启动
-"  ctrl-n 选择当前光标下相同的单词, 按 c 改变
+nmap √  <C-n>
+" quick use
+" 速度很快多光标  c-left/right/up/down启动
+"   <tab> 进入区域选择
+"   jklm 将移动选择条
+" ctrl-n 选择当前光标下相同的单词, 按 c 改变
+" 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-searchindex                            
@@ -361,7 +373,8 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'mhinz/vim-startify'
 " 打开 vim 时的欢迎页
- Plug 'thaerkh/vim-workspace'
+"Plug 'thaerkh/vim-workspace'
+"nnoremap <leader>s :ToggleWorkspace<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -370,7 +383,11 @@ Plug 'google/vim-searchindex'
 
 "nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           iterm2                            "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"Plug 'zephod/vim-iterm2-navigator'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           searchfold                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -5,7 +5,8 @@
 "  快速回到过去编辑的地方
 "
 "  fugitive 要好好学一下.. 好难用 "  
-"  Session 研究
+"
+"  好用的异步的执行窗口.
 "  
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -27,6 +28,8 @@
 " 则将 GrepOption : 改成 Buffers
 " 在要替换的词上面输入 <space>vr
 "
+" 还有一种替换当前文件的方式
+" 先用c-v选择好 \\Adi 搞定 
 " 通过 item 映射了  command + s   --->   :w
 "
 "   * 与 g* 的区别
@@ -80,6 +83,9 @@
 "set formatoptions-=cro     或者 set fo-=cro
 "
 "
+"　捕捉 vim　退出时一闪而过的 error
+"  启动 vim 时使用 vim -V9vim.log
+"  -V[N] N 是 debug　level
 
 source ~/.zk_vimrc/system_config.vim
 source ~/.zk_vimrc/functions.vim
@@ -94,6 +100,4 @@ source ~/.zk_vimrc/plugins_mappings_config.vim
 
 
 
-
-nnoremap <leader>s :ToggleWorkspace<CR>
 

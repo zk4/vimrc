@@ -49,17 +49,19 @@ func! CompileRunGcc()
     elseif &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'python'
-        exec "!clear && python %"
+    exec "!clear && python %"
     elseif &filetype == 'html'
         exec "!open % &"
     elseif &filetype == 'go'
         "exec "!go build %<"
         exec "!clear && time go run %"
     elseif &filetype == 'markdown'
-        exec "!~/.vim/markdown.pl % > %.html &"
+    exec "!~/.vim/markdown.pl % > %.html &"
         exec "!chrome %.html &"
     elseif &filetype == 'vim'
         :source %
+    else 
+        :make
     endif
 endfunc
 
@@ -114,3 +116,25 @@ call setpos('.', pos)
   endtry
 endfunction
 set statusline+=[%{SearchCount()}] " Nth of N when searching
+
+
+"nnoremap <C-m>m :call MaximizeToggle()<CR>
+"nnoremap <C-W>o :call MaximizeToggle()<CR>
+"nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
