@@ -32,6 +32,8 @@
 " 先用c-v选择好 \\Adi 搞定 
 " 通过 item 映射了  command + s   --->   :w
 "
+" 已经在选择模式下，加入了 <leader>r 的映射了，
+"
 "   * 与 g* 的区别
 "   * 搜索完整的单词     比如搜 lo 那 hello 不会匹配
 "   g* 搜索只要匹配就行  比如搜 lo 那 hello 里的 lo 就会匹配
@@ -65,8 +67,8 @@
 " c-w H/J/I/K   -=> 将窗口交换
 " c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
 " c-w </>  =>  :vertical resize +/- N
-"
-"
+
+
 "关于 coc 
 "跳转用的是jedi 绑定到了 gd, 但是 ctags 也会生成. 可以使用 ctrl+] 跳.
 "但很明显 ctags 跳的地方不太对. 尤其是针对系统库

@@ -355,7 +355,8 @@ Plug 'kana/vim-textobj-user'
 "                           vim-visual-mutli                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mg979/vim-visual-multi'
-nmap √  <C-n>
+nmap ∆  <C-down>  
+nmap ˚  <C-up>  
 " quick use
 " 速度很快多光标  c-left/right/up/down启动
 "   <tab> 进入区域选择
@@ -392,8 +393,7 @@ Plug 'google/vim-searchindex'
 "                           searchfold                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'vim-scripts/searchfold.vim'
-
 " 在搜索高亮后, 按<leader>z 可以只显示搜索的行
 " <leader>Z 显示全部
+" .vimrc
 call plug#end()
-
