@@ -398,10 +398,10 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'liuchengxu/vim-which-key'
-" show leader key tips
+"Plug 'liuchengxu/vim-which-key'
+" show leader key tips, for debug purpose
 
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+"nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           iterm2                            "

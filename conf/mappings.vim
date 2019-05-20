@@ -15,7 +15,7 @@ nnoremap zz  za
 " open vifm
 "nnoremap <leader>1 :!vifm<cr>
 " select all  cmd+a
-"nnoremap <leader>a  ggVG
+nnoremap <leader>a  ggVG
 nnoremap  <leader>q  <C-w><C-j>:q<cr>
 nnoremap  Q  q
 nnoremap  QQ  :qa!<cr>
@@ -105,6 +105,8 @@ nnoremap gc : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<
 nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
 "nnoremap <leader>ps <esc>:call ProfileStart()<cr>
 "nnoremap <leader>pe <esc>:call ProfileEnd()<cr>
+
+" I think this is the fatest way without switch mode
 inoremap <c-a> <left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left> 
 inoremap <c-e> <right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>  
 " support <c-a>  <c-e>  in insert mode for quick jump out
