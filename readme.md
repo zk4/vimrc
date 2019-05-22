@@ -38,7 +38,11 @@ Now you want to move the cursor out the bracket to make a ':' like this
 ```
     def func(arg1,arg2):
 ```
-the vim noremal is to quit insert mode. go normal mode. press A. there is three key strokes.
+The normal operation like this:
+1. Quit insert mode.
+2. Go normal mode. press A.
+3. There is three key strokes.
+
 the fastest way moving the cursor to the end of line is by pressing <c-a>.And you are still in insert mode! Only one strokes. 
 
 There are other methods to solove this issue. But I find this is the easiest way.
@@ -67,11 +71,8 @@ More detail you can check :help leaderF
 
 # Plugs
     - lightline.vim
-      for ui 
     - LeaderF
-      for ctrl-p like 
     - vim-kitty-navigator
-      for smoothly navigtation between vim and terminal 
     - vim-textobj-user
     - fzf.vim
     - vim-snippets
@@ -98,6 +99,7 @@ More detail you can check :help leaderF
     - incsearch.vim
     - vim-easy-align
     - vim-markdown
+
 # Thanks
 This project is largly inspired by  https://github.com/amix/vimrc
 
