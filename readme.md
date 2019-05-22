@@ -11,6 +11,8 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 1. run `install.sh` Open vim in kitty.app 
 
 # Quick Tutorial
+Show some basic editor operation. 
+
 ## move arond
 Move around like emacs if you want.
 
@@ -59,7 +61,7 @@ More detail you can check :help leaderF
 <cmd+e>  is bound to switch between two buffers.  this key binding is similar to intelliJ. And I am used to it. 
 
 ### find the mostly used file
-<leader>m
+`<leader>`m
 
 ## locate word or selection
 \* # for current word search. when you cursor move away from founded word. it will automatically disable the color.  
