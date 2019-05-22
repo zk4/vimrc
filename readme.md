@@ -39,18 +39,20 @@ There are other methods to solove this issue. But I find this is the easiest way
 Plus emacs type movement is the default option in Mac editor, why not in vim ~
 
 ## locate file
-*find file* 
+### find file
 It is async fuzzy search!
 With the power of leaderF, <ctrp+p> is the default key to fuzzy file search in current workspace. you can change your workspace by typing :cd <where you want to locate>
 More detail you can check :help leaderF
 
-*switch to buffer/file*
+### switch to buffer/file
 <cmd+e>  is bound to switch between two buffers.  this key binding is similar to intelliJ. And I am used to it. 
 
-*find the mostly used file*
+### find the mostly used file
 <leader>m
  
 ## locate word or selection
+\* # for current word search. when you cursor move away from founded word. it will automatically disable the color.  
+
 
 
 # Customize
