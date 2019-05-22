@@ -383,9 +383,8 @@ Plug 'mg979/vim-visual-multi'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           kitty                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'knubie/vim-kitty-navigator'
-"let g:kitty_navigator_no_mappings = 1
-
+" I don` need this.. it navigate from kitty  vim seamlessly
+Plug 'knubie/vim-kitty-navigator'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-searchindex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -399,6 +398,11 @@ Plug 'google/vim-searchindex'
 "在打开当前文件夹时，可以回到工程现场
 
 Plug 'thaerkh/vim-workspace'
+let g:workspace_autocreate =1
+let g:workspace_session_name = '.Session.vim'
+"all trailing spaces will not be removed upon autosave.
+let g:workspace_autosave_untrailspaces = 0
+let g:workspace_autosave_ignore = ['gitcommit']
 nnoremap <leader>s :ToggleWorkspace<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
@@ -420,8 +424,19 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 " 在搜索高亮后, 按<leader>z 可以只显示搜索的行
 " <leader>Z 显示全部
 " .vimrc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           mini-map                            "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           inscearch                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'haya14busa/incsearch.vim'
+let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 call plug#end()

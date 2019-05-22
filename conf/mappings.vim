@@ -3,7 +3,7 @@
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-vnoremap  <space> <Nop>
+vnoremap <space> <Nop>
 " 在 yank 的时候,保持光标在最下方,而不是跳加到前面
 vnoremap y y`]
 " 去除一层函数掉用  a(b)
@@ -16,13 +16,11 @@ nnoremap zz  za
 "nnoremap <leader>1 :!vifm<cr>
 " select all  cmd+a
 nnoremap <leader>a  ggVG
-nnoremap  <leader>q  <C-w><C-j>:q<cr>
-nnoremap  Q  q
-nnoremap  QQ  :qa!<cr>
-nnoremap  q  <esc>:q!<cr>
-" 在quickfix 里移动
-noremap ∆ :cn<cr>
-noremap ˚ :cp<cr>
+nnoremap <leader>q  <C-w><C-j><C-w>c
+nnoremap Q  q
+nnoremap QQ :qa!<cr>
+nnoremap q <esc>:q<cr>
+nnoremap <M-s> <esc>:w<cr>
 " 全用不需要转义的正则表达式搜索
 nnoremap / ms/\v
 nnoremap ? ms?\v
@@ -31,20 +29,16 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-inoremap <C-J> <C-W><C-J>
-inoremap <C-K> <C-W><C-K>
-inoremap <C-L> <C-W><C-L>
-inoremap <C-H> <C-W><C-H>
 nnoremap <F5> :call CompileRunGcc()<CR>
 inoremap <F5> <esc>:call CompileRunGcc()<CR>
 "nnoremap <leader>c :call CompileRunGcc()<CR>
-noremap <F2> :cprevious<CR>
-noremap <F3> :cnext<CR>
-noremap <F6> :exec  '!clear && '.getline('.')<cr>
-noremap <F4> :NERDTreeToggle<CR>
-" indent without lose the selection
-noremap <Tab> >gv
-noremap <S-Tab> <gv
+noremap  <F2> :cprevious<CR>
+noremap  <F3> :cnext<CR>
+noremap  <F6> :exec  '!clear && '.getline('.')<cr>
+noremap  <F4> :NERDTreeToggle<CR>
+" indent  without lose the selection
+noremap  <Tab> >gv
+noremap  <S-Tab> <gv
 " switch between tab
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
@@ -59,15 +53,16 @@ nnoremap <leader>te :tabe<cr>
 nnoremap <leader>tc :tabc<cr>
 " close buffer
 "nnoremap <leader>bd :bd<cr>
-nnoremap <leader>bd <C-w>c
+nnoremap <leader>bd  <C-w>c
 " close buffer
 nnoremap <leader>ba :bwipe<cr>
 "快速打开配置文件
 "nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>ev :e ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
-nnoremap <leader>ef :e ~/.zk_vimrc/plugins_mappings_config.vim<cr>
+nnoremap <leader>ef :e ~/.zk_vimrc/conf/plugins_mappings_config.vim<cr>
 nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
+nnoremap <leader>eh :e ~/.zk_vimrc/help.md<cr>
 nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
@@ -79,7 +74,7 @@ nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
-noremap <leader>w :w<cr>
+noremap  <leader>w :w<cr>
 "nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
 nnoremap <leader>f mmgg=G`mzz
@@ -108,11 +103,17 @@ nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . "
 
 " I think this is the fatest way without switch mode
 inoremap <c-a> <left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left> 
-inoremap <c-e> <right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>  
+inoremap <c-e> <right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
 " support <c-a>  <c-e>  in insert mode for quick jump out
 inoremap <c-b> <left>
 inoremap <c-f> <right>
 cnoremap <c-b> <left>
 cnoremap <c-f> <right>
 
-"nnoremap <C-m> :call MaximizeToggle()<CR>
+nnoremap <C-m> :call MaximizeToggle()<CR>
+
+" 在quickfix 里移动
+noremap ∆ :cn<cr>
+noremap ˚ :cp<cr>
+"noremap <A-n> :cn<cr>
+"noremap <A-p> :cp<cr>
