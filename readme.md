@@ -1,9 +1,19 @@
-# the Fatest vim on Mac
-with the power of kitty terminal 
+# the ultimate vim config for human 
 
-I am woking on making this distritable
+with the power of kitty terminal. which is blazing fast, comparing to mac terminal and iTerm2.
 
-feel free to check it out
+
+# Features
+1. <c-h/j/k/l> move between termnial tab  and vim inner split.
+2. support all hot key in mac<ctrl,option.command>
+
+
+# Install
+  todo 
+# All features is customable 
+
+
+
 
 
 

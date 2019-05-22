@@ -17,6 +17,7 @@ nnoremap zz  za
 " select all  cmd+a
 nnoremap <leader>a  ggVG
 nnoremap <leader>q  <C-w><C-j><C-w>c
+command! SelectAll  normal! ggVG 
 nnoremap Q  q
 nnoremap QQ :qa!<cr>
 nnoremap q <esc>:q<cr>
