@@ -72,35 +72,35 @@ More detail you can check :help leaderF
 1. kitty config is located in ~/.config/kitty/kitty.conf,check https://github.com/kovidgoyal/kitty for more information.The kitty.conf file comment is informative enough to config.
 
 # Plugs
-    - lightline.vim
-    - LeaderF
-    - vim-kitty-navigator
-    - vim-textobj-user
-    - fzf.vim
-    - vim-snippets
-    - coc.nvim
-    - nerdtree
-    - vim-searchindex
-    - vim-gutentags
-    - vim-sneak
-    - Colorizer
-    - vim-textobj-python
-    - gruvbox
-    - vim-dispatch
-    - vim-easygrep
-    - vim-workspace
-    - accelerated-jk
-    - vim-fugitive
-    - vim-monokai
-    - ack.vim
-    - vim-surround
-    - vim-visual-multi
-    - auto-pairs
-    - tabular
-    - nerdcommenter
-    - incsearch.vim
-    - vim-easy-align
-    - vim-markdown
+- lightline.vim
+- LeaderF
+- vim-kitty-navigator
+- vim-textobj-user
+- fzf.vim
+- vim-snippets
+- coc.nvim
+- nerdtree
+- vim-searchindex
+- vim-gutentags
+- vim-sneak
+- Colorizer
+- vim-textobj-python
+- gruvbox
+- vim-dispatch
+- vim-easygrep
+- vim-workspace
+- accelerated-jk
+- vim-fugitive
+- vim-monokai
+- ack.vim
+- vim-surround
+- vim-visual-multi
+- auto-pairs
+- tabular
+- nerdcommenter
+- incsearch.vim
+- vim-easy-align
+- vim-markdown
 
 # Thanks
 This project is largly inspired by  https://github.com/amix/vimrc
