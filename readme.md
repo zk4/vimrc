@@ -41,6 +41,7 @@ Plus emacs type movement is the default option in Mac editor, why not in vim ~
 ## locate file
 ### find file
 It is async fuzzy search!
+
 With the power of leaderF, <ctrp+p> is the default key to fuzzy file search in current workspace. you can change your workspace by typing :cd <where you want to locate>
 More detail you can check :help leaderF
 
