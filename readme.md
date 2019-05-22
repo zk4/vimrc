@@ -16,6 +16,6 @@ since vim in normal temrinal would not respond these two key.
 
 
 # Thanks
-This project largly inspired by  https://github.com/amix/vimrc
+This project is largly inspired by  https://github.com/amix/vimrc
 
 
