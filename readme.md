@@ -15,12 +15,12 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 ## move arond
 Move around like emacs if you want.
 
-`<c-b>`    move cursor one character left 
-`<c-f>`    move cursor one character right 
-`<c-a>`    move cursor to the begin of line 
-`<c-e>`    move curosr to the end of line 
-`<alt+b>`  move cursor one word left
-`<alt+f>`  move cursor one word right
+- `<c-b>`    move cursor one character left 
+- `<c-f>`    move cursor one character right 
+- `<c-a>`    move cursor to the begin of line 
+- `<c-e>`    move curosr to the end of line 
+- `<alt+b>`  move cursor one word left
+- `<alt+f>`  move cursor one word right
 
 Works in insert and command mode!
 When do we need this?
