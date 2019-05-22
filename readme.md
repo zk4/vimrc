@@ -21,21 +21,23 @@ move around like emacs if you want.
 <c-e>    move curosr to the end of line 
 <alt+b>  move cursor one word left
 <alt+f>  move cursor one word right
-works in insert and command mode!
-when do we need this?
+Works in insert and command mode!
+When do we need this?
+
+For Ex, most auto pair plugin tends to auto complete the bracket for you when you type '(',like the below:
 ```
-Ex:
-    def func(args1,args2)
+    def func(arg1,arg2)
 ```
-whe the cursor is in the bracket. and you are in insert mode.
-you want to move the cursor out the bracket to make a ':' like this 
+But the cursor is in the bracket. and you are in insert mode.
+Now you want to move the cursor out the bracket to make a ':' like this 
 ```
-def func(args1,args2):
+def func(arg1,arg2):
 ```
 the vim noremal is to quit insert mode. go normal mode. press A. there is three key strokes.
 the fastest way moving the cursor to the end of line is by pressing <c-a>.And you are still in insert mode! Only one strokes. 
 
-Plus eamcs type movement is the default option in Mac editor, why not in vim ~
+There are other methods to solove this issue. But I find this is the easiest way.
+Plus emacs type movement is the default option in Mac editor, why not in vim ~
 
 
 # Customize
