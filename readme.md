@@ -8,16 +8,38 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 
 # Install  (on Mac)
 1. git clone https://github.com/zk4/vimrc ~/.zk_vimrc
-1. run install.sh 
+1. run install.sh, Open vim in kitty.app 
    it will do 2 things. Install kitty for GUI. and config vim.
 
-# Use
-1. Open vim in kitty.app 
+
+# Quick Tutorial
+## move arond
+move around like emacs if you want.
+<c-b>    move cursor one character left 
+<c-f>    move cursor one character right 
+<c-a>    move cursor to the begin of line 
+<c-e>    move curosr to the end of line 
+<alt+b>  move cursor one word left
+<alt+f>  move cursor one word right
+works in insert and command mode!
+when do we need this?
+```
+Ex:
+    def func(args1,args2)
+```
+whe the cursor is in the bracket. and you are in insert mode.
+you want to move the cursor out the bracket to make a ':' like this 
+```
+def func(args1,args2):
+```
+the vim noremal is to quit insert mode. go normal mode. press A. there is three key strokes.
+the fastest way moving the cursor to the end of line is by pressing <c-a>.And you are still in insert mode! Only one strokes. 
+
+Plus eamcs type movement is the default option in Mac editor, why not in vim ~
+
 
 # Customize
 1. kitty config is located in ~/.config/kitty/kitty.conf,check https://github.com/kovidgoyal/kitty for more information.The kitty.conf file comment is informative enough to config.
-
-# Quick Tutorial
 
 # Plugs
     - lightline.vim
