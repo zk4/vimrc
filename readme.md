@@ -23,7 +23,9 @@ Move around like emacs if you want.
 - `<alt+b>`  move cursor one word left
 - `<alt+f>`  move cursor one word right
 
+
 ![movement](https://github.com/zk4/vimrc/blob/master/imgs/movement.gif)
+
 Works in insert and command mode!
 When do we need this?
 
