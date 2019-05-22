@@ -254,6 +254,7 @@ Plug 'tpope/vim-fugitive'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 nnoremap <C-g>s <esc>:Gstatus<cr>
+nnoremap <C-g>p <esc>:Gpush<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           nerdcommenter                            
@@ -445,6 +446,10 @@ map g# <Plug>(incsearch-nohl-g#)
 "                           color                             
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'chrisbra/Colorizer'
-call plug#end()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           async dispatch                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'tpope/vim-dispatch'
+call plug#end()
 

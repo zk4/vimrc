@@ -18,6 +18,7 @@ nnoremap zz  za
 nnoremap <leader>a  ggVG
 nnoremap <leader>q  <C-w><C-j><C-w>c
 command! SelectAll  normal! ggVG 
+command! SwitchBuffer :e # 
 nnoremap Q  q
 nnoremap QQ :qa!<cr>
 nnoremap q <esc>:q<cr>
