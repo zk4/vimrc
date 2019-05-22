@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+brew cash install kitty
+
 cd ~/.zk_vimrc
 
 echo 'set runtimepath+=~/.zk_vimrc
