@@ -8,8 +8,7 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 
 # Install  (on Mac)
 1. git clone https://github.com/zk4/vimrc ~/.zk_vimrc
-1. run install.sh, Open vim in kitty.app 
-   it will do 2 things. Install kitty for GUI. and config vim.
+1. run `install.sh` Open vim in kitty.app 
 
 
 # Quick Tutorial
