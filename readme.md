@@ -14,7 +14,7 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 
 # Quick Tutorial
 ## move arond
-move around like emacs if you want.
+Move around like emacs if you want.
 <c-b>    move cursor one character left 
 <c-f>    move cursor one character right 
 <c-a>    move cursor to the begin of line 
@@ -31,7 +31,7 @@ For Ex, most auto pair plugin tends to auto complete the bracket for you when yo
 But the cursor is in the bracket. and you are in insert mode.
 Now you want to move the cursor out the bracket to make a ':' like this 
 ```
-def func(arg1,arg2):
+    def func(arg1,arg2):
 ```
 the vim noremal is to quit insert mode. go normal mode. press A. there is three key strokes.
 the fastest way moving the cursor to the end of line is by pressing <c-a>.And you are still in insert mode! Only one strokes. 
