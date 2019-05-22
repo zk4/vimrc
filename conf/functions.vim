@@ -38,10 +38,10 @@ func! CompileRunGcc()
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
         "exec "!time ./%<"
-        "elseif &filetype == 'java'
+    elseif &filetype == 'java'
         "exec "!source ~/.bash_profile &&    mvnexec"
-        "exec "!javac % && java %<"
-        "exec "!time java %<"
+        exec "!javac % && java -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 %< "
+"        exec "!time java %< "
     elseif &filetype == 'xml'
         exec "!pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
         "exec "!source ~/.bash_profile &&    mvnexec"
@@ -49,14 +49,14 @@ func! CompileRunGcc()
     elseif &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'python'
-    exec "!python %"
+        exec "!python %"
     elseif &filetype == 'html'
         exec "!open % &"
     elseif &filetype == 'go'
         "exec "!go build %<"
         exec "!time go run %"
     elseif &filetype == 'markdown'
-    exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!~/.vim/markdown.pl % > %.html &"
         exec "!chrome %.html &"
     elseif &filetype == 'vim'
         :source %
@@ -66,33 +66,33 @@ func! CompileRunGcc()
 endfunc
 
 func! ProfileStart()
-profile start profile.log
-profile func *
-profile file *
+    profile start profile.log
+    profile func *
+    profile file *
 endfunc
 
 func! ProfileEnd()
-profile pause
-noautocmd qall!
+    profile pause
+    noautocmd qall!
 
 endfunc
 " rotate split
 function! Rotate()
-   " save the original position, jump to the first window
-   let initial = winnr()
-   exe 1 . "wincmd w"
+    " save the original position, jump to the first window
+    let initial = winnr()
+    exe 1 . "wincmd w"
 
-   wincmd l
-   if winnr() != 1
-      " succeeded moving to the right window
-      wincmd J " make it the bot window
-   else
-      " cannot move to the right, so we are at the top
-      wincmd H " make it the left window
-   endif
+    wincmd l
+    if winnr() != 1
+        " succeeded moving to the right window
+        wincmd J " make it the bot window
+    else
+        " cannot move to the right, so we are at the top
+        wincmd H " make it the left window
+    endif
 
-   " restore cursor to the initial window
-   exe initial . "wincmd w"
+    " restore cursor to the initial window
+    exe initial . "wincmd w"
 endfunction
 
 "func! CompileRunGcc()
@@ -102,36 +102,36 @@ endfunction
 "endif
 "endfunc
 function! SearchCount()
-  let keyString=@/
-  let pos=getpos('.')
-  try
-    redir => nth
-      silent exe '0,.s/' . keyString . '//ne'
-    redir => cnt
-      silent exe '%s/' . keyString . '//ne'
-    redir END
-    return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
-  finally
-call setpos('.', pos)
-  endtry
+    let keyString=@/
+    let pos=getpos('.')
+    try
+        redir => nth
+        silent exe '0,.s/' . keyString . '//ne'
+        redir => cnt
+        silent exe '%s/' . keyString . '//ne'
+        redir END
+        return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
+    finally
+        call setpos('.', pos)
+    endtry
 endfunction
 set statusline+=[%{SearchCount()}] " Nth of N when searching
 
 
 
 function! MaximizeToggle()
-  if exists("s:maximize_session")
-    exec "source " . s:maximize_session
-    call delete(s:maximize_session)
-    unlet s:maximize_session
-    let &hidden=s:maximize_hidden_save
-    unlet s:maximize_hidden_save
-  else
-    let s:maximize_hidden_save = &hidden
-    let s:maximize_session = tempname()
-    set hidden
-    exec "mksession! " . s:maximize_session
-    only
-  endif
+    if exists("s:maximize_session")
+        exec "source " . s:maximize_session
+        call delete(s:maximize_session)
+        unlet s:maximize_session
+        let &hidden=s:maximize_hidden_save
+        unlet s:maximize_hidden_save
+    else
+        let s:maximize_hidden_save = &hidden
+        let s:maximize_session = tempname()
+        set hidden
+        exec "mksession! " . s:maximize_session
+        only
+    endif
 endfunction
 

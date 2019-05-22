@@ -103,19 +103,25 @@ nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . "
 "nnoremap <leader>ps <esc>:call ProfileStart()<cr>
 "nnoremap <leader>pe <esc>:call ProfileEnd()<cr>
 
-" I think this is the fatest way without switch mode
-inoremap <c-a> <left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left> 
-inoremap <c-e> <right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right><right>
-" support <c-a>  <c-e>  in insert mode for quick jump out
+" support emacs movement insert mode
 inoremap <c-b> <left>
 inoremap <c-f> <right>
-cnoremap <c-b> <left>
-cnoremap <c-f> <right>
+inoremap <c-a> <home>
+inoremap <c-e> <end>
+inoremap ∫ <S-Left>
+inoremap ƒ <S-Right>
 
-nnoremap <C-m> :call MaximizeToggle()<CR>
-
-" 在quickfix 里移动
+" 在quickfix 里移动  alt+n alt+p
 noremap ∆ :cn<cr>
 noremap ˚ :cp<cr>
 "noremap <A-n> :cn<cr>
 "noremap <A-p> :cp<cr>
+
+"move around in command line like emacs
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap ∫ <S-Left>
+cnoremap ƒ <S-Right>
+
+nnoremap <C-m> :call MaximizeToggle()<CR>

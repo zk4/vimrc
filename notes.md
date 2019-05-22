@@ -1,7 +1,7 @@
 # todo                            
 快速回到过去编辑的地方　
-做个kitty 插件，功能：
-    1.　如果kitty不处理快捷键响应，将交给当程序
+coc.nvim 打开某些文件时，会报错。
+对歌的输入法支持非常不好。打字时输入法的框左下角了。
 
 # bugs
 1. []在 kitty terminal 里中文字体显示的太细了
@@ -10,6 +10,16 @@ fzf 带有 Ag 功能
 全局搜索
 :Ack <Keyword> --<filetype>
 
+# Movement
+## move in comnand line mode 
+like emacs! 
+''' vim
+    cnoremap <C-A> <Home>
+    cnoremap <C-F> <Right>
+    cnoremap <C-B> <Left>
+    cnoremap ∫ <S-Left>
+    cnoremap ƒ <S-Right>
+'''
 easygrep 的功能
 全局搜索
 <leader> vv
