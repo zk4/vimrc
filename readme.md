@@ -10,7 +10,6 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 1. git clone https://github.com/zk4/vimrc ~/.zk_vimrc
 1. run `install.sh` Open vim in kitty.app 
 
-
 # Quick Tutorial
 ## move arond
 Move around like emacs if you want.
@@ -18,7 +17,9 @@ Move around like emacs if you want.
 - `<c-b>`    move cursor one character left 
 - `<c-f>`    move cursor one character right 
 - `<c-a>`    move cursor to the begin of line 
-- `<c-e>`    move curosr to the end of line 
+- `<c-e>`    move cursor to the end of line 
+- `<c-p>`  move cursor to the previous line
+- `<c-n>`  mvoe cursor the the next line
 - `<alt+b>`  move cursor one word left
 - `<alt+f>`  move cursor one word right
 

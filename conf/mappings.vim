@@ -106,11 +106,12 @@ nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . "
 " support emacs movement insert mode
 inoremap <c-b> <left>
 inoremap <c-f> <right>
+inoremap <c-p> <up>
+inoremap <c-n> <down>
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap ∫ <S-Left>
 inoremap ƒ <S-Right>
-
 " 在quickfix 里移动  alt+n alt+p
 noremap ∆ :cn<cr>
 noremap ˚ :cp<cr>
