@@ -38,6 +38,20 @@ the fastest way moving the cursor to the end of line is by pressing <c-a>.And yo
 There are other methods to solove this issue. But I find this is the easiest way.
 Plus emacs type movement is the default option in Mac editor, why not in vim ~
 
+## locate file
+*find file* 
+It is async fuzzy search!
+With the power of leaderF, <ctrp+p> is the default key to fuzzy file search in current workspace. you can change your workspace by typing :cd <where you want to locate>
+More detail you can check :help leaderF
+
+*switch to buffer/file*
+<cmd+e>  is bound to switch between two buffers.  this key binding is similar to intelliJ. And I am used to it. 
+
+*find the mostly used file*
+<leader>m
+ 
+## locate word or selection
+
 
 # Customize
 1. kitty config is located in ~/.config/kitty/kitty.conf,check https://github.com/kovidgoyal/kitty for more information.The kitty.conf file comment is informative enough to config.
