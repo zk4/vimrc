@@ -21,11 +21,13 @@ command! SelectAll  normal! ggVG
 command! SwitchBuffer :e # 
 nnoremap Q  q
 nnoremap QQ :qa!<cr>
-nnoremap q <esc>:q<cr>
+"nnoremap q <esc>:q<cr>
+nnoremap q <esc>:bd<cr>
 nnoremap <M-s> <esc>:w<cr>
 " 全用不需要转义的正则表达式搜索
-nnoremap / ms/\v
-nnoremap ? ms?\v
+" 在incsearch里定义了
+"nnoremap / ms/\v
+"nnoremap ? ms?\v
 " navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -36,7 +38,7 @@ inoremap <F5> <esc>:call CompileRunGcc()<CR>
 "nnoremap <leader>c :call CompileRunGcc()<CR>
 noremap  <F2> :cprevious<CR>
 noremap  <F3> :cnext<CR>
-noremap  <F6> :exec  '!clear && '.getline('.')<cr>
+"noremap  <F6> :exec  '!clear && '.getline('.')<cr>
 noremap  <F4> :NERDTreeToggle<CR>
 " indent  without lose the selection
 noremap  <Tab> >gv
@@ -69,8 +71,6 @@ nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
 "nnoremap <leader>g :Ack<space>
-nnoremap <C-\> :NERDTreeToggle<CR>
-inoremap <C-\> <esc>:NERDTreeToggle<CR>
 " 这个映射用的太少了..
 nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
@@ -125,4 +125,13 @@ cnoremap <C-B> <Left>
 cnoremap ∫ <S-Left>
 cnoremap ƒ <S-Right>
 
-nnoremap <C-m> :call MaximizeToggle()<CR>
+"https://stackoverflow.com/questions/290465/how-to-paste-over-without-overwriting-register 
+"https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
+"xnoremap <silent> p p:let @"=@0<CR>
+" make your paste as normal as other editor , but you paster register is
+" broken. but it is fine for me ..
+xnoremap p "_dP
+"xnoremap <expr> p 'pgv"'.v:register.'y'
+"nnoremap <C-m> :call MaximizeToggle()<CR>
+
+

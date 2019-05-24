@@ -40,7 +40,7 @@ func! CompileRunGcc()
         "exec "!time ./%<"
     elseif &filetype == 'java'
         "exec "!source ~/.bash_profile &&    mvnexec"
-        exec "!javac % && java -verbose:gc -Xms20M -Xmx20M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 %< "
+        exec "!javac % && java -verbose:gc -Xms10M -Xmx10M -Xmn10M -XX:+PrintGCDetails -XX:SurvivorRatio=8 %< "
 "        exec "!time java %< "
     elseif &filetype == 'xml'
         exec "!pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
@@ -65,6 +65,19 @@ func! CompileRunGcc()
     endif
 endfunc
 
+
+xmap <F5> :.w !bash<CR>
+"func! CompileRunSelection()
+"    normal! y
+"    if &filetype == 'sh'
+"       exec  '!bash ' . getline('.')<cr>
+""       exec '!bash @"'
+"    elseif &filetype == 'python'
+"        exec "!python .getline('.')"
+"    else
+"        :make
+"    endif
+"endfunc
 func! ProfileStart()
     profile start profile.log
     profile func *

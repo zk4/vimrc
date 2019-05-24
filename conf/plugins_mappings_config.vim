@@ -32,7 +32,7 @@ let g:sneak#use_ic_scs = 1
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
-" install coc-snippet through  CocInstall coc-snippets
+"" install coc-snippet through  CocInstall coc-snippets
 "Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 
 set updatetime=300
@@ -53,7 +53,7 @@ function! s:show_documentation()
     endif
 endfunction
 
-augroup coc_guard 
+augroup coc_guard
     autocmd!
     "  正确高亮 jsonc 的注释
     autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -129,32 +129,32 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           auto-pairs                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 " Jump outside '"({
 "if !exists('g:AutoPairsShortcutJump')
 "let g:AutoPairsShortcutJump = '<C-g>'
 "endif
 " flymode　可以例你输入后面的括号从而跳过括号到达尾端。但因为我们映射了c-f, c-e，这个更方便点　
-"let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           buffer explorer                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 更好用的 buffer explorer
-"Plug 'vim-scripts/bufexplorer.zip'
+Plug 'vim-scripts/bufexplorer.zip'
 ""nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
-"nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
-"" if show help in buffer explorer
-"let g:bufExplorerDefaultHelp=0
-"let g:bufExplorerShowRelativePath=1
-"" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
-"let g:bufExplorerFindActive=1
-"" 将未命名 buffer 也显示
-"let g:bufExplorerShowNoName=1
-"" 打开时的大小
-"let g:bufExplorerSplitHorzSize=8
-"let g:bufExplorerMaxHeight=12
-"" sort by mru
-"let g:bufExplorerSortBy='mru'
+nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
+" if show help in buffer explorer
+let g:bufExplorerDefaultHelp=0
+let g:bufExplorerShowRelativePath=1
+" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
+let g:bufExplorerFindActive=1
+" 将未命名 buffer 也显示
+let g:bufExplorerShowNoName=1
+" 打开时的大小
+let g:bufExplorerSplitHorzSize=8
+let g:bufExplorerMaxHeight=12
+" sort by mru
+let g:bufExplorerSortBy='mru'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           tabular                            
@@ -201,7 +201,7 @@ let g:Lf_PreviewResult = {
 nnoremap π :LeaderfFunction!<cr>
 nnoremap <leader>m :LeaderfMru<CR>
 
-nnoremap <leader>o :LeaderfBuffer<cr>
+"nnoremap <leader>o :LeaderfBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -227,8 +227,10 @@ Plug 'dkprice/vim-easygrep'
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'plasticboy/vim-markdown'
-" 只用来预览 markdown . 别用它来编辑. 用 typora
-
+" 用来编辑 markdown
+Plug 'shime/vim-livedown'
+" 只用来预览 markdown
+" 如果写大量的笔记。不建议用 vim markdown的编写。用　typora
 set conceallevel=2
 let g:vim_markdown_math = 1
 let g:vim_markdown_json_frontmatter = 1
@@ -251,6 +253,8 @@ nmap k <Plug>(accelerated_jk_gk)
 "                           fugitive                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
+" easy mapping for fugitive
+Plug 'tpope/vim-unimpaired' 
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 nnoremap <C-g>s <esc>:Gstatus<cr>
@@ -282,11 +286,17 @@ let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
 let g:NERDTreeWinSize=35
 "open NERDTree automatically when vim starts up on opening a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+augroup nerdtree_guard
+    autocmd!
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+    autocmd FileTYpe nerdtree  nnoremap <buffer> <f5> :NERDTree<CR>
+    if exists("g:NERDTree") && g:NERDTree.IsOpen()
+        autocmd VimLeavePre * NERDTreeClose
+    endif
+augroup END
 ""close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " sync file and nerdtree {{{  so many bugs
 " returns true if is NERDTree open/active
 function! IsNTOpen()
@@ -300,12 +310,11 @@ function! SyncTree()
         wincmd p
     endif
 endfunction
-if exists("g:NERDTree") && g:NERDTree.IsOpen()
-    autocmd VimLeavePre * NERDTreeClose
-endif
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 ""autocmd BufEnter * call SyncTree()
 
+nnoremap <C-\> :NERDTreeToggle<CR>
+inoremap <C-\> <esc>:NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -398,13 +407,14 @@ Plug 'google/vim-searchindex'
 "使用 leader-s 切换是否创建工程
 "在打开当前文件夹时，可以回到工程现场
 
-Plug 'thaerkh/vim-workspace'
-let g:workspace_autocreate =1
-let g:workspace_session_name = '.Session.vim'
-"all trailing spaces will not be removed upon autosave.
-let g:workspace_autosave_untrailspaces = 0
-let g:workspace_autosave_ignore = ['gitcommit']
-nnoremap <leader>s :ToggleWorkspace<CR>
+"Plug 'thaerkh/vim-workspace'
+"let g:workspace_persist_undo_history = 0
+"let g:workspace_autocreate =1
+"let g:workspace_session_name = '.Session.vim'
+""all trailing spaces will not be removed upon autosave.
+"let g:workspace_autosave_untrailspaces = 0
+"let g:workspace_autosave_ignore = ['gitcommit']
+"nnoremap <leader>s :ToggleWorkspace<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -431,6 +441,7 @@ nnoremap <leader>s :ToggleWorkspace<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'haya14busa/incsearch.vim'
 let g:incsearch#auto_nohlsearch = 1
+let g:incsearch#magic = '\v' " very magic
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
@@ -445,11 +456,7 @@ map g# <Plug>(incsearch-nohl-g#)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color                             
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" corlorize text like #112344, you need to manully start it 
 Plug 'chrisbra/Colorizer'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           async dispatch                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'tpope/vim-dispatch'
 call plug#end()
 

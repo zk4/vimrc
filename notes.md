@@ -1,13 +1,24 @@
 # todo                            
 快速回到过去编辑的地方　
 coc.nvim 打开某些文件时，会报错。
-对歌的输入法支持非常不好。打字时输入法的框左下角了。
+对歌的输入法支持非常不好。打字时输入法的框左下角了。　
+"https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
+研究一下 yank ring
 
+git 怎么快速查看以前的文件?
 # tips                            
 fzf 带有 Ag 功能
 全局搜索
 :Ack <Keyword> --<filetype>
 
+# run
+运行当前选择行
+https://stackoverflow.com/questions/19883917/execute-current-line-in-bash-from-vim
+Here . (the part before w) refers to the range of lines you are writing, and . is only the current line. Then you use !bash to write those lines to bash.
+```
+:.w !bash
+
+```
 # Movement
 ## move in comnand line mode 
 like emacs! 
