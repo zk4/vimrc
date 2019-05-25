@@ -21,7 +21,7 @@ Move around like emacs if you want.
 - `<c-a>`    move cursor to the begin of line 
 - `<c-e>`    move cursor to the end of line 
 - `<c-p>`  move cursor to the previous line
-- `<c-n>`  mvoe cursor the the next line
+- `<c-n>`  mvoe cursor to the next line
 - `<alt+b>`  move cursor one word left
 - `<alt+f>`  move cursor one word right
 

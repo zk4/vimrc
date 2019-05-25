@@ -134,4 +134,3 @@ xnoremap p "_dP
 "xnoremap <expr> p 'pgv"'.v:register.'y'
 "nnoremap <C-m> :call MaximizeToggle()<CR>
 
-
