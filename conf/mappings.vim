@@ -41,11 +41,11 @@ noremap  <F3> :cnext<CR>
 "noremap  <F6> :exec  '!clear && '.getline('.')<cr>
 noremap  <F4> :NERDTreeToggle<CR>
 " indent  without lose the selection
-"nnoremap  <Tab> >gv
-"nnoremap  <S-Tab> <gv
+vnoremap  <Tab> >gv
+vnoremap  <S-Tab> <gv
 " switch between tab
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+" nnoremap <Tab> gt
+" nnoremap <S-Tab> gT
 " 在 insert mode 下,让 s-tab 向前 indent
 inoremap <S-Tab> <C-d>
 " 切换 buffer
@@ -73,7 +73,7 @@ nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
 "nnoremap <leader>g :Ack<space>
 " 这个映射用的太少了..
-nnoremap <Leader><leader> *<CR>
+"nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
@@ -101,7 +101,7 @@ inoremap jk <esc>
 "inoremap <C-l> <esc>la
 nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
 nnoremap gc : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
-nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
+"nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
 "nnoremap <leader>ps <esc>:call ProfileStart()<cr>
 "nnoremap <leader>pe <esc>:call ProfileEnd()<cr>
 

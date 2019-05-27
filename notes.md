@@ -9,6 +9,8 @@ coc.nvim 打开某些文件时，会报错。
 研究一下 diff
 https://www.youtube.com/watch?v=zEah_HDpHzc
 
+研究一下 space vim  看有没有啥好东西搞过来.
+
 git 怎么快速查看以前的文件?
 # tips                            
 c+w 在　insert　mode　式下往回删一个单词

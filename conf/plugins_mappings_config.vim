@@ -5,9 +5,9 @@ call plug#begin('~/.vim/plugged')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "https://github.com/justinmk/vim-sneak
-Plug 'justinmk/vim-sneak'
-let g:sneak#label = 1
-let g:sneak#use_ic_scs = 1
+"Plug 'justinmk/vim-sneak'
+"let g:sneak#label = 1
+"let g:sneak#use_ic_scs = 1
 
 " sneak
 "map f <Plug>Sneak_s
@@ -16,6 +16,9 @@ let g:sneak#use_ic_scs = 1
 "map F <Plug>Sneak_F
 "map t <Plug>Sneak_t
 "map T <Plug>Sneak_T
+Plug 'easymotion/vim-easymotion'
+"nnoremap s <Plug>(easymotion-prefix)
+map <Leader> <Plug>(easymotion-prefix)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -239,7 +242,7 @@ Plug 'dkprice/vim-easygrep'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'sickill/vim-monokai'
+"Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -254,7 +257,7 @@ nmap k <Plug>(accelerated_jk_gk)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 " easy mapping for fugitive
-Plug 'tpope/vim-unimpaired' 
+"Plug 'tpope/vim-unimpaired'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 nnoremap <C-g>s <esc>:Gstatus<cr>
@@ -377,6 +380,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-visual-mutli                            "
@@ -457,10 +461,14 @@ map g# <Plug>(incsearch-nohl-g#)
 "                           color                             
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " corlorize text like #112344, you need to manully start it 
-Plug 'chrisbra/Colorizer'
+"Plug 'chrisbra/Colorizer'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           search google                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'unblevable/quick-scope'       " Plug
+
+highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+"highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 call plug#end()
 

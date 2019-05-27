@@ -1,5 +1,6 @@
-# The ultimate vim config for human 
+# The light vim for human 
 With the power of kitty terminal. which is blazing fast and customizable, comparing to mac terminal or iTerm2.
+
 
 # Features
 1. <c-h/j/k/l> move between termnial tab  and vim inner split pane smoothly.
@@ -138,6 +139,15 @@ More detail you can check :help leaderF
 # Thanks
 This project is largly inspired by  https://github.com/amix/vimrc
 
+
+# QA
+**When will I  become a good vimer?**
+When you want do something in TEXT EDITOR. you can do it in vim with less typing comparingto the way you normally did.
+But If you failed to achieve that goal.Maybe you should use the original editor you arecomfortable with. 
+
+**How do I debug the code ?**
+Well, you should not depend on debug tools unless you have no other choice.
+Use TDD, Use log. The final step is using debug tools.
 
 # thinking
 - VIM is a great TEXT EDITOR. but it is not a good IDE.
