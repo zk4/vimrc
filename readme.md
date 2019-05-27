@@ -1,3 +1,6 @@
+# Still  in construction....
+
+
 # The light vim for human 
 With the power of kitty terminal. which is blazing fast and customizable, comparing to mac terminal or iTerm2.
 
@@ -142,15 +145,10 @@ This project is largly inspired by  https://github.com/amix/vimrc
 
 
 # QA
-**When will I  become a good vimer?**
-When you want do something in TEXT EDITOR. you can do it in vim with less typing comparingto the way you normally did.
-But If you failed to achieve that goal.Maybe you should use the original editor you arecomfortable with. 
+**How do I debug the code ?** 
+Well, you should not depend on debug tools unless you have no other choice finding the bug.
+Use TDD, Use log. Make debug tools the final savior.
 
-**How do I debug the code ?**
-Well, you should not depend on debug tools unless you have no other choice.
-Use TDD, Use log. The final step is using debug tools.
-
-# thinking
-- VIM is a great TEXT EDITOR. but it is not a good IDE.
-- Switch between Chinese and English is pain in vim. 
-- I always use VS CODE as an secondary editor if I have to type a lot of chinese.
+# Bla Bla
+- VIM is a great TEXT EDITOR. but it is not a good IDE. Don`t even try to function like an IDE. If you do. Maybe you should just go with the IDE. It`s fine. Ex. Writing JAVA.
+- Switch language IME is pain in vim.  I always use VS CODE as an secondary editor if I have to type a lot of chinese.
