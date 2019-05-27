@@ -1,6 +1,7 @@
 # The light vim for human 
 With the power of kitty terminal. which is blazing fast and customizable, comparing to mac terminal or iTerm2.
 
+![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.jpg)
 
 # Features
 1. <c-h/j/k/l> move between termnial tab  and vim inner split pane smoothly.

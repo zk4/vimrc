@@ -463,10 +463,9 @@ map g# <Plug>(incsearch-nohl-g#)
 " corlorize text like #112344, you need to manully start it 
 "Plug 'chrisbra/Colorizer'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           search google                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "Plug 'unblevable/quick-scope'
 "highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
+Plug 'sheerun/vim-wombat-scheme'
 call plug#end()
 
