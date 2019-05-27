@@ -41,8 +41,8 @@ noremap  <F3> :cnext<CR>
 "noremap  <F6> :exec  '!clear && '.getline('.')<cr>
 noremap  <F4> :NERDTreeToggle<CR>
 " indent  without lose the selection
-noremap  <Tab> >gv
-noremap  <S-Tab> <gv
+"nnoremap  <Tab> >gv
+"nnoremap  <S-Tab> <gv
 " switch between tab
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT

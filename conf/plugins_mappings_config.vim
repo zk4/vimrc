@@ -107,9 +107,9 @@ command! -nargs=0 CocFormat :call CocAction('format')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           snippets                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 因为不能自动补全关键字,放弃ultisnips.使用 coc. 加载 honza/vim-snippets 的库
-" 功能是一样的, 也可以在里面定义代码
-Plug 'honza/vim-snippets'
+" 因为不能自动补全关键字,放弃ultisnips.使用 coc. 
+" 有需要的可以加载 honza/vim-snippets 的库,coc 也可以使用
+"Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  lightline                                 

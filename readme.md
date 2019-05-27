@@ -37,19 +37,19 @@ For Ex, most auto pair plugin tends to auto complete the bracket for you when yo
 ```
     def func(arg1,arg2)
 ```
-But the cursor is in the bracket. and you are in insert mode.
+But the cursor is in the bracket. And you are in insert mode.
 Now you want to move the cursor out the bracket to make a ':' like this 
 ```
     def func(arg1,arg2):
 ```
 The normal operation like this:
 1. Quit insert mode.
-2. Go normal mode. press A.
+2. Go normal mode. Press A.
 3. There is three key strokes.
 
-the fastest way moving the cursor to the end of line is by pressing <c-a>.And you are still in insert mode! Only one strokes. 
+The fastest way moving the cursor to the end of line is by pressing <c-a>.And you are still in insert mode! Only one strokes. 
 
-There are other methods to solove this issue. But I find this is the easiest way.
+There are other methods to solve this issue. But I find this is the easiest way.
 Plus emacs type movement is the default option in Mac editor, why not in vim ~
 
 ## locate file
@@ -60,13 +60,13 @@ With the power of leaderF,it is async fuzzy search!
 More detail you can check :help leaderF
 
 ### switch to buffer/file
-<cmd+e>  is bound to switch between two buffers.  this key binding is similar to intelliJ. And I am used to it. 
+<cmd+e>  is bound to switch between two buffers.  This key binding is similar to intelliJ. And I am used to it. 
 
 ### find the mostly used file
 `<leader>`m
 
 ## locate word or selection
-\* # for current word search. when you cursor move away from founded word. it will automatically disable the color.  
+\* # for current word search. When you cursor move away from founded word. It will automatically disable the color.  
 
 
 
@@ -74,37 +74,72 @@ More detail you can check :help leaderF
 1. kitty config is located in ~/.config/kitty/kitty.conf,check https://github.com/kovidgoyal/kitty for more information.The kitty.conf file comment is informative enough to config.
 
 # Plugs
-- lightline.vim
-- LeaderF
-- vim-kitty-navigator
-- vim-textobj-user
-- fzf.vim
-- vim-snippets
 - coc.nvim
+    this puglin provide most features other seperate plugins do . And you shoud install it in vim . check the offical doc for more infomation.
+    - auto-pair
+    - LSP
+    - snippet 
+- fzf.vim
+    - it never fails me in bash env,neither in vim.
 - nerdtree
+    - Just OK. Not that good ,not that bad.
+- lightline.vim
+    - light enough. I am not a fancy UI guy but a concise guy.
+- LeaderF
+    - Fast enough fro ctrl-p.
+    - Maybe I will ditch this plugin  next time. I think fzf provide the same feature I need.
+- vim-kitty-navigator
+    - this is needed for kitty seamlessly movement.
 - vim-searchindex
-- vim-gutentags
-- vim-sneak
-- Colorizer
-- vim-textobj-python
-- gruvbox
-- vim-dispatch
-- vim-easygrep
-- vim-workspace
-- accelerated-jk
-- vim-fugitive
-- vim-monokai
-- ack.vim
-- vim-surround
-- vim-visual-multi
-- auto-pairs
-- tabular
-- nerdcommenter
-- incsearch.vim
+    - makes search more human.
 - vim-easy-align
+- vim-gutentags
+    - Auto generate tags. Since there is LSP . I don`t use that much. May disable this next time.
+- vim-sneak
+    - This is the future for navigation in files.
+- Colorizer
+    - Not good enough. Terminal only has 256 color. 
+
+- vim-textobj-python
+- vim-textobj-user
+    - well, if you want do vif in python. this plugin does the job. 
+
+- gruvbox
+- vim-monokai
+    - just the colorscheme
+
+- vim-dispatch
+    - async job manager.Well, not that useful.
+- accelerated-jk
+    - make move with acceleration.
+- vim-fugitive
+    - Git it hard. Just save some typing. And you need learn a whole bunch new keybinds. 
+    - If you use the command line for git well,then you should ditch this plugin. It just try very hard to merge vim and git.
+- ack.vim
+    - just an interface between command ack and ccopen. 
+- vim-visual-multi
+    - THis plugin is the best multi select I can find. You can switch between insert mode and normal mode without losing multi visual mode.
+
+- tabular
+- vim-easy-align
+    - well,for alignment.
+
+- nerdcommenter
+    - This plugin has nothing to do with Nerdtree.. but for comment.
+
+- incsearch.vim
+- vim-easygrep
+    - make search and replace more humanlize.
 - vim-markdown
+    - Just for showing markdown as it should be.
+    - Edit large markdown file in Typro.
+
 
 # Thanks
 This project is largly inspired by  https://github.com/amix/vimrc
 
 
+# thinking
+- VIM is great TEXT EDITOR. but it is not a good IDE.
+- Switch between Chinese and English is pain in vim. 
+- I always use VS CODE as an secondary editor if I have to type a lot of chinese.
