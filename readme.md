@@ -13,7 +13,7 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 # Quick Tutorial
 Show some basic editor operation. 
 
-## move arond
+## Move around
 Move around like emacs if you want.
 
 - `<c-b>`    move cursor one character left 
@@ -52,20 +52,20 @@ The fastest way moving the cursor to the end of line is by pressing <c-a>.And yo
 There are other methods to solve this issue. But I find this is the easiest way.
 Plus emacs type movement is the default option in Mac editor, why not in vim ~
 
-## locate file
-### find file
-With the power of leaderF,it is async fuzzy search!
+## Locate file
+**Find file**
+*With the power of leaderF,it is async fuzzy search!
 
 <ctrp+p> is the default key to fuzzy file search in current workspace. you can change your workspace by typing :cd <where you want to locate>
 More detail you can check :help leaderF
 
-### switch to buffer/file
+**Switch to buffer/file**
 <cmd+e>  is bound to switch between two buffers.  This key binding is similar to intelliJ. And I am used to it. 
 
-### find the mostly used file
+**Find the mostly used file**
 `<leader>`m
 
-## locate word or selection
+## Locate word or selection
 \* # for current word search. When you cursor move away from founded word. It will automatically disable the color.  
 
 
