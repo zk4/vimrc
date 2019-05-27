@@ -18,7 +18,7 @@ call plug#begin('~/.vim/plugged')
 "map T <Plug>Sneak_T
 Plug 'easymotion/vim-easymotion'
 "nnoremap s <Plug>(easymotion-prefix)
-map <Leader> <Plug>(easymotion-prefix)
+nmap s <Plug>(easymotion-s)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -380,7 +380,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-line'
+"Plug 'kana/vim-textobj-line'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-visual-mutli                            "
@@ -466,9 +466,7 @@ map g# <Plug>(incsearch-nohl-g#)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           search google                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'unblevable/quick-scope'       " Plug
-
-highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-"highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+"Plug 'unblevable/quick-scope'
+"highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 call plug#end()
 

@@ -129,6 +129,10 @@ cnoremap <C-B> <Left>
 cnoremap ∫ <S-Left>
 cnoremap ƒ <S-Right>
 
+vmap ( S)
+vmap ) S)
+vmap " S"
+vmap ' S'
 "https://stackoverflow.com/questions/290465/how-to-paste-over-without-overwriting-register 
 "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 "xnoremap <silent> p p:let @"=@0<CR>
