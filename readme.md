@@ -6,7 +6,7 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 
 ![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.png)
 
-# I like this features
+# Features
 1. Move in vim and kitty smoothly with <c-h/j/k/l>.
 2. Can move like emacs in insert mode.
 2. Support all hot key in vim in terminal with `option/alt,command` via kitty binding, since vim in normal temrinal would not respond these two key.
