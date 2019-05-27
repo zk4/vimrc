@@ -78,8 +78,7 @@ endif
 " Override color scheme to make split the same color as tmux's default
 autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 
-
-set showmatch               " 显示括号配对情况
+set noshowmatch
 set wrapscan                " 搜索到文件两端时重新搜索
 "set list                   " 显示Tab符，使用一高亮竖线代替
 syntax enable               " 打开语法高亮

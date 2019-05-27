@@ -129,32 +129,32 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           auto-pairs                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" switch to  coc-pairs makes more scense"
 "Plug 'jiangmiao/auto-pairs'
 " Jump outside '"({
 "if !exists('g:AutoPairsShortcutJump')
 "let g:AutoPairsShortcutJump = '<C-g>'
 "endif
-" flymode　可以例你输入后面的括号从而跳过括号到达尾端。但因为我们映射了c-f, c-e，这个更方便点　
-let g:AutoPairsFlyMode = 1
+"let g:AutoPairsFlyMode = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           buffer explorer                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 更好用的 buffer explorer
-Plug 'vim-scripts/bufexplorer.zip'
-""nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
-nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
-" if show help in buffer explorer
-let g:bufExplorerDefaultHelp=0
-let g:bufExplorerShowRelativePath=1
-" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
-let g:bufExplorerFindActive=1
-" 将未命名 buffer 也显示
-let g:bufExplorerShowNoName=1
-" 打开时的大小
-let g:bufExplorerSplitHorzSize=8
-let g:bufExplorerMaxHeight=12
-" sort by mru
-let g:bufExplorerSortBy='mru'
+"Plug 'vim-scripts/bufexplorer.zip'
+"""nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
+"nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
+"" if show help in buffer explorer
+"let g:bufExplorerDefaultHelp=0
+"let g:bufExplorerShowRelativePath=1
+"" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
+"let g:bufExplorerFindActive=1
+"" 将未命名 buffer 也显示
+"let g:bufExplorerShowNoName=1
+"" 打开时的大小
+"let g:bufExplorerSplitHorzSize=8
+"let g:bufExplorerMaxHeight=12
+"" sort by mru
+"let g:bufExplorerSortBy='mru'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           tabular                            
@@ -184,10 +184,10 @@ let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
 let g:Lf_UseVersionControlTool=0
 let g:Lf_WildIgnore = {
             \ 'dir': [".mypy_cache",'.svn','.git','.hg',".undodir"],
-            \ 'file': [".DS_Store",'*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \ 'file': ["\.",".DS_Store","NERD_tree_*",'*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
-let g:Lf_ShowRelativePath=0
+let g:Lf_ShowRelativePath=1
 let g:Lf_PreviewResult = {
             \ 'File': 1,
             \ 'Buffer': 1,
@@ -201,7 +201,7 @@ let g:Lf_PreviewResult = {
 nnoremap π :LeaderfFunction!<cr>
 nnoremap <leader>m :LeaderfMru<CR>
 
-"nnoremap <leader>o :LeaderfBuffer<cr>
+nnoremap <leader>o :LeaderfBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -226,16 +226,16 @@ Plug 'dkprice/vim-easygrep'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'plasticboy/vim-markdown'
-" 用来编辑 markdown
-Plug 'shime/vim-livedown'
-" 只用来预览 markdown
-" 如果写大量的笔记。不建议用 vim markdown的编写。用　typora
-set conceallevel=2
-let g:vim_markdown_math = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_strikethrough = 1
-let g:vim_markdown_autowrite = 1
+"Plug 'plasticboy/vim-markdown'
+"" 用来编辑 markdown
+"Plug 'shime/vim-livedown'
+"" 只用来预览 markdown
+"" 如果写大量的笔记。不建议用 vim markdown的编写。用　typora
+"set conceallevel=2
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_json_frontmatter = 1
+"let g:vim_markdown_strikethrough = 1
+"let g:vim_markdown_autowrite = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -8,4 +8,3 @@ so ~/.zk_vimrc/conf/plugins_mappings_config.vim "all plugin related will put in 
 colorscheme wombat
 " ~/.zk_vimrc/notes.md
 " ~/.zk_vimrc/readme.md
-

@@ -2,11 +2,16 @@
 快速回到过去编辑的地方　
 coc.nvim 打开某些文件时，会报错。
 对歌的输入法支持非常不好。打字时输入法的框左下角了。　
+
 "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 研究一下 yank ring
 
+研究一下 diff
+https://www.youtube.com/watch?v=zEah_HDpHzc
+
 git 怎么快速查看以前的文件?
 # tips                            
+c+w 在　insert　mode　式下往回删一个单词
 fzf 带有 Ag 功能
 全局搜索
 :Ack <Keyword> --<filetype>

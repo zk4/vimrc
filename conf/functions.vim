@@ -208,16 +208,18 @@ function! s:get_visual_selection()
 endfunction
 
 function! GoogleSearch()
-     let searchterm =s:get_visual_selection()
+"     let searchterm =s:get_visual_selection()
+     let searchterm =@"
          
-     let url =':!open "https://google.com/search?q=' . UrlEncode(searchterm) . '"'
+     let url =':!open "https://google.com/search?q=' . searchterm . '"'
+     echom url
      silent exec  url
 endfunction
 function! StackOverFlow()
-     let searchterm = getline(".")
+     let searchterm =@"
          
-     let url =':!open "https://stackoverflow.com/search?q=' . UrlEncode(searchterm) . '"'
+     let url =':!open "https://stackoverflow.com/search?q=' . searchterm . '"'
      silent exec  url
 endfunction
 vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
-vnoremap gs "gy<Esc>:call StackOverFlow()<CR>
+"vnoremap gs "gy<Esc>:call StackOverFlow()<CR>

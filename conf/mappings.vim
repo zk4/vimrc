@@ -68,6 +68,7 @@ nnoremap <leader>ef :e ~/.zk_vimrc/conf/plugins_mappings_config.vim<cr>
 nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>eh :e ~/.zk_vimrc/help.md<cr>
 nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
+nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
 " 快速  edit  snippet c
 "nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
 "nnoremap <leader>g :Ack<space>
@@ -76,7 +77,8 @@ nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
 nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
 vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
-noremap  <leader>w :w<cr>
+vnoremap  <leader>w :w<cr>
+inoremap  <c-s> <esc>:w<cr>li
 "nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
 nnoremap <leader>f mmgg=G`mzz
@@ -110,6 +112,8 @@ inoremap <c-p> <up>
 inoremap <c-n> <down>
 inoremap <c-a> <home>
 inoremap <c-e> <end>
+inoremap <c-k> <c-o>d$
+"inoremap <c-k> <esc>ld$a
 inoremap ∫ <S-Left>
 inoremap ƒ <S-Right>
 " 在quickfix 里移动  alt+n alt+p
@@ -130,7 +134,7 @@ cnoremap ƒ <S-Right>
 "xnoremap <silent> p p:let @"=@0<CR>
 " make your paste as normal as other editor , but you paster register is
 " broken. but it is fine for me ..
-xnoremap p "_dP
+vnoremap p "_dP
 "xnoremap <expr> p 'pgv"'.v:register.'y'
 "nnoremap <C-m> :call MaximizeToggle()<CR>
 
