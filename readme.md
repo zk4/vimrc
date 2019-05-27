@@ -118,7 +118,7 @@ More detail you can check :help leaderF
 - ack.vim
     - just an interface between command ack and ccopen. 
 - vim-visual-multi
-    - THis plugin is the best multi select I can find. You can switch between insert mode and normal mode without losing multi visual mode.
+    - This plugin is the best multi select I can find. You can switch between insert mode and normal mode without losing multi visual mode.
 
 - tabular
 - vim-easy-align
@@ -129,10 +129,10 @@ More detail you can check :help leaderF
 
 - incsearch.vim
 - vim-easygrep
-    - make search and replace more humanlize.
+    - make search and replace more human.
 - vim-markdown
     - Just for showing markdown as it should be.
-    - Edit large markdown file in Typro.
+    - Edit large markdown file in Typora.
 
 
 # Thanks
@@ -140,6 +140,6 @@ This project is largly inspired by  https://github.com/amix/vimrc
 
 
 # thinking
-- VIM is great TEXT EDITOR. but it is not a good IDE.
+- VIM is a great TEXT EDITOR. but it is not a good IDE.
 - Switch between Chinese and English is pain in vim. 
 - I always use VS CODE as an secondary editor if I have to type a lot of chinese.
