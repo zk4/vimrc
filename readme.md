@@ -6,9 +6,12 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 
 ![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.png)
 
-# Features
-1. <c-h/j/k/l> move between termnial tab  and vim inner split pane smoothly.
-2. support all hot key in vim in terminal with `option/alt,command` via kitty binding, since vim in normal temrinal would not respond these two key.
+# I like this features
+1. Move in vim and kitty smoothly with <c-h/j/k/l>.
+2. Can move like emacs in insert mode.
+2. Support all hot key in vim in terminal with `option/alt,command` via kitty binding, since vim in normal temrinal would not respond these two key.
+4. Auto load config when I change the config.
+4. Search and replace in file or in project is intuitive and fast.
 
 
 # Install  (on Mac)
@@ -16,21 +19,34 @@ With the power of kitty terminal. which is blazing fast and customizable, compar
 1. run `install.sh` Open vim in kitty.app 
 
 # Quick Tutorial
+
+The default leadkey is space. feel free to change that.
+
+modify config 
+<leader>ev   Edit Vim config file
+<leader>et   Edit kiTty config file
+<leader>es   Edit Snippet file for current file type
+<leader>ep   Edit .bash_Profile file
+
+<space>ev  
 Show some basic editor operation. 
 
 ## Move around
 Move around like emacs if you want.
 
-- `<c-b>`    move cursor one character left 
-- `<c-f>`    move cursor one character right 
-- `<c-a>`    move cursor to the begin of line 
-- `<c-e>`    move cursor to the end of line 
-- `<c-p>`    move cursor to the previous line
-- `<c-n>`    mvoe cursor to the next line
-- `<c-k>`    kill link 
-- `<cmd-s>`  save file 
-- `<alt+b>`  move cursor one word left
-- `<alt+f>`  move cursor one word right
+- `<c-b>`          move cursor one character left 
+- `<c-f>`          move cursor one character right 
+- `<c-a>`          move cursor to the begin of line 
+- `<c-e>`          move cursor to the end of line 
+- `<c-p>`          move cursor to the previous line
+- `<c-n>`          mvoe cursor to the next line
+- `<c-k>`          kill link 
+- `<cmd-s>`        save file 
+- `<cmd-f>`        search file 
+- `<cmd-shift+f>`  search in project
+- `<cmd-shift+r>`  replace in project 
+- `<alt+b>`        move cursor one word left
+- `<alt+f>`        move cursor one word right
 
 
 ![movement](https://github.com/zk4/vimrc/blob/master/imgs/movement.gif)
@@ -100,18 +116,12 @@ More detail you can check :help leaderF
 - vim-easy-align
 - vim-gutentags
     - Auto generate tags. Since there is LSP . I don`t use that much. May disable this next time.
-- vim-sneak
-    - This is the future for navigation in files.
 - Colorizer
     - Not good enough. Terminal only has 256 color. 
 
 - vim-textobj-python
 - vim-textobj-user
     - well, if you want do vif in python. this plugin does the job. 
-
-- gruvbox
-- vim-monokai
-    - just the colorscheme
 
 - vim-dispatch
     - async job manager.Well, not that useful.
