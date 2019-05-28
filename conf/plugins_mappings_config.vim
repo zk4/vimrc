@@ -225,20 +225,22 @@ let g:ackhighlight = 1
 "                           vim-easygrep                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dkprice/vim-easygrep'
-
+map <silent> <leader>po <plug>EgMapGrepOptions
+map <silent> <leader>pf <plug>EgMapGrepCurrentWord_v
+map <silent> <leader>pr <plug>EgMapReplaceCurrentWord_r
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'plasticboy/vim-markdown'
-"" 用来编辑 markdown
-"Plug 'shime/vim-livedown'
-"" 只用来预览 markdown
-"" 如果写大量的笔记。不建议用 vim markdown的编写。用　typora
-set conceallevel=2
-let g:vim_markdown_math = 1
-let g:vim_markdown_json_frontmatter = 1
-let g:vim_markdown_strikethrough = 1
-let g:vim_markdown_autowrite = 1
+"Plug 'plasticboy/vim-markdown'
+""" 用来编辑 markdown
+""Plug 'shime/vim-livedown'
+""" 只用来预览 markdown
+""" 如果写大量的笔记。不建议用 vim markdown的编写。用　typora
+"set conceallevel=2
+"let g:vim_markdown_math = 1
+"let g:vim_markdown_json_frontmatter = 1
+"let g:vim_markdown_strikethrough = 1
+"let g:vim_markdown_autowrite = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -467,14 +469,14 @@ map g# <Plug>(incsearch-nohl-g#)
 "Plug 'unblevable/quick-scope'
 "highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 Plug 'sheerun/vim-wombat-scheme'
-Plug 'eugen0329/vim-esearch'
-let g:esearch = {
-  \ 'adapter':          'ag',
-  \ 'backend':          'nvim',
-  \ 'out':              'qflist',
-  \ 'batch_size':       1000,
-  \ 'use':              ['visual', 'hlsearch', 'last'],
-  \ 'default_mappings': 1,
-  \}
+"Plug 'eugen0329/vim-esearch'
+"let g:esearch = {
+"  \ 'adapter':          'ag',
+"  \ 'backend':          'nvim',
+"  \ 'out':              'qflist',
+"  \ 'batch_size':       1000,
+"  \ 'use':              ['visual', 'hlsearch', 'last'],
+"  \ 'default_mappings': 1,
+"  \}
 call plug#end()
 
