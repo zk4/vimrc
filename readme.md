@@ -1,14 +1,14 @@
 # Still  in construction....
-
+Just my personal config. 
 
 # The light vim for human 
 With the power of kitty terminal. which is blazing fast and customizable, comparing to mac terminal or iTerm2.
 
-![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.png)
+<!--![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.png)-->
 
 # Features
 1. Move in vim and kitty smoothly with <c-h/j/k/l>.
-2. Can move like emacs in insert mode.
+2. Move like emacs in insert mode.
 2. Support all hot key in vim in terminal with `option/alt,command` via kitty binding, since vim in normal temrinal would not respond these two key.
 4. Auto load config when I change the config.
 4. Search and replace in file or in project is intuitive and fast.
@@ -39,7 +39,7 @@ Move around like emacs if you want.
 - `<c-a>`          move cursor to the begin of line 
 - `<c-e>`          move cursor to the end of line 
 - `<c-p>`          move cursor to the previous line
-- `<c-n>`          mvoe cursor to the next line
+- `<c-n>`          move cursor to the next line
 - `<c-k>`          kill link 
 - `<cmd-s>`        save file 
 - `<cmd-f>`        search file 
@@ -47,9 +47,36 @@ Move around like emacs if you want.
 - `<cmd-shift+r>`  replace in project 
 - `<alt+b>`        move cursor one word left
 - `<alt+f>`        move cursor one word right
+## keyboard semantic meaning
+| key    | verb                | adv      | none                    |
+| :----: | :-----------------: | :------: | :---------------------: |
+| a      | append              | among    | all                     |
+| b      |                     |          | buffer                  |
+| c      | change              |          | character               |
+| d      | delete              |          |                         |
+| f      | find                |          | file                    |
+| g      | goto,git            |          |                         |
+| h      | help                |          |                         |
+| i      | insert              | in       |                         |
+| j      | jump                |          |                         |
+| k      | kill                |          |                         |
+| l      |                     |          | line                    |
+| m      | mark                |          |                         |
+| n      |                     |          | next,count              |
+| o      | open                |          |                         |
+| p      |                     |          | previous,paragraph      |
+| q      | quit                |          |                         |
+| r      | revise              |          |                         |
+| s      | search subsitute    |          |                         |
+| t      |                     | to       |                         |
+| u      | upper               |          |                         |
+| v      | view                |          |                         |
+| w      |                     |          | window                  |
+| x      | delete              |          |                         |
+| y      | yank                |          |                         |
+| z      |                     |          |                         |
 
-
-![movement](https://github.com/zk4/vimrc/blob/master/imgs/movement.gif)
+![movement](https://github.com/zk4/vimrc/blob/master/imgs/movement.gif)| 
 
 Works in insert and command mode!
 When do we need this?
