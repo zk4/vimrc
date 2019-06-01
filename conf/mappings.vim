@@ -83,7 +83,7 @@ vnoremap  <leader>w :w<cr>
 inoremap  <c-s> <esc>:w<cr>li
 "nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
-nnoremap <leader>f mmgg=G`mzz
+"nnoremap <leader>f mmgg=G`mzz
 " move page down with cursor in the middle of screen
 nnoremap <C-f> <C-d>zz
 " move page up with cursor in the middle of screen

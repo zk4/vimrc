@@ -67,8 +67,8 @@ augroup coc_guard
 
     " Highlight symbol under cursor on CursorHold
     autocmd CursorHold * silent call CocActionAsync('highlight')
-    autocmd FileTYpe python  xnoremap <buffer> <leader>f :CocFormat<CR>
-    autocmd FileTYpe python  nnoremap <buffer> <leader>f :CocFormat<CR>
+    autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
+    autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
 augroup END
 " coc snippet
 "编辑当前文件类型的snippet
@@ -113,6 +113,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 set termguicolors
 
 autocmd FileType javascript let b:coc_pairs_disabled = ['>']
+
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           snippets                            
@@ -284,8 +286,8 @@ nnoremap <C-g>g :Ggrep<Space>
 nnoremap <C-g>m :Gmove<Space>
 nnoremap <C-g>b :Git branch<Space>
 nnoremap <C-g>o :Git checkout<Space>
-nnoremap <C-g>p :!git push<CR>
-nnoremap <C-g>pl :!git pull<CR>
+nnoremap <C-g>p :!git push <CR>
+nnoremap <C-g>pl :!git pull <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           nerdcommenter                            
