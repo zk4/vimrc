@@ -85,7 +85,7 @@ syntax enable               " 打开语法高亮
 syntax on                   " 开启文件类型侦测
 filetype on                 
 "filetype indent on         " 针对不同的文件类型采用不同的缩进格式
-filetype plugin on          " 针对不同的文件类型加载对应的插件
+filetype  plugin on          " 针对不同的文件类型加载对应的插件
 set nobackup                " 设置无备份文件
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile

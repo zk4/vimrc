@@ -23,6 +23,7 @@ nnoremap Q  q
 nnoremap QQ :qa!<cr>
 "nnoremap q <esc>:q<cr>
 nnoremap q <esc>:bd<cr>
+"nnoremap q <c-w>c
 nnoremap <M-s> <esc>:w<cr>
 " 全用不需要转义的正则表达式搜索
 " 在incsearch里定义了
@@ -35,9 +36,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <F5> :call CompileRunGcc()<CR>
 inoremap <F5> <esc>:call CompileRunGcc()<CR>
+nnoremap <F8> :copen<cr>
 "nnoremap <leader>c :call CompileRunGcc()<CR>
-noremap  <F2> :cprevious<CR>
-noremap  <F3> :cnext<CR>
+"noremap  <F2> :cprevious<CR>
+"noremap  <F3> :cnext<CR>
 "noremap  <F6> :exec  '!clear && '.getline('.')<cr>
 noremap  <F4> :NERDTreeToggle<CR>
 " indent  without lose the selection
@@ -49,8 +51,8 @@ vnoremap  <S-Tab> <gv
 " 在 insert mode 下,让 s-tab 向前 indent
 inoremap <S-Tab> <C-d>
 " 切换 buffer
-"nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-"nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 " create tab
 nnoremap <leader>te :tabe<cr>
 " close tab
@@ -140,5 +142,8 @@ vmap ' S'
 " broken. but it is fine for me ..
 vnoremap p "_dP
 "xnoremap <expr> p 'pgv"'.v:register.'y'
-"nnoremap <C-m> :call MaximizeToggle()<CR>
+nnoremap <C-w>m :call MaximizeToggle()<CR>
+
+nnoremap <C-m>o :copen<CR>
+
 

@@ -215,11 +215,37 @@ function! GoogleSearch()
      echom url
      silent exec  url
 endfunction
-function! StackOverFlow()
+function! PythonSearch()
      let searchterm =@"
-         
-     let url =':!open "https://stackoverflow.com/search?q=' . searchterm . '"'
+     let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
      silent exec  url
 endfunction
 vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
+vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 "vnoremap gs "gy<Esc>:call StackOverFlow()<CR>
+"https://docs.python.org/3/library/functools.html
+"
+"
+"
+"
+"写括号时{} ， 在括号里回车自动对齐
+"class {|}
+"class {
+"    |
+"}
+inoremap <expr> <CR> InsertMapForEnter()
+function! InsertMapForEnter()
+    if pumvisible()
+        return "\<C-y>"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == '}'
+        return "\<CR>\<Esc>O"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,1) == ')'
+        return "\<CR>\<Esc>O"
+    elseif strcharpart(getline('.'),getpos('.')[2]-1,2) == '</'
+        return "\<CR>\<Esc>O"
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <buffer> > ></<C-x><C-o><C-y><C-o>%<CR><C-o>O
+

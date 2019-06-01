@@ -107,6 +107,13 @@ nmap <F2> <Plug>(coc-rename)
 " Use `:Format` for format current buffer
 command! -nargs=0 CocFormat :call CocAction('format')
 
+" To enable highlight current symbol on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+"显示颜色
+set termguicolors
+
+autocmd FileType javascript let b:coc_pairs_disabled = ['>']
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           snippets                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -225,9 +232,9 @@ let g:ackhighlight = 1
 "                           vim-easygrep                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'dkprice/vim-easygrep'
-map <silent> <leader>po <plug>EgMapGrepOptions
-map <silent> <leader>pf <plug>EgMapGrepCurrentWord_v
-map <silent> <leader>pr <plug>EgMapReplaceCurrentWord_r
+"map <silent> <leader>po <plug>EgMapGrepOptions
+"map <silent> <leader>pf <plug>EgMapGrepCurrentWord_v
+"map <silent> <leader>pr <plug>EgMapReplaceCurrentWord_r
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -259,11 +266,26 @@ nmap k <Plug>(accelerated_jk_gk)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 " easy mapping for fugitive
-"Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+autocmd FileType gitcommit set foldmethod=syntax
 nnoremap <C-g>s <esc>:Gstatus<cr>
-nnoremap <C-g>p <esc>:Gpush<cr>
+"nnoremap <C-g>p <esc>:Gpush<cr>
+nnoremap <C-g>c :Gcommit -v -q<CR>
+nnoremap <C-g>a :Gcommit --amend<CR>
+nnoremap <C-g>t :Gcommit -v -q %<CR>
+nnoremap <C-g>d :Gdiff<CR>
+nnoremap <C-g>e :Gedit<CR>
+nnoremap <C-g>r :Gread<CR>
+nnoremap <C-g>w :Gwrite<CR><CR>
+nnoremap <C-g>l :silent! 0Glog <CR>
+nnoremap <C-g>g :Ggrep<Space>
+nnoremap <C-g>m :Gmove<Space>
+nnoremap <C-g>b :Git branch<Space>
+nnoremap <C-g>o :Git checkout<Space>
+nnoremap <C-g>p :Dispatch! git push<CR>
+nnoremap <C-g>pl :Dispatch! git pull<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           nerdcommenter                            
@@ -478,5 +500,6 @@ Plug 'sheerun/vim-wombat-scheme'
 "  \ 'use':              ['visual', 'hlsearch', 'last'],
 "  \ 'default_mappings': 1,
 "  \}
+"
 call plug#end()
 

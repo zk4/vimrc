@@ -109,3 +109,10 @@ set formatoptions-=cro     或者 set fo-=cro
 启动 vim 时使用 vim -V9vim.log
 -V[N] N 是 debug　level
 
+# fugitive 
+:Glog --  显示+ - 界面的 git log
+:Glog -- % 显示当前文件的git log
+:copen fugitive 使用了 quickfix,直接用就行了
+alt-p --> :cprevious
+alt-n --> :nnext
+
