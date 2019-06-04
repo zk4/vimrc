@@ -35,6 +35,8 @@ nmap s <Plug>(easymotion-s)
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
+Plug 'leafgarland/typescript-vim'
+"Plug 'ianks/vim-tsx'
 "" install coc-snippet through  CocInstall coc-snippets
 "Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 

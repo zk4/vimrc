@@ -51,7 +51,7 @@ func! CompileRunGcc()
     elseif &filetype == 'python'
         exec "!python %"
     elseif &filetype == 'html'
-        exec "!open % &"
+        exec "!open % "
     elseif &filetype == 'go'
         "exec "!go build %<"
         exec "!time go run %"
