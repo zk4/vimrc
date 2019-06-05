@@ -288,7 +288,7 @@ nnoremap <C-g>g :Ggrep<Space>
 nnoremap <C-g>m :Gmove<Space>
 nnoremap <C-g>b :Git branch<Space>
 nnoremap <C-g>o :Git checkout<Space>
-nnoremap <C-g>p :!git push <CR>
+nnoremap <C-g>p :Gpush <CR>
 nnoremap <C-g>pl :!git pull <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
