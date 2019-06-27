@@ -60,6 +60,8 @@ func! CompileRunGcc()
         exec "!chrome %.html &"
     elseif &filetype == 'vim'
         :source %
+    elseif &filetype == 'sql'
+      exec 'mysql -h 127.0.0.1 -uroot -proot -P 3307 -e "use test; ' . getline('.') . '"'
     else 
         :make
     endif
@@ -67,7 +69,17 @@ endfunc
 
 
 
-xmap <F5> :.w !bash<CR>
+func! CompileRunCurrentLine()
+    exec "w"
+    if &filetype == 'sql'
+      exec "!bash -c \'mysql -h 127.0.0.1 -uroot -proot -P 3307 -e \"use test;" . getline('.') . ";\"\' 2> /dev/null"
+    endif
+endfunc
+
+
+
+xnoremap <F5> :call CompileRunCurrentLine()<CR>
+"xmap <F5> :.w !bash<CR>
 "func! CompileRunSelection()
 "    normal! y
 "    if &filetype == 'sh'
@@ -248,4 +260,8 @@ function! InsertMapForEnter()
     endif
 endfunction
 inoremap <buffer> > ></<C-x><C-o><C-y><C-o>%<CR><C-o>O
-
+"function WriteCreatingDirs()
+"    execute ':silent !mkdir -p %:h'
+"    write
+"endfunction
+"command W call WriteCreatingDirs()

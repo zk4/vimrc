@@ -45,6 +45,8 @@ noremap  <F4> :NERDTreeToggle<CR>
 " indent  without lose the selection
 vnoremap  <Tab> >gv
 vnoremap  <S-Tab> <gv
+vnoremap  <Space> <right> 
+vnoremap  <S-Space> <left>
 " switch between tab
 " nnoremap <Tab> gt
 " nnoremap <S-Tab> gT
@@ -64,7 +66,7 @@ nnoremap <leader>bd  <C-w>c
 nnoremap <leader>ba :bwipe<cr>
 "快速打开配置文件
 "nnoremap <leader>ev :e $MYVIMRC<cr>
-nnoremap <leader>ev :e ~/.zk_vimrc/.vimrc<cr>
+nnoremap <leader>ev :e ~/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
 nnoremap <leader>ef :e ~/.zk_vimrc/conf/plugins_mappings_config.vim<cr>
 nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
@@ -97,7 +99,7 @@ onoremap " i"
 onoremap ' i'
 onoremap { i{
 onoremap [ i[
-inoremap jj <esc>A
+"inoremap jj <esc>A
 inoremap jk <esc>
 "inoremap ;; <esc>A;
 "inoremap <C-l> <esc>la

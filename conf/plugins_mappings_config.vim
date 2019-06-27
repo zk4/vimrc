@@ -197,7 +197,7 @@ let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
 
 let g:Lf_UseVersionControlTool=0
 let g:Lf_WildIgnore = {
-            \ 'dir': [".mypy_cache",'.svn','.git','.hg',".undodir"],
+            \ 'dir': [".mypy_cache",'.svn','.git','.hg',".undodir",".*"],
             \ 'file': ["\.",".DS_Store","NERD_tree_*",'*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
@@ -257,7 +257,6 @@ Plug 'dkprice/vim-easygrep'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           accelerated-jk                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
