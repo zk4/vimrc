@@ -242,16 +242,26 @@ Plug 'dkprice/vim-easygrep'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
+
+Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
+" set to 1, nvim will open the preview window after entering the markdown buffer
+" default: 0
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_open = 1
+
+let g:mkdp_auto_close = 1
+"let g:mkdp_refresh_slow=1
+"let g:mkdp_markdown_css='/Users/zk/.mume/style.less'
+let g:mkdp_markdown_css='/Users/zk/vue.css'
 """ 用来编辑 markdown
 ""Plug 'shime/vim-livedown'
-""" 只用来预览 markdown
-""" 如果写大量的笔记。不建议用 vim markdown的编写。用　typora
 "set conceallevel=2
 "let g:vim_markdown_math = 1
 "let g:vim_markdown_json_frontmatter = 1
 "let g:vim_markdown_strikethrough = 1
 "let g:vim_markdown_autowrite = 1
+nnoremap <leader>v :MarkdownPreview<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
