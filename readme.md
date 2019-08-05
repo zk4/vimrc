@@ -12,7 +12,7 @@ Some Solutions:
 1. use tmux and tmux-plugin in vim. Then you MUST use tmux.
 2. use iterm plugin in vim.But it is slow as hell because of applescript. But if you insist, you can use my tweak version.The original repo is out of maintainence for 5 years.  [link](https://github.com/zk4/vim-iterm2-navigator)
 
-<!--![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.png)-->
+![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.png)
 
 # Features
 1. Move in vim and kitty smoothly with <c-h/j/k/l>. 
