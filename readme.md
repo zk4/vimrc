@@ -4,7 +4,7 @@ Just my personal config.
 # The light vim for human 
 With the power of kitty terminal. which is blazing fast and customizable, comparing to mac terminal iTerm2.
 
-# Why I choose kitty over iTerm2?
+# Why do I choose kitty over iTerm2?
 Because of the problem jumping between vim window and terminal window.
 There are solutions for that problem.But none of them are perfect from my experience.
 
