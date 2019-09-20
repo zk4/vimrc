@@ -79,8 +79,13 @@ nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
 " 这个映射用的太少了..
 "nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
-nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
-vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+"nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
+"nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
+"nnoremap <Leader>rr :Far   **/*<left><left><left><left><left>
+"vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
+nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
+nnoremap <Leader>r  :Far      %<left><left><left><left><left>
+nnoremap <Leader>rr  :Far  **/*<left><left><left><left><left>
 vnoremap  <leader>w :w<cr>
 inoremap  <c-s> <esc>:w<cr>li
 "nnoremap ,, <esc>A,
@@ -100,7 +105,7 @@ onoremap ' i'
 onoremap { i{
 onoremap [ i[
 "inoremap jj <esc>A
-inoremap jk <esc>
+"inoremap jk <esc>
 "inoremap ;; <esc>A;
 "inoremap <C-l> <esc>la
 nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
@@ -142,7 +147,7 @@ vmap ' S'
 "xnoremap <silent> p p:let @"=@0<CR>
 " make your paste as normal as other editor , but you paster register is
 " broken. but it is fine for me ..
-vnoremap p "_dP
+"vnoremap p "_dP
 "xnoremap <expr> p 'pgv"'.v:register.'y'
 nnoremap <C-w>m :call MaximizeToggle()<CR>
 

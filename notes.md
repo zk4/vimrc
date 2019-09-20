@@ -37,10 +37,14 @@ like emacs!
     cnoremap ƒ <S-Right>
 '''
 easygrep 的功能
-全局搜索
+全局搜索-  当前单词
 <leader> vv
 全局替换, 可以预览
 <leader> vr      
+
+所有文件搜索与替换
+全局搜索- 自己输关键字
+:grep -R 'keyword' . 
 
 要改变搜索的范围
 : GrepOption  上下移动回车就能改

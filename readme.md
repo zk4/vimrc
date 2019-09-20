@@ -28,7 +28,6 @@ Some Solutions:
 
 
 # Quick Tutorial
-
 The default leader key is `space`. Feel free to change that.
 
 jump to  config 
@@ -71,10 +70,14 @@ The normal operation like this:
 2. Go normal mode. Press A.
 3. There is three key strokes.
 
-            
 The fastest way moving the cursor to the end of line is by pressing <c-a>.And you are still in insert mode! Only one strokes. 
-
 There are other methods to solve this issue. But I find this is the easiest way.
+
+## local search and replace 
+
+
+
+## global search and replace 
 
 
 ## Locate file
@@ -112,5 +115,4 @@ Use TDD, Use log. Make debug tools the final savior. If you heavily depends on d
 
 
 # Bla Bla
-- VIM is a great TEXT EDITOR. but it is not a good IDE. Don`t even try to function like an IDE. If you do. Maybe you should just go with the IDE. It`s fine. Ex. Writing JAVA.
-- Switch language IME is pain in vim.  I always use VS CODE as an secondary editor if I have to type a lot of chinese.
+- VIM is a great TEXT EDITOR. but it is not a good IDE. Do not even try to use vim like an IDE. If you do. Maybe you should just go with the IDE.  Ex. Writing JAVA.

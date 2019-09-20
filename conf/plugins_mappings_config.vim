@@ -35,7 +35,7 @@ nmap s <Plug>(easymotion-s)
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 "Plug 'ianks/vim-tsx'
 "" install coc-snippet through  CocInstall coc-snippets
 "Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
@@ -69,8 +69,8 @@ augroup coc_guard
 
     " Highlight symbol under cursor on CursorHold
     autocmd CursorHold * silent call CocActionAsync('highlight')
-    autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
-    autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
+"    autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
+"    autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
 augroup END
 " coc snippet
 "编辑当前文件类型的snippet
@@ -171,11 +171,13 @@ let g:lightline = {
 "let g:bufExplorerSortBy='mru'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           tabular                            
+"                           tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 " 对齐任意符号用,visual 选择后 :Tab \:   : 可以是任何你想对齐的符号
 Plug 'godlygeek/tabular'
+" 基于 ai 的代码补全
+"Plug 'zxqfl/tabnine-vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-easy-align                            
@@ -225,7 +227,8 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 "                           vim-surround                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-surround'
-
+"support vim surround repeat
+Plug 'tpope/vim-repeat'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ack                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -233,12 +236,20 @@ Plug 'mileszs/ack.vim'
 let g:ackhighlight = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-easygrep                            
+"                          find and replace in global  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"find and replace on word 
 Plug 'dkprice/vim-easygrep'
 "map <silent> <leader>po <plug>EgMapGrepOptions
 "map <silent> <leader>pf <plug>EgMapGrepCurrentWord_v
 "map <silent> <leader>pr <plug>EgMapReplaceCurrentWord_r
+
+" type your key word to find or replace in global
+Plug 'brooth/far.vim'
+"ex:
+":F def **/*.py        find all word 'def' in all py file
+":Far def def2  ./*.py  find and replace  'def' to 'def2' in all py file 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -247,10 +258,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_open = 1
+"let g:mkdp_auto_start = 1
+"let g:mkdp_auto_open = 1
 
-let g:mkdp_auto_close = 1
+"let g:mkdp_auto_close = 1
 "let g:mkdp_refresh_slow=1
 "let g:mkdp_markdown_css='/Users/zk/.mume/style.less'
 let g:mkdp_markdown_css='/Users/zk/vue.css'
@@ -261,7 +272,7 @@ let g:mkdp_markdown_css='/Users/zk/vue.css'
 "let g:vim_markdown_json_frontmatter = 1
 "let g:vim_markdown_strikethrough = 1
 "let g:vim_markdown_autowrite = 1
-nnoremap <leader>v :MarkdownPreview<cr>
+nnoremap <leader>p :MarkdownPreview<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -430,7 +441,11 @@ Plug 'mg979/vim-visual-multi'
 "   <tab> 进入区域选择
 "   jklm 将移动选择条
 " ctrl-n 选择当前光标下相同的单词, 按 c 改变
-"
+
+"Plug 'wellle/targets.vim'
+"Targets.vim is a Vim plugin that adds various text objects to give you more targets to operate on. It expands on the idea of simple commands like di' (delete inside the single quotes around the cursor) to give you more opportunities to craft powerful commands that can be repeated reliably. One major goal is to handle all corner cases correctly.
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           kitty                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

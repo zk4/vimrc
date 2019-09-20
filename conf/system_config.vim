@@ -11,6 +11,12 @@ set autoread
 set foldmethod=indent
 " 将 tab 转化为空格
 set expandtab 
+
+
+set list
+"set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set listchars=eol:⏎,tab:␉·,nbsp:⎵
+
 "  指定换行符
 if $TERM_PROGRAM  == "iTerm.app"
     set showbreak=↪\   
@@ -47,7 +53,7 @@ set magic
 " 允许不写入 buffer 时,也只可以切换 buffer
 set hidden
 " 显示行号
-"set number
+set number
 """ 显示相对行号
 "set relativenumber
 "" 支持系统剪贴板

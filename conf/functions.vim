@@ -54,7 +54,7 @@ func! CompileRunGcc()
         exec "!open % "
     elseif &filetype == 'go'
         "exec "!go build %<"
-        exec "!time go run %"
+        exec "!go run %"
     elseif &filetype == 'markdown'
         exec "!~/.vim/markdown.pl % > %.html &"
         exec "!chrome %.html &"
@@ -66,18 +66,18 @@ func! CompileRunGcc()
 endfunc
 
 
-function! s:get_visual_selection_in_oneline()
-    " Why is this not a built-in Vim script function?!
-    let [line_start, column_start] = getpos("'<")[1:2]
-    let [line_end, column_end] = getpos("'>")[1:2]
-    let lines = getline(line_start, line_end)
-    if len(lines) == 0
-        return ''
-    endif
-    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
-    let lines[0] = lines[0][column_start - 1:]
-    return join(lines, "")
-endfunction
+"function! s:get_visual_selection_in_oneline()
+"    " Why is this not a built-in Vim script function?!
+"    let [line_start, column_start] = getpos("'<")[1:2]
+"    let [line_end, column_end] = getpos("'>")[1:2]
+"    let lines = getline(line_start, line_end)
+"    if len(lines) == 0
+"        return ''
+"    endif
+"    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+"    let lines[0] = lines[0][column_start - 1:]
+"    return join(lines, "")
+"endfunction
 
 function! FindSelectionMeaning ()
   try
@@ -89,17 +89,17 @@ function! FindSelectionMeaning ()
   endtry
 endfunction
 
-func! CompileRunSelection()
-    if &filetype == 'sql'
-"       if you specify -p after msyql. it will prompt a warming. so use MYSQL_PWD
-       :  exec "!bash -c \'MYSQL_PWD=root mysql -h 127.0.0.1 -uroot  -P 3307 -e \"use test;" . s:get_visual_selection_in_oneline() . "\"\'"
-"vnoremap _X  :<C-U>'>put =system(join(getline('''<','''>'),\"\n\").\"\n\")<cr>
-"vnoremap _X  :<C-U>'>put =<cr>
-    endif
-endfunc
+"func! CompileRunSelection()
+"    if &filetype == 'sql'
+""       if you specify -p after msyql. it will prompt a warming. so use MYSQL_PWD
+"       :  exec "!bash -c \'MYSQL_PWD=root mysql -h 127.0.0.1 -uroot  -P 3307 -e \"use test;" . s:get_visual_selection_in_oneline() . "\"\'"
+""vnoremap _X  :<C-U>'>put =system(join(getline('''<','''>'),\"\n\").\"\n\")<cr>
+""vnoremap _X  :<C-U>'>put =<cr>
+"    endif
+"endfunc
 "https://stackoverflow.com/questions/36406366/function-is-called-several-times-in-vimscript
 " add <c-u> to avoid call CompileRunSelection  multipal times
-vnoremap <F5> :<c-u>call CompileRunSelection()<CR>
+vnoremap <F5> :<c-u>call CompileRunGcc()<CR>
 
 "xmap <F5> :.w !bash<CR>
 "func! CompileRunSelection()
