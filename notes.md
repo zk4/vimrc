@@ -111,7 +111,7 @@ set formatoptions-=cro     或者 set fo-=cro
 
 　捕捉 vim　退出时一闪而过的 error
 启动 vim 时使用 vim -V9vim.log
--V[N] N 是 debug　level
+-V[N] N 是 debug　
 
 # fugitive 
 :Glog --  显示+ - 界面的 git log
