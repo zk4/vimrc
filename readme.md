@@ -4,6 +4,11 @@ Just my personal config.
 # The light vim for human 
 With the power of kitty terminal. which is blazing fast and customizable, comparing to mac terminal iTerm2.
 
+``` bash
+git clone https://github.com/zk4/kitty_config  ~/.config/kitty
+
+``` 
+
 # Why I choose kitty over iTerm2?
 Because of the problem jumping between vim window and terminal window.
 There are solutions for that problem.But none of them are perfect from my experience.

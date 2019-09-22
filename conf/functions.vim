@@ -52,6 +52,8 @@ func! CompileRunGcc()
         exec "!python %"
     elseif &filetype == 'html'
         exec "!open % "
+    elseif &filetype == 'yaml'
+        exec "!kubectl apply -f % "
     elseif &filetype == 'go'
         "exec "!go build %<"
         exec "!go run %"
@@ -249,6 +251,14 @@ function! GoogleSearch()
      echom url
      silent exec  url
 endfunction
+function! KubeSearch()
+"     let searchterm =s:get_visual_selection()
+     let searchterm =@"
+         
+     let url =':!open "https://kubernetes.io/docs/search/?q=' . searchterm . '"'
+     echom url
+     silent exec  url
+endfunction
 function! PythonSearch()
      let searchterm =@"
      let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
@@ -256,6 +266,7 @@ function! PythonSearch()
 endfunction
 vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
 vnoremap gp "gy<Esc>:call PythonSearch()<CR>
+vnoremap gk "gy<Esc>:call KubeSearch()<CR>
 "vnoremap gs "gy<Esc>:call StackOverFlow()<CR>
 "https://docs.python.org/3/library/functools.html
 "
