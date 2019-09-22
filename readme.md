@@ -9,7 +9,7 @@ git clone https://github.com/zk4/kitty_config  ~/.config/kitty
 
 ``` 
 
-# Why I choose kitty over iTerm2?
+# Why do I choose kitty over iTerm2?
 Because of the problem jumping between vim window and terminal window.
 There are solutions for that problem.But none of them are perfect from my experience.
 
