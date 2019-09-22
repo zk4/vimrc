@@ -97,13 +97,20 @@ nnoremap <C-f> <C-d>zz
 nnoremap <C-b> <C-u>zz
 " define operator
 " ex dp  delete  content in ()
-onoremap p i(
-onoremap ( i(
-onoremap < i<
-onoremap " i"
-onoremap ' i'
-onoremap { i{
-onoremap [ i[
+
+"多次粘贴
+xnoremap p pgvy
+
+
+"http://learnvimscriptthehardway.stevelosh.com/chapters/15.html
+" onoremap 的解释
+"onoremap p i(
+"onoremap ( i(
+"onoremap < i<
+"onoremap " i"
+"onoremap ' i'
+"onoremap { i{
+"onoremap [ i[
 "inoremap jj <esc>A
 "inoremap jk <esc>
 "inoremap ;; <esc>A;

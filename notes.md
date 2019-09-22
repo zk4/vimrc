@@ -120,3 +120,6 @@ set formatoptions-=cro     或者 set fo-=cro
 alt-p --> :cprevious
 alt-n --> :nnext
 
+
+在commnad mode  里 yank
+<C-r>"
