@@ -34,7 +34,8 @@ nmap s <Plug>(easymotion-s)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
+"Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'leafgarland/typescript-vim'
 "Plug 'ianks/vim-tsx'
 "" install coc-snippet through  CocInstall coc-snippets
@@ -214,8 +215,9 @@ let g:Lf_PreviewResult = {
             \ 'Line': 1,
             \ 'Colorscheme': 1
             \}
-nnoremap π :LeaderfFunction!<cr>
+"nnoremap π :LeaderfFunction!<cr>
 nnoremap <leader>m :LeaderfMru<CR>
+nnoremap <leader>f :LeaderfFunction<CR>
 
 nnoremap <leader>o :LeaderfBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -249,7 +251,7 @@ Plug 'brooth/far.vim'
 "ex:
 ":F def **/*.py        find all word 'def' in all py file
 ":Far def def2  ./*.py  find and replace  'def' to 'def2' in all py file 
-
+Plug 'wincent/ferret'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -332,10 +334,10 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 let NERDTreeHijackNetrw=1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+let NERDTreeDirArrows = 0
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=25
 "open NERDTree automatically when vim starts up on opening a directory
 augroup nerdtree_guard
     autocmd!
@@ -366,6 +368,7 @@ endfunction
 
 nnoremap <C-\> :NERDTreeToggle<CR>
 inoremap <C-\> <esc>:NERDTreeToggle<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -429,6 +432,7 @@ endif
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
+Plug 'terryma/vim-expand-region'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-visual-mutli                            "
@@ -529,6 +533,31 @@ Plug 'sheerun/vim-wombat-scheme'
 "  \ 'default_mappings': 1,
 "  \}
 "
-Plug 'tpope/vim-dispatch'
+"Plug 'francoiscabrol/ranger.vim'
+"Plug 'rbgrouleff/bclose.vim'
+"let g:ranger_map_keys = 0
+"nnoremap <C-\> :Ranger<CR>
+"inoremap <C-\> <esc>:Ranger<CR>
+"let g:NERDTreeHijackNetrw = 0
+"let g:ranger_replace_netrw = 1
+
+"Plug 'dylanaraps/fff.vim'
+""# Vertical split (NERDtree style).
+"let g:fff#split = "30vnew"
+"let g:fff#split_direction = "nosplitbelow nosplitright"
+"nnoremap <C-\> :F<CR>
+"inoremap <C-\> <esc>:F<CR>
+
+"search current selected with *
+Plug 'bronson/vim-visual-star-search'
+
+
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 call plug#end()
 

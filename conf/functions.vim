@@ -49,7 +49,7 @@ func! CompileRunGcc()
     elseif &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'python'
-        exec "!python %"
+        exec "!python3 %"
     elseif &filetype == 'html'
         exec "!open % "
     elseif &filetype == 'yaml'
@@ -292,7 +292,8 @@ function! InsertMapForEnter()
         return "\<CR>"
     endif
 endfunction
-inoremap <buffer> > ></<C-x><C-o><C-y><C-o>%<CR><C-o>O
+
+" inoremap <buffer> > ></<C-x><C-o><C-y><C-o>%<CR><C-o>O
 "function WriteCreatingDirs()
 "    execute ':silent !mkdir -p %:h'
 "    write

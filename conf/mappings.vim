@@ -112,7 +112,7 @@ xnoremap p pgvy
 "onoremap { i{
 "onoremap [ i[
 "inoremap jj <esc>A
-"inoremap jk <esc>
+inoremap jk <esc>
 "inoremap ;; <esc>A;
 "inoremap <C-l> <esc>la
 nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
@@ -161,3 +161,4 @@ nnoremap <C-w>m :call MaximizeToggle()<CR>
 nnoremap <C-m>o :copen<CR>
 
 
+vnoremap  = :Tab /=<cr>

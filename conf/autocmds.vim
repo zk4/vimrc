@@ -1,5 +1,9 @@
 augroup guard_group 
     autocmd!
+	  " 识别 md 为 markdown
+    au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType help noremap <buffer> q :q<cr>
     autocmd FileType qf  noremap <buffer> q :q<cr>
