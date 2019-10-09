@@ -34,7 +34,6 @@ nmap s <Plug>(easymotion-s)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'leafgarland/typescript-vim'
 "Plug 'ianks/vim-tsx'
@@ -293,6 +292,8 @@ nmap k <Plug>(accelerated_jk_gk)
 Plug 'tpope/vim-fugitive'
 " easy mapping for fugitive
 Plug 'tpope/vim-unimpaired'
+" for github 
+Plug 'tpope/vim-rhubarb'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd FileType gitcommit set foldmethod=syntax
@@ -550,14 +551,5 @@ Plug 'sheerun/vim-wombat-scheme'
 
 "search current selected with *
 Plug 'bronson/vim-visual-star-search'
-
-
-if has('nvim')
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
 call plug#end()
 

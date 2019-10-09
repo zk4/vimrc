@@ -1,4 +1,3 @@
-# Still  in construction....
 Just my personal config. 
 
 # The light vim for human 
@@ -30,6 +29,9 @@ Some Solutions:
 # Install  (on Mac)
 1. git clone https://github.com/zk4/vimrc ~/.zk_vimrc
 1. run `install.sh` Open vim in kitty.app 
+   ``` bash
+   git clone https://github.com/zk4/kitty_config ~/.config/kitty
+   ```
 
 
 # Quick Tutorial
@@ -44,7 +46,8 @@ jump to  config
 
 
 ## Move around
-Move around like emacs or mac style.
+Move around like emacs or mac style. Why Emacs binding? Sometime you do not want to switch mode when only a tiny nudge is needed to complish the task. 
+  
 
 - `<c-b>`          move cursor one character left 
 - `<c-f>`          move cursor one character right 
@@ -79,7 +82,7 @@ The fastest way moving the cursor to the end of line is by pressing <c-a>.And yo
 There are other methods to solve this issue. But I find this is the easiest way.
 
 ## local search and replace 
-
+\*   search  current word or selected text in current file
 
 
 ## global search and replace 
@@ -120,4 +123,4 @@ Use TDD, Use log. Make debug tools the final savior. If you heavily depends on d
 
 
 # Bla Bla
-- VIM is a great TEXT EDITOR. but it is not a good IDE. Do not even try to use vim like an IDE. If you do. Maybe you should just go with the IDE.  Ex. Writing JAVA.
+VIM is a great TEXT EDITOR. but it is not a good IDE. Do not even try to use vim like an IDE. If you do. Maybe you should just go with the IDE.  for example, writing JAVA.
