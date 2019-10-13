@@ -6,6 +6,9 @@ set runtimepath+=~/.vim
 " 设置 leader
 let mapleader=" "
 "let maplocalleader =" "
+set updatetime=300
+"显示颜色 在 kitty 里使分隔边框更细更好看
+set termguicolors
 
 set autoread
 set foldmethod=indent

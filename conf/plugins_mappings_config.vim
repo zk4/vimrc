@@ -31,19 +31,22 @@ nmap s <Plug>(easymotion-s)
 "nnoremap <leader>m :Mru<CR>
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           go                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'fatih/vim-go'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'leafgarland/typescript-vim'
-"Plug 'ianks/vim-tsx'
-"" install coc-snippet through  CocInstall coc-snippets
-"Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 
-set updatetime=300
+" go configuration "
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-Tab>'
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -71,16 +74,18 @@ augroup coc_guard
     autocmd CursorHold * silent call CocActionAsync('highlight')
 "    autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
 "    autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
+" To enable highlight current symbol on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    autocmd FileType javascript let b:coc_pairs_disabled = ['>']
 augroup END
 " coc snippet
 "编辑当前文件类型的snippet
 nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
 
 " Use <Tab> for confirm completion.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? coc#_select_confirm() :
@@ -89,15 +94,15 @@ inoremap <silent><expr> <TAB>
             \ coc#refresh()
 
 " Use <c-space> for trigger completion.
-"inoremap <silent><expr> <C-Space> coc#refresh()
+inoremap <silent><expr> <C-Space> coc#refresh()
 
 nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
 " Remap keys for goto
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gt <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 "nore Use K for show documentation in preview window
@@ -108,14 +113,6 @@ nmap <F2> <Plug>(coc-rename)
 
 " Use `:Format` for format current buffer
 command! -nargs=0 CocFormat :call CocAction('format')
-
-" To enable highlight current symbol on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-"显示颜色
-set termguicolors
-
-autocmd FileType javascript let b:coc_pairs_disabled = ['>']
-
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -175,7 +172,7 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 " 对齐任意符号用,visual 选择后 :Tab \:   : 可以是任何你想对齐的符号
-Plug 'godlygeek/tabular'
+"Plug 'godlygeek/tabular'
 " 基于 ai 的代码补全
 "Plug 'zxqfl/tabnine-vim'
 
@@ -183,8 +180,8 @@ Plug 'godlygeek/tabular'
 "                           vim-easy-align                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 对齐 =号. visual 选择后, 按= 号
-Plug 'junegunn/vim-easy-align'
-vnoremap <silent> <Enter> :EasyAlign<cr> 
+"Plug 'junegunn/vim-easy-align'
+"vnoremap <silent> <Enter> :EasyAlign<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           leaderF                            
@@ -255,7 +252,7 @@ Plug 'wincent/ferret'
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'plasticboy/vim-markdown'
-
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0

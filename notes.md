@@ -6,6 +6,9 @@ coc.nvim 打开某些文件时，会报错。
 "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 研究一下 yank ring
 
+paste  reigster 
+https://unix.stackexchange.com/questions/88714/vim-how-can-i-do-a-change-word-using-the-current-paste-buffer
+
 研究一下 diff
 https://www.youtube.com/watch?v=zEah_HDpHzc
 

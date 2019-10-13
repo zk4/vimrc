@@ -16,14 +16,18 @@ nnoremap zz  za
 "nnoremap <leader>1 :!vifm<cr>
 " select all  cmd+a
 nnoremap <leader>a  ggVG
+"https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
 nnoremap <leader>q  <C-w><C-j><C-w>c
+"nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
+"nnoremap q <esc>:bd<cr>
+"nnoremap q <esc>:bp<bar>sp<bar>bn<bar>bd<CR>
+
 command! SelectAll  normal! ggVG 
 command! SwitchBuffer :e # 
 nnoremap Q  q
-nnoremap QQ :qa!<cr>
-"nnoremap q <esc>:q<cr>
-nnoremap q <esc>:bd<cr>
-"nnoremap q <c-w>c
+"nnoremap QQ :qa!<cr>
+nnoremap q <esc>:q!<cr>
+"nnoremap q <c-o>
 nnoremap <M-s> <esc>:w<cr>
 " 全用不需要转义的正则表达式搜索
 " 在incsearch里定义了
@@ -112,7 +116,7 @@ xnoremap p pgvy
 "onoremap { i{
 "onoremap [ i[
 "inoremap jj <esc>A
-inoremap jk <esc>
+"inoremap jk <esc>
 "inoremap ;; <esc>A;
 "inoremap <C-l> <esc>la
 nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
@@ -160,5 +164,11 @@ nnoremap <C-w>m :call MaximizeToggle()<CR>
 
 nnoremap <C-m>o :copen<CR>
 
+
+" move between function  ,class
+" ]]  move  between class in python 
+" [[  move  between class in python 
+" [m  move  between function in python 
+" ]m  move  between function in python 
 
 vnoremap  = :Tab /=<cr>
