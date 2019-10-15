@@ -115,10 +115,10 @@ nmap <F2> <Plug>(coc-rename)
 command! -nargs=0 CocFormat :call CocAction('format')
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           snippets                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 因为不能自动补全关键字,放弃ultisnips.使用 coc. 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           snippets
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 因为不能自动补全关键字,放弃ultisnips.使用 coc.
 " 有需要的可以加载 honza/vim-snippets 的库,coc 也可以使用
 "Plug 'honza/vim-snippets'
 
@@ -476,8 +476,9 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" wil cause crash 
 "Plug 'liuchengxu/vim-which-key'
-" show leader key tips, for debug purpose
+"" show leader key tips, for debug purpose
 
 "nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
@@ -520,7 +521,7 @@ map g# <Plug>(incsearch-nohl-g#)
 
 "Plug 'unblevable/quick-scope'
 "highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-Plug 'sheerun/vim-wombat-scheme'
+"Plug 'sheerun/vim-wombat-scheme'
 "Plug 'eugen0329/vim-esearch'
 "let g:esearch = {
 "  \ 'adapter':          'ag',

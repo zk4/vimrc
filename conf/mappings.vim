@@ -1,3 +1,5 @@
+" https://neovim.io/doc/user/map.html
+"
 " 在选择模式下, 将 space 也强制应于 leader, 不然会导致 space 真成空格了,
 "Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -116,7 +118,7 @@ xnoremap p pgvy
 "onoremap { i{
 "onoremap [ i[
 "inoremap jj <esc>A
-"inoremap jk <esc>
+inoremap jk <esc>
 "inoremap ;; <esc>A;
 "inoremap <C-l> <esc>la
 nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
@@ -153,6 +155,7 @@ vmap ( S)
 vmap ) S)
 vmap " S"
 vmap ' S'
+
 "https://stackoverflow.com/questions/290465/how-to-paste-over-without-overwriting-register 
 "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 "xnoremap <silent> p p:let @"=@0<CR>
@@ -160,7 +163,18 @@ vmap ' S'
 " broken. but it is fine for me ..
 "vnoremap p "_dP
 "xnoremap <expr> p 'pgv"'.v:register.'y'
-nnoremap <C-w>m :call MaximizeToggle()<CR>
+  
+
+
+" max your window and restore back"
+"https://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
+"without plugin 
+" <C-w>|  vertical max (common use)
+" <C-w>_  horizontal max 
+" <C-w>=  make all window the same size 
+"with plugin 
+nnoremap m :call MaximizeToggle()<CR>
+
 
 nnoremap <C-m>o :copen<CR>
 
