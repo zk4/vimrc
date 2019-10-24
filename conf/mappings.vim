@@ -51,16 +51,16 @@ noremap  <F4> :NERDTreeToggle<CR>
 " indent  without lose the selection
 vnoremap  <Tab> >gv
 vnoremap  <S-Tab> <gv
-vnoremap  <Space> <right> 
+vnoremap  <Space> <right>
 vnoremap  <S-Space> <left>
 " switch between tab
 " nnoremap <Tab> gt
 " nnoremap <S-Tab> gT
 " 在 insert mode 下,让 s-tab 向前 indent
-inoremap <S-Tab> <C-d>
+"inoremap <S-Tab> <C-d>
 " 切换 buffer
-nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+"nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+"nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 " create tab
 nnoremap <leader>te :tabe<cr>
 " close tab
@@ -108,9 +108,38 @@ nnoremap <C-b> <C-u>zz
 xnoremap p pgvy
 
 
-"http://learnvimscriptthehardway.stevelosh.com/chapters/15.html
 " onoremap 的解释
-"onoremap p i(
+"http://learnvimscriptthehardway.stevelosh.com/chapters/15.html
+"
+" https://vi.stackexchange.com/questions/8189/motion-remap-to-select-function-doesnt-work-with-v
+" learn 
+"http://learnvimscriptthehardway.onefloweroneworld.com/chapters/16.html
+" curror : C, sdfs ,,f fsdkl sdf sd ss,sdf,, 
+" to  select ar<C>ray[ <effect here> ]
+"
+" https://github.com/wellle/targets.vim  plugin is good enough for that
+"onoremap aa :<c-u>normal! bvf]<cr>
+"onoremap ia :<c-u>normal! bvf]<cr>
+"onoremap i, :<c-u>normal! F,lvt,<cr>
+"onoremap a, :normal! F,vt,
+""noremap va, :<c-u>normal! F,vf,<cr>
+""noremap vi, :<c-u>normal! F,lvt,<cr>
+"noremap va<space>   :<c-u>normal! blveh<cr>
+"onoremap i<space>  :<c-u>blveh<cr>
+"onoremap i,  :<c-u>normal! <cr>
+
+""xnoremap <silent> :<C-U>normal! f)vF(b<CR>
+"" to  select func<C>tion(<effect here>)
+"onoremap t( :<c-u>normal! f(vi(<cr>
+"onoremap t[ :<c-u>normal! f[vi[<cr>
+
+":onoremap in( :<c-u>normal! f(vi(<cr>
+":onoremap il( :<c-u>normal! F)vi(<cr>
+
+"print foo(bar)  
+
+
+:onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 "onoremap ( i(
 "onoremap < i<
 "onoremap " i"
@@ -119,10 +148,11 @@ xnoremap p pgvy
 "onoremap [ i[
 "inoremap jj <esc>A
 inoremap jk <esc>
+nnoremap W :w<cr>
 "inoremap ;; <esc>A;
 "inoremap <C-l> <esc>la
-nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
-nnoremap gc : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
+"nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
+"nnoremap gc : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
 "nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
 "nnoremap <leader>ps <esc>:call ProfileStart()<cr>
 "nnoremap <leader>pe <esc>:call ProfileEnd()<cr>
@@ -135,6 +165,10 @@ inoremap <c-n> <down>
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-k> <c-o>d$
+
+" for auto completion
+inoremap <C-space> <C-n>
+
 "inoremap <c-k> <esc>ld$a
 inoremap ∫ <S-Left>
 inoremap ƒ <S-Right>
@@ -185,4 +219,8 @@ nnoremap <C-m>o :copen<CR>
 " [m  move  between function in python 
 " ]m  move  between function in python 
 
-vnoremap  = :Tab /=<cr>
+"vnoremap  = :Tab /=<cr>
+"
+"make kj into jumplist 
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'

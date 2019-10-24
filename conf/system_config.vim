@@ -9,11 +9,14 @@ set updatetime=300
 "显示颜色 在 kitty 里使分隔边框更细更好看
 set termguicolors
 
+"set relativenumber
 set autoread
 set foldmethod=indent
 " 将 tab 转化为空格
 set expandtab 
+"let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
+"set path+=**
 
 set list
 "set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
@@ -62,6 +65,7 @@ set number
 set clipboard=unnamed
 set guioptions+=a
 " 自动保存
+
 set autowrite
 " 2 代表永远显示 tab
 set showtabline=2

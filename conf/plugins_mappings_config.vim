@@ -37,15 +37,14 @@ nmap s <Plug>(easymotion-s)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go'
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " go configuration "
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 
 function! s:check_back_space() abort
@@ -68,16 +67,16 @@ augroup coc_guard
     " Close preview window after completion is done
     autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
     " Show signature help while editing
-    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
+"    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
 
     " Highlight symbol under cursor on CursorHold
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+"    autocmd CursorHold * silent call CocActionAsync('highlight')
 "    autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
 "    autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
 " To enable highlight current symbol on CursorHold
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+"    autocmd CursorHold * silent call CocActionAsync('highlight')
 
-    autocmd FileType javascript let b:coc_pairs_disabled = ['>']
+"    autocmd FileType javascript let b:coc_pairs_disabled = ['>']
 augroup END
 " coc snippet
 "编辑当前文件类型的snippet
@@ -115,12 +114,6 @@ nmap <F2> <Plug>(coc-rename)
 command! -nargs=0 CocFormat :call CocAction('format')
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           snippets
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 因为不能自动补全关键字,放弃ultisnips.使用 coc.
-" 有需要的可以加载 honza/vim-snippets 的库,coc 也可以使用
-"Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  lightline                                 
@@ -192,7 +185,6 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 解决方法 git config --global core.quotepath false
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
-"let g:Lf_MruFileExclude = ['*.pyc']
 
 let g:Lf_UseVersionControlTool=0
 let g:Lf_WildIgnore = {
@@ -252,6 +244,11 @@ Plug 'wincent/ferret'
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'plasticboy/vim-markdown'
+Plug 'ferrine/md-img-paste.vim'
+autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+" there are some defaults for image directory and image name, you can change them
+ let g:mdip_imgdir = 'assets'
+" let g:mdip_imgname = 'image'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
 " set to 1, nvim will open the preview window after entering the markdown buffer
@@ -270,11 +267,11 @@ let g:mkdp_markdown_css='/Users/zk/vue.css'
 "let g:vim_markdown_json_frontmatter = 1
 "let g:vim_markdown_strikethrough = 1
 "let g:vim_markdown_autowrite = 1
-nnoremap <leader>p :MarkdownPreview<cr>
+nnoremap gp :MarkdownPreview<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'sickill/vim-monokai'
+Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           accelerated-jk                            
@@ -370,26 +367,36 @@ inoremap <C-\> <esc>:NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
 
-set rtp+=/usr/local/opt/fzf
+"set rtp+=/usr/local/opt/fzf
 
-"let g:fzf_tags_command = 'ctags --extra=+f -R'
-let g:fzf_colors =
-            \ { 'fg':      ['fg', 'Normal'],
-            \ 'bg':      ['bg', 'Normal'],
-            \ 'hl':      ['fg', 'Comment'],
-            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-            \ 'hl+':     ['fg', 'Statement'],
-            \ 'info':    ['fg', 'PreProc'],
-            \ 'prompt':  ['fg', 'Conditional'],
-            \ 'pointer': ['fg', 'Exception'],
-            \ 'marker':  ['fg', 'Keyword'],
-            \ 'spinner': ['fg', 'Label'],
-            \ 'header':  ['fg', 'Comment'] }
+""let g:fzf_tags_command = 'ctags --extra=+f -R'
+"let g:fzf_colors =
+"            \ { 'fg':      ['fg', 'Normal'],
+"            \ 'bg':      ['bg', 'Normal'],
+"            \ 'hl':      ['fg', 'Comment'],
+"            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"            \ 'hl+':     ['fg', 'Statement'],
+"            \ 'info':    ['fg', 'PreProc'],
+"            \ 'prompt':  ['fg', 'Conditional'],
+"            \ 'pointer': ['fg', 'Exception'],
+"            \ 'marker':  ['fg', 'Keyword'],
+"            \ 'spinner': ['fg', 'Label'],
+"            \ 'header':  ['fg', 'Comment'] }
 
+""nnoremap <C-p> :FZF<CR>
+""inoremap <C-p> <esc>:FZF<CR>
+"command! FZFTagFile if !empty(tagfiles()) | call fzf#run({
+"\   'source': "cat " . tagfiles()[0] . ' | grep "' . expand('%:@') . '"' . " | sed -e '/^\\!/d;s/\t.*//' ". ' |  uniq',
+"\   'sink':   'tag',
+"\   'options':  '+m',
+"\   'left':     60,
+"\ }) | else | echo 'No tags' | endif
+
+"nnoremap <silent> <Leader>v :FZFTagFile<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   ctags                                    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -431,6 +438,22 @@ Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
+map K <Plug>(expand_region_expand)
+"map J <plug>(expand_region_shrink)
+"
+let g:expand_region_use_select_mode = 1
+let g:expand_region_text_objects = {
+      \ 'iw'  :1,
+      \ 'iW'  :1,
+      \ 'i"'  :1,
+      \ 'i''' :1,
+      \ 'i]'  :1, 
+      \ 'ib'  :1, 
+      \ 'iB'  :1, 
+      \ 'il'  :1, 
+      \ 'ip'  :1,
+      \ 'ie'  :1,
+      \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-visual-mutli                            "
@@ -444,7 +467,11 @@ Plug 'mg979/vim-visual-multi'
 "   jklm 将移动选择条
 " ctrl-n 选择当前光标下相同的单词, 按 c 改变
 
-"Plug 'wellle/targets.vim'
+Plug 'wellle/targets.vim'
+"let g:targets_nl = 'nN'
+" a cheetsheet for that 
+" https://github.com/wellle/targets.vim/blob/master/cheatsheet.md
+
 "Targets.vim is a Vim plugin that adds various text objects to give you more targets to operate on. It expands on the idea of simple commands like di' (delete inside the single quotes around the cursor) to give you more opportunities to craft powerful commands that can be repeated reliably. One major goal is to handle all corner cases correctly.
 
 
@@ -481,35 +508,11 @@ Plug 'google/vim-searchindex'
 "" show leader key tips, for debug purpose
 
 "nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           iterm2                            "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "Plug 'zephod/vim-iterm2-navigator'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           searchfold                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'vim-scripts/searchfold.vim'
-" 在搜索高亮后, 按<leader>z 可以只显示搜索的行
-" <leader>Z 显示全部
-" .vimrc
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           inscearch                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'haya14busa/incsearch.vim'
-let g:incsearch#auto_nohlsearch = 1
-let g:incsearch#magic = '\v' " very magic
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
+Plug 'bronson/vim-visual-star-search'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -548,6 +551,47 @@ map g# <Plug>(incsearch-nohl-g#)
 "inoremap <C-\> <esc>:F<CR>
 
 "search current selected with *
-Plug 'bronson/vim-visual-star-search'
+"Plug 'ianding1/leetcode.vim'
+"let g:leetcode_china =1
+"let g:leetcode_solution_filetype='python'
+"let g:leetcode_username="liuzq7@gmail.com"
+"let g:leetcode_password=""
+
+"nnoremap gll :LeetCodeList<CR>
+"nnoremap gls :LeetCodeSubmit<CR>
+"nnoremap glt :LeetCodeTest<CR>
+
+"Plug 'vim-scripts/AutoComplPop'
+"Plug 'lifepillar/vim-mucomplete'
+"set covmpleteopt+=menuone
+"set covmpleteopt+=noselect
+"let g:mucomplete#enable_auto_at_startup = 1
+
+"Plug 'davidhalter/jedi-vim'
+
+"autocmd FileType python setlocal completeopt-=preview
+"Plug 'ervandew/supertab'
+
+"let g:SuperTabDefaultCompletionType = "<c-n>"
+
+"" Track the engine.
+"Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+"Plug 'honza/vim-snippets'
+" search the snips in reveser order
+" let g:UltiSnipsDontReverseSearchPath="1"
+
+
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsListSnippets="<c-1>"
+
+" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+
 call plug#end()
 

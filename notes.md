@@ -135,3 +135,11 @@ alt-n --> :nnext
 ## break line
 ctrl-j
 https://stackoverflow.com/questions/3961730/how-to-break-a-line-in-vim-in-normal-mode
+
+
+## about jump list, what qualify the jump command
+https://medium.com/breathe-publication/understanding-vims-jump-list-7e1bfc72cdf0
+
+
+## 问题
+1. 当启用conda 时,python 环境变了, leaderf 用不了. 

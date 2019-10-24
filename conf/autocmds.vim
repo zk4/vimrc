@@ -4,6 +4,7 @@ augroup guard_group
     au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 
+    autocmd BufLeave,FocusLost * silent! wall
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType help noremap <buffer> q :q<cr>
     autocmd FileType qf  noremap <buffer> q :q<cr>
