@@ -92,8 +92,6 @@ nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
 nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
 nnoremap <Leader>r  :Far      %<left><left><left><left><left>
 nnoremap <Leader>rr  :Far  **/*<left><left><left><left><left>
-vnoremap  <leader>w :w<cr>
-inoremap  <c-s> <esc>:w<cr>li
 "nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
 "nnoremap <leader>f mmgg=G`mzz
@@ -107,27 +105,6 @@ nnoremap <C-b> <C-u>zz
 "多次粘贴
 xnoremap p pgvy
 
-
-" onoremap 的解释
-"http://learnvimscriptthehardway.stevelosh.com/chapters/15.html
-"
-" https://vi.stackexchange.com/questions/8189/motion-remap-to-select-function-doesnt-work-with-v
-" learn 
-"http://learnvimscriptthehardway.onefloweroneworld.com/chapters/16.html
-" curror : C, sdfs ,,f fsdkl sdf sd ss,sdf,, 
-" to  select ar<C>ray[ <effect here> ]
-"
-" https://github.com/wellle/targets.vim  plugin is good enough for that
-"onoremap aa :<c-u>normal! bvf]<cr>
-"onoremap ia :<c-u>normal! bvf]<cr>
-"onoremap i, :<c-u>normal! F,lvt,<cr>
-"onoremap a, :normal! F,vt,
-""noremap va, :<c-u>normal! F,vf,<cr>
-""noremap vi, :<c-u>normal! F,lvt,<cr>
-"noremap va<space>   :<c-u>normal! blveh<cr>
-"onoremap i<space>  :<c-u>blveh<cr>
-"onoremap i,  :<c-u>normal! <cr>
-
 ""xnoremap <silent> :<C-U>normal! f)vF(b<CR>
 "" to  select func<C>tion(<effect here>)
 "onoremap t( :<c-u>normal! f(vi(<cr>
@@ -139,7 +116,7 @@ xnoremap p pgvy
 "print foo(bar)  
 
 
-:onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
+":onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 "onoremap ( i(
 "onoremap < i<
 "onoremap " i"
@@ -148,7 +125,11 @@ xnoremap p pgvy
 "onoremap [ i[
 "inoremap jj <esc>A
 inoremap jk <esc>
+" all about save the file
 nnoremap W :w<cr>
+nnoremap <c-s> :w<cr>
+nnoremap  <leader>w :w<cr>
+inoremap  <c-s> <esc>:w<cr>li
 "inoremap ;; <esc>A;
 "inoremap <C-l> <esc>la
 "nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>

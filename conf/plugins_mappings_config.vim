@@ -249,14 +249,24 @@ autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardIm
 " there are some defaults for image directory and image name, you can change them
  let g:mdip_imgdir = 'assets'
 " let g:mdip_imgname = 'image'
-Plug 'mzlogin/vim-markdown-toc'
+"Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {}
+    \ }
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 "let g:mkdp_auto_start = 1
 "let g:mkdp_auto_open = 1
 
-"let g:mkdp_auto_close = 1
+let g:mkdp_auto_close = 0
 "let g:mkdp_refresh_slow=1
 "let g:mkdp_markdown_css='/Users/zk/.mume/style.less'
 let g:mkdp_markdown_css='/Users/zk/vue.css'
@@ -339,7 +349,8 @@ augroup nerdtree_guard
     autocmd StdinReadPre * let s:std_in=1
     autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-    autocmd FileTYpe nerdtree  nnoremap <buffer> <f5> :NERDTree<CR>
+"    autocmd FileTYpe nerdtree  nnoremap <buffer> <f5> :NERDTreeFocus<CR>
+    autocmd FileTYpe *  nnoremap  gs :NERDTreeFind<CR>
     if exists("g:NERDTree") && g:NERDTree.IsOpen()
         autocmd VimLeavePre * NERDTreeClose
     endif
@@ -468,7 +479,7 @@ Plug 'mg979/vim-visual-multi'
 " ctrl-n 选择当前光标下相同的单词, 按 c 改变
 
 Plug 'wellle/targets.vim'
-"let g:targets_nl = 'nN'
+let g:targets_nl = 'np'
 " a cheetsheet for that 
 " https://github.com/wellle/targets.vim/blob/master/cheatsheet.md
 
@@ -592,6 +603,11 @@ Plug 'bronson/vim-visual-star-search'
 
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
+"Plug 'conornewton/vim-pandoc-markdown-preview'
+"Plug 'skywind3000/asyncrun.vim'
+
+" highlight  
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
