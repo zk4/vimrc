@@ -4,17 +4,21 @@ set -e
 brew cash install kitty
 
 cd ~/.zk_vimrc
+mkdir -p ~/.config/nvim/
+echo ' 
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+source ~/.vimrc
 
-echo 'set runtimepath+=~/.zk_vimrc
+' > ~/.config/nvim/init.vim
 
-source ~/.zk_vimrc/core/basic.vim
-source ~/.zk_vimrc/core/filetypes.vim
-source ~/.zk_vimrc/core/plugins_config.vim
-source ~/.zk_vimrc/core/extended.vim
+echo '
+set runtimepath+=~/.zk_vimrc
+so ~/.zk_vimrc/conf/system_config.vim
+so ~/.zk_vimrc/conf/functions.vim
+so ~/.zk_vimrc/conf/mappings.vim
+so ~/.zk_vimrc/conf/autocmds.vim
+so ~/.zk_vimrc/conf/plugins_mappings_config.vim
+' > ~/.vimrc
 
-try
-source ~/.zk_vimrc/my_configs.vim
-catch
-endtry' > ~/.vimrc
-
-echo "Installed the Ultimate Vim for human configuration successfully! Enjoy :-)"
+echo "Installed the light Vim for human configuration successfully! Enjoy :-)"
