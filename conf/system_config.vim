@@ -13,14 +13,14 @@ set termguicolors
 set autoread
 set foldmethod=indent
 " 将 tab 转化为空格
-set expandtab 
+"set expandtab
 "let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
 "set path+=**
 
 set list
 "set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
-set listchars=eol:⏎,tab:␉·,nbsp:⎵
+set listchars=tab:␉·,nbsp:⎵
 
 "  指定换行符
 if $TERM_PROGRAM  == "iTerm.app"
@@ -73,11 +73,11 @@ set showtabline=2
 set wildmenu
 set wildmode=longest:list,full
 "hi Search term=standout ctermfg=5 ctermbg=12
-set tabstop=2               " 设置tab键的宽度
-set shiftwidth=2           " 换行时行间交错使用4个空格
+set tabstop=4               " 设置tab键的宽度
+"set shiftwidth=2           " 换行时行间交错使用4个空格
 "set autoindent              " 自动对齐
-set backspace=2             " 设置退格键可用
-set cindent shiftwidth=2    " 自动缩进4空格
+"set backspace=2             " 设置退格键可用
+"set cindent shiftwidth=2    " 自动缩进4空格
 "set smartindent             " 智能自动缩进
 
 " 设置分割, 

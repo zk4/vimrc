@@ -48,28 +48,28 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
 endfunction
 
 augroup coc_guard
-    autocmd!
-    "  正确高亮 jsonc 的注释
-    autocmd FileType json syntax match Comment +\/\/.\+$+
-    " Close preview window after completion is done
-    autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-    " Show signature help while editing
+	autocmd!
+	"  正确高亮 jsonc 的注释
+	autocmd FileType json syntax match Comment +\/\/.\+$+
+	" Close preview window after completion is done
+	autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+	" Show signature help while editing
 "    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
 
-    " Highlight symbol under cursor on CursorHold
+	" Highlight symbol under cursor on CursorHold
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
 "    autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
 "    autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
@@ -84,13 +84,13 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 
 " Use <Tab> for confirm completion.
 " Coc only does snippet and additional edit on confirm.
-"inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? coc#_select_confirm() :
-            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+"            \ pumvisible() ? coc#_select_confirm() :
+"            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"            \ <SID>check_back_space() ? "\<TAB>" :
+"            \ coc#refresh()
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <C-Space> coc#refresh()
@@ -113,6 +113,13 @@ nmap <F2> <Plug>(coc-rename)
 " Use `:Format` for format current buffer
 command! -nargs=0 CocFormat :call CocAction('format')
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+let g:coc_global_extensions=[
+ \ 'coc-snippets',
+ \ 'coc-pairs',
+ \ 'coc-tsserver',
+ \ 'coc-eslint',
+ \ 'coc-json',
+ \]
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -216,6 +223,8 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-surround                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 教程
+"http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
 Plug 'tpope/vim-surround'
 "support vim surround repeat
 Plug 'tpope/vim-repeat'
@@ -261,22 +270,8 @@ let g:mkdp_preview_options = {
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {}
     \ }
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-"let g:mkdp_auto_start = 1
-"let g:mkdp_auto_open = 1
-
 let g:mkdp_auto_close = 0
-"let g:mkdp_refresh_slow=1
-"let g:mkdp_markdown_css='/Users/zk/.mume/style.less'
 let g:mkdp_markdown_css='/Users/zk/vue.css'
-""" 用来编辑 markdown
-""Plug 'shime/vim-livedown'
-"set conceallevel=2
-"let g:vim_markdown_math = 1
-"let g:vim_markdown_json_frontmatter = 1
-"let g:vim_markdown_strikethrough = 1
-"let g:vim_markdown_autowrite = 1
 nnoremap gp :MarkdownPreview<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
@@ -326,9 +321,10 @@ Plug 'scrooloose/nerdcommenter'
 " like  <leader>c<leader>  comment  current link
 
 " Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'start'
+"let g:NERDDefaultAlign = 'start'
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+let g:NERDDefaultAlign = 'left'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           NERDTree                            
@@ -606,8 +602,13 @@ Plug 'bronson/vim-visual-star-search'
 "Plug 'conornewton/vim-pandoc-markdown-preview'
 "Plug 'skywind3000/asyncrun.vim'
 
-" highlight  
-Plug 'sheerun/vim-polyglot'
+" cheat.sh
+Plug 'scrooloose/syntastic'
+Plug 'dbeniamine/cheat.sh-vim'
 
+let g:syntastic_javascript_checkers = [ 'jshint' ]
+let g:syntastic_ocaml_checkers = ['merlin']
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_shell_checkers = ['shellcheck']
 call plug#end()
 

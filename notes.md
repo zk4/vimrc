@@ -143,3 +143,15 @@ https://medium.com/breathe-publication/understanding-vims-jump-list-7e1bfc72cdf0
 
 ## 问题
 1. 当启用conda 时,python 环境变了, leaderf 用不了. 
+
+
+超级有用的:g
+:g/from/norm diw
+会搜索当前文件所有的 from 关键字, 并执行 diw 命令
+
+
+
+# cheet.sh 
+超牛 b 的作弊工具
+<leader>KB 注意这里是大写
+https://github.com/chubin/cheat.sh
