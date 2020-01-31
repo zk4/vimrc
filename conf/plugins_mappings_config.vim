@@ -71,10 +71,10 @@ augroup coc_guard
 
 	" Highlight symbol under cursor on CursorHold
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
-"    autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
-"    autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
+	autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
+	autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
 " To enable highlight current symbol on CursorHold
-"    autocmd CursorHold * silent call CocActionAsync('highlight')
+	autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "    autocmd FileType javascript let b:coc_pairs_disabled = ['>']
 augroup END
@@ -86,11 +86,12 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
-"inoremap <silent><expr> <TAB>
-"            \ pumvisible() ? coc#_select_confirm() :
-"            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"            \ <SID>check_back_space() ? "\<TAB>" :
-"            \ coc#refresh()
+" 在用 snippet 时,按 tab 键跳到下一个待填入的地方
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? coc#_select_confirm() :
+            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <C-Space> coc#refresh()
@@ -228,27 +229,39 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 Plug 'tpope/vim-surround'
 "support vim surround repeat
 Plug 'tpope/vim-repeat'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           for comment                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'tpope/vim-commentary'
+Plug 'suy/vim-context-commentstring'
+vnoremap <leader>c<leader> :Commentary<cr>
+nnoremap <leader>c<leader> :Commentary<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ack                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
 let g:ackhighlight = 1
+if executable("ag")
+	let g:ackprg = 'ag --nogroup --nocolor --column'
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                          find and replace in global  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "find and replace on word 
-Plug 'dkprice/vim-easygrep'
+"Plug 'dkprice/vim-easygrep'
 "map <silent> <leader>po <plug>EgMapGrepOptions
 "map <silent> <leader>pf <plug>EgMapGrepCurrentWord_v
 "map <silent> <leader>pr <plug>EgMapReplaceCurrentWord_r
 
-" type your key word to find or replace in global
-Plug 'brooth/far.vim'
+" type your key word to find or replace in current file
+"Plug 'brooth/far.vim'
+"let g:far#source='rg'
 "ex:
 ":F def **/*.py        find all word 'def' in all py file
 ":Far def def2  ./*.py  find and replace  'def' to 'def2' in all py file 
-Plug 'wincent/ferret'
+"Plug 'wincent/ferret'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -289,10 +302,13 @@ nmap k <Plug>(accelerated_jk_gk)
 "                           fugitive                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
+" make gpush async
+Plug 'tpope/vim-dispatch'
 " easy mapping for fugitive
 Plug 'tpope/vim-unimpaired'
 " for github 
 Plug 'tpope/vim-rhubarb'
+
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd FileType gitcommit set foldmethod=syntax
@@ -316,15 +332,11 @@ nnoremap <C-g>pl :!git pull <CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           nerdcommenter                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdcommenter'
-" for quick comment
-" like  <leader>c<leader>  comment  current link
-
-" Align line-wise comment delimiters flush left instead of following code indentation
-"let g:NERDDefaultAlign = 'start'
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
-let g:NERDDefaultAlign = 'left'
+" does not support jsx context comment, abandoned
+"Plug 'scrooloose/nerdcommenter'
+"let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' } }
+"let g:NERDTrimTrailingWhitespace = 1
+"let g:NERDDefaultAlign = 'left'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           NERDTree                            
@@ -341,36 +353,40 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
 let g:NERDTreeWinSize=25
 "open NERDTree automatically when vim starts up on opening a directory
 augroup nerdtree_guard
-    autocmd!
-    autocmd StdinReadPre * let s:std_in=1
-    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+	autocmd!
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "    autocmd FileTYpe nerdtree  nnoremap <buffer> <f5> :NERDTreeFocus<CR>
-    autocmd FileTYpe *  nnoremap  gs :NERDTreeFind<CR>
-    if exists("g:NERDTree") && g:NERDTree.IsOpen()
-        autocmd VimLeavePre * NERDTreeClose
-    endif
+	autocmd FileTYpe *  nnoremap  gs :NERDTreeFind<CR>
+	if exists("g:NERDTree") && g:NERDTree.IsOpen()
+		autocmd VimLeavePre * NERDTreeClose
+	endif
 augroup END
 ""close vim if the only window left open is a NERDTree
 " sync file and nerdtree {{{  so many bugs
 " returns true if is NERDTree open/active
 function! IsNTOpen()
-    return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+	return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
 "" calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
 function! SyncTree()
-    if &modifiable && IsNTOpen() && strlen(expand('%')) > 0 && !&diff
-        NERDTreeFind
-        wincmd p
-    endif
+	if &modifiable && IsNTOpen() && strlen(expand('%')) > 0 && !&diff
+		NERDTreeFind
+		wincmd p
+	endif
 endfunction
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 ""autocmd BufEnter * call SyncTree()
 
-nnoremap <C-\> :NERDTreeToggle<CR>
-inoremap <C-\> <esc>:NERDTreeToggle<CR>
+nnoremap <C-\> :NERDTreeToggle %<CR>
+inoremap <C-\> <esc>:NERDTreeToggle %<CR>
 
+" autocmd BufEnter * :NERDTreeToggle 
+
+
+Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -407,36 +423,37 @@ inoremap <C-\> <esc>:NERDTreeToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   ctags                                    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ludovicchabant/vim-gutentags'
-set tags=./.tags;,.tags
-" 当filetype 是 python 时,自动加载 python3.7 的 tag
-augroup python
-    autocmd!
-    autocmd FileType python set tags+=/Users/zk/.cache/tags/python3.7.tags
-augroup END
-" To know when Gutentags is generating tags
-set statusline+=%{gutentags#statusline()}
-" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
-" 仅当发现这些文件后, 才自动生成 tags!
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-let g:gutentags_exclude_filetypes = ['.json',".xlsx",".txt"]
+"Plug 'ludovicchabant/vim-gutentags'
+"set tags=./.tags;,.tags
+"" 当filetype 是 python 时,自动加载 python3.7 的 tag
+"augroup python
+"    autocmd!
+"    autocmd FileType python set tags+=/Users/zk/.cache/tags/python3.7.tags
+"augroup END
+"" To know when Gutentags is generating tags
+"set statusline+=%{gutentags#statusline()}
+"" set statusline+=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+"" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+"" 仅当发现这些文件后, 才自动生成 tags!
+"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+"let g:gutentags_exclude_filetypes = ['.json',".xlsx",".txt"]
 
-" 所生成的数据文件的名称
-let g:gutentags_ctags_tagfile = '.tags'
+"" 所生成的数据文件的名称
+"let g:gutentags_ctags_tagfile = '.tags'
 
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
+"" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+"let s:vim_tags = expand('~/.cache/tags')
+"let g:gutentags_cache_dir = s:vim_tags
 
-" 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+"" 配置 ctags 的参数
+"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+""let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+""let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-" 检测 ~/.cache/tags 不存在就新建
-if !isdirectory(s:vim_tags)
-    silent! call mkdir(s:vim_tags, 'p')
-endif
+"" 检测 ~/.cache/tags 不存在就新建
+"if !isdirectory(s:vim_tags)
+"    silent! call mkdir(s:vim_tags, 'p')
+"endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           object                            
@@ -445,7 +462,7 @@ Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
-map K <Plug>(expand_region_expand)
+" map K <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 "
 let g:expand_region_use_select_mode = 1
@@ -466,13 +483,18 @@ let g:expand_region_text_objects = {
 "                           vim-visual-mutli                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mg979/vim-visual-multi'
-"nmap ∆  <C-down>
-"nmap ˚  <C-up>
+" nmap ∆  <C-down>
+" nmap ˚  <C-up>
 " quick use
 " 速度很快多光标  c-left/right/up/down启动
 "   <tab> 进入区域选择
 "   jklm 将移动选择条
 " ctrl-n 选择当前光标下相同的单词, 按 c 改变
+
+" 会导致 vim 假死
+" Plug 'terryma/vim-multiple-cursors'
+" let g:multi_cursor_select_all_word_key = '<c-a>'
+
 
 Plug 'wellle/targets.vim'
 let g:targets_nl = 'np'
@@ -531,7 +553,7 @@ Plug 'bronson/vim-visual-star-search'
 
 "Plug 'unblevable/quick-scope'
 "highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
-"Plug 'sheerun/vim-wombat-scheme'
+Plug 'sheerun/vim-wombat-scheme'
 "Plug 'eugen0329/vim-esearch'
 "let g:esearch = {
 "  \ 'adapter':          'ag',
@@ -600,15 +622,22 @@ Plug 'bronson/vim-visual-star-search'
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
 "Plug 'conornewton/vim-pandoc-markdown-preview'
+
+" garbge plugin, does not work at all 
 "Plug 'skywind3000/asyncrun.vim'
 
+"---------------syntastic with cheat.sh-------------------
 " cheat.sh
-Plug 'scrooloose/syntastic'
-Plug 'dbeniamine/cheat.sh-vim'
+" syntastic is so slow when saving file
+"Plug 'scrooloose/syntastic'
+" Plug 'dbeniamine/cheat.sh-vim'
 
-let g:syntastic_javascript_checkers = [ 'jshint' ]
-let g:syntastic_ocaml_checkers = ['merlin']
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_shell_checkers = ['shellcheck']
+"let g:syntastic_javascript_checkers = [ 'jshint' ]
+"let g:syntastic_ocaml_checkers = ['merlin']
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_shell_checkers = ['shellcheck']
+"---------------------------------------------------------
+"
+Plug 'stephpy/vim-yaml'
 call plug#end()
 

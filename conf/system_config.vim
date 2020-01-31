@@ -73,11 +73,11 @@ set showtabline=2
 set wildmenu
 set wildmode=longest:list,full
 "hi Search term=standout ctermfg=5 ctermbg=12
-set tabstop=4               " 设置tab键的宽度
-"set shiftwidth=2           " 换行时行间交错使用4个空格
+set tabstop=2               " 设置tab键的宽度
+set shiftwidth=2           " 换行时行间交错使用4个空格
 "set autoindent              " 自动对齐
-"set backspace=2             " 设置退格键可用
-"set cindent shiftwidth=2    " 自动缩进4空格
+set backspace=2             " 设置退格键可用
+set cindent shiftwidth=2    " 自动缩进4空格
 "set smartindent             " 智能自动缩进
 
 " 设置分割, 
@@ -92,6 +92,7 @@ autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 
 set noshowmatch
 set wrapscan                " 搜索到文件两端时重新搜索
+set nosmarttab
 "set list                   " 显示Tab符，使用一高亮竖线代替
 syntax enable               " 打开语法高亮
 syntax on                   " 开启文件类型侦测

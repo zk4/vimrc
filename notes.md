@@ -1,9 +1,6 @@
 # todo                            
-快速回到过去编辑的地方　
-coc.nvim 打开某些文件时，会报错。
-对歌的输入法支持非常不好。打字时输入法的框左下角了。　
 
-"https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
+- "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 研究一下 yank ring
 
 paste  reigster 
@@ -12,14 +9,12 @@ https://unix.stackexchange.com/questions/88714/vim-how-can-i-do-a-change-word-us
 研究一下 diff
 https://www.youtube.com/watch?v=zEah_HDpHzc
 
-研究一下 space vim  看有没有啥好东西搞过来.
-
 git 怎么快速查看以前的文件?
 # tips                            
 c+w 在　insert　mode　式下往回删一个单词
 fzf 带有 Ag 功能
-# run
-运行当前选择行
+
+## 运行当前选择行
 https://stackoverflow.com/questions/19883917/execute-current-line-in-bash-from-vim
 Here . (the part before w) refers to the range of lines you are writing, and . is only the current line. Then you use !bash to write those lines to bash.
 ```
@@ -36,10 +31,28 @@ like emacs!
     cnoremap ∫ <S-Left>
     cnoremap ƒ <S-Right>
 '''
-全局搜索
+# 全局搜索
 :Ack <Keyword> --<filetype>
-原生替换
-https://harttle.land/2016/08/08/vim-search-in-file.html
+
+# 替换
+文章: https://harttle.land/2016/08/08/vim-search-in-file.html
+文章: https://speak.sh/posts/vim-cfdo-ale-and-ripgrep
+## 原生替换
+- :Ack foo
+- :cdo s/foo/bar/cg
+这是我现在实验最好的方法,可以增量替换
+
+解释: ack 搜出来的结果在 quickfix 里.
+cdo 可以针对 quickfix 里的结果做处理. 其他的还有 :bufdo :windo
+具体看 :help cdo
+
+功能如下:
+				:cfirst
+				:{cmd}
+				:cnext
+				:{cmd}
+				etc.
+
 
 ## easygrep 的功能
 ### 全局搜索- 当前单词
@@ -98,20 +111,28 @@ c-w H/J/I/K   -=> 将窗口交换
 c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
 c-w </>  =>  :vertical resize +/- N
 ```
+## plugins 
+kite 是一个基于 ai 的 python 补全.还行,
 
+## tips
+- 快速到行首字符  j-
+- 去除空行 :g/^$/d
+- 超级有用的:g
+  :g/from/norm diw
+  会搜索当前文件所有的 from 关键字, 并执行 diw 命令
+- via 给定 func(args1,args2), 当光标在args1上时, 会选择 args1
 
-## 关于 coc
-跳转用的是jedi 绑定到了 gd, 但是 ctags 也会生成. 可以使用 ctrl+] 跳.
-但很明显 ctags 跳的地方不太对. 尤其是针对系统库
+## info
+- 关于 coc
+  跳转用的是jedi 绑定到了 gd, 但是 ctags 也会生成. 可以使用 ctrl+] 跳.
+  但很明显 ctags 跳的地方不太对. 尤其是针对系统库
+  
 
-
-## 去除空行
-:g/^$/d
 
 :g will execute a command on lines which match a regex. The regex is 'blank line' and the command is :d (delete)
 
-## 背景有时出现两块色是因为 colorColumn
-快速到行首字符  j-
+## info 
+ 背景有时出现两块色是因为 colorColumn
 
 ## 每次在这打字时,总是自动出现" ,以下设置可以暂时关闭这个功能
 set formatoptions-=cro     或者 set fo-=cro
@@ -142,16 +163,26 @@ https://medium.com/breathe-publication/understanding-vims-jump-list-7e1bfc72cdf0
 
 
 ## 问题
-1. 当启用conda 时,python 环境变了, leaderf 用不了. 
+1. 当启用conda 时,python 环境变了, leaderf 用不了.          
 
+## 选择当前行，除去空字符
+https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
+vil 
+val
 
-超级有用的:g
-:g/from/norm diw
-会搜索当前文件所有的 from 关键字, 并执行 diw 命令
-
+## jump to line location not include blank 
+g_   jump to end 
+-    jump to uppper line not include space
+^    jump to start of current line not include  space
+0    jump to start of current line include  space
 
 
 # cheet.sh 
 超牛 b 的作弊工具
 <leader>KB 注意这里是大写
 https://github.com/chubin/cheat.sh
+
+
+#  不使用插件启动 vim 
+vim -u NONE
+`

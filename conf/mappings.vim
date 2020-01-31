@@ -124,7 +124,7 @@ xnoremap p pgvy
 "onoremap { i{
 "onoremap [ i[
 "inoremap jj <esc>A
-inoremap jk <esc>
+"inoremap jk <esc>
 " all about save the file
 nnoremap W :w<cr>
 nnoremap <c-s> :w<cr>
