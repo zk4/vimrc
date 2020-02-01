@@ -17,7 +17,7 @@ augroup guard_group
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
     " 在保存.vimrc 后,自动刷新
-	autocmd! bufwritepost ~/.vimrc source %
+	 autocmd! bufwritepost ~/.vimrc source %
 
     " 保存后格式化
     "autocmd BufWritePre * :normal gg=G

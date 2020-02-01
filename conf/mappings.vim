@@ -89,9 +89,9 @@ nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
 "nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
 "nnoremap <Leader>rr :Far   **/*<left><left><left><left><left>
 "vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
-nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
-nnoremap <Leader>r  :Far      %<left><left><left><left><left>
-nnoremap <Leader>rr  :Far  **/*<left><left><left><left><left>
+" nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
+" nnoremap <Leader>r  :Far      %<left><left><left><left><left>
+" nnoremap <Leader>rr  :Far  **/*<left><left><left><left><left>
 "nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
 "nnoremap <leader>f mmgg=G`mzz

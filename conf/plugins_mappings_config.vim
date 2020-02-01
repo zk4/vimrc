@@ -35,9 +35,48 @@ nmap s <Plug>(easymotion-s)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           go                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+" https://github.com/fatih/vim-go/wiki/Tutorial
 
+" split and join recommanded by vim-go author
+Plug 'AndrewRadev/splitjoin.vim'
+"gS to split the line to multiple lines 
+"gJ to join multiple lines to one line
 
+Plug 'fatih/molokai'
+
+" all location list message goes to quickfix
+let g:go_list_type = "quickfix"
+
+" use goimports instad of gofmt
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
+
+" replace tab with 4 spaces
+" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+" autocmd FileType go nmap <leader>b  <Plug>(go-build)
+augroup guard_group 
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
+autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
+autocmd FileType go nmap <leader>v  <Plug>(go-alternate-vertical)
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+ autocmd FileType go autocmd BufWritePre <buffer> GoImports
+
+augroup END
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
@@ -390,8 +429,8 @@ Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 
 "set rtp+=/usr/local/opt/fzf
 
