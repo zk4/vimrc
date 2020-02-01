@@ -58,7 +58,7 @@ set magic
 " 允许不写入 buffer 时,也只可以切换 buffer
 set hidden
 " 显示行号
-set number
+" set number
 """ 显示相对行号
 "set relativenumber
 "" 支持系统剪贴板

@@ -50,8 +50,8 @@ let g:go_list_type = "quickfix"
 
 " use goimports instad of gofmt
 let g:go_fmt_command = "goimports"
-let g:go_auto_type_info = 1
-let g:go_auto_sameids = 1
+" let g:go_auto_type_info = 1
+" let g:go_auto_sameids = 1
 
 " replace tab with 4 spaces
 " autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
@@ -65,7 +65,7 @@ autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
 autocmd FileType go nmap <leader>v  <Plug>(go-alternate-vertical)
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
- autocmd FileType go autocmd BufWritePre <buffer> GoImports
+ " autocmd FileType go autocmd BufWritePre <buffer> GoImports
 
 augroup END
 " run :GoBuild or :GoTestCompile based on the go file
@@ -83,8 +83,9 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" go configuration "
-
+" go configuration 
+" auto imports before save
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -124,13 +125,15 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 " Use <Tab> for confirm completion.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
 
 " 在用 snippet 时,按 tab 键跳到下一个待填入的地方
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? coc#_select_confirm() :
-            \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
+" inoremap <silent><expr> <TAB>
+"             \ pumvisible() ? coc#_select_confirm() :
+"             \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"             \ <SID>check_back_space() ? "\<TAB>" :
+"             \ coc#refresh()
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <C-Space> coc#refresh()
