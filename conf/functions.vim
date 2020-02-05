@@ -56,7 +56,7 @@ func! CompileRunGcc()
         exec "!kubectl apply -f % "
     elseif &filetype == 'go'
         "exec "!go build %<"
-        exec "!go run %"
+        exec "!go run -race %"
     elseif &filetype == 'markdown'
         exec "!~/.vim/markdown.pl % > %.html &"
         exec "!chrome %.html &"
@@ -101,7 +101,8 @@ endfunction
 "endfunc
 "https://stackoverflow.com/questions/36406366/function-is-called-several-times-in-vimscript
 " add <c-u> to avoid call CompileRunSelection  multipal times
-vnoremap <F5> :<c-u>call CompileRunGcc()<CR>
+" vnoremap <F5> :<c-u>call CompileRunGcc()<CR>
+vnoremap <F5> :<esc>:Dispatch call CompileRunGcc()<CR>
 
 "xmap <F5> :.w !bash<CR>
 "func! CompileRunSelection()

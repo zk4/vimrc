@@ -9,7 +9,6 @@ set updatetime=300
 "显示颜色 在 kitty 里使分隔边框更细更好看
 set termguicolors
 
-"set relativenumber
 set autoread
 set foldmethod=indent
 " 将 tab 转化为空格
@@ -17,6 +16,8 @@ set foldmethod=indent
 "let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
 "set path+=**
+" when scroll with track pad, cursor not move but page
+set mouse=a
 
 set list
 "set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
@@ -58,9 +59,9 @@ set magic
 " 允许不写入 buffer 时,也只可以切换 buffer
 set hidden
 " 显示行号
-" set number
+set number
 """ 显示相对行号
-"set relativenumber
+" set relativenumber
 "" 支持系统剪贴板
 set clipboard=unnamed
 set guioptions+=a

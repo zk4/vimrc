@@ -41,6 +41,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <F5> :call CompileRunGcc()<CR>
+nnoremap <leader>r :call CompileRunGcc()<CR>
 inoremap <F5> <esc>:call CompileRunGcc()<CR>
 nnoremap <F8> :copen<cr>
 "nnoremap <leader>c :call CompileRunGcc()<CR>

@@ -1,4 +1,5 @@
 # todo                            
+- 自动补全与 snippet 总是很痛苦。。按 tab 键不是很智能
 
 - "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 研究一下 yank ring

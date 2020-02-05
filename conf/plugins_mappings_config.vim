@@ -1,23 +1,9 @@
 
 call plug#begin('~/.vim/plugged')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-sneak                            
+"                           search                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"https://github.com/justinmk/vim-sneak
-"Plug 'justinmk/vim-sneak'
-"let g:sneak#label = 1
-"let g:sneak#use_ic_scs = 1
-
-" sneak
-"map f <Plug>Sneak_s
-"map F <Plug>Sneak_S
-"map f <Plug>Sneak_f
-"map F <Plug>Sneak_F
-"map t <Plug>Sneak_t
-"map T <Plug>Sneak_T
 Plug 'easymotion/vim-easymotion'
-"nnoremap s <Plug>(easymotion-prefix)
 nmap s <Plug>(easymotion-s)
 
 
@@ -33,7 +19,7 @@ nmap s <Plug>(easymotion-s)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           go                            
+"                           language -go                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " https://github.com/fatih/vim-go/wiki/Tutorial
@@ -57,13 +43,14 @@ let g:go_fmt_command = "goimports"
 " autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
 " autocmd FileType go nmap <leader>b  <Plug>(go-build)
 augroup guard_group 
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
+" autocmd FileType go nmap <leader>r  <Plug>(go-run-split)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
 autocmd FileType go nmap <leader>v  <Plug>(go-alternate-vertical)
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>i  <Plug>(go-imports)
 
  " autocmd FileType go autocmd BufWritePre <buffer> GoImports
 
@@ -85,7 +72,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " go configuration 
 " auto imports before save
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -255,7 +242,7 @@ let g:Lf_PreviewResult = {
             \}
 "nnoremap π :LeaderfFunction!<cr>
 nnoremap <leader>m :LeaderfMru<CR>
-nnoremap <leader>f :LeaderfFunction<CR>
+nnoremap <leader>i :LeaderfFunction<CR>
 
 nnoremap <leader>o :LeaderfBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -309,6 +296,42 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'plasticboy/vim-markdown'
 Plug 'ferrine/md-img-paste.vim'
+Plug 'SidOfc/mkdx'
+fun! s:MkdxGoToHeader(header)
+    " given a line: '  84: # Header'
+    " this will match the number 84 and move the cursor to the start of that line
+    call cursor(str2nr(get(matchlist(a:header, ' *\([0-9]\+\)'), 1, '')), 1)
+endfun
+
+fun! s:MkdxFormatHeader(key, val)
+    let text = get(a:val, 'text', '')
+    let lnum = get(a:val, 'lnum', '')
+
+    " if the text is empty or no lnum is present, return the empty string
+    if (empty(text) || empty(lnum)) | return text | endif
+
+    " We can't jump to it if we dont know the line number so that must be present in the outpt line.
+    " We also add extra padding up to 4 digits, so I hope your markdown files don't grow beyond 99.9k lines ;)
+    return repeat(' ', 4 - strlen(lnum)) . lnum . ': ' . text
+endfun
+
+fun! s:MkdxFzfQuickfixHeaders()
+    " passing 0 to mkdx#QuickfixHeaders causes it to return the list instead of opening the quickfix list
+    " this allows you to create a 'source' for fzf.
+    " first we map each item (formatted for quickfix use) using the function MkdxFormatHeader()
+    " then, we strip out any remaining empty headers.
+    let headers = filter(map(mkdx#QuickfixHeaders(0), function('<SID>MkdxFormatHeader')), 'v:val != ""')
+
+    " run the fzf function with the formatted data and as a 'sink' (action to execute on selected entry)
+    " supply the MkdxGoToHeader() function which will parse the line, extract the line number and move the cursor to it.
+    call fzf#run(fzf#wrap(
+            \ {'source': headers, 'sink': function('<SID>MkdxGoToHeader') }
+          \ ))
+endfun
+
+" finally, map it -- in this case, I mapped it to overwrite the default action for toggling quickfix (<PREFIX>I)
+autocmd FileType markdown nnoremap <silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
+
 autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 " there are some defaults for image directory and image name, you can change them
  let g:mdip_imgdir = 'assets'
@@ -428,14 +451,32 @@ inoremap <C-\> <esc>:NERDTreeToggle %<CR>
 " autocmd BufEnter * :NERDTreeToggle 
 
 
+
 Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf.vim'
 
-"set rtp+=/usr/local/opt/fzf
+set rtp+=/usr/local/opt/fzf
+
+" search md ,this is very good for search code snippets in markdown 
+Plug 'alok/notational-fzf-vim'
+let g:nv_search_paths = ['~/bdcloud/notes']
+" if not found, creat note with ctrl-x
+let g:nv_create_note_key = 'ctrl-x'
+nmap <leader>n  <esc>:NV<cr>
+
+
+
+
+"Hide statusline
+if has('nvim') && !exists('g:fzf_layout')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
 
 ""let g:fzf_tags_command = 'ctags --extra=+f -R'
 "let g:fzf_colors =
@@ -575,10 +616,10 @@ Plug 'google/vim-searchindex'
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " wil cause crash 
-"Plug 'liuchengxu/vim-which-key'
+Plug 'liuchengxu/vim-which-key'
 "" show leader key tips, for debug purpose
 
-"nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 "Plug 'zephod/vim-iterm2-navigator'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           inscearch                            
@@ -589,97 +630,9 @@ Plug 'bronson/vim-visual-star-search'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color                             
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" corlorize text like #112344, you need to manully start it 
-"Plug 'chrisbra/Colorizer'
-
-
-"Plug 'unblevable/quick-scope'
-"highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 Plug 'sheerun/vim-wombat-scheme'
-"Plug 'eugen0329/vim-esearch'
-"let g:esearch = {
-"  \ 'adapter':          'ag',
-"  \ 'backend':          'nvim',
-"  \ 'out':              'qflist',
-"  \ 'batch_size':       1000,
-"  \ 'use':              ['visual', 'hlsearch', 'last'],
-"  \ 'default_mappings': 1,
-"  \}
-"
-"Plug 'francoiscabrol/ranger.vim'
-"Plug 'rbgrouleff/bclose.vim'
-"let g:ranger_map_keys = 0
-"nnoremap <C-\> :Ranger<CR>
-"inoremap <C-\> <esc>:Ranger<CR>
-"let g:NERDTreeHijackNetrw = 0
-"let g:ranger_replace_netrw = 1
 
-"Plug 'dylanaraps/fff.vim'
-""# Vertical split (NERDtree style).
-"let g:fff#split = "30vnew"
-"let g:fff#split_direction = "nosplitbelow nosplitright"
-"nnoremap <C-\> :F<CR>
-"inoremap <C-\> <esc>:F<CR>
-
-"search current selected with *
-"Plug 'ianding1/leetcode.vim'
-"let g:leetcode_china =1
-"let g:leetcode_solution_filetype='python'
-"let g:leetcode_username="liuzq7@gmail.com"
-"let g:leetcode_password=""
-
-"nnoremap gll :LeetCodeList<CR>
-"nnoremap gls :LeetCodeSubmit<CR>
-"nnoremap glt :LeetCodeTest<CR>
-
-"Plug 'vim-scripts/AutoComplPop'
-"Plug 'lifepillar/vim-mucomplete'
-"set covmpleteopt+=menuone
-"set covmpleteopt+=noselect
-"let g:mucomplete#enable_auto_at_startup = 1
-
-"Plug 'davidhalter/jedi-vim'
-
-"autocmd FileType python setlocal completeopt-=preview
-"Plug 'ervandew/supertab'
-
-"let g:SuperTabDefaultCompletionType = "<c-n>"
-
-"" Track the engine.
-"Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-"Plug 'honza/vim-snippets'
-" search the snips in reveser order
-" let g:UltiSnipsDontReverseSearchPath="1"
-
-
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<tab>"
-"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-"let g:UltiSnipsListSnippets="<c-1>"
-
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
-"Plug 'conornewton/vim-pandoc-markdown-preview'
-
-" garbge plugin, does not work at all 
-"Plug 'skywind3000/asyncrun.vim'
-
-"---------------syntastic with cheat.sh-------------------
-" cheat.sh
-" syntastic is so slow when saving file
-"Plug 'scrooloose/syntastic'
-" Plug 'dbeniamine/cheat.sh-vim'
-
-"let g:syntastic_javascript_checkers = [ 'jshint' ]
-"let g:syntastic_ocaml_checkers = ['merlin']
-"let g:syntastic_python_checkers = ['pylint']
-"let g:syntastic_shell_checkers = ['shellcheck']
-"---------------------------------------------------------
-"
 Plug 'stephpy/vim-yaml'
+
 call plug#end()
 
