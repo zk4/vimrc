@@ -294,9 +294,53 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'plasticboy/vim-markdown'
-Plug 'ferrine/md-img-paste.vim'
 Plug 'SidOfc/mkdx'
+" :h mkdx-settings
+let g:mkdx#settings = {
+      \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
+      \ 'restore_visual':          1,
+      \ 'enter':                   { 'enable': 0, 'malformed': 0, 'o': 0,
+      \                              'shifto': 0, 'shift': 0 },
+      \ 'map':                     { 'prefix': '<leader>', 'enable': 1 },
+      \ 'tokens':                  { 'enter': ['-', '*', '>'],
+      \                              'bold': '**', 'italic': '*', 'strike': '',
+      \                              'list': '-', 'fence': '',
+      \                              'header': '#' },
+      \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
+      \                              'update_tree': 2,
+      \                              'initial_state': ' ' },
+      \ 'toc':                     { 'text': "TOC", 'list_token': '-',
+      \                              'update_on_write': 0,
+      \                              'position': 0,
+      \                              'details': {
+      \                                 'enable': 0,
+      \                                 'summary': 'Click to expand {{toc.text}}',
+      \                                 'nesting_level': -1,
+      \                                 'child_count': 5,
+      \                                 'child_summary': 'show {{count}} items'
+      \                              }
+      \                            },
+      \ 'table':                   { 'divider': '|',
+      \                              'header_divider': '-',
+      \                              'align': {
+      \                                 'left':    [],
+      \                                 'center':  [],
+      \                                 'right':   [],
+      \                                 'default': 'center'
+      \                              }
+      \                            },
+      \ 'links':                   { 'external': {
+      \                                 'enable': 0, 'timeout': 3, 'host': '', 'relative': 1,
+      \                                 'user_agent':  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.1'
+      \                              },
+      \                              'fragment': {
+      \                                 'jumplist': 1,
+      \                                 'complete': 1
+      \                              }
+      \                            },
+      \ 'highlight':               { 'enable': 0 },
+      \ 'auto_update':             { 'enable': 0 }
+    \ }
 fun! s:MkdxGoToHeader(header)
     " given a line: '  84: # Header'
     " this will match the number 84 and move the cursor to the start of that line
@@ -330,9 +374,15 @@ fun! s:MkdxFzfQuickfixHeaders()
 endfun
 
 " finally, map it -- in this case, I mapped it to overwrite the default action for toggling quickfix (<PREFIX>I)
-autocmd FileType markdown nnoremap <silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
 
-autocmd FileType markdown nmap <silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+
+Plug 'plasticboy/vim-markdown'
+Plug 'ferrine/md-img-paste.vim'
+augroup guard_group_vim
+autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
+autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+augroup END
+
 " there are some defaults for image directory and image name, you can change them
  let g:mdip_imgdir = 'assets'
 " let g:mdip_imgname = 'image'
