@@ -196,8 +196,7 @@ function! UrlEncode(string)
             let result = result . "+"
         elseif CharacterRequiresUrlEncoding(character)
             let i = 0
-            while i < strlen(character)
-                let byte = strpart(character, i, 1)
+            while i < strlen(character) let byte = strpart(character, i, 1)
                 let decimal = char2nr(byte)
                 let result = result . "%" . printf("%02x", decimal)
                 let i += 1
@@ -270,9 +269,6 @@ vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 vnoremap gk "gy<Esc>:call KubeSearch()<CR>
 "vnoremap gs "gy<Esc>:call StackOverFlow()<CR>
 "https://docs.python.org/3/library/functools.html
-"
-"
-"
 "
 "写括号时{} ， 在括号里回车自动对齐
 "class {|}

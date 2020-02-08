@@ -50,7 +50,7 @@ autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
 autocmd FileType go nmap <leader>v  <Plug>(go-alternate-vertical)
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-autocmd FileType go nmap <leader>i  <Plug>(go-imports)
+" autocmd FileType go nmap <leader>i  <Plug>(go-imports)
 
  " autocmd FileType go autocmd BufWritePre <buffer> GoImports
 
@@ -495,8 +495,11 @@ endfunction
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 ""autocmd BufEnter * call SyncTree()
 
-nnoremap <C-\> :NERDTreeToggle %<CR>
-inoremap <C-\> <esc>:NERDTreeToggle %<CR>
+" change current file root when toggled 
+" nnoremap <C-\> :NERDTreeToggle %<CR>
+" inoremap <C-\> <esc>:NERDTreeToggle %<CR>
+nnoremap <C-\> :NERDTreeToggle <CR>
+inoremap <C-\> <esc>:NERDTreeToggle <CR>
 
 " autocmd BufEnter * :NERDTreeToggle 
 
