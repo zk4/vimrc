@@ -63,6 +63,7 @@ vnoremap  <S-Space> <left>
 "nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 "nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 " create tab
+" 去除一层函数掉用  a(b)
 nnoremap <leader>te :tabe<cr>
 " close tab
 nnoremap <leader>tc :tabc<cr>
@@ -116,6 +117,11 @@ xnoremap p pgvy
 
 "print foo(bar)  
 
+
+"http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>
+" Replace visually selected text or word (globally with confirmation)
+nnoremap <C-r> :<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
+vnoremap <C-r> y:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
 
 ":onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 "onoremap ( i(
