@@ -128,6 +128,7 @@ xnoremap p pgvy
 "inoremap jk <esc>
 " all about save the file
 nnoremap W :w<cr>
+nnoremap z :wq<cr>
 nnoremap <c-s> :w<cr>
 nnoremap  <leader>w :w<cr>
 inoremap  <c-s> <esc>:w<cr>li

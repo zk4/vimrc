@@ -146,9 +146,22 @@ set formatoptions-=cro     或者 set fo-=cro
 ## fugitive 
 :Glog --  显示+ - 界面的 git log
 :Glog -- % 显示当前文件的git log
-:copen fugitive 使用了 quickfix,直接用就行了
+:copen      fugitive 使用了 quickfix,直接用就行了
 alt-p --> :cprevious
 alt-n --> :nnext
+
+how to diff version?
+- Diff index and local
+```
+:Gdiff :0
+```
+
+- Diff between current file and current file 3 commits ago:
+```
+:Gdiff ~3
+```
+map diffget  do
+map diffput  dp
 
 ## 在commnad mode 里 yank
 <C-r>"
