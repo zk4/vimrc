@@ -16,8 +16,8 @@ augroup guard_group
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-    " 在保存.vimrc 后,自动刷新
-	 autocmd! bufwritepost ~/.vimrc source %
+    " 在保存.vimrc 后,自动刷新, 各种 bug 
+	 " autocmd! bufwritepost ~/.vimrc source %
 
     " 保存后格式化
     "autocmd BufWritePre * :normal gg=G

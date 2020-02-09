@@ -8,17 +8,6 @@ nmap s <Plug>(easymotion-s)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           mru(deprecated)                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 已改用 LeaderfMru 替代，可以搜索。更好用
-
-" 还行.. 可以直接 n p 键上下, 
-"Plug 'vim-scripts/mru.vim'
-"nnoremap <leader>m :Mru<CR>
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           language -go                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -504,6 +493,7 @@ inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
 " autocmd BufEnter * :NERDTreeToggle 
 
 
+nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 
 Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -686,6 +676,7 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'sheerun/vim-wombat-scheme'
 
 Plug 'stephpy/vim-yaml'
+Plug 'pmalek/toogle-maximize.vim'
 
 call plug#end()
 

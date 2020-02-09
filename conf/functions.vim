@@ -146,12 +146,6 @@ function! Rotate()
     exe initial . "wincmd w"
 endfunction
 
-"func! CompileRunGcc()
-"exec "w"
-"if &filetype == 'python'
-"exec "!python3 % | jq -C"
-"endif
-"endfunc
 function! SearchCount()
     let keyString=@/
     let pos=getpos('.')
@@ -185,6 +179,10 @@ function! MaximizeToggle()
         only
     endif
 endfunction
+
+map <silent> M :call ToggleMaximizeCurrentWindow()<CR>
+" nnoremap M :call MaximizeToggle()<CR>
+
 " URL encode a string. ie. Percent-encode characters as necessary.
 function! UrlEncode(string)
 

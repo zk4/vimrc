@@ -195,7 +195,6 @@ vmap ' S'
 " <C-w>_  horizontal max 
 " <C-w>=  make all window the same size 
 "with plugin 
-nnoremap M :call MaximizeToggle()<CR>
 
 
 nnoremap <C-m>o :copen<CR>
