@@ -16,16 +16,18 @@ augroup guard_group
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-    " 在保存.vimrc 后,自动刷新, 各种 bug 
+    " don`t use this, a lot of strange problems will occur
 	 " autocmd! bufwritepost ~/.vimrc source %
 
-    " 保存后格式化
+    " format after file saved
     "autocmd BufWritePre * :normal gg=G
+	"
     " 在 filetype 为 sql 时, iunmap 所有的C-C 开头的命令, 不然C-C 好慢
     autocmd Filetype sql  <buffer>
                 \       for m in ['<C-C>R', '<C-C>L', '<C-C>l', '<C-C>c', '<C-C>v', '<C-C>p', '<C-C>t', '<C-C>s', '<C-C>T', '<C-C>o', '<C-C>f', '<C-C>k', '<C-C>a']
                 \       | execute('silent! iunmap <buffer> '.m)
                 \       | endfor
+
     "  当前行背景
 "    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 "    au WinLeave * setlocal nocursorline

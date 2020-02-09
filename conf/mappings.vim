@@ -67,10 +67,9 @@ nnoremap <leader>te :tabe<cr>
 " close tab
 nnoremap <leader>tc :tabc<cr>
 " close buffer
-"nnoremap <leader>bd :bd<cr>
-nnoremap <leader>bd  <C-w>c
+" nnoremap <leader>bd  <C-w>c
 " close buffer
-nnoremap <leader>ba :bwipe<cr>
+" nnoremap <leader>ba :bwipe<cr>
 "快速打开配置文件
 "nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>ev :e ~/.vimrc<cr>
@@ -120,7 +119,6 @@ xnoremap p pgvy
 nnoremap <leader>r *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
 vnoremap <leader>r y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
 
-" vnoremap <leader>R *:<C-U>let replacement = input('Replace all word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
 
 ":onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 "onoremap ( i(

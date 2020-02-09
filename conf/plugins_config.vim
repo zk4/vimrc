@@ -25,25 +25,16 @@ let g:go_list_type = "quickfix"
 
 " use goimports instad of gofmt
 let g:go_fmt_command = "goimports"
-" let g:go_auto_type_info = 1
-" let g:go_auto_sameids = 1
 
-" replace tab with 4 spaces
-" autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
-" autocmd FileType go nmap <leader>b  <Plug>(go-build)
 augroup guard_group 
-" autocmd FileType go nmap <leader>r  <Plug>(go-run-split)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
-autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
-autocmd FileType go nmap <leader>v  <Plug>(go-alternate-vertical)
-autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-" autocmd FileType go nmap <leader>i  <Plug>(go-imports)
-
- " autocmd FileType go autocmd BufWritePre <buffer> GoImports
-
+	autocmd FileType go nmap <leader>t  <Plug>(go-test)
+	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
+	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
+	autocmd FileType go nmap <leader>v  <Plug>(go-alternate-vertical)
+	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 augroup END
+
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -120,7 +111,7 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 
 
 " method 2 
-" this won`t completion if expansion is on the fly
+" this won`t trigger auto-completion if expansion is on the fly
 " and another cavet is allowing you tab after word in normal line
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 let g:coc_snippet_next = '<TAB>'
@@ -173,16 +164,6 @@ let g:lightline = {
             \ },
             \ }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           auto-pairs                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" switch to  coc-pairs makes more scense"
-"Plug 'jiangmiao/auto-pairs'
-" Jump outside '"({
-"if !exists('g:AutoPairsShortcutJump')
-"let g:AutoPairsShortcutJump = '<C-g>'
-"endif
-"let g:AutoPairsFlyMode = 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           buffer explorer                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,7 +247,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           for comment                            
+"                           comment                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-commentary'
 Plug 'suy/vim-context-commentstring'
@@ -281,22 +262,6 @@ if executable("ag")
 	let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                          find and replace in global  
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"find and replace on word 
-"Plug 'dkprice/vim-easygrep'
-"map <silent> <leader>po <plug>EgMapGrepOptions
-"map <silent> <leader>pf <plug>EgMapGrepCurrentWord_v
-"map <silent> <leader>pr <plug>EgMapReplaceCurrentWord_r
-
-" type your key word to find or replace in current file
-"Plug 'brooth/far.vim'
-"let g:far#source='rg'
-"ex:
-":F def **/*.py        find all word 'def' in all py file
-":Far def def2  ./*.py  find and replace  'def' to 'def2' in all py file 
-"Plug 'wincent/ferret'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -410,8 +375,9 @@ nnoremap gp :MarkdownPreview<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'sickill/vim-monokai'
+" Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
+" Plug 'sheerun/vim-wombat-scheme'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           accelerated-jk                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -675,10 +641,8 @@ Plug 'bronson/vim-visual-star-search'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           color                             
+"                           others                             
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'sheerun/vim-wombat-scheme'
-
 Plug 'stephpy/vim-yaml'
 Plug 'pmalek/toogle-maximize.vim'
 
