@@ -498,8 +498,8 @@ endfunction
 " change current file root when toggled 
 " nnoremap <C-\> :NERDTreeToggle %<CR>
 " inoremap <C-\> <esc>:NERDTreeToggle %<CR>
-nnoremap <C-\> :NERDTreeToggle <CR>
-inoremap <C-\> <esc>:NERDTreeToggle <CR>
+nnoremap <C-\> :NERDTreeToggle <CR> :vertical resize 25<CR>
+inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
 
 " autocmd BufEnter * :NERDTreeToggle 
 

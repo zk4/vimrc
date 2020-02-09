@@ -8,6 +8,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 vnoremap <space> <Nop>
 " 在 yank 的时候,保持光标在最下方,而不是跳加到前面
 vnoremap y y`]
+
 " 去除一层函数掉用  a(b)
 nmap dc diwlds(
 " sudo write
@@ -41,10 +42,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <F5> :call CompileRunGcc()<CR>
-nnoremap <leader>r :call CompileRunGcc()<CR>
 inoremap <F5> <esc>:call CompileRunGcc()<CR>
 nnoremap <F8> :copen<cr>
-"nnoremap <leader>c :call CompileRunGcc()<CR>
 "noremap  <F2> :cprevious<CR>
 "noremap  <F3> :cnext<CR>
 "noremap  <F6> :exec  '!clear && '.getline('.')<cr>
@@ -81,9 +80,7 @@ nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>eh :e ~/.zk_vimrc/help.md<cr>
 nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
 nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
-" 快速  edit  snippet c
-"nnoremap <leader>esc :e /Users/zk/.config/coc/extensions/node_modules/HdsCppSnippets/snippets/c_hds.json<cr>
-"nnoremap <leader>g :Ack<space>
+
 " 这个映射用的太少了..
 "nnoremap <Leader><leader> *<CR>
 "Alternatively, you could use this mapping so that the final /g is already entered:
@@ -120,8 +117,10 @@ xnoremap p pgvy
 
 "http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>
 " Replace visually selected text or word (globally with confirmation)
-nnoremap ss *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
-vnoremap ss y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
+nnoremap <leader>r *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
+vnoremap <leader>r y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
+
+" vnoremap <leader>R *:<C-U>let replacement = input('Replace all word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
 
 ":onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 "onoremap ( i(
@@ -196,7 +195,7 @@ vmap ' S'
 " <C-w>_  horizontal max 
 " <C-w>=  make all window the same size 
 "with plugin 
-nnoremap m :call MaximizeToggle()<CR>
+nnoremap M :call MaximizeToggle()<CR>
 
 
 nnoremap <C-m>o :copen<CR>

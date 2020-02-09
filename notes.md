@@ -32,12 +32,15 @@ like emacs!
     cnoremap ∫ <S-Left>
     cnoremap ƒ <S-Right>
 '''
+
 # 全局搜索
 :Ack <Keyword> --<filetype>
+^w^r   put current buffer word to command input 
 
 # 替换
 文章: https://harttle.land/2016/08/08/vim-search-in-file.html
 文章: https://speak.sh/posts/vim-cfdo-ale-and-ripgrep
+
 ## 原生替换
 - :Ack foo
 - :cdo s/foo/bar/cg
