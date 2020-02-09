@@ -94,22 +94,39 @@ augroup coc_guard
 
 "    autocmd FileType javascript let b:coc_pairs_disabled = ['>']
 augroup END
+
 " coc snippet
 "编辑当前文件类型的snippet
 nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 
-" Use <Tab> for confirm completion.
-" Coc only does snippet and additional edit on confirm.
+
+
+" tab for completion and jump placehoders
+" https://github.com/neoclide/coc-snippets
+" method 1
+" imap <Tab> <Plug>(coc-snippets-expand-jump)
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+" let g:coc_snippet_next = '<TAB>'
+" let g:coc_snippet_prev = '<S-TAB>'
+
+
+" method 2 
+" this won`t completion if expansion is on the fly
+" and another cavet is allowing you tab after word in normal line
 inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-" 在用 snippet 时,按 tab 键跳到下一个待填入的地方
-" inoremap <silent><expr> <TAB>
-"             \ pumvisible() ? coc#_select_confirm() :
-"             \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"             \ <SID>check_back_space() ? "\<TAB>" :
-"             \ coc#refresh()
+
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <C-Space> coc#refresh()
@@ -499,7 +516,9 @@ Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 set rtp+=/usr/local/opt/fzf
@@ -513,7 +532,6 @@ nmap <leader>n  <esc>:NV<cr>
 
 
 
-
 "Hide statusline
 if has('nvim') && !exists('g:fzf_layout')
   autocmd! FileType fzf
@@ -521,31 +539,17 @@ if has('nvim') && !exists('g:fzf_layout')
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
 
-""let g:fzf_tags_command = 'ctags --extra=+f -R'
-"let g:fzf_colors =
-"            \ { 'fg':      ['fg', 'Normal'],
-"            \ 'bg':      ['bg', 'Normal'],
-"            \ 'hl':      ['fg', 'Comment'],
-"            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-"            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-"            \ 'hl+':     ['fg', 'Statement'],
-"            \ 'info':    ['fg', 'PreProc'],
-"            \ 'prompt':  ['fg', 'Conditional'],
-"            \ 'pointer': ['fg', 'Exception'],
-"            \ 'marker':  ['fg', 'Keyword'],
-"            \ 'spinner': ['fg', 'Label'],
-"            \ 'header':  ['fg', 'Comment'] }
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
-""nnoremap <C-p> :FZF<CR>
-""inoremap <C-p> <esc>:FZF<CR>
-"command! FZFTagFile if !empty(tagfiles()) | call fzf#run({
-"\   'source': "cat " . tagfiles()[0] . ' | grep "' . expand('%:@') . '"' . " | sed -e '/^\\!/d;s/\t.*//' ". ' |  uniq',
-"\   'sink':   'tag',
-"\   'options':  '+m',
-"\   'left':     60,
-"\ }) | else | echo 'No tags' | endif
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
-"nnoremap <silent> <Leader>v :FZFTagFile<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   ctags                                    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -677,6 +681,7 @@ Plug 'sheerun/vim-wombat-scheme'
 
 Plug 'stephpy/vim-yaml'
 Plug 'pmalek/toogle-maximize.vim'
+
 
 call plug#end()
 
