@@ -348,10 +348,12 @@ endfun
 
 
 Plug 'plasticboy/vim-markdown'
-Plug 'ferrine/md-img-paste.vim'
+
+Plug 'zk4/md-img-paste.vim'
 augroup guard_group_vim
 autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
-autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage()<CR>
+autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage()<CR>
 augroup END
 
 " there are some defaults for image directory and image name, you can change them
@@ -359,8 +361,10 @@ augroup END
 " let g:mdip_imgname = 'image'
 "Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
+" config help
+" https://github.com/markdown-it/markdown-it
 let g:mkdp_preview_options = {
-    \ 'mkit': {},
+    \ 'mkit': {"breaks":1,"html":1,"linkify":1},
     \ 'katex': {},
     \ 'uml': {},
     \ 'maid': {},
