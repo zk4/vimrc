@@ -28,6 +28,7 @@ let g:go_fmt_command = "goimports"
 
 augroup guard_group 
 	autocmd FileType go nmap <leader>t  <Plug>(go-test)
+	autocmd FileType go nmap <leader>tf  :GoTestFunc<cr>
 	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
@@ -187,9 +188,7 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-" 对齐任意符号用,visual 选择后 :Tab \:   : 可以是任何你想对齐的符号
-"Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 " 基于 ai 的代码补全
 "Plug 'zxqfl/tabnine-vim'
 
@@ -256,93 +255,134 @@ nnoremap <leader>c<leader> :Commentary<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ack                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mileszs/ack.vim'
-let g:ackhighlight = 1
-if executable("ag")
-	let g:ackprg = 'ag --nogroup --nocolor --column'
-endif
+" Plug 'mileszs/ack.vim'
+" let g:ackhighlight = 1
+" if executable("ag")
+" 	let g:ackprg = 'ag --nogroup --nocolor --column'
+" endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'SidOfc/mkdx'
+
+ Plug 'dhruvasagar/vim-table-mode'
+
+ function! s:isAtStartOfLine(mapping)
+   let text_before_cursor = getline('.')[0 : col('.')-1]
+   let mapping_pattern = '\V' . escape(a:mapping, '\')
+   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+ endfunction
+
+ inoreabbrev <expr> <bar><bar>
+           \ <SID>isAtStartOfLine('\|\|') ?
+           \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+ inoreabbrev <expr> __
+           \ <SID>isAtStartOfLine('__') ?
+           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
+ let g:table_mode_corner='|'
+ 
+" below sinpet code will align | when in insert mode. super cool , like the
+" dhruvasagar/vim-table-mode plugin does 
+" https://gist.github.com/tpope/287147
+" ----------------------------------------------------------------------------------------------------
+" inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+" function! s:align()
+"   let p = '^\s*|\s.*\s|\s*$'
+"   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+"     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+"     let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+"     Tabularize/|/l1
+"     normal! 0
+"     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+"   endif
+" endfunction
+
+" ----------------------------------------------------------------------------------------------------
+
+
+
+
+" Plug 'SidOfc/mkdx'
 " :h mkdx-settings
-let g:mkdx#settings = {
-      \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
-      \ 'restore_visual':          1,
-      \ 'enter':                   { 'enable': 0, 'malformed': 0, 'o': 0,
-      \                              'shifto': 0, 'shift': 0 },
-      \ 'map':                     { 'prefix': '<leader>', 'enable': 1 },
-      \ 'tokens':                  { 'enter': ['-', '*', '>'],
-      \                              'bold': '**', 'italic': '*', 'strike': '',
-      \                              'list': '-', 'fence': '',
-      \                              'header': '#' },
-      \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
-      \                              'update_tree': 2,
-      \                              'initial_state': ' ' },
-      \ 'toc':                     { 'text': "TOC", 'list_token': '-',
-      \                              'update_on_write': 0,
-      \                              'position': 0,
-      \                              'details': {
-      \                                 'enable': 0,
-      \                                 'summary': 'Click to expand {{toc.text}}',
-      \                                 'nesting_level': -1,
-      \                                 'child_count': 5,
-      \                                 'child_summary': 'show {{count}} items'
-      \                              }
-      \                            },
-      \ 'table':                   { 'divider': '|',
-      \                              'header_divider': '-',
-      \                              'align': {
-      \                                 'left':    [],
-      \                                 'center':  [],
-      \                                 'right':   [],
-      \                                 'default': 'center'
-      \                              }
-      \                            },
-      \ 'links':                   { 'external': {
-      \                                 'enable': 0, 'timeout': 3, 'host': '', 'relative': 1,
-      \                                 'user_agent':  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.1'
-      \                              },
-      \                              'fragment': {
-      \                                 'jumplist': 1,
-      \                                 'complete': 1
-      \                              }
-      \                            },
-      \ 'highlight':               { 'enable': 0 },
-      \ 'auto_update':             { 'enable': 0 }
-    \ }
-fun! s:MkdxGoToHeader(header)
-    " given a line: '  84: # Header'
-    " this will match the number 84 and move the cursor to the start of that line
-    call cursor(str2nr(get(matchlist(a:header, ' *\([0-9]\+\)'), 1, '')), 1)
-endfun
+" let g:mkdx#settings = {
+"       \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
+"       \ 'restore_visual':          1,
+"       \ 'enter':                   { 'enable': 0, 'malformed': 0, 'o': 0,
+"       \                              'shifto': 0, 'shift': 0 },
+"       \ 'map':                     { 'prefix': '<leader>', 'enable': 1 },
+"       \ 'tokens':                  { 'enter': ['-', '*', '>'],
+"       \                              'bold': '**', 'italic': '*', 'strike': '',
+"       \                              'list': '-', 'fence': '',
+"       \                              'header': '#' },
+"       \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
+"       \                              'update_tree': 2,
+"       \                              'initial_state': ' ' },
+"       \ 'toc':                     { 'text': "TOC", 'list_token': '-',
+"       \                              'update_on_write': 0,
+"       \                              'position': 0,
+"       \                              'details': {
+"       \                                 'enable': 0,
+"       \                                 'summary': 'Click to expand {{toc.text}}',
+"       \                                 'nesting_level': -1,
+"       \                                 'child_count': 5,
+"       \                                 'child_summary': 'show {{count}} items'
+"       \                              }
+"       \                            },
+"       \ 'table':                   { 'divider': '|',
+"       \                              'header_divider': '-',
+"       \                              'align': {
+"       \                                 'left':    [],
+"       \                                 'center':  [],
+"       \                                 'right':   [],
+"       \                                 'default': 'center'
+"       \                              }
+"       \                            },
+"       \ 'links':                   { 'external': {
+"       \                                 'enable': 0, 'timeout': 3, 'host': '', 'relative': 1,
+"       \                                 'user_agent':  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.1'
+"       \                              },
+"       \                              'fragment': {
+"       \                                 'jumplist': 1,
+"       \                                 'complete': 1
+"       \                              }
+"       \                            },
+"       \ 'highlight':               { 'enable': 0 },
+"       \ 'auto_update':             { 'enable': 0 }
+"     \ }
+" fun! s:MkdxGoToHeader(header)
+"     " given a line: '  84: # Header'
+"     " this will match the number 84 and move the cursor to the start of that line
+"     call cursor(str2nr(get(matchlist(a:header, ' *\([0-9]\+\)'), 1, '')), 1)
+" endfun
 
-fun! s:MkdxFormatHeader(key, val)
-    let text = get(a:val, 'text', '')
-    let lnum = get(a:val, 'lnum', '')
+" fun! s:MkdxFormatHeader(key, val)
+"     let text = get(a:val, 'text', '')
+"     let lnum = get(a:val, 'lnum', '')
 
-    " if the text is empty or no lnum is present, return the empty string
-    if (empty(text) || empty(lnum)) | return text | endif
+"     " if the text is empty or no lnum is present, return the empty string
+"     if (empty(text) || empty(lnum)) | return text | endif
 
-    " We can't jump to it if we dont know the line number so that must be present in the outpt line.
-    " We also add extra padding up to 4 digits, so I hope your markdown files don't grow beyond 99.9k lines ;)
-    return repeat(' ', 4 - strlen(lnum)) . lnum . ': ' . text
-endfun
+"     " We can't jump to it if we dont know the line number so that must be present in the outpt line.
+"     " We also add extra padding up to 4 digits, so I hope your markdown files don't grow beyond 99.9k lines ;)
+"     return repeat(' ', 4 - strlen(lnum)) . lnum . ': ' . text
+" endfun
 
-fun! s:MkdxFzfQuickfixHeaders()
-    " passing 0 to mkdx#QuickfixHeaders causes it to return the list instead of opening the quickfix list
-    " this allows you to create a 'source' for fzf.
-    " first we map each item (formatted for quickfix use) using the function MkdxFormatHeader()
-    " then, we strip out any remaining empty headers.
-    let headers = filter(map(mkdx#QuickfixHeaders(0), function('<SID>MkdxFormatHeader')), 'v:val != ""')
+" fun! s:MkdxFzfQuickfixHeaders()
+"     " passing 0 to mkdx#QuickfixHeaders causes it to return the list instead of opening the quickfix list
+"     " this allows you to create a 'source' for fzf.
+"     " first we map each item (formatted for quickfix use) using the function MkdxFormatHeader()
+"     " then, we strip out any remaining empty headers.
+"     let headers = filter(map(mkdx#QuickfixHeaders(0), function('<SID>MkdxFormatHeader')), 'v:val != ""')
 
-    " run the fzf function with the formatted data and as a 'sink' (action to execute on selected entry)
-    " supply the MkdxGoToHeader() function which will parse the line, extract the line number and move the cursor to it.
-    call fzf#run(fzf#wrap(
-            \ {'source': headers, 'sink': function('<SID>MkdxGoToHeader') }
-          \ ))
-endfun
+"     " run the fzf function with the formatted data and as a 'sink' (action to execute on selected entry)
+"     " supply the MkdxGoToHeader() function which will parse the line, extract the line number and move the cursor to it.
+"     call fzf#run(fzf#wrap(
+"             \ {'source': headers, 'sink': function('<SID>MkdxGoToHeader') }
+"           \ ))
+" endfun
 
 " finally, map it -- in this case, I mapped it to overwrite the default action for toggling quickfix (<PREFIX>I)
 
@@ -351,7 +391,7 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'zk4/md-img-paste.vim'
 augroup guard_group_vim
-autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
+" autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
 autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage()<CR>
 autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage()<CR>
 augroup END
@@ -486,6 +526,7 @@ Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html
 " https://github.com/junegunn/fzf/wiki
 " this is a good place to learn fzf
 Plug 'junegunn/fzf', { 'do': './install --bin' }
