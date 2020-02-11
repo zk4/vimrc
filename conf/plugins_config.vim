@@ -27,6 +27,7 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 
 augroup guard_group 
+	autocmd!
 	autocmd FileType go nmap <leader>t  <Plug>(go-test)
 	autocmd FileType go nmap <leader>tf  :GoTestFunc<cr>
 	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
@@ -255,7 +256,7 @@ nnoremap <leader>c<leader> :Commentary<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ack                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 " let g:ackhighlight = 1
 " if executable("ag")
 " 	let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -512,13 +513,17 @@ endfunction
 ""autocmd BufEnter * call SyncTree()
 
 " change current file root when toggled 
-" nnoremap <C-\> :NERDTreeToggle %<CR>
-" inoremap <C-\> <esc>:NERDTreeToggle %<CR>
-nnoremap <C-\> :NERDTreeToggle <CR> :vertical resize 25<CR>
-inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
+nnoremap <C-\> :NERDTreeToggle %<CR>
+inoremap <C-\> <esc>:NERDTreeToggle %<CR>
+" always resize it to 25
+" nnoremap <C-\> :NERDTreeToggle <CR> :vertical resize 25<CR>
+" inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
 
 " autocmd BufEnter * :NERDTreeToggle 
-
+" augroup nerdtree_guard
+" 	autocmd!
+" 	autocmd BufEnter nerdtree :vertical resize 25<CR>
+" augroup END
 
 nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 
@@ -673,6 +678,7 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " wil cause crash 
 Plug 'liuchengxu/vim-which-key'
 "" show leader key tips, for debug purpose

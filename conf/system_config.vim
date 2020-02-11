@@ -73,13 +73,15 @@ set showtabline=2
 " 输命令时,提示
 set wildmenu
 set wildmode=longest:list,full
-"hi Search term=standout ctermfg=5 ctermbg=12
-set tabstop=2               " 设置tab键的宽度
+set tabstop=2               " 设置tab键的显示宽度，如果有时你觉得太宽，可以打印看看当前值
 set shiftwidth=2           " 换行时行间交错使用4个空格
-"set autoindent              " 自动对齐
 set backspace=2             " 设置退格键可用
 set cindent shiftwidth=2    " 自动缩进4空格
-"set smartindent             " 智能自动缩进
+
+"set autoindent              " 自动对齐
+"hi Search term=standout ctermfg=5 ctermbg=12
+" set smartindent             " 智能自动缩进
+" set smarttab
 
 " 设置分割, 
 if $TERM_PROGRAM  == "iTerm.app"
@@ -93,7 +95,6 @@ autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 
 set noshowmatch
 set wrapscan                " 搜索到文件两端时重新搜索
-set nosmarttab
 "set list                   " 显示Tab符，使用一高亮竖线代替
 syntax enable               " 打开语法高亮
 syntax on                   " 开启文件类型侦测

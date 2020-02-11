@@ -1,7 +1,13 @@
-augroup guard_group 
+augroup autocmd_guard_me 
     autocmd!
 	  " 识别 md 为 markdown
     au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+		"  auto jump to last edit location in your opend file
+		"  https://askubuntu.com/questions/202075/how-do-i-get-vim-to-remember-the-line-i-was-on-when-i-reopen-a-file/202077
+		if has("autocmd")
+			au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+		endif
 
 
     autocmd BufLeave,FocusLost * silent! wall
@@ -12,9 +18,6 @@ augroup guard_group
     "注意, 打开文件夹时,会split窗口,所以仅用来 preview files
     autocmd FileType nerdtree map <buffer> J jgo
     autocmd FileType nerdtree map <buffer> K kgo
-
-    " Return to last edit position when opening files (You want this!)
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
     " don`t use this, a lot of strange problems will occur
 	 " autocmd! bufwritepost ~/.vimrc source %
@@ -29,8 +32,8 @@ augroup guard_group
                 \       | endfor
 
     "  当前行背景
-"    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-"    au WinLeave * setlocal nocursorline
+   " au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+   " au WinLeave * setlocal nocursorline
 
     "" columcolor width 与 tw  一致
     "  autocmd FileType * execute "setlocal colorcolumn=+1"

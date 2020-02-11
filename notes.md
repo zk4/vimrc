@@ -33,8 +33,17 @@ like emacs!
     cnoremap ƒ <S-Right>
 '''
 
+# quick change tab viusal effect
+
+``` vim 
+:retab 4   " change tab width to 4
+<leader>f   " format the docuemnt to take effect
+
+```
+
 # 全局搜索
-:Ack <Keyword> --<filetype>
+Don't use Ack. use Rg.
+:Rg <Keyword> --<filetype>
 ^w^r   put current buffer word to command input 
 
 # 替换
@@ -42,6 +51,7 @@ like emacs!
 文章: https://speak.sh/posts/vim-cfdo-ale-and-ripgrep
 
 ## 原生替换
+replace needs to use quickfix. So use Ack is better to go. Since Rg use fzf .
 - :Ack foo
 - :cdo s/foo/bar/cg
 这是我现在实验最好的方法,可以增量替换
