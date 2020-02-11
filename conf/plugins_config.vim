@@ -235,7 +235,12 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki'
+" autocmd FileType vimwiki nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("wiki")<CR>
+" autocmd FileType vimwiki nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("wiki")<CR>
+autocmd FileType markdown nmap <buffer><silent> t :VimwikiTable<cr>
+let g:vimwiki_list = [{'path': '~/bdcloud/notes',
+                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-surround                            
@@ -266,28 +271,29 @@ Plug 'mileszs/ack.vim'
 "                           vim-markdown                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
- Plug 'dhruvasagar/vim-table-mode'
+ " Plug 'dhruvasagar/vim-table-mode'
 
- function! s:isAtStartOfLine(mapping)
-   let text_before_cursor = getline('.')[0 : col('.')-1]
-   let mapping_pattern = '\V' . escape(a:mapping, '\')
-   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
- endfunction
+ " function! s:isAtStartOfLine(mapping)
+ "   let text_before_cursor = getline('.')[0 : col('.')-1]
+ "   let mapping_pattern = '\V' . escape(a:mapping, '\')
+ "   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+ "   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+ " endfunction
 
- inoreabbrev <expr> <bar><bar>
-           \ <SID>isAtStartOfLine('\|\|') ?
-           \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
- inoreabbrev <expr> __
-           \ <SID>isAtStartOfLine('__') ?
-           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+ " inoreabbrev <expr> <bar><bar>
+ "           \ <SID>isAtStartOfLine('\|\|') ?
+ "           \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+ " inoreabbrev <expr> __
+ "           \ <SID>isAtStartOfLine('__') ?
+ "           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
- let g:table_mode_corner='|'
+ " let g:table_mode_corner='|'
  
+
+" ----------------------------------------------------------------------------------------------------
 " below sinpet code will align | when in insert mode. super cool , like the
 " dhruvasagar/vim-table-mode plugin does 
 " https://gist.github.com/tpope/287147
-" ----------------------------------------------------------------------------------------------------
 " inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 " function! s:align()
@@ -389,12 +395,20 @@ Plug 'mileszs/ack.vim'
 
 
 Plug 'plasticboy/vim-markdown'
+" let g:vim_markdown_conceal=1
+" set conceallevel=2
+" let g:vim_markdown_conceal_code_blocks = 1
+
+
+
+
+
 
 Plug 'zk4/md-img-paste.vim'
-augroup guard_group_vim
+augroup markdown_vim
 " autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
-autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage()<CR>
-autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage()<CR>
+autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("")<CR>
+autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("")<CR>
 augroup END
 
 " there are some defaults for image directory and image name, you can change them
