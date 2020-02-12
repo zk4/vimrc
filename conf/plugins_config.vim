@@ -240,6 +240,7 @@ Plug 'vimwiki/vimwiki'
 " autocmd FileType vimwiki nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("wiki")<CR>
 autocmd FileType markdown nmap <buffer><silent> t :VimwikiTable<cr>
 let g:vimwiki_list = [{'path': '~/bdcloud/notes',
+ \'custom_wiki2html': '$GOPATH/bin/vimwiki-godown',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -434,7 +435,7 @@ nnoremap gp :MarkdownPreview<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'sickill/vim-monokai'
+Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 " Plug 'sheerun/vim-wombat-scheme'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -504,7 +505,7 @@ augroup nerdtree_guard
 	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "    autocmd FileTYpe nerdtree  nnoremap <buffer> <f5> :NERDTreeFocus<CR>
-	autocmd FileTYpe *  nnoremap  gs :NERDTreeFind<CR>
+	autocmd FileType *  nnoremap  gs :NERDTreeFind<CR>
 	if exists("g:NERDTree") && g:NERDTree.IsOpen()
 		autocmd VimLeavePre * NERDTreeClose
 	endif

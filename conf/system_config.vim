@@ -11,6 +11,7 @@ set termguicolors
 
 set autoread
 set foldmethod=indent
+
 " 将 tab 转化为空格
 "set expandtab
 "let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
