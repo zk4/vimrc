@@ -215,3 +215,7 @@ nnoremap <C-m>o :copen<CR>
 "make kj into jumplist 
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+
+" insert time
+imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
+imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>
