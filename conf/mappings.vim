@@ -5,12 +5,18 @@
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+inoremap <C-c> <ESC>
+
 vnoremap <space> <Nop>
 " 在 yank 的时候,保持光标在最下方,而不是跳加到前面
 vnoremap y y`]
 
 " 去除一层函数掉用  a(b)
 nmap dc diwlds(
+
+" 去除 函数名  a{ b }
+nmap df diwlds{
 " sudo write
 cnoremap w!! w !sudo tee > /dev/null %
 "map zz to za in normal mode

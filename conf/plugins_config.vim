@@ -119,6 +119,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
+nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
 
 
 " Use <c-space> for trigger completion.
@@ -126,6 +128,7 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 
 nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>4 <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
 " Remap keys for goto
 nmap <silent> gd <Plug>(coc-definition)
@@ -239,6 +242,8 @@ Plug 'vimwiki/vimwiki'
 " autocmd FileType vimwiki nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("wiki")<CR>
 " autocmd FileType vimwiki nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("wiki")<CR>
 autocmd FileType markdown nmap <buffer><silent> t :VimwikiTable<cr>
+" autocmd FileType vimwiki nmap <buffer><silent> t :VimwikiTable<cr>
+" autocmd FileType vimwiki nmap <buffer><silent> gp :Vimwiki2HTMLBrowse<cr>
 let g:vimwiki_list = [{'path': '~/bdcloud/notes',
  \'custom_wiki2html': '$GOPATH/bin/vimwiki-godown',
                        \ 'syntax': 'markdown', 'ext': '.md'}]
@@ -552,6 +557,9 @@ Plug 'mxw/vim-jsx'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
 set rtp+=/usr/local/opt/fzf
 
 " search md ,this is very good for search code snippets in markdown 
@@ -580,11 +588,33 @@ command! -bang -nargs=* GGrep
   \   'git grep --line-number '.shellescape(<q-args>), 0,
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
+command! -bang BTags
+  \ call fzf#vim#buffer_tags('', {
+  \     'down': '40%',
+  \     'options': '--with-nth 1 
+  \                 --reverse 
+  \                 --prompt "> " 
+  \                 --preview-window="80%" 
+  \                 --preview "
+  \                     tail -n +\$(echo {3} | tr -d \";\\\"\") {2}  |
+  \                     head -n 16"'
+  \ })
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   ctags                                    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'ludovicchabant/vim-gutentags'
+" let $GTAGSLABEL = 'native-pygments'
+" let $GTAGSCONF = '/usr/local/etc/gtags.conf'
+
+" let g:Lf_GtagsAutoGenerate = 1
+" let g:Lf_Gtagslabel = 'native-pygments'
+" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
 "set tags=./.tags;,.tags
 "" 当filetype 是 python 时,自动加载 python3.7 的 tag
 "augroup python
