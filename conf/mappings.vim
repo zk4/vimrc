@@ -11,6 +11,8 @@ inoremap <C-c> <ESC>
 vnoremap <space> <Nop>
 " 在 yank 的时候,保持光标在最下方,而不是跳加到前面
 vnoremap y y`]
+nmap <silent> gp :!open % & <cr>
+
 
 " 去除一层函数掉用  a(b)
 nmap dc diwlds(

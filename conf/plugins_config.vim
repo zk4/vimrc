@@ -33,8 +33,13 @@ augroup guard_group
 	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
-	autocmd FileType go nmap <leader>v  <Plug>(go-alternate-vertical)
+	autocmd FileType go nmap <leader>v  <Plug>(go-alternate-edit)
 	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+	autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
+	autocmd FileType go nmap <leader>dS :GoDebugStop<CR>
+	autocmd FileType go nmap <leader>dn :GoDebugNext<CR>
+	autocmd FileType go nmap <leader>dc :GoDebugContinue<CR>
+	autocmd FileType go nmap <leader>dd :GoDebugBreakpoint<CR>
 augroup END
 
 " run :GoBuild or :GoTestCompile based on the go file
@@ -436,7 +441,14 @@ let g:mkdp_preview_options = {
     \ }
 let g:mkdp_auto_close = 0
 let g:mkdp_markdown_css='/Users/zk/vue.css'
-nnoremap gp :MarkdownPreview<cr>
+
+
+augroup gp_group 
+	autocmd!
+	autocmd FileType markdown nnoremap <buffer> gp :MarkdownPreview<cr>
+
+	
+augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -533,11 +545,13 @@ endfunction
 ""autocmd BufEnter * call SyncTree()
 
 " change current file root when toggled 
-nnoremap <C-\> :NERDTreeToggle %<CR>
-inoremap <C-\> <esc>:NERDTreeToggle %<CR>
+" nnoremap <C-\> :NERDTreeToggle %<CR>
+" inoremap <C-\> <esc>:NERDTreeToggle %<CR>
 " always resize it to 25
 " nnoremap <C-\> :NERDTreeToggle <CR> :vertical resize 25<CR>
 " inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
+nnoremap <C-\> :NERDTreeToggle <CR>
+inoremap <C-\> <esc>:NERDTreeToggle<cr>
 
 " autocmd BufEnter * :NERDTreeToggle 
 " augroup nerdtree_guard
@@ -742,6 +756,10 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'stephpy/vim-yaml'
 Plug 'pmalek/toogle-maximize.vim'
 
+Plug 'junegunn/vim-peekaboo'
+" when press  " or @, will pop the resgiter on the right side
 
+
+" let g:peekaboo_ins_prefix= '<c-x>'
 call plug#end()
 

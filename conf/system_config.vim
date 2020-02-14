@@ -20,9 +20,10 @@ set foldmethod=indent
 " when scroll with track pad, cursor not move but page
 set mouse=a
 
-set list
+" show  control characters
+" set list
 "set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
-set listchars=tab:␉·,nbsp:⎵
+set listchars=tab:⇤·,nbsp:⎵
 
 "  指定换行符
 if $TERM_PROGRAM  == "iTerm.app"

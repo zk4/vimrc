@@ -229,6 +229,8 @@ endfunction
 vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
 vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 vnoremap gk "gy<Esc>:call KubeSearch()<CR>
+
+
 "vnoremap gs "gy<Esc>:call StackOverFlow()<CR>
 "https://docs.python.org/3/library/functools.html
 "
