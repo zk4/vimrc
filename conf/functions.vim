@@ -47,7 +47,7 @@ func! CompileRunGcc()
         "exec "!source ~/.bash_profile &&    mvnexec"
         "exec "!time java %<"
     elseif &filetype == 'sh'
-        :!time bash %
+        :!bash %
     elseif &filetype == 'python'
         exec "!python3 %"
     elseif &filetype == 'html'
@@ -78,8 +78,10 @@ function! FindSelectionMeaning ()
   endtry
 endfunction
 
-vnoremap <F5> :<esc>:Dispatch call CompileRunGcc()<CR>
 
+nnoremap <F5> : call CompileRunGcc()<CR>
+inoremap <F5> <esc>: call CompileRunGcc()<CR>
+" vmap <f5> y:@"<CR>
 func! ProfileStart()
     profile start profile.log
     profile func *

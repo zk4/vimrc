@@ -217,3 +217,13 @@ vim -u NONE
 ## search and replace
 you can serach first , then leave replace  search slot blank
  In general, an empty regular expression means to use the previously entered regular expression, so :%s//\1/g should do what you want.
+ 
+ 
+ 
+# yank to reigster  a
+V"ay
+
+# paste register a to buffer 
+"ap
+
+@"  execute reigster "

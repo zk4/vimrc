@@ -13,9 +13,10 @@ vnoremap <space> <Nop>
 vnoremap y y`]
 nmap <silent> gp :!open % & <cr>
 
-
 " 去除一层函数掉用  a(b)
 nmap dc diwlds(
+nmap zf vil)i
+nmap zfp vil)iprint<esc>
 
 " 去除 函数名  a{ b }
 nmap df diwlds{
@@ -49,8 +50,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <F5> :call CompileRunGcc()<CR>
-inoremap <F5> <esc>:call CompileRunGcc()<CR>
 nnoremap <F8> :copen<cr>
 "noremap  <F2> :cprevious<CR>
 "noremap  <F3> :cnext<CR>

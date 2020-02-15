@@ -19,6 +19,9 @@ augroup autocmd_guard_me
     autocmd FileType nerdtree map <buffer> J jgo
     autocmd FileType nerdtree map <buffer> K kgo
 
+    autocmd FileType vim vnoremap <F5> "ay:@a<cr>
+	  
+
     " don`t use this, a lot of strange problems will occur
 	 " autocmd! bufwritepost ~/.vimrc source %
 
