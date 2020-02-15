@@ -102,27 +102,27 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 " tab for completion and jump placehoders
 " https://github.com/neoclide/coc-snippets
 " method 1
-" imap <Tab> <Plug>(coc-snippets-expand-jump)
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
+imap <Tab> <Plug>(coc-snippets-expand-jump)
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-" let g:coc_snippet_next = '<TAB>'
-" let g:coc_snippet_prev = '<S-TAB>'
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
 
 
 " method 2 
 " this won`t trigger auto-completion if expansion is on the fly
 " and another cavet is allowing you tab after word in normal line
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
+" inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+" let g:coc_snippet_next = '<TAB>'
+" let g:coc_snippet_prev = '<S-TAB>'
 
 nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
 nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
@@ -217,6 +217,8 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 解决方法 git config --global core.quotepath false
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
+let g:Lf_WindowPosition = 'popup'
+
 
 let g:Lf_UseVersionControlTool=0
 let g:Lf_WildIgnore = {
