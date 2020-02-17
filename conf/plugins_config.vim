@@ -90,7 +90,8 @@ augroup coc_guard
 " To enable highlight current symbol on CursorHold
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"    autocmd FileType javascript let b:coc_pairs_disabled = ['>']
+" delete in insert mode in html file is super slow especially in big file
+	autocmd FileType html iunmap <bs>
 augroup END
 
 " coc snippet
