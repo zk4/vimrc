@@ -53,6 +53,13 @@ function! s:build_go_files()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           code complete                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 基于 ai 的代码补全
+" 用 CocInstall coc-tabnine, but with or without coc , it`s slow and not that
+" good
+" Plug 'zxqfl/tabnine-vim'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -60,6 +67,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " go configuration 
 " auto imports before save
 " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+"
+" all extension source 
+" https://www.npmjs.com/search?q=keywords%3Acoc.nvim&page=2&perPage=20
+"
+" gitter 
+" https://gitter.im/neoclide/coc-cn
+"
+" show extension
+" CocList extension
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -158,9 +174,8 @@ let g:coc_global_extensions=[
  \ 'coc-eslint',
  \ 'coc-json',
  \]
-" so slow with big file, called  coc#insert
+ " so slow with big file, called  coc#insert
 
-" autocmd Filetype * iunmap  <bs>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  lightline                                 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,9 +214,7 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           tab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'godlygeek/tabular'
-" 基于 ai 的代码补全
-"Plug 'zxqfl/tabnine-vim'
+Plug 'godlygeek/tabular'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-easy-align                            
@@ -280,44 +293,22 @@ Plug 'mileszs/ack.vim'
 " endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-markdown                            
+"                           vim-table-format                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
- " Plug 'dhruvasagar/vim-table-mode'
-
- " function! s:isAtStartOfLine(mapping)
- "   let text_before_cursor = getline('.')[0 : col('.')-1]
- "   let mapping_pattern = '\V' . escape(a:mapping, '\')
- "   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
- "   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
- " endfunction
-
- " inoreabbrev <expr> <bar><bar>
- "           \ <SID>isAtStartOfLine('\|\|') ?
- "           \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
- " inoreabbrev <expr> __
- "           \ <SID>isAtStartOfLine('__') ?
- "           \ '<c-o>:silent! TableModeDisable<cr>' : '__'
-
- " let g:table_mode_corner='|'
- 
-
-" ----------------------------------------------------------------------------------------------------
 " below sinpet code will align | when in insert mode. super cool , like the
 " dhruvasagar/vim-table-mode plugin does 
 " https://gist.github.com/tpope/287147
-" inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-
-" function! s:align()
-"   let p = '^\s*|\s.*\s|\s*$'
-"   if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-"     let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-"     let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-"     Tabularize/|/l1
-"     normal! 0
-"     call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-"   endif
-" endfunction
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
 
 " ----------------------------------------------------------------------------------------------------
 
@@ -773,5 +764,8 @@ Plug 'junegunn/vim-peekaboo'
 " nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
 " nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 " nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
+" for IME switch
+Plug 'ybian/smartim'
+
 call plug#end()
 
