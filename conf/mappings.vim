@@ -13,10 +13,18 @@ vnoremap <space> <Nop>
 vnoremap y y`]
 nmap <silent> gp :!open % & <cr>
 
+nmap dx dix
+nmap dw diw
+nmap cw ciw
+nmap cW ciW
+nmap vw viw
+nmap dW diW
 " 去除一层函数掉用  a(b)
 nmap dc diwlds(
-nmap zf vil)i
-nmap zfp vil)iprint<esc>
+" add |($1)
+nmap ziw viwSi
+" add print($1)
+nmap zip vil)iprint<esc>
 
 " 去除 函数名  a{ b }
 nmap df diwlds{

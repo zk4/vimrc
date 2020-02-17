@@ -157,8 +157,9 @@ let g:coc_global_extensions=[
  \ 'coc-eslint',
  \ 'coc-json',
  \]
+" so slow with big file, called  coc#insert
 
-
+" autocmd Filetype * iunmap  <bs>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  lightline                                 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -217,8 +218,9 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 解决方法 git config --global core.quotepath false
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
-let g:Lf_WindowPosition = 'popup'
 
+"  show in pop window
+" let g:Lf_WindowPosition = 'popup'
 
 let g:Lf_UseVersionControlTool=0
 let g:Lf_WildIgnore = {
@@ -245,15 +247,11 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'vimwiki/vimwiki'
-" autocmd FileType vimwiki nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("wiki")<CR>
-" autocmd FileType vimwiki nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("wiki")<CR>
-autocmd FileType markdown nmap <buffer><silent> t :VimwikiTable<cr>
-" autocmd FileType vimwiki nmap <buffer><silent> t :VimwikiTable<cr>
-" autocmd FileType vimwiki nmap <buffer><silent> gp :Vimwiki2HTMLBrowse<cr>
-let g:vimwiki_list = [{'path': '~/bdcloud/notes',
- \'custom_wiki2html': '$GOPATH/bin/vimwiki-godown',
-                       \ 'syntax': 'markdown', 'ext': '.md'}]
+" Plug 'vimwiki/vimwiki'
+" autocmd FileType markdown nmap <buffer><silent> t :VimwikiTable<cr>
+" let g:vimwiki_list = [{'path': '~/bdcloud/notes',
+"  \'custom_wiki2html': '$GOPATH/bin/vimwiki-godown',
+"                        \ 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-surround                            
@@ -669,6 +667,7 @@ Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
+Plug 'whatyouhide/vim-textobj-xmlattr'
 " map K <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 "
@@ -763,5 +762,15 @@ Plug 'junegunn/vim-peekaboo'
 
 
 " let g:peekaboo_ins_prefix= '<c-x>'
+
+" Plug 'yuttie/comfortable-motion.vim'
+" let g:comfortable_motion_friction = 200.0
+" let g:comfortable_motion_air_drag = 10.0
+" let g:comfortable_motion_no_default_key_mappings = 1
+" let g:comfortable_motion_impulse_multiplier = 1  " Feel free to increase/decrease this value.
+" nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>
+" nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
+" nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
+" nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
 call plug#end()
 

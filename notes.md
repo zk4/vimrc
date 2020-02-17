@@ -227,3 +227,24 @@ V"ay
 "ap
 
 @"  execute reigster "
+
+
+# repeat last colon command 
+@:
+further reqeat 
+@@
+
+
+# insert mode tips
+c-h delete previous char
+c-w delete previous word
+c-u delete to the start of line
+
+
+# eval string
+<c-r>=  eval your input
+ 
+
+# force uppser/lower seach 
+/\Ca     search for A
+/\ca     search for a
