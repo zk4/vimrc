@@ -65,7 +65,7 @@ endfunction
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " go configuration 
-" auto imports before save
+" auto imports before save, so slow
 " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 "
 " all extension source 
@@ -75,7 +75,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " https://gitter.im/neoclide/coc-cn
 "
 " show extension
-" CocList extension
+" CocList extensions
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -107,7 +107,7 @@ augroup coc_guard
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " delete in insert mode in html file is super slow especially in big file
-	autocmd FileType html iunmap <bs>
+	" autocmd FileType html iunmap <bs>
 augroup END
 
 " coc snippet
@@ -764,8 +764,6 @@ Plug 'junegunn/vim-peekaboo'
 " nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
 " nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 " nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
-" for IME switch
-Plug 'ybian/smartim'
 
 call plug#end()
 

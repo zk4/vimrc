@@ -7,6 +7,7 @@ vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
 inoremap <C-c> <ESC>
+nnoremap <c-e> :SwitchBuffer<cr>
 
 vnoremap <space> <Nop>
 " 在 yank 的时候,保持光标在最下方,而不是跳加到前面
