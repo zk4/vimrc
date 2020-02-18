@@ -167,6 +167,7 @@ inoremap <c-n> <down>
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-k> <c-o>d$
+inoremap <c-l> <space>
 
 " for auto completion
 inoremap <C-space> <C-n>
