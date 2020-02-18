@@ -26,22 +26,16 @@ nmap dc diwlds(
 nmap ziw viwSi
 " add print($1)
 nmap zip vil)iprint<esc>
-
 " 去除 函数名  a{ b }
 nmap df diwlds{
 " sudo write
 cnoremap w!! w !sudo tee > /dev/null %
 "map zz to za in normal mode
 nnoremap zz  za
-" open vifm
-"nnoremap <leader>1 :!vifm<cr>
 " select all  cmd+a
 nnoremap <leader>a  ggVG
 "https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
 nnoremap <leader>q  <C-w><C-j><C-w>c
-"nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
-"nnoremap q <esc>:bd<cr>
-"nnoremap q <esc>:bp<bar>sp<bar>bn<bar>bd<CR>
 
 command! SelectAll  normal! ggVG 
 command! SwitchBuffer :e # 
@@ -74,12 +68,10 @@ vnoremap  <S-Space> <left>
 " nnoremap <S-Tab> gT
 " 在 insert mode 下,让 s-tab 向前 indent
 "inoremap <S-Tab> <C-d>
-" 切换 buffer
-"nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-"nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
-" create tab
+"
 " 去除一层函数掉用  a(b)
 nnoremap <leader>te :tabe<cr>
+nnoremap <leader>u :UndotreeToggle<cr>
 " close tab
 nnoremap <leader>tc :tabc<cr>
 " close buffer
@@ -96,17 +88,6 @@ nnoremap <leader>eh :e ~/.zk_vimrc/help.md<cr>
 nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
 nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
 
-" 这个映射用的太少了..
-"nnoremap <Leader><leader> *<CR>
-"Alternatively, you could use this mapping so that the final /g is already entered:
-"nnoremap <Leader>r :%s/\<<C-r><C-w>\>//gc<left><left><left>
-"nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
-"nnoremap <Leader>rr :Far   **/*<left><left><left><left><left>
-"vnoremap <leader>r "hy:%s/<C-r>h//gc<left><left><left>
-" nnoremap <Leader>ff :F  **/*<left><left><left><left><left>
-" nnoremap <Leader>r  :Far      %<left><left><left><left><left>
-" nnoremap <Leader>rr  :Far  **/*<left><left><left><left><left>
-"nnoremap ,, <esc>A,
 " format file without cursor moving to head, and move cursor the middle of screen
 "nnoremap <leader>f mmgg=G`mzz
 " move page down with cursor in the middle of screen
@@ -116,18 +97,8 @@ nnoremap <C-b> <C-u>zz
 " define operator
 " ex dp  delete  content in ()
 
-"多次粘贴
+"multi paste
 xnoremap p pgvy
-
-""xnoremap <silent> :<C-U>normal! f)vF(b<CR>
-"" to  select func<C>tion(<effect here>)
-"onoremap t( :<c-u>normal! f(vi(<cr>
-"onoremap t[ :<c-u>normal! f[vi[<cr>
-
-":onoremap in( :<c-u>normal! f(vi(<cr>
-":onoremap il( :<c-u>normal! F)vi(<cr>
-
-"print foo(bar)  
 
 
 "http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>
@@ -135,31 +106,17 @@ xnoremap p pgvy
 nnoremap ss *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
 vnoremap ss y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
 
-
-":onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
-"onoremap ( i(
-"onoremap < i<
-"onoremap " i"
-"onoremap ' i'
-"onoremap { i{
-"onoremap [ i[
-"inoremap jj <esc>A
-"inoremap jk <esc>
-" all about save the file
 nnoremap W :w<cr>
 " nnoremap z :wq<cr>
 nnoremap <c-s> :w<cr>
 nnoremap  <leader>w :w<cr>
 inoremap  <c-s> <esc>:w<cr>li
-"inoremap ;; <esc>A;
-"inoremap <C-l> <esc>la
-"nnoremap gs : execute "grep -R " . shellescape(expand("<cword>")) . " ."<cr>:copen<cr><cr>
-"nnoremap gc : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
-"nnoremap <leader><leader> : execute "Ack  " . shellescape(expand("<cword>")) . " %"<cr>:copen<cr><cr>
-"nnoremap <leader>ps <esc>:call ProfileStart()<cr>
-"nnoremap <leader>pe <esc>:call ProfileEnd()<cr>
 
-" support emacs movement insert mode
+" support emacs movement insert mode {{
+inoremap <C-w> <C-c>diwi
+inoremap <C-d> <Del>
+inoremap <C-u> <C-G>u<C-U>
+" inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
 inoremap <c-b> <left>
 inoremap <c-f> <right>
 inoremap <c-p> <up>
@@ -168,6 +125,7 @@ inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-k> <c-o>d$
 inoremap <c-l> <space>
+"}}
 
 " for auto completion
 inoremap <C-space> <C-n>
@@ -214,19 +172,10 @@ vmap ' S'
 
 nnoremap <C-m>o :copen<CR>
 
-
-" move between function  ,class
-" ]]  move  between class in python 
-" [[  move  between class in python 
-" [m  move  between function in python 
-" ]m  move  between function in python 
-
-"vnoremap  = :Tab /=<cr>
-"
 "make kj into jumplist 
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
 " insert time
-imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
-imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>
+" imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
+" imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>

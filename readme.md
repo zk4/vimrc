@@ -124,3 +124,5 @@ Use TDD, Use log. Make debug tools the final savior. If you heavily depends on d
 
 # Bla Bla
 VIM is a great TEXT EDITOR. but it is not a good IDE. Do not even try to use vim like an IDE. If you do. Maybe you should just go with the IDE.  for example, writing JAVA.
+
+

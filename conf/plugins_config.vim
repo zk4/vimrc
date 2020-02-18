@@ -764,6 +764,20 @@ Plug 'junegunn/vim-peekaboo'
 " nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
 " nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 " nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
+Plug 'vim-scripts/loremipsum'
+Plug 'honza/vim-snippets'
+
+""""""""""""""""""""""
+"  undo history   "
+""""""""""""""""""""""
+" Plug 'mbbill/undotree'
+" if has("persistent_undo")
+"     set undodir=$HOME . "/.undodir"
+"     set undofile
+" endif
+
+
+
 
 call plug#end()
 
