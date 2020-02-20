@@ -310,101 +310,11 @@ function! s:align()
   endif
 endfunction
 
-" ----------------------------------------------------------------------------------------------------
-
-
-
-
-" Plug 'SidOfc/mkdx'
-" :h mkdx-settings
-" let g:mkdx#settings = {
-"       \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
-"       \ 'restore_visual':          1,
-"       \ 'enter':                   { 'enable': 0, 'malformed': 0, 'o': 0,
-"       \                              'shifto': 0, 'shift': 0 },
-"       \ 'map':                     { 'prefix': '<leader>', 'enable': 1 },
-"       \ 'tokens':                  { 'enter': ['-', '*', '>'],
-"       \                              'bold': '**', 'italic': '*', 'strike': '',
-"       \                              'list': '-', 'fence': '',
-"       \                              'header': '#' },
-"       \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
-"       \                              'update_tree': 2,
-"       \                              'initial_state': ' ' },
-"       \ 'toc':                     { 'text': "TOC", 'list_token': '-',
-"       \                              'update_on_write': 0,
-"       \                              'position': 0,
-"       \                              'details': {
-"       \                                 'enable': 0,
-"       \                                 'summary': 'Click to expand {{toc.text}}',
-"       \                                 'nesting_level': -1,
-"       \                                 'child_count': 5,
-"       \                                 'child_summary': 'show {{count}} items'
-"       \                              }
-"       \                            },
-"       \ 'table':                   { 'divider': '|',
-"       \                              'header_divider': '-',
-"       \                              'align': {
-"       \                                 'left':    [],
-"       \                                 'center':  [],
-"       \                                 'right':   [],
-"       \                                 'default': 'center'
-"       \                              }
-"       \                            },
-"       \ 'links':                   { 'external': {
-"       \                                 'enable': 0, 'timeout': 3, 'host': '', 'relative': 1,
-"       \                                 'user_agent':  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.1'
-"       \                              },
-"       \                              'fragment': {
-"       \                                 'jumplist': 1,
-"       \                                 'complete': 1
-"       \                              }
-"       \                            },
-"       \ 'highlight':               { 'enable': 0 },
-"       \ 'auto_update':             { 'enable': 0 }
-"     \ }
-" fun! s:MkdxGoToHeader(header)
-"     " given a line: '  84: # Header'
-"     " this will match the number 84 and move the cursor to the start of that line
-"     call cursor(str2nr(get(matchlist(a:header, ' *\([0-9]\+\)'), 1, '')), 1)
-" endfun
-
-" fun! s:MkdxFormatHeader(key, val)
-"     let text = get(a:val, 'text', '')
-"     let lnum = get(a:val, 'lnum', '')
-
-"     " if the text is empty or no lnum is present, return the empty string
-"     if (empty(text) || empty(lnum)) | return text | endif
-
-"     " We can't jump to it if we dont know the line number so that must be present in the outpt line.
-"     " We also add extra padding up to 4 digits, so I hope your markdown files don't grow beyond 99.9k lines ;)
-"     return repeat(' ', 4 - strlen(lnum)) . lnum . ': ' . text
-" endfun
-
-" fun! s:MkdxFzfQuickfixHeaders()
-"     " passing 0 to mkdx#QuickfixHeaders causes it to return the list instead of opening the quickfix list
-"     " this allows you to create a 'source' for fzf.
-"     " first we map each item (formatted for quickfix use) using the function MkdxFormatHeader()
-"     " then, we strip out any remaining empty headers.
-"     let headers = filter(map(mkdx#QuickfixHeaders(0), function('<SID>MkdxFormatHeader')), 'v:val != ""')
-
-"     " run the fzf function with the formatted data and as a 'sink' (action to execute on selected entry)
-"     " supply the MkdxGoToHeader() function which will parse the line, extract the line number and move the cursor to it.
-"     call fzf#run(fzf#wrap(
-"             \ {'source': headers, 'sink': function('<SID>MkdxGoToHeader') }
-"           \ ))
-" endfun
-
-" finally, map it -- in this case, I mapped it to overwrite the default action for toggling quickfix (<PREFIX>I)
-
 
 Plug 'plasticboy/vim-markdown'
 " let g:vim_markdown_conceal=1
 " set conceallevel=2
 " let g:vim_markdown_conceal_code_blocks = 1
-
-
-
-
 
 
 Plug 'zk4/md-img-paste.vim'
@@ -486,15 +396,6 @@ nnoremap <C-g>p :Gpush <CR>
 nnoremap <C-g>pl :!git pull <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           nerdcommenter                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" does not support jsx context comment, abandoned
-"Plug 'scrooloose/nerdcommenter'
-"let g:NERDCustomDelimiters = { 'javascript.jsx': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' } }
-"let g:NERDTrimTrailingWhitespace = 1
-"let g:NERDDefaultAlign = 'left'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           NERDTree                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -553,6 +454,9 @@ inoremap <C-\> <esc>:NERDTreeToggle<cr>
 
 nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           language-jsx                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf                            
@@ -748,6 +652,7 @@ Plug 'bronson/vim-visual-star-search'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'stephpy/vim-yaml'
 Plug 'pmalek/toogle-maximize.vim'
+nmap <silent> <c-m> :call ToggleMaximizeCurrentWindow()<CR>
 
 Plug 'junegunn/vim-peekaboo'
 " when press  " or @, will pop the resgiter on the right side

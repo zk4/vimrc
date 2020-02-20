@@ -16,14 +16,15 @@ set foldmethod=indent
 "set expandtab
 "let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
-"set path+=**
+" 方便 gf 跳转
+set path+=**
 " when scroll with track pad, cursor not move but page
 set mouse=a
 
 
 " show  control characters
-set list
-set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+" set list
+" set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
 " set listchars=tab:⇤·,nbsp:⎵
 
 "  指定换行符

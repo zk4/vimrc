@@ -130,6 +130,9 @@ set statusline+=[%{SearchCount()}] " Nth of N when searching
 
 
 
+
+
+
 function! MaximizeToggle()
     if exists("s:maximize_session")
         exec "source " . s:maximize_session
@@ -146,8 +149,7 @@ function! MaximizeToggle()
     endif
 endfunction
 
-map <silent> M :call ToggleMaximizeCurrentWindow()<CR>
-" nnoremap M :call MaximizeToggle()<CR>
+" nnoremap <c-m> :call MaximizeToggle()<CR>
 
 " URL encode a string. ie. Percent-encode characters as necessary.
 function! UrlEncode(string)

@@ -72,6 +72,12 @@ cdo 可以针对 quickfix 里的结果做处理. 其他的还有 :bufdo :windo
 				:{cmd}
 				etc.
 
+另一种从实用技巧里学来的
+
+args **/*.js  先将 js 文件搞到 args 例表
+argdo %s/xx/bb/cg  使用 argdo 执行批量命令，
+这个方法有个缺点，最后停的位置不太可控，而且如果文件里找不到的话还会报错影响视线
+
 
 ## easygrep 的功能
 ### 全局搜索- 当前单词
@@ -165,8 +171,7 @@ set formatoptions-=cro     或者 set fo-=cro
 :Glog --  显示+ - 界面的 git log
 :Glog -- % 显示当前文件的git log
 :copen      fugitive 使用了 quickfix,直接用就行了
-alt-p --> :cprevious
-alt-n --> :nnext
+alt-p --> :cprevious alt-n --> :nnext
 
 how to diff version?
 - Diff index and local
@@ -260,3 +265,20 @@ https://www.cnblogs.com/bwangel23/p/4421957.html
 命名寄存器了，这个一共是a-z26个寄存器，分别用英文字母来表示。这个感觉主要需要讲的就是大写字母和小写字母的区别，当向寄存器中写入内容的时候（即复制或者剪切的时候），大写字母表示的是将当前要复制的内容追加到寄存器中，而小写字母表示的是将当前要复制的内容将寄存器中的原有内容给覆盖掉。这个可以类比于数据流重定向中的">"和">>"命令。
 
 
+# vim help next previous
+you must use :helpgrep  instead of :h
+then you can :cnext  :cprevious
+
+
+# 反向搜索删除
+v/href/d
+可以删除掉里只包含 href 的行。v 的帮助见 :vglobal 
+
+g/href/j 
+join文件里包含 href 的行，前面的 g 代表后面是执行 norm 命令, 你可能觉得奇怪，不是说 J 才是 join么，因为j 是 ex command( 用:执行的). 如果你要执行 normal commands ，还得像上面提过的一样，用 g/xxxx/norm  commands
+
+g 的帮助写:global
+
+# 移动到屏幕行的行尾
+有时一行太长，你如果用 $，则在视觉上感觉跳了几行，
+g$
