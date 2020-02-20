@@ -1,3 +1,4 @@
+
 # todo                            
 - 自动补全与 snippet 总是很痛苦。。按 tab 键不是很智能
 
@@ -11,6 +12,10 @@ https://unix.stackexchange.com/questions/88714/vim-how-can-i-do-a-change-word-us
 https://www.youtube.com/watch?v=zEah_HDpHzc
 
 git 怎么快速查看以前的文件?
+
+# 都应该看这本书
+Vim实用技巧（第2版）
+
 # tips                            
 c+w 在　insert　mode　式下往回删一个单词
 fzf 带有 Ag 功能
@@ -253,3 +258,5 @@ c-u delete to the start of line
 # 寄存器大写的作用
 https://www.cnblogs.com/bwangel23/p/4421957.html
 命名寄存器了，这个一共是a-z26个寄存器，分别用英文字母来表示。这个感觉主要需要讲的就是大写字母和小写字母的区别，当向寄存器中写入内容的时候（即复制或者剪切的时候），大写字母表示的是将当前要复制的内容追加到寄存器中，而小写字母表示的是将当前要复制的内容将寄存器中的原有内容给覆盖掉。这个可以类比于数据流重定向中的">"和">>"命令。
+
+

@@ -6,6 +6,8 @@
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
+nnoremap = :Tabularize /=<cr>
+
 inoremap <C-c> <ESC>
 nnoremap <c-e> :SwitchBuffer<cr>
 
@@ -25,7 +27,7 @@ nmap dc diwlds(
 " add |($1)
 nmap ziw viwSi
 " add print($1)
-nmap zip vil)iprint<esc>
+nmap zfp vil)iprint<esc>
 " 去除 函数名  a{ b }
 nmap df diwlds{
 " sudo write
@@ -40,15 +42,9 @@ nnoremap <leader>q  <C-w><C-j><C-w>c
 command! SelectAll  normal! ggVG 
 command! SwitchBuffer :e # 
 nnoremap Q  q
-"nnoremap QQ :qa!<cr>
 nnoremap q <esc>:q!<cr>
-"nnoremap q <c-o>
 nnoremap <M-s> <esc>:w<cr>
-" 全用不需要转义的正则表达式搜索
-" 在incsearch里定义了
-"nnoremap / ms/\v
-"nnoremap ? ms?\v
-" navigations
+
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>

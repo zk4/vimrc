@@ -20,10 +20,11 @@ set foldmethod=indent
 " when scroll with track pad, cursor not move but page
 set mouse=a
 
+
 " show  control characters
-" set list
-"set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
-set listchars=tab:⇤·,nbsp:⎵
+set list
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+" set listchars=tab:⇤·,nbsp:⎵
 
 "  指定换行符
 if $TERM_PROGRAM  == "iTerm.app"
@@ -74,7 +75,9 @@ set autowrite
 set showtabline=2
 " 输命令时,提示
 set wildmenu
-set wildmode=longest:list,full
+set wildmode=full
+set history=200
+
 set tabstop=2               " 设置tab键的显示宽度，如果有时你觉得太宽，可以打印看看当前值
 set shiftwidth=2           " 换行时行间交错使用4个空格
 set backspace=2             " 设置退格键可用

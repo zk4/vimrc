@@ -765,7 +765,7 @@ Plug 'junegunn/vim-peekaboo'
 " nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 " nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
 Plug 'vim-scripts/loremipsum'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""
 "  undo history   "
