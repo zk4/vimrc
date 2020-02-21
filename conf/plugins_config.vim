@@ -681,6 +681,12 @@ Plug 'vim-scripts/loremipsum'
 "     set undofile
 " endif
 
+Plug 'tpope/vim-abolish'
+" 这个插件有两个牛 b 的功能
+" 1. ：S/{dog,man}/{man,dog}/g
+" 2. 驼峰转换
+"  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
+
 
 
 
