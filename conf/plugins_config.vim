@@ -238,7 +238,7 @@ let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
 
 let g:Lf_UseVersionControlTool=0
 let g:Lf_WildIgnore = {
-            \ 'dir': [".mypy_cache",'.svn','.git','.hg',".undodir",".*"],
+            \ 'dir': ["site-packages",".mypy_cache",'.svn','.git','.hg',".undodir",".*"],
             \ 'file': ["\.",".DS_Store","NERD_tree_*",'*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
@@ -441,10 +441,10 @@ endfunction
 " nnoremap <C-\> :NERDTreeToggle %<CR>
 " inoremap <C-\> <esc>:NERDTreeToggle %<CR>
 " always resize it to 25
-" nnoremap <C-\> :NERDTreeToggle <CR> :vertical resize 25<CR>
-" inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
-nnoremap <C-\> :NERDTreeToggle <CR>
-inoremap <C-\> <esc>:NERDTreeToggle<cr>
+nnoremap <C-\> :NERDTreeToggle <CR> :vertical resize 25<CR>
+inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
+" nnoremap <C-\> :NERDTreeToggle <CR>
+" inoremap <C-\> <esc>:NERDTreeToggle<cr>
 
 " autocmd BufEnter * :NERDTreeToggle 
 " augroup nerdtree_guard
@@ -647,12 +647,18 @@ nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 Plug 'bronson/vim-visual-star-search'
 
 
+""""""""""""""""""""""
+"  window managment  "
+""""""""""""""""""""""
+" Plug 'pmalek/toogle-maximize.vim'
+" nmap <silent> <c-m> :call ToggleMaximizeCurrentWindow()<CR>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           others                             
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'stephpy/vim-yaml'
-Plug 'pmalek/toogle-maximize.vim'
-nmap <silent> <c-m> :call ToggleMaximizeCurrentWindow()<CR>
+
 
 Plug 'junegunn/vim-peekaboo'
 " when press  " or @, will pop the resgiter on the right side
@@ -686,9 +692,7 @@ Plug 'tpope/vim-abolish'
 " 1. ：S/{dog,man}/{man,dog}/g
 " 2. 驼峰转换
 "  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
-
-
-
-
+"
 call plug#end()
+
 

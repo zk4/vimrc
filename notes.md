@@ -73,37 +73,31 @@ cdo 可以针对 quickfix 里的结果做处理. 其他的还有 :bufdo :windo
 				etc.
 
 另一种从实用技巧里学来的
-
-args **/*.js  先将 js 文件搞到 args 例表
+```
+args **/*.js  
+先将 js 文件搞到 args 例表
+```
 argdo %s/xx/bb/cg  使用 argdo 执行批量命令，
 这个方法有个缺点，最后停的位置不太可控，而且如果文件里找不到的话还会报错影响视线
 
 
-## easygrep 的功能
-### 全局搜索- 当前单词
-<leader> vv
-### 全局替换, 可以预览
-<leader> vr
+另一种也是实用技巧里来的
+```
+/xxx 
+:vimgrep // **/*.txt
+:cfdo %s//bbb/gc
+:cfdo update
+
+可以将上面两条合写成一条
+:cfdo %s//bbb/gc | update
+
+```
+
 
 ### 全局搜索 -自己输关键字
+```
 :grep -R 'keyword' . 
-
-### 要改变搜索的范围
-: GrepOption  上下移动回车就能改
-比如要全局交互式替换当前 prject 里的东西
-则将 GrepOption : 改成 Buffers
-在要替换的词上面输入 <space>vr
-
-还有一种替换当前文件的方式
-先用c-v选择好 \\Adi 搞定
-通过 item 映射了  command + s   -   :w
-
-已经在选择模式下，加入了 <leader>r 的映射了，
-``` bash
-   \* 与 g* 的区别
-   \* 搜索完整的单词     比如搜 lo 那 hello 不会匹配
-       g* 搜索只要匹配就行  比如搜 lo 那 hello 里的 lo 就会匹配
-``` 
+```
 ## o 切换 visual 的上端与下端
 
 ## R 可以在文字上覆盖
@@ -136,6 +130,7 @@ c-w H/J/I/K   -=> 将窗口交换
 c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
 c-w </>  =>  :vertical resize +/- N
 ```
+
 ## plugins 
 kite 是一个基于 ai 的 python 补全.还行,
 
@@ -168,10 +163,12 @@ set formatoptions-=cro     或者 set fo-=cro
 -V[N] N 是 debug　
 
 ## fugitive 
+```
 :Glog --  显示+ - 界面的 git log
 :Glog -- % 显示当前文件的git log
 :copen      fugitive 使用了 quickfix,直接用就行了
 alt-p --> :cprevious alt-n --> :nnext
+```
 
 how to diff version?
 - Diff index and local
@@ -181,6 +178,7 @@ how to diff version?
 
 - Diff between current file and current file 3 commits ago:
 ```
+
 :Gdiff ~3
 ```
 map diffget  do
@@ -220,9 +218,9 @@ g_   jump to end
 https://github.com/chubin/cheat.sh
 
 
-#  不使用插件启动 vim 
+##  不使用插件启动 vim 
 vim -u NONE
-`
+
 
 ## search and replace
 you can serach first , then leave replace  search slot blank
@@ -230,47 +228,49 @@ you can serach first , then leave replace  search slot blank
  
  
  
-# yank to reigster  a
+## yank to reigster  a
 V"ay
 
 # paste register a to buffer 
+```
 "ap
 
 @"  execute reigster "
 
 
-# repeat last colon command 
+```
+## repeat last colon command 
 @:
 further reqeat 
 @@
 
 
-# insert mode tips
+## insert mode tips
 c-h delete previous char
 c-w delete previous word
 c-u delete to the start of line
 
 
-# eval string
+## eval string
 <c-r>=  eval your input
  
 
-# force uppser/lower seach 
+## force uppser/lower seach 
 /\Ca     search for A
 /\ca     search for a
 
 
-# 寄存器大写的作用
+## 寄存器大写的作用
 https://www.cnblogs.com/bwangel23/p/4421957.html
 命名寄存器了，这个一共是a-z26个寄存器，分别用英文字母来表示。这个感觉主要需要讲的就是大写字母和小写字母的区别，当向寄存器中写入内容的时候（即复制或者剪切的时候），大写字母表示的是将当前要复制的内容追加到寄存器中，而小写字母表示的是将当前要复制的内容将寄存器中的原有内容给覆盖掉。这个可以类比于数据流重定向中的">"和">>"命令。
 
 
-# vim help next previous
+## vim help next previous
 you must use :helpgrep  instead of :h
 then you can :cnext  :cprevious
 
 
-# 反向搜索删除
+## 反向搜索删除
 v/href/d
 可以删除掉里只包含 href 的行。v 的帮助见 :vglobal 
 
@@ -279,6 +279,6 @@ join文件里包含 href 的行，前面的 g 代表后面是执行 norm 命令,
 
 g 的帮助写:global
 
-# 移动到屏幕行的行尾
+## 移动到屏幕行的行尾
 有时一行太长，你如果用 $，则在视觉上感觉跳了几行，
 g$

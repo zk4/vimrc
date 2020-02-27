@@ -11,6 +11,7 @@ xnoremap & :&&<CR>
 nnoremap = :Tabularize /=<cr>
 
 inoremap <C-c> <ESC>
+
 nnoremap <c-e> :SwitchBuffer<cr>
 
 vnoremap <space> <Nop>
@@ -18,20 +19,39 @@ vnoremap <space> <Nop>
 vnoremap y y`]
 nmap <silent> gp :!open % & <cr>
 
+nnoremap yy ddu
 nmap dx dix
 nmap dw diw
 nmap cw ciw
 nmap cW ciW
 nmap vw viw
 nmap dW diW
-" 去除一层函数掉用  a(b)
-nmap dc diwlds(
-" add |($1)
-nmap ziw viwSi
+
+nmap <leader>cp :CocCommand python.
+
 " add print($1)
-nmap zfp vil)iprint<esc>
+nmap zip vil)iprint<esc>
+nmap zild vil)ilogger.debug<esc>
+nmap zilf vil)ilogger.fatal<esc>
+nmap zile vil)ilogger.error<esc>
+nmap zilo vil)ilogger.exception<esc>
+
+" fix markdwon code fence
+nmap vi` vi`oj0o
+nmap va` va`$o0o
+nmap ci` vi`dO
+nmap ca` va`dO
+
+vmap zip )iprint<esc>
+vmap zild )ilogger.debug<esc>
+vmap zilf )ilogger.fatal<esc>
+vmap zile )ilogger.error<esc>
+vmap zilo )ilogger.exception<esc>
+
 " 去除 函数名  a{ b }
-nmap df diwlds{
+" nmap df diwlds{
+" 去除一层函数掉用  a.b(c)  put cursor in a , dc -> c
+nmap dc viwf(hxlds(
 " sudo write
 cnoremap w!! w !sudo tee > /dev/null %
 "map zz to za in normal mode
@@ -85,6 +105,7 @@ nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>eh :e ~/.zk_vimrc/help.md<cr>
 nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
 nnoremap <leader>ec :e ~/bin/cmd_database.py<cr>
+nnoremap <leader>e4 :e /usr/local/etc/proxychains.conf<cr>
 
 " format file without cursor moving to head, and move cursor the middle of screen
 "nnoremap <leader>f mmgg=G`mzz
@@ -194,7 +215,6 @@ nmap cW ciW
 nmap vw viw
 nmap dW diW
 " 去除一层函数掉用  a(b)
-nmap dc diwlds(
 " add |($1)
 nmap ziw viwSi
 " add print($1)

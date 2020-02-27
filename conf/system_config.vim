@@ -17,7 +17,7 @@ set foldmethod=indent
 "let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
 " 方便 gf 跳转
-set path+=**
+" set path+=**
 " when scroll with track pad, cursor not move but page
 set mouse=a
 
@@ -59,6 +59,8 @@ set hlsearch
 set incsearch
 " 忽略大小写
 set ignorecase
+" 但在自动补全时，大小写第三
+set infercase
 set magic
 " 允许不写入 buffer 时,也只可以切换 buffer
 set hidden
@@ -111,3 +113,4 @@ set nobackup                " 设置无备份文件
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 
+" set spell
