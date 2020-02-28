@@ -28,7 +28,8 @@ let g:go_fmt_command = "goimports"
 
 " https://github.com/fatih/vim-go/issues/2149
 " when go.mod exists, godef will not work, add the above line to solve 
-let g:go_def_mode = 'godef'
+" let g:go_def_mode = 'godef'
+let g:go_def_mode = 'gopls'
 
 
 augroup guard_group 
