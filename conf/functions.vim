@@ -22,8 +22,7 @@ function! FindProjectRoot(lookFor)
         let pathMaker=pathMaker.':h'
         let fileToCheck=expand(pathMaker).'/'.a:lookFor
         if filereadable(fileToCheck)||isdirectory(fileToCheck)
-            return expand(pathMaker)
-        endif
+            return expand(pathMaker) endif
     endwhile
     return 0
 endfunction
@@ -217,6 +216,26 @@ function! GoogleSearch()
      echom url
      silent exec  url
 endfunction
+
+function! Strip(input_string)
+    return substitute(a:input_string, '^\s*\(.\{-}\)\s*$', '\1', '')
+endfunction
+
+
+function! OpenChrome()
+"     let searchterm =s:get_visual_selection()
+     let searchterm =@"
+         
+		 let url=""
+		if Strip(searchterm) =~ "^http"
+    		let url =':!open -a Google\ Chrome '. searchterm     
+		else
+    let url =':!open -a Google\ Chrome '.'https://' . searchterm     
+		endif
+     echom url
+     silent exec  url
+endfunction
+
 function! KubeSearch()
 "     let searchterm =s:get_visual_selection()
      let searchterm =@"
@@ -233,6 +252,7 @@ endfunction
 vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
 vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 vnoremap gk "gy<Esc>:call KubeSearch()<CR>
+vnoremap ga "gy<esc>:call OpenChrome()<CR>
 
 
 "vnoremap gs "gy<Esc>:call StackOverFlow()<CR>

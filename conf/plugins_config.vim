@@ -28,24 +28,36 @@ let g:go_fmt_command = "goimports"
 
 " https://github.com/fatih/vim-go/issues/2149
 " when go.mod exists, godef will not work, add the above line to solve 
-" let g:go_def_mode = 'godef'
-let g:go_def_mode = 'gopls'
+let g:go_def_mode = 'godef'
+" let g:go_def_mode = 'gopls'
 
 
 augroup guard_group 
 	autocmd!
 	autocmd FileType go nmap <leader>t  <Plug>(go-test)
+	autocmd FileType go nmap <leader>r  <Plug>(go-run)
 	autocmd FileType go nmap <leader>tf  :GoTestFunc<cr>
 	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
 	autocmd FileType go nmap <leader>v  <Plug>(go-alternate-edit)
 	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
 	autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
 	autocmd FileType go nmap <leader>dS :GoDebugStop<CR>
 	autocmd FileType go nmap <leader>dn :GoDebugNext<CR>
+
+	autocmd FileType go nmap <F7> :GoDebugStep<CR>
+	autocmd FileType go nmap <F8> :GoDebugNext<CR>
+	autocmd FileType go nmap <F9> :GoDebugStepOut<CR>
+
 	autocmd FileType go nmap <leader>dc :GoDebugContinue<CR>
 	autocmd FileType go nmap <leader>dd :GoDebugBreakpoint<CR>
+	autocmd FileType go nmap <leader>d<space> :GoDebugBreakpoint<CR>
+	autocmd FileType go nmap <leader>dp :GoDebugPrint
+	autocmd FileType go nmap <leader>di :GoDebugStep<CR>
+	autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
+	autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
 augroup END
 
 " run :GoBuild or :GoTestCompile based on the go file
@@ -264,6 +276,8 @@ nnoremap <leader>m :LeaderfMru<CR>
 nnoremap <leader>i :LeaderfFunction<CR>
 
 nnoremap <leader>o :LeaderfBuffer<cr>
+nnoremap <leader>g :Leaderf rg<cr>
+nnoremap <leader>G :Leaderf rg<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vimwiki                            
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -441,14 +455,14 @@ function! SyncTree()
 	endif
 endfunction
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
-""autocmd BufEnter * call SyncTree()
+" autocmd BufEnter * call SyncTree()
 
 " change current file root when toggled 
 " nnoremap <C-\> :NERDTreeToggle %<CR>
 " inoremap <C-\> <esc>:NERDTreeToggle %<CR>
 " always resize it to 25
-nnoremap <C-\> :NERDTreeToggle <CR> :vertical resize 25<CR>
-inoremap <C-\> <esc>:NERDTreeToggle<cr> :vertical resize 25<CR>
+nnoremap <C-\> :NERDTreeToggle  <CR> :vertical resize 25<CR>
+inoremap <C-\> <esc>:NERDTreeToggle <cr> :vertical resize 25<CR>
 " nnoremap <C-\> :NERDTreeToggle <CR>
 " inoremap <C-\> <esc>:NERDTreeToggle<cr>
 
@@ -498,6 +512,7 @@ command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+"
 
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
