@@ -226,7 +226,9 @@ function! OpenChrome()
 "     let searchterm =s:get_visual_selection()
      let searchterm =@"
          
-		 let url=""
+		 " todo extract url from current line
+		 " let cur_line=  getline('.')
+		 
 		if Strip(searchterm) =~ "^http"
     		let url =':!open -a Google\ Chrome '. searchterm     
 		else
