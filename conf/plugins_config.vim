@@ -418,7 +418,9 @@ nnoremap <C-g>pl :!git pull <CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           NERDTree                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" this is better, it`s async
+Plug 'jojoyuji/nerdtree-async'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 "git plugin 禁了.光标上下移动时会闪动
 let NERDTreeHijackNetrw=1
@@ -713,7 +715,8 @@ Plug 'tpope/vim-abolish'
 " 1. ：S/{dog,man}/{man,dog}/g
 " 2. 驼峰转换
 "  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
-"
+
+Plug 'vifm/vifm.vim'
 call plug#end()
 
 
