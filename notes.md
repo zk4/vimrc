@@ -282,3 +282,13 @@ g 的帮助写:global
 ## 移动到屏幕行的行尾
 有时一行太长，你如果用 $，则在视觉上感觉跳了几行，
 g$
+
+
+## if coc does not work 
+:CocCommand workspace.showOutput
+
+or 
+check .vim  in project 
+maybe something is disabled
+
+

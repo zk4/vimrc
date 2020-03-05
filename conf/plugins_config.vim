@@ -95,10 +95,34 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " show extension
 " CocList extensions
 
+
+"让coc服务，在neovim启动后，500ms后才启动
+let g:coc_start_at_startup=0
+function! CocTimerStart(timer)
+    exec "CocStart"
+endfunction
+call timer_start(500,'CocTimerStart',{'repeat':1})
+
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+"解决coc.nvim大文件卡死状况
+let g:trigger_size = 0.5 * 1048576
+
+augroup hugefile
+  autocmd!
+  autocmd BufReadPre *
+        \ let size = getfsize(expand('<afile>')) |
+        \ if (size > g:trigger_size) || (size == -2) |
+        \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
+        \   exec 'CocDisable' |
+        \ else |
+        \   exec 'CocEnable' |
+        \ endif |
+        \ unlet size
+augroup END
 
 function! s:show_documentation()
 	if (index(['vim','help'], &filetype) >= 0)
@@ -193,7 +217,8 @@ let g:coc_global_extensions=[
  \ 'coc-json',
  \]
  " so slow with big file, called  coc#insert
-
+" debug  
+" CocCommand workspace.showOutput
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  lightline                                 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -362,7 +387,7 @@ let g:mkdp_preview_options = {
     \ 'sequence_diagrams': {}
     \ }
 let g:mkdp_auto_close = 0
-let g:mkdp_markdown_css='/Users/zk/vue.css'
+let g:mkdp_markdown_css="/Users/zk/vue.css"
 
 
 augroup gp_group 
@@ -716,7 +741,7 @@ Plug 'tpope/vim-abolish'
 " 2. 驼峰转换
 "  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
 
-Plug 'vifm/vifm.vim'
+" Plug 'vifm/vifm.vim'
 call plug#end()
 
 
