@@ -3,8 +3,8 @@ call plug#begin('~/.vim/plugged')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           search                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'easymotion/vim-easymotion'
-nmap s <Plug>(easymotion-s)
+" Plug 'easymotion/vim-easymotion'
+" nmap s <Plug>(easymotion-s)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -18,7 +18,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 "gS to split the line to multiple lines 
 "gJ to join multiple lines to one line
 
-Plug 'fatih/molokai'
+" Plug 'fatih/molokai'
 
 " all location list message goes to quickfix
 let g:go_list_type = "quickfix"
@@ -399,7 +399,6 @@ augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'sickill/vim-monokai'
 Plug 'morhetz/gruvbox'
 " Plug 'sheerun/vim-wombat-scheme'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
