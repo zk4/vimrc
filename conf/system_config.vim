@@ -21,6 +21,8 @@ set foldmethod=indent
 " when scroll with track pad, cursor not move but page
 set mouse=a
 
+" set tag name
+set tags=./.tags;,.tags
 
 " show  control characters
 " set list

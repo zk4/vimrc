@@ -1,6 +1,5 @@
 
-call plug#begin('~/.vim/plugged')
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.vim/plugged') """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           search                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug 'easymotion/vim-easymotion'
@@ -58,6 +57,9 @@ augroup guard_group
 	autocmd FileType go nmap <leader>di :GoDebugStep<CR>
 	autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
 	autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
+" switch between cpp and h file
+  autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+  autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
 augroup END
 
 " run :GoBuild or :GoTestCompile based on the go file
@@ -136,6 +138,7 @@ augroup coc_guard
 	autocmd!
 	"  正确高亮 jsonc 的注释
 	autocmd FileType json syntax match Comment +\/\/.\+$+
+	autocmd FileType java  exec "CocDisable"
 	" Close preview window after completion is done
 	autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 	" Show signature help while editing
@@ -143,8 +146,8 @@ augroup coc_guard
 
 	" Highlight symbol under cursor on CursorHold
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
-	autocmd FileTYpe *  xnoremap <buffer> <leader>f :CocFormat<CR>
-	autocmd FileTYpe *  nnoremap <buffer> <leader>f :CocFormat<CR>
+	autocmd FileType *  xnoremap <buffer> <leader>f :CocFormat<CR>
+	autocmd FileType *  nnoremap <buffer> <leader>f :CocFormat<CR>
 " To enable highlight current symbol on CursorHold
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -197,8 +200,8 @@ nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
 " Remap keys for goto
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
 
 "nore Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -336,6 +339,7 @@ Plug 'mileszs/ack.vim'
 " if executable("ag")
 " 	let g:ackprg = 'ag --nogroup --nocolor --column'
 " endif
+" write ignore directory or file to ~/.ackrc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-table-format                            
@@ -457,10 +461,11 @@ let g:NERDTreeWinSize=25
 "open NERDTree automatically when vim starts up on opening a directory
 augroup nerdtree_guard
 	autocmd!
+	" autocmd FileType nerdtree nmap  <buffer> + :vertical resize +1<cr>
+	" autocmd FileType nerdtree nmap  <buffer> - :vertical resize -1<cr>
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"    autocmd FileTYpe nerdtree  nnoremap <buffer> <f5> :NERDTreeFocus<CR>
 	autocmd FileType *  nnoremap  gs :NERDTreeFind<CR>
 	if exists("g:NERDTree") && g:NERDTree.IsOpen()
 		autocmd VimLeavePre * NERDTreeClose
@@ -609,7 +614,7 @@ command! -bang BTags
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-Plug 'terryma/vim-expand-region'
+" Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 " map K <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
@@ -741,6 +746,13 @@ Plug 'tpope/vim-abolish'
 "  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
 
 " Plug 'vifm/vifm.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_experimental_template_highlight = 1
+
 call plug#end()
 
 
