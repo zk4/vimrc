@@ -32,7 +32,9 @@ func! CompileRunGcc()
     if &filetype == 'c'
         exec "silent ! gcc % -o %<"
         exec "!./%<"
-    elseif &filetype == 'javascript.jsx'
+		elseif &filetype == 'xxd'
+			exec "qemu-system-x86_64 % --nographic -serial mon:stdio"
+	  elseif &filetype == 'javascript.jsx'
         exec "!node %"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
