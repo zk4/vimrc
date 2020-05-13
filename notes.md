@@ -98,7 +98,8 @@ argdo %s/xx/bb/cg  使用 argdo 执行批量命令，
 ```
 :grep -R 'keyword' . 
 ```
-## o 切换 visual 的上端与下端
+#切换 visual 的上端与下端
+o 
 
 ## R 可以在文字上覆盖
 

@@ -328,9 +328,15 @@ Plug 'tpope/vim-repeat'
 "                           comment                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-commentary'
-Plug 'suy/vim-context-commentstring'
+
+" add support for asm commenting
+autocmd FileType asm setlocal commentstring=;\ %s
+
 vnoremap <leader>c<leader> :Commentary<cr>
 nnoremap <leader>c<leader> :Commentary<cr>
+
+" commment based on contex like jsx in react js
+Plug 'suy/vim-context-commentstring'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ack                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
