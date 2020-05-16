@@ -40,6 +40,9 @@ nmap ci` vi`dO
 nmap ca` va`dO
 nmap dc viwf(hxlds(
 
+" create file if file not exist when using gf command in normal mode
+noremap gf :e <cfile><cr>
+
 nnoremap = :Tabularize /=<cr>
 
 inoremap <C-c> <ESC>
