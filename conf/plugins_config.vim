@@ -316,28 +316,6 @@ nnoremap <leader>G :Leaderf rg<cr>
 "                        \ 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-surround                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 教程
-"http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
-Plug 'tpope/vim-surround'
-"support vim surround repeat
-Plug 'tpope/vim-repeat'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           comment                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'tpope/vim-commentary'
-
-" add support for asm commenting
-autocmd FileType asm setlocal commentstring=;\ %s
-
-vnoremap <leader>c<leader> :Commentary<cr>
-nnoremap <leader>c<leader> :Commentary<cr>
-
-" commment based on contex like jsx in react js
-Plug 'suy/vim-context-commentstring'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           ack                            
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
@@ -762,6 +740,31 @@ let g:cpp_experimental_template_highlight = 1
 " when file in xxd(hex) mode. sync the hex view and the ascii view
 Plug 'mattn/vim-xxdcursor'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           vim-surround                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 教程
+"http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
+Plug 'tpope/vim-surround'
+"support vim surround repeat
+Plug 'tpope/vim-repeat'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           comment                            
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'preservim/nerdcommenter'
+
+" Plug 'tpope/vim-commentary'
+
+" " add support for asm commenting
+" autocmd FileType asm setlocal commentstring=;\ %s
+" autocmd FileType html setlocal commentstring=<!--\ %s\ -->
+
+" vnoremap <leader>c<leader> :Commentary<cr>
+" nnoremap <leader>c<leader> :Commentary<cr>
+
+" " commment based on contex like jsx in react js
+" Plug 'suy/vim-context-commentstring'
 
 
 call plug#end()
