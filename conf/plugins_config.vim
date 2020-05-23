@@ -81,8 +81,9 @@ endfunction
 " Plug 'zxqfl/tabnine-vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " go configuration 
 " auto imports before save, so slow
@@ -101,7 +102,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "让coc服务，在neovim启动后，500ms后才启动
 let g:coc_start_at_startup=0
 function! CocTimerStart(timer)
-    exec "CocStart"
+		exec "CocStart"
 endfunction
 call timer_start(500,'CocTimerStart',{'repeat':1})
 
@@ -114,16 +115,16 @@ endfunction
 let g:trigger_size = 0.5 * 1048576
 
 augroup hugefile
-  autocmd!
-  autocmd BufReadPre *
-        \ let size = getfsize(expand('<afile>')) |
-        \ if (size > g:trigger_size) || (size == -2) |
-        \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
-        \   exec 'CocDisable' |
-        \ else |
-        \   exec 'CocEnable' |
-        \ endif |
-        \ unlet size
+	autocmd!
+	autocmd BufReadPre *
+				\ let size = getfsize(expand('<afile>')) |
+				\ if (size > g:trigger_size) || (size == -2) |
+				\   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
+				\   exec 'CocDisable' |
+				\ else |
+				\   exec 'CocEnable' |
+				\ endif |
+				\ unlet size
 augroup END
 
 function! s:show_documentation()
@@ -166,25 +167,18 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 " method 1
 imap <Tab> <Plug>(coc-snippets-expand-jump)
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+			\ pumvisible() ? coc#_select_confirm() :
+			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-
-" method 2 
-" this won`t trigger auto-completion if expansion is on the fly
-" and another cavet is allowing you tab after word in normal line
-" inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-" let g:coc_snippet_next = '<TAB>'
-" let g:coc_snippet_prev = '<S-TAB>'
 
 nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
 nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
@@ -711,7 +705,7 @@ Plug 'junegunn/vim-peekaboo'
 " nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
 " nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 " nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
-Plug 'vim-scripts/loremipsum'
+"Plug 'vim-scripts/loremipsum'
 " Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""
