@@ -123,8 +123,6 @@ filetype on
 filetype  plugin on          " 针对不同的文件类型加载对应的插件
 set nobackup                " 设置无备份文件
 
-set undodir=~/.vim_undo
-set undofile
 
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile

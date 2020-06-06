@@ -690,11 +690,11 @@ Plug 'junegunn/vim-peekaboo'
 """"""""""""""""""""""
 "  undo history   "
 """"""""""""""""""""""
-" Plug 'mbbill/undotree'
-" if has("persistent_undo")
-"     set undodir=$HOME . "/.undodir"
-"     set undofile
-" endif
+ Plug 'mbbill/undotree'
+ if has("persistent_undo")
+		set undodir=~/.vim_undo
+		set undofile
+ endif
 
 Plug 'tpope/vim-abolish'
 " 这个插件有两个牛 b 的功能

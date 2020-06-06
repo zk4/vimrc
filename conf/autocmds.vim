@@ -1,4 +1,4 @@
-augroup autocmd_guard_me 
+augroup autocmd_guard_me
     autocmd!
 	  " 识别 md 为 markdown
     au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
@@ -20,7 +20,7 @@ augroup autocmd_guard_me
     autocmd FileType nerdtree map <buffer> K kgo
 
     autocmd FileType vim vnoremap <F5> "ay:@a<cr>
-	  
+
 
     " don`t use this, a lot of strange problems will occur
 	 " autocmd! bufwritepost ~/.vimrc source %
@@ -42,9 +42,18 @@ augroup autocmd_guard_me
     "  autocmd FileType * execute "setlocal colorcolumn=+1"
     ":hi CursorLine   cterm=NONE ctermbg=gray ctermfg=white guibg=darkred guifg=white
 
+		" 在保存时,自动删除结尾空格
+		fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+		endfun
+
+		autocmd BufWritePre * :call TrimWhitespace()
+
 augroup END
 
-" auto load file as binary  
+" auto load file as binary
 " http://vim.wikia.com/wiki/Improved_hex_editing
 " vim -b : edit binary using xxd-format!
 augroup Binary
