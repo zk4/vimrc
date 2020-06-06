@@ -2,6 +2,8 @@ scriptencoding utf-8
 set encoding=utf-8
 set fileencoding=utf-8
 set runtimepath+=~/.vim
+
+set noerrorbells 
 " 设置 leader
 let mapleader=" "
 "let maplocalleader =" "
@@ -14,6 +16,7 @@ set foldmethod=indent
 
 " 将 tab 转化为空格
 "set expandtab
+
 "let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
 " 方便 gf 跳转
@@ -83,15 +86,22 @@ set wildmenu
 set wildmode=full
 set history=200
 
-set tabstop=2               " 设置tab键的显示宽度，如果有时你觉得太宽，可以打印看看当前值
-set shiftwidth=2           " 换行时行间交错使用4个空格
-set backspace=2             " 设置退格键可用
-set cindent shiftwidth=2    " 自动缩进4空格
+" 设置tab键的显示宽度，如果有时你觉得太宽，可以打印看看当前值
+set tabstop=2 softtabstop=2 
+" 换行时行间交错使用n个空格
+set shiftwidth=2           
+" 设置退格键可用
+set backspace=2             
+" 自动缩进4空格
+set cindent shiftwidth=2    
 
 "set autoindent              " 自动对齐
 "hi Search term=standout ctermfg=5 ctermbg=12
-" set smartindent             " 智能自动缩进
-" set smarttab
+"
+" 智能自动缩进, 会尽可能按你意思 indent 
+set smartindent             
+"
+set smarttab
 
 " 设置分割, 
 if $TERM_PROGRAM  == "iTerm.app"
@@ -112,6 +122,10 @@ filetype on
 "filetype indent on         " 针对不同的文件类型采用不同的缩进格式
 filetype  plugin on          " 针对不同的文件类型加载对应的插件
 set nobackup                " 设置无备份文件
+
+set undodir=~/.vim_undo
+set undofile
+
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 

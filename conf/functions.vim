@@ -51,6 +51,8 @@ func! CompileRunGcc()
         :!bash %
     elseif &filetype == 'python'
         exec "!python3 '%'"
+    elseif &filetype == 'dart'
+        exec "!dart '%'"
     elseif &filetype == 'html'
         exec "!open % "
     elseif &filetype == 'yaml'

@@ -148,6 +148,7 @@ kite 是一个基于 ai 的 python 补全.还行,
   跳转用的是jedi 绑定到了 gd, 但是 ctags 也会生成. 可以使用 ctrl+] 跳.
   但很明显 ctags 跳的地方不太对. 尤其是针对系统库
   
+使用 c-w c-]  可以打开预览 tag 窗口
 
 
 :g will execute a command on lines which match a regex. The regex is 'blank line' and the command is :d (delete)

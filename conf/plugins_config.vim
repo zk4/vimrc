@@ -544,47 +544,26 @@ command! -bang BTags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   ctags                                    
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let $GTAGSLABEL = 'native-pygments'
-" let $GTAGSCONF = '/usr/local/etc/gtags.conf'
+Plug 'ludovicchabant/vim-gutentags'
 
-" let g:Lf_GtagsAutoGenerate = 1
-" let g:Lf_Gtagslabel = 'native-pygments'
-" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-"set tags=./.tags;,.tags
-"" 当filetype 是 python 时,自动加载 python3.7 的 tag
-"augroup python
-"    autocmd!
-"    autocmd FileType python set tags+=/Users/zk/.cache/tags/python3.7.tags
-"augroup END
-"" To know when Gutentags is generating tags
-"set statusline+=%{gutentags#statusline()}
-"" set statusline+=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-"" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
-"" 仅当发现这些文件后, 才自动生成 tags!
-"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-"let g:gutentags_exclude_filetypes = ['.json',".xlsx",".txt"]
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 
-"" 所生成的数据文件的名称
-"let g:gutentags_ctags_tagfile = '.tags'
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
 
-"" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-"let s:vim_tags = expand('~/.cache/tags')
-"let g:gutentags_cache_dir = s:vim_tags
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
 
-"" 配置 ctags 的参数
-"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-""let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-""let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-"" 检测 ~/.cache/tags 不存在就新建
-"if !isdirectory(s:vim_tags)
-"    silent! call mkdir(s:vim_tags, 'p')
-"endif
+" 检测 ~/.cache/tags 不存在就新建
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           object                            
@@ -761,6 +740,7 @@ Plug 'preservim/nerdcommenter'
 " Plug 'suy/vim-context-commentstring'
 
 
+Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
 
 
