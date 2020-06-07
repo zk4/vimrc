@@ -1,20 +1,20 @@
 
 call plug#begin('~/.vim/plugged') """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           search                            
+"                           search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug 'easymotion/vim-easymotion'
 " nmap s <Plug>(easymotion-s)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           language -go                            
+"                           language -go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " https://github.com/fatih/vim-go/wiki/Tutorial
 
 " split and join recommanded by vim-go author
 Plug 'AndrewRadev/splitjoin.vim'
-"gS to split the line to multiple lines 
+"gS to split the line to multiple lines
 "gJ to join multiple lines to one line
 
 " Plug 'fatih/molokai'
@@ -26,12 +26,12 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 
 " https://github.com/fatih/vim-go/issues/2149
-" when go.mod exists, godef will not work, add the above line to solve 
+" when go.mod exists, godef will not work, add the above line to solve
 let g:go_def_mode = 'godef'
 " let g:go_def_mode = 'gopls'
 
 
-augroup guard_group 
+augroup guard_group
 	autocmd!
 	autocmd FileType go nmap <leader>t  <Plug>(go-test)
 	autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -73,26 +73,26 @@ function! s:build_go_files()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           code complete                            
+"                           code complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 基于 ai 的代码补全
 " 用 CocInstall coc-tabnine, but with or without coc , it`s slow and not that
 " good
 " Plug 'zxqfl/tabnine-vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           coc                            
+"                           coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-" go configuration 
+" go configuration
 " auto imports before save, so slow
 " autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 "
-" all extension source 
+" all extension source
 " https://www.npmjs.com/search?q=keywords%3Acoc.nvim&page=2&perPage=20
 "
-" gitter 
+" gitter
 " https://gitter.im/neoclide/coc-cn
 "
 " show extension
@@ -195,7 +195,7 @@ nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-references)
 
 "nore Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -214,10 +214,10 @@ let g:coc_global_extensions=[
  \ 'coc-json',
  \]
  " so slow with big file, called  coc#insert
-" debug  
+" debug
 " CocCommand workspace.showOutput
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                  lightline                                 
+"                                  lightline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -232,7 +232,7 @@ let g:lightline = {
             \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           buffer explorer                            
+"                           buffer explorer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 更好用的 buffer explorer
 "Plug 'vim-scripts/bufexplorer.zip'
@@ -257,14 +257,14 @@ let g:lightline = {
 Plug 'godlygeek/tabular'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-easy-align                            
+"                           vim-easy-align
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 对齐 =号. visual 选择后, 按= 号
 "Plug 'junegunn/vim-easy-align'
 "vnoremap <silent> <Enter> :EasyAlign<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           leaderF                            
+"                           leaderF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 搜索中文时会有乱码的情况。
@@ -301,7 +301,7 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 nnoremap <leader>g :Leaderf rg<cr>
 nnoremap <leader>G :Leaderf rg<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vimwiki                            
+"                           vimwiki
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug 'vimwiki/vimwiki'
 " autocmd FileType markdown nmap <buffer><silent> t :VimwikiTable<cr>
@@ -310,7 +310,7 @@ nnoremap <leader>G :Leaderf rg<cr>
 "                        \ 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           ack                            
+"                           ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
 " let g:ackhighlight = 1
@@ -320,10 +320,10 @@ Plug 'mileszs/ack.vim'
 " write ignore directory or file to ~/.ackrc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-table-format                            
+"                           vim-table-format
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " below sinpet code will align | when in insert mode. super cool , like the
-" dhruvasagar/vim-table-mode plugin does 
+" dhruvasagar/vim-table-mode plugin does
 " https://gist.github.com/tpope/287147
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()
@@ -372,33 +372,33 @@ let g:mkdp_auto_close = 0
 let g:mkdp_markdown_css="/Users/zk/vue.css"
 
 
-augroup gp_group 
+augroup gp_group
 	autocmd!
 	autocmd FileType markdown nnoremap <buffer> gp :MarkdownPreview<cr>
 
-	
+
 augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           color-schema                            
+"                           color-schema
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'morhetz/gruvbox'
 " Plug 'sheerun/vim-wombat-scheme'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           accelerated-jk                            
+"                           accelerated-jk
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'rhysd/accelerated-jk'
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           fugitive                            
+"                           fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 " make gpush async
 Plug 'tpope/vim-dispatch'
 " easy mapping for fugitive
 Plug 'tpope/vim-unimpaired'
-" for github 
+" for github
 Plug 'tpope/vim-rhubarb'
 
 set diffopt+=vertical
@@ -422,10 +422,9 @@ nnoremap <C-g>p :Gpush <CR>
 nnoremap <C-g>pl :!git pull <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           NERDTree                            
+"                           NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" this is better, it`s async
+" this is better one for nerdtree, it`s async
 Plug 'jojoyuji/nerdtree-async'
 "Plug 'Xuyuanp/nerdtree-git-plugin'
 "git plugin 禁了.光标上下移动时会闪动
@@ -466,7 +465,7 @@ endfunction
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 " autocmd BufEnter * call SyncTree()
 
-" change current file root when toggled 
+" change current file root when toggled
 " nnoremap <C-\> :NERDTreeToggle %<CR>
 " inoremap <C-\> <esc>:NERDTreeToggle %<CR>
 " always resize it to 25
@@ -475,7 +474,7 @@ inoremap <C-\> <esc>:NERDTreeToggle <cr> :vertical resize 25<CR>
 " nnoremap <C-\> :NERDTreeToggle <CR>
 " inoremap <C-\> <esc>:NERDTreeToggle<cr>
 
-" autocmd BufEnter * :NERDTreeToggle 
+" autocmd BufEnter * :NERDTreeToggle
 " augroup nerdtree_guard
 " 	autocmd!
 " 	autocmd BufEnter nerdtree :vertical resize 25<CR>
@@ -484,11 +483,11 @@ inoremap <C-\> <esc>:NERDTreeToggle <cr> :vertical resize 25<CR>
 nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           language-jsx                            
+"                           language-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           fzf                            
+"                           fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html
 " https://github.com/junegunn/fzf/wiki
@@ -501,7 +500,7 @@ let g:fzf_buffers_jump = 1
 
 set rtp+=/usr/local/opt/fzf
 
-" search md ,this is very good for search code snippets in markdown 
+" search md ,this is very good for search code snippets in markdown
 Plug 'alok/notational-fzf-vim'
 let g:nv_search_paths = ['~/bdcloud/notes']
 " if not found, creat note with ctrl-x
@@ -531,10 +530,10 @@ command! -bang -nargs=* GGrep
 command! -bang BTags
   \ call fzf#vim#buffer_tags('', {
   \     'down': '40%',
-  \     'options': '--with-nth 1 
-  \                 --reverse 
-  \                 --prompt "> " 
-  \                 --preview-window="80%" 
+  \     'options': '--with-nth 1
+  \                 --reverse
+  \                 --prompt "> "
+  \                 --preview-window="80%"
   \                 --preview "
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\") {2}  |
   \                     head -n 16"'
@@ -542,7 +541,7 @@ command! -bang BTags
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                   ctags                                    
+"                                   ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'ludovicchabant/vim-gutentags'
 
@@ -566,7 +565,7 @@ if !isdirectory(s:vim_tags)
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           object                            
+"                           object
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
@@ -582,10 +581,10 @@ let g:expand_region_text_objects = {
       \ 'iW'  :1,
       \ 'i"'  :1,
       \ 'i''' :1,
-      \ 'i]'  :1, 
-      \ 'ib'  :1, 
-      \ 'iB'  :1, 
-      \ 'il'  :1, 
+      \ 'i]'  :1,
+      \ 'ib'  :1,
+      \ 'iB'  :1,
+      \ 'il'  :1,
       \ 'ip'  :1,
       \ 'ie'  :1,
       \ }
@@ -609,7 +608,7 @@ Plug 'mg979/vim-visual-multi'
 
 Plug 'wellle/targets.vim'
 let g:targets_nl = 'np'
-" a cheetsheet for that 
+" a cheetsheet for that
 " https://github.com/wellle/targets.vim/blob/master/cheatsheet.md
 
 "Targets.vim is a Vim plugin that adds various text objects to give you more targets to operate on. It expands on the idea of simple commands like di' (delete inside the single quotes around the cursor) to give you more opportunities to craft powerful commands that can be repeated reliably. One major goal is to handle all corner cases correctly.
@@ -627,7 +626,7 @@ Plug 'google/vim-searchindex'
 " 搜索时,显示当前匹配第几个与总匹配数
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-workspace                            
+"                           vim-workspace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "使用 leader-s 切换是否创建工程
 "在打开当前文件夹时，可以回到工程现场
@@ -644,14 +643,14 @@ Plug 'google/vim-searchindex'
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" wil cause crash 
+" wil cause crash
 Plug 'liuchengxu/vim-which-key'
 "" show leader key tips, for debug purpose
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 "Plug 'zephod/vim-iterm2-navigator'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           inscearch                            
+"                           inscearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'bronson/vim-visual-star-search'
 
@@ -664,7 +663,7 @@ Plug 'bronson/vim-visual-star-search'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           others                             
+"                           others
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'stephpy/vim-yaml'
 
@@ -714,7 +713,7 @@ let g:cpp_experimental_template_highlight = 1
 Plug 'mattn/vim-xxdcursor'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-surround                            
+"                           vim-surround
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 教程
 "http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
@@ -723,7 +722,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           comment                            
+"                           comment
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'preservim/nerdcommenter'
 
