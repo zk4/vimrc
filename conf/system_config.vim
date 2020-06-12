@@ -127,6 +127,6 @@ set nobackup                " 设置无备份文件
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 
-set foldmethod=indent
+"set foldmethod=indent
 
 " set spell

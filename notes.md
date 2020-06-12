@@ -50,6 +50,13 @@ like emacs!
 Don't use Ack. use Rg.
 :Rg <Keyword> --<filetype>
 ^w^r   put current buffer word to command input
+## Rg 搜索包含文件名的问题
+
+:Rg <keyword> 
+将不会搜索文件名
+
+:Rg <cr> ,然后再搜索,
+则会包含文件名
 
 # 替换
 文章: https://harttle.land/2016/08/08/vim-search-in-file.html
@@ -297,3 +304,8 @@ maybe something is disabled
 这个vimrc  很精简,可以参考一下, 还带有视频
 https://www.youtube.com/watch?v=n9k9scbTuvQ
 https://github.com/erkrnt/awesome-streamerrc/blob/master/ThePrimeagen/init.vim
+
+
+##  关于 mark 的跳转
+大写的 mark 可以在文件间跳
+小写的 mark 只能在本件内跳

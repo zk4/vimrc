@@ -43,13 +43,13 @@ augroup autocmd_guard_me
     ":hi CursorLine   cterm=NONE ctermbg=gray ctermfg=white guibg=darkred guifg=white
 
 		" 在保存时,自动删除结尾空格
-		fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-		endfun
+		"fun! TrimWhitespace()
+    "let l:save = winsaveview()
+    "keeppatterns %s/\s\+$//e
+    "call winrestview(l:save)
+		"endfun
 
-		autocmd BufWritePre * :call TrimWhitespace()
+		"autocmd BufWritePre * :call TrimWhitespace()
 
 augroup END
 

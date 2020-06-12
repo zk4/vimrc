@@ -147,8 +147,8 @@ augroup coc_guard
 
 	" Highlight symbol under cursor on CursorHold
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
-	autocmd FileType *  xnoremap <buffer> <leader>f :CocFormat<CR>
-	autocmd FileType *  nnoremap <buffer> <leader>f :CocFormat<CR>
+	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
+	autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
 " To enable highlight current symbol on CursorHold
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -270,6 +270,11 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 搜索中文时会有乱码的情况。
 " https://github.com/Yggdroot/LeaderF/issues/203
 " 解决方法 git config --global core.quotepath false
+"
+" ctrl-p 时开头为。
+"https://github.com/Yggdroot/LeaderF/issues/567
+let g:Lf_ShowDevIcons = 0
+
 let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
 
@@ -339,6 +344,9 @@ endfunction
 
 
 Plug 'plasticboy/vim-markdown'
+"  不要在打开 markdown 时自动折叠, 没蛋用.
+let vim_markdown_folding_disabled = 1
+
 " let g:vim_markdown_conceal=1
 " set conceallevel=2
 " let g:vim_markdown_conceal_code_blocks = 1
@@ -500,6 +508,8 @@ let g:fzf_buffers_jump = 1
 
 set rtp+=/usr/local/opt/fzf
 
+
+
 " search md ,this is very good for search code snippets in markdown
 Plug 'alok/notational-fzf-vim'
 let g:nv_search_paths = ['~/bdcloud/notes']
@@ -507,6 +517,15 @@ let g:nv_search_paths = ['~/bdcloud/notes']
 let g:nv_create_note_key = 'ctrl-x'
 nmap <leader>n  <esc>:NV<cr>
 
+
+command! -bang -nargs=? -complete=dir Tags
+   \ call fzf#vim#tags(<q-args>, {'options': '--preview-window="80%" --preview "echo {4}"'}, <bang>0)
+
+
+"command! -bang -nargs=* Rg
+  "\ call fzf#vim#grep(
+  "\   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  "\   fzf#vim#with_preview(), <bang>0)
 
 
 "Hide statusline
@@ -516,11 +535,10 @@ if has('nvim') && !exists('g:fzf_layout')
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-"
+
+autocmd FileType *  xnoremap <buffer> <leader>f :Rg<CR>
+autocmd FileType *  nnoremap <buffer> <leader>f :Rg<CR>
+
 
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
