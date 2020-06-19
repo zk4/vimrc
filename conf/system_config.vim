@@ -93,7 +93,7 @@ set shiftwidth=2
 " 设置退格键可用
 set backspace=2
 " 自动缩进4空格
-set cindent shiftwidth=2
+"set cindent shiftwidth=2
 
 "set autoindent              " 自动对齐
 "hi Search term=standout ctermfg=5 ctermbg=12
