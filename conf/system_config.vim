@@ -15,7 +15,7 @@ set autoread
 set foldmethod=indent
 
 " 将 tab 转化为空格
-"set expandtab
+ set expandtab
 
 "let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
@@ -99,7 +99,7 @@ set cindent shiftwidth=2
 "hi Search term=standout ctermfg=5 ctermbg=12
 "
 " 智能自动缩进, 会尽可能按你意思 indent
-set smartindent
+"set smartindent
 "
 set smarttab
 

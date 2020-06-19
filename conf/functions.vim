@@ -36,6 +36,8 @@ func! CompileRunGcc()
 			exec "qemu-system-x86_64 % --nographic -serial mon:stdio"
 	  elseif &filetype == 'javascript.jsx'
         exec "!node %"
+	  elseif &filetype == 'typescript'
+        exec "!tsc % && node %:r"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
         "exec "!time ./%<"

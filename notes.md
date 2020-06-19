@@ -46,10 +46,11 @@ like emacs!
 
 ```
 
-# 全局搜索
+# global search
 Don't use Ack. use Rg.
 :Rg <Keyword> --<filetype>
 ^w^r   put current buffer word to command input
+
 ## Rg 搜索包含文件名的问题
 
 :Rg <keyword> 
@@ -58,7 +59,7 @@ Don't use Ack. use Rg.
 :Rg <cr> ,然后再搜索,
 则会包含文件名
 
-# 替换
+# replace
 文章: https://harttle.land/2016/08/08/vim-search-in-file.html
 文章: https://speak.sh/posts/vim-cfdo-ale-and-ripgrep
 

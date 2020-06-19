@@ -145,10 +145,13 @@ augroup coc_guard
 	" Show signature help while editing
 "    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 	" Highlight symbol under cursor on CursorHold
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
 	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
 	autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
+	"autocmd FileType *  vmap <leader>f  <Plug>(coc-format-selected)
+	"autocmd FileType *  nmap <leader>f  <Plug>(coc-format-selected)
 " To enable highlight current symbol on CursorHold
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -518,9 +521,10 @@ let g:nv_create_note_key = 'ctrl-x'
 nmap <leader>n  <esc>:NV<cr>
 
 
-command! -bang -nargs=? -complete=dir Tags
-   \ call fzf#vim#tags(<q-args>, {'options': '--preview-window="80%" --preview "echo {4}"'}, <bang>0)
+"command! -bang -nargs=? -complete=dir Tags
+   "\ call fzf#vim#tags(<q-args>, {'options': '--preview-window="80%" --preview "echo {4}"'}, <bang>0)
 
+"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --preview-window="80%" --preview "echo {}"'}, <bang>0)
 
 "command! -bang -nargs=* Rg
   "\ call fzf#vim#grep(
@@ -536,8 +540,8 @@ if has('nvim') && !exists('g:fzf_layout')
 endif
 
 
-autocmd FileType *  xnoremap <buffer> <leader>f :Rg<CR>
-autocmd FileType *  nnoremap <buffer> <leader>f :Rg<CR>
+"autocmd FileType *  xnoremap <buffer> <leader>f :Rg<CR>
+"autocmd FileType *  nnoremap <buffer> <leader>f :Rg<CR>
 
 
 command! -bang -nargs=* GGrep
