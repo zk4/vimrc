@@ -278,7 +278,7 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 "https://github.com/Yggdroot/LeaderF/issues/567
 let g:Lf_ShowDevIcons = 0
 
-let g:Lf_ShortcutF = '<c-p>'
+"let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
 
 "  show in pop window
@@ -511,6 +511,7 @@ let g:fzf_buffers_jump = 1
 
 set rtp+=/usr/local/opt/fzf
 
+nnoremap <c-p> :Files<CR>
 
 
 " search md ,this is very good for search code snippets in markdown

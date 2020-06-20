@@ -41,7 +41,10 @@ nmap ca` va`dO
 nmap dc viwf(hxlds(
 
 " create file if file not exist when using gf command in normal mode
-noremap gf :e <cfile><cr>
+"noremap gf :e <cfile><cr>
+" when search with gf. it there is no suffix. try add the above
+set suffixesadd=.js,.vue,.scss
+
 
 nnoremap = :Tabularize /=<cr>
 
