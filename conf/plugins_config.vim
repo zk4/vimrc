@@ -512,6 +512,7 @@ let g:fzf_buffers_jump = 1
 set rtp+=/usr/local/opt/fzf
 
 nnoremap <c-p> :Files<CR>
+nnoremap <leader>f :Rg<CR>
 
 
 " search md ,this is very good for search code snippets in markdown
@@ -519,6 +520,7 @@ Plug 'alok/notational-fzf-vim'
 let g:nv_search_paths = ['~/bdcloud/notes']
 " if not found, creat note with ctrl-x
 let g:nv_create_note_key = 'ctrl-x'
+let g:fzf_preview_window = 'right:60%'
 nmap <leader>n  <esc>:NV<cr>
 
 
