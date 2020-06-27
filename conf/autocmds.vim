@@ -29,8 +29,7 @@ augroup autocmd_guard_me
     "autocmd BufWritePre * :normal gg=G
 	"
     " 在 filetype 为 sql 时, iunmap 所有的C-C 开头的命令, 不然C-C 好慢
-    autocmd Filetype sql  <buffer>
-                \       for m in ['<C-C>R', '<C-C>L', '<C-C>l', '<C-C>c', '<C-C>v', '<C-C>p', '<C-C>t', '<C-C>s', '<C-C>T', '<C-C>o', '<C-C>f', '<C-C>k', '<C-C>a']
+    autocmd Filetype sql  for m in ['<C-C>R', '<C-C>L', '<C-C>l', '<C-C>c', '<C-C>v', '<C-C>p', '<C-C>t', '<C-C>s', '<C-C>T', '<C-C>o', '<C-C>f', '<C-C>k', '<C-C>a']
                 \       | execute('silent! iunmap <buffer> '.m)
                 \       | endfor
 

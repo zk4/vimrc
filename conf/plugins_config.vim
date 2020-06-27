@@ -150,6 +150,8 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
 	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
 	autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
+	autocmd FileType js,html,vue,css  xnoremap <buffer> <leader>F :Prettier<CR>
+	autocmd FileType js.html,vue,css  nnoremap <buffer> <leader>F :Prettier<CR>
 	"autocmd FileType *  vmap <leader>f  <Plug>(coc-format-selected)
 	"autocmd FileType *  nmap <leader>f  <Plug>(coc-format-selected)
 " To enable highlight current symbol on CursorHold
@@ -522,6 +524,7 @@ let g:nv_search_paths = ['~/bdcloud/notes']
 let g:nv_create_note_key = 'ctrl-x'
 let g:fzf_preview_window = 'right:60%'
 nmap <leader>n  <esc>:NV<cr>
+"nmap <c-m>  :Marks<cr>
 
 
 "command! -bang -nargs=? -complete=dir Tags
@@ -765,6 +768,8 @@ Plug 'preservim/nerdcommenter'
 
 
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'majutsushi/tagbar'
+Plug 'AndrewRadev/tagalong.vim'
 call plug#end()
 
 

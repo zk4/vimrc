@@ -127,18 +127,6 @@ change folder , 当你需要 ack 时, pwd 就是当前工具目录了
 ## 要查询 ctrl-x 啥的
 :help ^x
 
-## 快速窗口管理
-``` bash
-c-w c-w 快速切换
-c-w v    =>  :vsplist
-c-w s    =>  :split
-c-w o    =>  :only
-c-w c    =>  :close
-c-w h/j/i/k   -=> 将光标移到哪个窗口
-c-w H/J/I/K   -=> 将窗口交换
-c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
-c-w </>  =>  :vertical resize +/- N
-```
 
 ## plugins
 kite 是一个基于 ai 的 python 补全.还行,
@@ -310,3 +298,38 @@ https://github.com/erkrnt/awesome-streamerrc/blob/master/ThePrimeagen/init.vim
 ##  关于 mark 的跳转
 大写的 mark 可以在文件间跳
 小写的 mark 只能在本件内跳
+
+
+## jump between files 
+ctrl-^
+
+## 快速窗口管理
+``` bash
+c-w c-w 快速切换
+c-w v    =>  :vsplist
+c-w s    =>  :split
+c-w o    =>  :only
+c-w c    =>  :close
+c-w h/j/i/k   -=> 将光标移到哪个窗口
+c-w H/J/I/K   -=> 将窗口交换
+c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
+c-w </>  =>  :vertical resize +/- N
+c-w =    =>  evenly resize your buffer
+c-w r    =>  rotate your buffers 
+```
+
+
+##  删除两个括号内
+d2ip
+[
+  [ 
+   hello world 
+  ]
+]
+
+## change tag in vim-surround
+<body>  hello world </body>  ----> 
+<head>  hello world </head>
+``` 
+cstthead
+```
