@@ -164,6 +164,8 @@ augroup END
 " coc snippet
 "编辑当前文件类型的snippet
 nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
+nnoremap <leader>rr <plug>(coc-rename)
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 
 
@@ -194,8 +196,8 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 
 nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>4 <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
+nmap <silent> <leader>4 :<C-u>CocFix<cr>
 " Remap keys for goto
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
@@ -357,15 +359,15 @@ let vim_markdown_folding_disabled = 1
 " let g:vim_markdown_conceal_code_blocks = 1
 
 
-Plug 'zk4/md-img-paste.vim'
-augroup markdown_vim
-" autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
-autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("")<CR>
-autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("")<CR>
-augroup END
+"Plug 'zk4/md-img-paste.vim'
+"augroup markdown_vim
+"" autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
+"autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("")<CR>
+"autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("")<CR>
+"augroup END
 
-" there are some defaults for image directory and image name, you can change them
- let g:mdip_imgdir = 'assets'
+"" there are some defaults for image directory and image name, you can change them
+ "let g:mdip_imgdir = 'assets'
 " let g:mdip_imgname = 'image'
 "Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
@@ -446,7 +448,8 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 0
 let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
+"let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$']
 let g:NERDTreeWinSize=25
 "open NERDTree automatically when vim starts up on opening a directory
 augroup nerdtree_guard
@@ -598,23 +601,20 @@ endif
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-" Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
-" map K <Plug>(expand_region_expand)
+"map K <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 "
-let g:expand_region_use_select_mode = 1
+"let g:expand_region_use_select_mode = 1
 let g:expand_region_text_objects = {
-      \ 'iw'  :1,
-      \ 'iW'  :1,
+      \ 'i}'  :1,
+      \ 'i)'  :1,
+      \ 'i`'  :1,
+      \ 'i>'  :1,
       \ 'i"'  :1,
       \ 'i''' :1,
-      \ 'i]'  :1,
-      \ 'ib'  :1,
-      \ 'iB'  :1,
-      \ 'il'  :1,
-      \ 'ip'  :1,
-      \ 'ie'  :1,
+      \ 'i]'  :1
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -672,11 +672,9 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " wil cause crash
-Plug 'liuchengxu/vim-which-key'
-"" show leader key tips, for debug purpose
-
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-"Plug 'zephod/vim-iterm2-navigator'
+"Plug 'liuchengxu/vim-which-key'
+"nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           inscearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

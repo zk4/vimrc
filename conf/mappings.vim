@@ -39,9 +39,10 @@ nmap va` va`$o0o
 nmap ci` vi`dO
 nmap ca` va`dO
 nmap dc viwf(hxlds(
+nmap gG :!git-file-history %<cr>
 
 " create file if file not exist when using gf command in normal mode
-"noremap gf :e <cfile><cr>
+noremap gf :e <cfile><cr>
 " when search with gf. it there is no suffix. try add the above
 set suffixesadd=.js,.vue,.scss
 
@@ -71,6 +72,7 @@ nmap zfp vil)iprint<esc>
 nmap df diwlds{
 " sudo write
 cnoremap w!! w !sudo tee > /dev/null %
+cnoremap W !mkdir -p %:h <cr> :w
 "map zz to za in normal mode
 " nnoremap zz  za
 " select all  cmd+a
@@ -83,6 +85,9 @@ command! SwitchBuffer :e #
 nnoremap Q  q
 nnoremap q <esc>:q!<cr>
 nnoremap <M-s> <esc>:w<cr>
+
+" open with system opener
+nnoremap go :!open %<cr>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -134,7 +139,7 @@ nnoremap <C-b> <C-u>zz
 " ex dp  delete  content in ()
 
 "multi paste
-xnoremap p pgvy
+"xnoremap p pgvy
 
 
 "http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>
@@ -142,7 +147,7 @@ xnoremap p pgvy
 nnoremap <leader>s *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
 vnoremap <leader>s y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
 
-nnoremap W :w<cr>
+"nnoremap W :w<cr>
 " nnoremap z :wq<cr>
 nnoremap <c-s> :w<cr>
 nnoremap  <leader>w :w<cr>

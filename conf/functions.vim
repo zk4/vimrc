@@ -37,7 +37,7 @@ func! CompileRunGcc()
 	  elseif &filetype == 'javascript.jsx'
         exec "!node %"
 	  elseif &filetype == 'typescript'
-        exec "!tsc % && node %:r"
+        exec "!tsc % --target es5 && node %:r"
     elseif &filetype == 'cpp'
         exec "!g++ % -o %<"
         "exec "!time ./%<"
@@ -252,13 +252,13 @@ function! KubeSearch()
      echom url
      silent exec  url
 endfunction
-function! PythonSearch()
-     let searchterm =@"
-     let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
-     silent exec  url
-endfunction
+"function! PythonSearch()
+     "let searchterm =@"
+     "let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
+     "silent exec  url
+"endfunction
 vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
-vnoremap gp "gy<Esc>:call PythonSearch()<CR>
+"vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 vnoremap gk "gy<Esc>:call KubeSearch()<CR>
 vnoremap ga "gy<esc>:call OpenChrome()<CR>
 
