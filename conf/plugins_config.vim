@@ -603,8 +603,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
-"map K <Plug>(expand_region_expand)
-"map J <plug>(expand_region_shrink)
+map K <Plug>(expand_region_expand)
+map J <plug>(expand_region_shrink)
 "
 "let g:expand_region_use_select_mode = 1
 let g:expand_region_text_objects = {

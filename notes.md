@@ -333,3 +333,15 @@ d2ip
 ``` 
 cstthead
 ```
+
+
+# tabulalize 
+https://blog.csdn.net/techfield/article/details/84186402
+Tabularize 可简化为 :Tab，以下都省略了选中区域后自动生成的 `'<,'>`：
+```
+冒号对齐：:Tab /:
+逗号对齐 :Tabularize /,
+运行上一个对齐命令 :Tab
+// 对齐（需要 escape）: :Tab /\/\/
+:Tabularize /,/r1c1l0 含义是：对齐指定区域的文本，以逗号分割。将第一个逗号前的所有文本右对齐，然后添加一个空格；将逗号居中对齐，然后添加一个空格；然后将逗号后所有文本左对齐，不添加空格（添加 0 个空格）。
+```

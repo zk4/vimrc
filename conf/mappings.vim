@@ -9,6 +9,8 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 nnoremap = :Tabularize /=<cr>
+nnoremap T :Tabularize /
+vnoremap T :Tabularize /
 
 inoremap <C-c> <ESC>
 
