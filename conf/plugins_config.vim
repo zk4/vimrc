@@ -39,7 +39,7 @@ augroup guard_group
 	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
-	autocmd FileType go nmap <leader>v  <Plug>(go-alternate-edit)
+	autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
 	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 	autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
@@ -165,7 +165,7 @@ augroup END
 "编辑当前文件类型的snippet
 nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 nnoremap <leader>rr <plug>(coc-rename)
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 
 
@@ -518,6 +518,7 @@ set rtp+=/usr/local/opt/fzf
 
 nnoremap <c-p> :Files<CR>
 nnoremap <leader>f :Rg<CR>
+nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 
 
 " search md ,this is very good for search code snippets in markdown
@@ -601,10 +602,10 @@ endif
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-Plug 'terryma/vim-expand-region'
+"Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
-map K <Plug>(expand_region_expand)
-map J <plug>(expand_region_shrink)
+"map K <Plug>(expand_region_expand)
+"map J <plug>(expand_region_shrink)
 "
 "let g:expand_region_use_select_mode = 1
 let g:expand_region_text_objects = {
@@ -737,6 +738,10 @@ let g:cpp_experimental_template_highlight = 1
 
 " when file in xxd(hex) mode. sync the hex view and the ascii view
 Plug 'mattn/vim-xxdcursor'
+Plug 'fidian/hexmode'
+nnoremap <C-q> :Hexmode<CR>
+inoremap <C-q> <Esc>:Hexmode<CR>
+vnoremap <C-q> :<C-U>Hexmode<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-surround

@@ -27,10 +27,13 @@ set mouse=a
 " set tag name
 set tags=./.tags;,.tags
 
+" -----------------------------------------
 " show  control characters
-" set list
-" set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+set list
 " set listchars=tab:⇤·,nbsp:⎵
+
+" -----------------------------------------
 
 "  指定换行符
 if $TERM_PROGRAM  == "iTerm.app"
@@ -115,7 +118,6 @@ autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 
 set noshowmatch
 set wrapscan                " 搜索到文件两端时重新搜索
-"set list                   " 显示Tab符，使用一高亮竖线代替
 syntax enable               " 打开语法高亮
 syntax on                   " 开启文件类型侦测
 filetype on
@@ -129,4 +131,4 @@ set noswapfile
 
 "set foldmethod=indent
 
-" set spell
+

@@ -3,6 +3,7 @@ augroup autocmd_guard_me
 	  " 识别 md 为 markdown
     au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
+
 		"  auto jump to last edit location in your opend file
 		"  https://askubuntu.com/questions/202075/how-do-i-get-vim-to-remember-the-line-i-was-on-when-i-reopen-a-file/202077
 		if has("autocmd")
@@ -50,19 +51,5 @@ augroup autocmd_guard_me
 
 		"autocmd BufWritePre * :call TrimWhitespace()
 
-augroup END
-
-" auto load file as binary
-" http://vim.wikia.com/wiki/Improved_hex_editing
-" vim -b : edit binary using xxd-format!
-augroup Binary
-  au!
-  au BufReadPre  *.bin let &bin=1
-  au BufReadPost *.bin if &bin | %!xxd
-  au BufReadPost *.bin set ft=xxd | endif
-  au BufWritePre *.bin if &bin | %!xxd -r
-  au BufWritePre *.bin endif
-  au BufWritePost *.bin if &bin | %!xxd
-  au BufWritePost *.bin set nomod | endif
 augroup END
 

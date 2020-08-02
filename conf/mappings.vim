@@ -73,8 +73,9 @@ nmap zfp vil)iprint<esc>
 " 去除 函数名  a{ b }
 nmap df diwlds{
 " sudo write
-cnoremap w!! w !sudo tee > /dev/null %
-cnoremap W !mkdir -p %:h <cr> :w
+"cnoremap w!! w !sudo tee > /dev/null %
+"cnoremap W !mkdir -p %:h <cr> :w
+"noremap <leader>x<CR>:set ft=xxd && %!xxd %
 "map zz to za in normal mode
 " nnoremap zz  za
 " select all  cmd+a
@@ -226,3 +227,4 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 " insert time
 " imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
 " imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>
+
