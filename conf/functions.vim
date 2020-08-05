@@ -53,8 +53,12 @@ func! CompileRunGcc()
         :!bash %
     elseif &filetype == 'python'
         exec "!python3 '%'"
+    elseif &filetype == 'groovy'
+        exec "!groovy '%'"
     elseif &filetype == 'dart'
         exec "!dart '%'"
+    elseif &filetype == 'gradle'
+        exec "!gradle hello"
     elseif &filetype == 'html'
         exec "!open % "
     elseif &filetype == 'yaml'
