@@ -12,6 +12,9 @@ source ~/.vimrc
 
 ' > ~/.config/nvim/init.vim
 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 echo '
  so ~/.zk_vimrc/conf/system_config.vim
  so ~/.zk_vimrc/conf/functions.vim
