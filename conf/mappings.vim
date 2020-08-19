@@ -44,7 +44,7 @@ nmap dc viwf(hxlds(
 nmap gG :!git-file-history %<cr>
 
 " create file if file not exist when using gf command in normal mode
-noremap gf :e <cfile><cr>
+noremap gc :e <cfile><cr>
 " when search with gf. it there is no suffix. try add the above
 set suffixesadd=.js,.vue,.scss
 
@@ -96,7 +96,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <F8> :copen<cr>
+"nnoremap <F8> :copen<cr>
 "noremap  <F2> :cprevious<CR>
 "noremap  <F3> :cnext<CR>
 "noremap  <F6> :exec  '!clear && '.getline('.')<cr>
@@ -142,7 +142,9 @@ nnoremap <C-b> <C-u>zz
 " ex dp  delete  content in ()
 
 "multi paste
-"xnoremap p pgvy
+"https://stackoverflow.com/questions/25267062/after-pasting-a-yanked-line-in-vim-why-cant-i-paste-it-again#:~:text=2%20Answers&text=This%20is%20because%20of%20vim's%20registers.&text=As%20a%20bonus%20%22%2By%20or,it%20is%20on%20most%20systems).
+" 貌似有点问题, 可以将它试着映射到 P ,这样替换当前,与不替换当前可以同时使用
+xnoremap p pgvy
 
 
 "http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>

@@ -139,7 +139,7 @@ augroup coc_guard
 	autocmd!
 	"  正确高亮 jsonc 的注释
 	autocmd FileType json syntax match Comment +\/\/.\+$+
-	autocmd FileType java  exec "CocDisable"
+	"autocmd FileType java  exec "CocDisable"
 	" Close preview window after completion is done
 	autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 	" Show signature help while editing
@@ -434,28 +434,25 @@ nnoremap <C-g>m :Gmove<Space>
 nnoremap <C-g>b :Git branch<Space>
 nnoremap <C-g>o :Git checkout<Space>
 nnoremap <C-g>p :Gpush <CR>
-nnoremap <C-g>pl :!git pull <CR>
+nnoremap <C-g>P :!x git pull <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " this is better one for nerdtree, it`s async
 Plug 'jojoyuji/nerdtree-async'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
 "git plugin 禁了.光标上下移动时会闪动
 let NERDTreeHijackNetrw=1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 0
+let NERDTreeDirArrows = 1
 let NERDTreeShowHidden=0
-"let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
 let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$']
 let g:NERDTreeWinSize=25
+
 "open NERDTree automatically when vim starts up on opening a directory
 augroup nerdtree_guard
 	autocmd!
-	" autocmd FileType nerdtree nmap  <buffer> + :vertical resize +1<cr>
-	" autocmd FileType nerdtree nmap  <buffer> - :vertical resize -1<cr>
 	autocmd StdinReadPre * let s:std_in=1
 	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -464,8 +461,7 @@ augroup nerdtree_guard
 		autocmd VimLeavePre * NERDTreeClose
 	endif
 augroup END
-""close vim if the only window left open is a NERDTree
-" sync file and nerdtree {{{  so many bugs
+
 " returns true if is NERDTree open/active
 function! IsNTOpen()
 	return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
@@ -487,15 +483,6 @@ endfunction
 " always resize it to 25
 nnoremap <C-\> :NERDTreeToggle  <CR> :vertical resize 25<CR>
 inoremap <C-\> <esc>:NERDTreeToggle <cr> :vertical resize 25<CR>
-" nnoremap <C-\> :NERDTreeToggle <CR>
-" inoremap <C-\> <esc>:NERDTreeToggle<cr>
-
-" autocmd BufEnter * :NERDTreeToggle
-" augroup nerdtree_guard
-" 	autocmd!
-" 	autocmd BufEnter nerdtree :vertical resize 25<CR>
-" augroup END
-
 nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -773,6 +760,10 @@ Plug 'preservim/nerdcommenter'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/tagalong.vim'
+Plug 'skywind3000/asyncrun.vim'
+noremap <F8> :call asyncrun#quickfix_toggle(8)<cr>
+Plug 'diepm/vim-rest-console'
+Plug 'aquach/vim-http-client'
 call plug#end()
 
 

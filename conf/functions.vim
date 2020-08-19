@@ -50,7 +50,7 @@ func! CompileRunGcc()
         "exec "!source ~/.bash_profile &&    mvnexec"
         "exec "!time java %<"
     elseif &filetype == 'sh'
-        :!bash %
+        :!bash '%'
     elseif &filetype == 'python'
         exec "!python3 '%'"
     elseif &filetype == 'groovy'

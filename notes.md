@@ -355,3 +355,9 @@ Tabularize 可简化为 :Tab，以下都省略了选中区域后自动生成的 
 :cd xxx
 :pwd 
 :cd - 
+
+
+# 将行移到任意位置
+zz  最常用的吧, 将当前行移到中间, 保持光标 column 不动
+ZZ  保存退出
+https://unix.stackexchange.com/questions/110251/how-to-put-current-line-at-top-center-bottom-of-screen-in-vim
