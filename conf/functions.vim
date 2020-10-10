@@ -34,12 +34,14 @@ func! CompileRunGcc()
         exec "!./%<"
 		elseif &filetype == 'xxd'
 			exec "qemu-system-x86_64 % --nographic -serial mon:stdio"
-	  elseif &filetype == 'javascript.jsx'
+	  elseif &filetype == 'javascript'
         exec "!node %"
+		"elseif &filetype == 'typescript'
+        "exec "!tsc % --target es5 && node %:r"
 	  elseif &filetype == 'typescript'
-        exec "!tsc % --target es5 && node %:r"
+        exec "!ts-node % "
     elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
+        exec "!gcc -std=c++17 -lstdc++ % -o %<"
         "exec "!time ./%<"
     elseif &filetype == 'java'
         "exec "!source ~/.bash_profile &&    mvnexec"
@@ -60,7 +62,7 @@ func! CompileRunGcc()
     elseif &filetype == 'gradle'
         exec "!gradle hello"
     elseif &filetype == 'html'
-        exec "!open % "
+        exec "!open % &"
     elseif &filetype == 'yaml'
         exec "!kubectl apply -f % "
     elseif &filetype == 'go'
@@ -121,21 +123,6 @@ function! Rotate()
     exe initial . "wincmd w"
 endfunction
 
-function! SearchCount()
-    let keyString=@/
-    let pos=getpos('.')
-    try
-        redir => nth
-        silent exe '0,.s/' . keyString . '//ne'
-        redir => cnt
-        silent exe '%s/' . keyString . '//ne'
-        redir END
-        return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
-    finally
-        call setpos('.', pos)
-    endtry
-endfunction
-set statusline+=[%{SearchCount()}] " Nth of N when searching
 
 
 

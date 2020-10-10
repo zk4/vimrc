@@ -6,7 +6,6 @@ set runtimepath+=~/.vim
 set noerrorbells
 " 设置 leader
 let mapleader=" "
-"let maplocalleader =" "
 set updatetime=300
 "显示颜色 在 kitty 里使分隔边框更细更好看
 set termguicolors
@@ -17,7 +16,7 @@ set foldmethod=indent
 " 将 tab 转化为空格
  set expandtab
 
-"let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
+let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
 
 " 方便 gf 跳转
 " set path+=**
@@ -30,7 +29,7 @@ set tags=./.tags;,.tags
 " -----------------------------------------
 " show  control characters
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
-set list
+" set list
 " set listchars=tab:⇤·,nbsp:⎵
 
 " -----------------------------------------
@@ -75,7 +74,8 @@ set hidden
 " 显示行号
 set number
 """ 显示相对行号
-" set relativenumber
+set relativenumber
+set number
 "" 支持系统剪贴板
 set clipboard=unnamed
 set guioptions+=a
@@ -114,21 +114,17 @@ else
 set fillchars=vert:\│
 endif
 " Override color scheme to make split the same color as tmux's default
-autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
+" autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=WHITE ctermbg=NONE
 
 set noshowmatch
 set wrapscan                " 搜索到文件两端时重新搜索
 syntax enable               " 打开语法高亮
 syntax on                   " 开启文件类型侦测
 filetype on
-"filetype indent on         " 针对不同的文件类型采用不同的缩进格式
 filetype  plugin on          " 针对不同的文件类型加载对应的插件
 set nobackup                " 设置无备份文件
 
-
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
-
-"set foldmethod=indent
 
 

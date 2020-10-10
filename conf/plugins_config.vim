@@ -57,6 +57,7 @@ augroup guard_group
 	autocmd FileType go nmap <leader>di :GoDebugStep<CR>
 	autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
 	autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
+	autocmd FileType go nmap <leader>dt :GoDebugTest<CR>
 " switch between cpp and h file
   autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
   autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
@@ -72,13 +73,6 @@ function! s:build_go_files()
   endif
 endfunction
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           code complete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 基于 ai 的代码补全
-" 用 CocInstall coc-tabnine, but with or without coc , it`s slow and not that
-" good
-" Plug 'zxqfl/tabnine-vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -145,7 +139,7 @@ augroup coc_guard
 	" Show signature help while editing
 "    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
 
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Prettier :CocCommand prettier.formatFi<le
 	" Highlight symbol under cursor on CursorHold
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
 	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
@@ -166,7 +160,6 @@ augroup END
 nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 nnoremap <leader>rr <plug>(coc-rename)
 nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
-
 
 
 " tab for completion and jump placehoders
@@ -238,6 +231,21 @@ let g:lightline = {
             \ },
             \ }
 
+function! SearchCount()
+    let keyString=@/
+    let pos=getpos('.')
+    try
+        redir => nth
+        silent exe '0,.s/' . keyString . '//ne'
+        redir => cnt
+        silent exe '%s/' . keyString . '//ne'
+        redir END
+        return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
+    finally
+        call setpos('.', pos)
+    endtry
+endfunction
+set statusline+=[%{SearchCount()}] " Nth of N when searching
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           buffer explorer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -410,7 +418,7 @@ nmap k <Plug>(accelerated_jk_gk)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 " make gpush async
-Plug 'tpope/vim-dispatch'
+"Plug 'tpope/vim-dispatch'
 " easy mapping for fugitive
 Plug 'tpope/vim-unimpaired'
 " for github
@@ -488,7 +496,7 @@ nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           language-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -503,9 +511,11 @@ let g:fzf_buffers_jump = 1
 
 set rtp+=/usr/local/opt/fzf
 
-nnoremap <c-p> :Files<CR>
+nnoremap <c-p> :GFiles<CR>
+nnoremap <leader>p :Files<CR>
+"nnoremap <leader>P :Files<CR>
 nnoremap <leader>f :Rg<CR>
-nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+"nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 
 
 " search md ,this is very good for search code snippets in markdown
@@ -760,10 +770,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/tagalong.vim'
-Plug 'skywind3000/asyncrun.vim'
+"Plug 'skywind3000/asyncrun.vim'
 noremap <F8> :call asyncrun#quickfix_toggle(8)<cr>
-Plug 'diepm/vim-rest-console'
-Plug 'aquach/vim-http-client'
 call plug#end()
 
 

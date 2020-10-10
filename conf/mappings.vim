@@ -20,13 +20,13 @@ nnoremap <c-e> :SwitchBuffer<cr>
 vnoremap <space> <Nop>
 " 在 yank 的时候,保持光标在最下方,而不是跳加到前面
 vnoremap y y`]
-nmap <silent> gp :!open % & <cr>
+nnoremap <silent> gp :!open  "%:p" & <cr>
 
 nnoremap yy ddu
-nmap + :vertical resize +1<cr>
-nmap - :vertical resize -1<cr>
+nnoremap + :vertical resize +1<cr>
+nnoremap - :vertical resize -1<cr>
 
-nmap <leader>cp :CocCommand python.
+"nnoremap <leader>cp :CocCommand python.
 
 " add print($1)
 nmap zip vil)iprint<esc>
@@ -35,43 +35,27 @@ nmap zilf vil)ilogger.fatal<esc>
 nmap zile vil)ilogger.error<esc>
 nmap zilo vil)ilogger.exception<esc>
 
-" fix markdwon code fence
-nmap vi` vi`oj0o
-nmap va` va`$o0o
-nmap ci` vi`dO
-nmap ca` va`dO
 nmap dc viwf(hxlds(
 nmap gG :!git-file-history %<cr>
 
 " create file if file not exist when using gf command in normal mode
 noremap gc :e <cfile><cr>
 " when search with gf. it there is no suffix. try add the above
-set suffixesadd=.js,.vue,.scss
+" set suffixesadd=.js,.vue,.scss
 
-
-nnoremap = :Tabularize /=<cr>
-
-inoremap <C-c> <ESC>
-nnoremap <c-e> :SwitchBuffer<cr>
-
-vnoremap <space> <Nop>
-" 在 yank 的时候,保持光标在最下方,而不是跳加到前面
-vnoremap y y`]
-nmap <silent> gp :!open % & <cr>
-
-nmap dx dix
-nmap dw diw
-nmap cw ciw
-nmap cW ciW
-nmap vw viw
-nmap dW diW
+"nmap dx dix
+"nmap dw diw
+"nmap cw ciw
+"nmap cW ciW
+"nmap vw viw
+"nmap dW diW
 " 去除一层函数掉用  a(b)
 " add |($1)
 nmap ziw viwSi
 " add print($1)
 nmap zfp vil)iprint<esc>
 " 去除 函数名  a{ b }
-nmap df diwlds{
+"nmap df diwlds{
 " sudo write
 "cnoremap w!! w !sudo tee > /dev/null %
 "cnoremap W !mkdir -p %:h <cr> :w
@@ -188,6 +172,7 @@ noremap ˚ :cp<cr>
 "move around in command line like emacs
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
+cnoremap <C-h> <c-f>
 cnoremap <C-B> <Left>
 cnoremap ∫ <S-Left>
 cnoremap ƒ <S-Right>
@@ -221,6 +206,8 @@ vnoremap ? ?\v
 
 
 nnoremap <C-m>o :copen<CR>
+nnoremap ;  :
+nnoremap :  ;
 
 "make kj into jumplist 
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
@@ -229,4 +216,9 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 " insert time
 " imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
 " imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>
+
+" h 1
+nmap <leader>h1 :.!toilet -w 200 -f term -F border<CR>
+" head title
+nmap <leader>ht :.!figlet <CR>
 

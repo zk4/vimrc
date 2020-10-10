@@ -166,6 +166,9 @@ set formatoptions-=cro     或者 set fo-=cro
 :Glog -- % 显示当前文件的git log
 :copen      fugitive 使用了 quickfix,直接用就行了
 alt-p --> :cprevious alt-n --> :nnext
+
+:0Glog 
+只看当前文件的历史，非常好用
 ```
 
 how to diff version?
@@ -318,7 +321,6 @@ c-w =    =>  evenly resize your buffer
 c-w r    =>  rotate your buffers 
 ```
 
-
 ##  删除两个括号内
 d2ip
 [
@@ -361,3 +363,13 @@ Tabularize 可简化为 :Tab，以下都省略了选中区域后自动生成的 
 zz  最常用的吧, 将当前行移到中间, 保持光标 column 不动
 ZZ  保存退出
 https://unix.stackexchange.com/questions/110251/how-to-put-current-line-at-top-center-bottom-of-screen-in-vim
+
+# coc-java language server 总是崩溃的问题
+https://github.com/neoclide/coc-java/issues/99
+```
+Version 57 of JDT Lang Sever works fine
+https://download.eclipse.org/jdtls/milestones/0.57.0/
+
+Quick hack for those who are facing this issue
+Replace all directories/files in ~/.config/coc/extensions/coc-java-data/server with directories/files from above extracted JDT lang server tar.
+```

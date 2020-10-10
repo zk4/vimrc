@@ -5,9 +5,9 @@ augroup autocmd_guard_me
 
 		"  auto jump to last edit location in your opend file
 		"  https://askubuntu.com/questions/202075/how-do-i-get-vim-to-remember-the-line-i-was-on-when-i-reopen-a-file/202077
-		if has("autocmd")
-			au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-		endif
+    if has("autocmd")
+      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    endif
 
     "autocmd BufNewFile,BufRead *.gradle   set ft=gradle
 
