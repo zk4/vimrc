@@ -248,7 +248,7 @@ endfunction
      "let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
      "silent exec  url
 "endfunction
-vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
+vnoremap gG "gy<Esc>:call GoogleSearch()<CR>
 "vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 vnoremap gk "gy<Esc>:call KubeSearch()<CR>
 vnoremap ga "gy<esc>:call OpenChrome()<CR>

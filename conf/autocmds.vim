@@ -12,6 +12,7 @@ augroup autocmd_guard_me
     "autocmd BufNewFile,BufRead *.gradle   set ft=gradle
 
 
+
     autocmd BufLeave,FocusLost * silent! wall
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType help noremap <buffer> q :q<cr>
@@ -30,7 +31,17 @@ augroup autocmd_guard_me
     autocmd Filetype sql  for m in ['<C-C>R', '<C-C>L', '<C-C>l', '<C-C>c', '<C-C>v', '<C-C>p', '<C-C>t', '<C-C>s', '<C-C>T', '<C-C>o', '<C-C>f', '<C-C>k', '<C-C>a']
                 \       | execute('silent! iunmap <buffer> '.m)
                 \       | endfor
+    autocmd Filetype netrw  for m in ['qb', 'qf','qL','qF']
+                \       | execute('silent! nunmap <buffer> '.m)
+                \       | endfor
 
+    " fastlane
+    au BufReadPost Fastfile set ft=ruby 
+    au BufReadPost *.svelte set ft=vue 
+
+
+    "autocmd User CocOpenFloat call nvim_win_set_config(g:coc_last_float_win, {'relative': 'editor', 'row': 0, 'col': 0})
+    "autocmd User CocOpenFloat call nvim_win_set_width(g:coc_last_float_win, 9999)
 augroup END
 
 " auto load file as binary
@@ -47,3 +58,17 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+
+augroup suffixes
+    autocmd!
+
+    let associations = [
+                \["javascript", ".js,.javascript,.es,.esx,.json"],
+                \["vue", ".vue"],
+                \["python", ".py,.pyw"]
+                \]
+
+    for ft in associations
+        execute "autocmd FileType " . ft[0] . " setlocal suffixesadd=" . ft[1]
+    endfor
+augroup END

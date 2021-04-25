@@ -13,7 +13,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " https://github.com/fatih/vim-go/wiki/Tutorial
 
 " split and join recommanded by vim-go author
-Plug 'AndrewRadev/splitjoin.vim'
+"Plug 'AndrewRadev/splitjoin.vim'
 "gS to split the line to multiple lines
 "gJ to join multiple lines to one line
 
@@ -76,15 +76,15 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'commit': 'v0.0.80'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " go configuration
 " auto imports before save, so slow
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd bufwritepre *.go :call cocaction('runcommand', 'editor.action.organizeimport')
 "
 " all extension source
-" https://www.npmjs.com/search?q=keywords%3Acoc.nvim&page=2&perPage=20
+" https://www.npmjs.com/search?q=keywords%3acoc.nvim&page=2&perpage=20
 "
 " gitter
 " https://gitter.im/neoclide/coc-cn
@@ -161,10 +161,6 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 nnoremap <leader>rr <plug>(coc-rename)
 nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
-
-" tab for completion and jump placehoders
-" https://github.com/neoclide/coc-snippets
-" method 1
 imap <Tab> <Plug>(coc-snippets-expand-jump)
 inoremap <silent><expr> <TAB>
 			\ pumvisible() ? coc#_select_confirm() :
@@ -179,9 +175,8 @@ endfunction
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-
-nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
-nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+"nnoremap <expr><C-f> coc#float#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+"nnoremap <expr><C-b> coc#float#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
 
 
 " Use <c-space> for trigger completion.
@@ -358,9 +353,9 @@ function! s:align()
 endfunction
 
 
-Plug 'plasticboy/vim-markdown'
-"  不要在打开 markdown 时自动折叠, 没蛋用.
-let vim_markdown_folding_disabled = 1
+"Plug 'plasticboy/vim-markdown'
+""  不要在打开 markdown 时自动折叠, 没蛋用.
+"let vim_markdown_folding_disabled = 1
 
 " let g:vim_markdown_conceal=1
 " set conceallevel=2
@@ -514,7 +509,7 @@ set rtp+=/usr/local/opt/fzf
 nnoremap <c-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
 "nnoremap <leader>P :Files<CR>
-nnoremap <leader>f :Rg<CR>
+"nnoremap <leader>f :Rg<CR>
 "nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 
 
@@ -524,7 +519,7 @@ let g:nv_search_paths = ['~/bdcloud/notes']
 " if not found, creat note with ctrl-x
 let g:nv_create_note_key = 'ctrl-x'
 let g:fzf_preview_window = 'right:60%'
-nmap <leader>n  <esc>:NV<cr>
+nnoremap <leader>n  <esc>:NV<cr>
 "nmap <c-m>  :Marks<cr>
 
 
@@ -572,26 +567,26 @@ command! -bang BTags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+"let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 
-" 所生成的数据文件的名称
-let g:gutentags_ctags_tagfile = '.tags'
+"" 所生成的数据文件的名称
+"let g:gutentags_ctags_tagfile = '.tags'
 
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
+"" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+"let s:vim_tags = expand('~/.cache/tags')
+"let g:gutentags_cache_dir = s:vim_tags
 
-" 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+"" 配置 ctags 的参数
+"let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-" 检测 ~/.cache/tags 不存在就新建
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
+"" 检测 ~/.cache/tags 不存在就新建
+"if !isdirectory(s:vim_tags)
+   "silent! call mkdir(s:vim_tags, 'p')
+"endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           object
@@ -619,6 +614,7 @@ let g:expand_region_text_objects = {
 "                           vim-visual-mutli                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mg979/vim-visual-multi'
+"Plug 'terryma/vim-multiple-cursors'
 " nmap ∆  <C-down>
 " nmap ˚  <C-up>
 " quick use
@@ -645,6 +641,8 @@ let g:targets_nl = 'np'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I don` need this.. it navigate from kitty  vim seamlessly
 Plug 'knubie/vim-kitty-navigator'
+set title
+let &titlestring='%t - nvim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-searchindex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -670,8 +668,8 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " wil cause crash
-"Plug 'liuchengxu/vim-which-key'
-"nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+Plug 'liuchengxu/vim-which-key'
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           inscearch
@@ -725,13 +723,12 @@ Plug 'tpope/vim-abolish'
 " 2. 驼峰转换
 "  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
 
-" Plug 'vifm/vifm.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_template_highlight = 1
+"Plug 'octol/vim-cpp-enhanced-highlight'
+"let g:cpp_class_scope_highlight = 1
+"let g:cpp_member_variable_highlight = 1
+"let g:cpp_class_decl_highlight = 1
+"let g:cpp_posix_standard = 1
+"let g:cpp_experimental_template_highlight = 1
 
 " when file in xxd(hex) mode. sync the hex view and the ascii view
 Plug 'mattn/vim-xxdcursor'
@@ -772,6 +769,42 @@ Plug 'majutsushi/tagbar'
 Plug 'AndrewRadev/tagalong.vim'
 "Plug 'skywind3000/asyncrun.vim'
 noremap <F8> :call asyncrun#quickfix_toggle(8)<cr>
+
+
+" 还不太完美,免用
+" 使用 \lv preview
+"
+" https://macplay.github.io/posts/shi-yong-latexmk-bian-yi-tex-wen-jian/#latexmkrc
+"
+Plug 'lervag/vimtex'
+"let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+"let g:vimtex_view_general_options = '-r @line @pdf @tex'
+"let g:vimtex_fold_enabled = 0 "So large files can open more easily
+"g:vimtex_view_method = 'skim'
+"let g:Tex_CompileRule_pdf='pdflatex'
+
+let g:vimtex_latexmk_options='-pdf -pdflatex="xelatex -synctex=1 \%S \%O" -verbose -file-line-error -interaction=nonstopmode'
+let g:tex_flavor='latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode=0
+"set conceallevel=1
+"let g:tex_conceal='abdmg'
+
+"let g:vimtex_compiler_latexmk = {
+    "\ 'options' : [
+    "\   '-xelatex',
+    "\   '-verbose',
+    "\   '-file-line-error',
+    "\   '-synctex=1',
+    "\   '-interaction=nonstopmode',
+    "\ ],
+    "\}
+
+
+"Plug 'leafgarland/typescript-vim'
+"Plug 'peitalin/vim-jsx-typescript'
+"autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
 call plug#end()
 
 

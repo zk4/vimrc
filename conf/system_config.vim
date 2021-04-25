@@ -26,6 +26,7 @@ set mouse=a
 " set tag name
 set tags=./.tags;,.tags
 
+" set iskeyword+=-
 " -----------------------------------------
 " show  control characters
 set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
@@ -55,6 +56,11 @@ set formatprg=par   " 使用方法 gwip
 "超出 wrap-width 时显示红色
 "match ErrorMsg '\%>80v.\+'
 
+"let g:netrw_banner=0         "disable annoying banner
+"let g:netrw_browser_split=4  "open in prior window
+"let g:netrw_altv=1  "oepn splits to the right
+"let g:netrw_liststyle=2      "tree view
+
 
 " vi 打开文件时,切换到这个文件的目录
 " 换文件时,导致 ctrl-p 也会跟着变,怎么取舍吧
@@ -74,8 +80,7 @@ set hidden
 " 显示行号
 set number
 """ 显示相对行号
-set relativenumber
-set number
+"set relativenumber
 "" 支持系统剪贴板
 set clipboard=unnamed
 set guioptions+=a

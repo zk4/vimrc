@@ -12,6 +12,7 @@ nnoremap = :Tabularize /=<cr>
 nnoremap T :Tabularize /
 vnoremap T :Tabularize /
 
+nnoremap vp viwp
 inoremap <C-c> <ESC>
 
 nnoremap <c-e> :SwitchBuffer<cr>
@@ -29,14 +30,15 @@ nnoremap - :vertical resize -1<cr>
 "nnoremap <leader>cp :CocCommand python.
 
 " add print($1)
-nmap zip vil)iprint<esc>
-nmap zild vil)ilogger.debug<esc>
-nmap zilf vil)ilogger.fatal<esc>
-nmap zile vil)ilogger.error<esc>
-nmap zilo vil)ilogger.exception<esc>
+nnoremap zip vil)iprint<esc>
+nnoremap zild vil)ilogger.debug<esc>
+nnoremap zilf vil)ilogger.fatal<esc>
+nnoremap zile vil)ilogger.error<esc>
+nnoremap zilo vil)ilogger.exception<esc>
 
-nmap dc viwf(hxlds(
-nmap gG :!git-file-history %<cr>
+nnoremap dc viwf(hxlds(
+nnoremap gG :!git-file-history %<cr>
+nnoremap ga :Ag <c-r>=expand("<cword>")<cr><cr>
 
 " create file if file not exist when using gf command in normal mode
 noremap gc :e <cfile><cr>
@@ -74,17 +76,13 @@ nnoremap q <esc>:q!<cr>
 nnoremap <M-s> <esc>:w<cr>
 
 " open with system opener
-nnoremap go :!open %<cr>
+nnoremap go :!open '%'<cr>
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-"nnoremap <F8> :copen<cr>
-"noremap  <F2> :cprevious<CR>
-"noremap  <F3> :cnext<CR>
-"noremap  <F6> :exec  '!clear && '.getline('.')<cr>
-noremap  <F4> :NERDTreeToggle<CR>
+"noremap  <F4> :NERDTreeToggle<CR>
 " indent  without lose the selection
 vnoremap  <Tab> >gv
 vnoremap  <S-Tab> <gv
@@ -97,10 +95,10 @@ vnoremap  <S-Space> <left>
 "inoremap <S-Tab> <C-d>
 "
 " 去除一层函数掉用  a(b)
-nnoremap <leader>te :tabe<cr>
-nnoremap <leader>u :UndotreeToggle<cr>
+"nnoremap <leader>te :tabe<cr>
+"nnoremap <leader>u :UndotreeToggle<cr>
 " close tab
-nnoremap <leader>tc :tabc<cr>
+"nnoremap <leader>tc :tabc<cr>
 " close buffer
 " nnoremap <leader>bd  <C-w>c
 " close buffer
@@ -163,8 +161,8 @@ inoremap <C-space> <C-n>
 "inoremap <c-k> <esc>ld$a
 inoremap ∫ <S-Left>
 inoremap ƒ <S-Right>
-" 在quickfix 里移动  alt+n alt+p
-noremap ∆ :cn<cr>
+" 在quickfix 里移动  alt+n alt+p 
+noremap ∆ :cnext<cr>
 noremap ˚ :cp<cr>
 "noremap <A-n> :cn<cr>
 "noremap <A-p> :cp<cr>
@@ -172,7 +170,8 @@ noremap ˚ :cp<cr>
 "move around in command line like emacs
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
-cnoremap <C-h> <c-f>
+cnoremap <C-l> <c-e>
+"cnoremap <C-h> <c-f>
 cnoremap <C-B> <Left>
 cnoremap ∫ <S-Left>
 cnoremap ƒ <S-Right>
@@ -182,10 +181,10 @@ vmap ) S)
 vmap " S"
 vmap ' S'
 
-nnoremap / /\v
-nnoremap ? ?\v
-vnoremap / /\v
-vnoremap ? ?\v
+"nnoremap / /\v
+"nnoremap ? ?\v
+"vnoremap / /\v
+"vnoremap ? ?\v
 "https://stackoverflow.com/questions/290465/how-to-paste-over-without-overwriting-register 
 "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 "xnoremap <silent> p p:let @"=@0<CR>
@@ -222,3 +221,4 @@ nmap <leader>h1 :.!toilet -w 200 -f term -F border<CR>
 " head title
 nmap <leader>ht :.!figlet <CR>
 
+nnoremap gm :call jobstart("mpv " . expand("<cWORD>"))<CR>

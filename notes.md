@@ -373,3 +373,23 @@ https://download.eclipse.org/jdtls/milestones/0.57.0/
 Quick hack for those who are facing this issue
 Replace all directories/files in ~/.config/coc/extensions/coc-java-data/server with directories/files from above extracted JDT lang server tar.
 ```
+
+
+# 执行异步任务
+call jobstart("mpv *.mp4")
+
+
+# 在全部行尾执行 norm 命令 
+https://stackoverflow.com/questions/594448/how-can-i-add-a-string-to-the-end-of-each-line-in-vim
+
+:%norm A*
+
+This is what it means:
+
+ %       = for every line
+ norm    = type the following commands
+ A*      = append '*' to the end of current line
+
+
+ # 将 visual select 的贴到 command 
+ <c-r>*
