@@ -479,6 +479,7 @@ function! SyncTree()
 endfunction
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 " autocmd BufEnter * call SyncTree()
+nnoremap <f3> :call SyncTree()<cr>
 
 " change current file root when toggled
 " nnoremap <C-\> :NERDTreeToggle %<CR>

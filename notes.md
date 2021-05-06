@@ -41,7 +41,7 @@ like emacs!
 # quick change tab viusal effect
 
 ``` vim
-:retab 4   " change tab width to 4
+    :retab 4   " change tab width to 4
 <leader>f   " format the docuemnt to take effect
 
 ```
@@ -49,7 +49,7 @@ like emacs!
 # global search
 Don't use Ack. use Rg.
 :Rg <Keyword> --<filetype>
-^w^r   put current buffer word to command input
+^r^w   put current buffer word to command input
 
 ## Rg 搜索包含文件名的问题
 
@@ -74,11 +74,11 @@ cdo 可以针对 quickfix 里的结果做处理. 其他的还有 :bufdo :windo
 具体看 :help cdo
 
 功能如下:
-				:cfirst
-				:{cmd}
-				:cnext
-				:{cmd}
-				etc.
+        :cfirst
+        :{cmd}
+        :cnext
+        :{cmd}
+        etc.
 
 另一种从实用技巧里学来的
 ```
@@ -393,3 +393,9 @@ This is what it means:
 
  # 将 visual select 的贴到 command 
  <c-r>*
+
+
+#  对比 split window
+
+:windo diffthis
+:diffoff!

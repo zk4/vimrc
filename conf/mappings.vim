@@ -8,10 +8,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
-nnoremap = :Tabularize /=<cr>
-nnoremap T :Tabularize /
-vnoremap T :Tabularize /
-
 nnoremap vp viwp
 inoremap <C-c> <ESC>
 
