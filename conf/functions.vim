@@ -38,8 +38,13 @@ func! CompileRunGcc()
         exec "!node %"
 		"elseif &filetype == 'typescript'
         "exec "!tsc % --target es5 && node %:r"
+	  elseif &filetype == 'rust'
+        "exec "!rustc %"
+        "exec "!time ./%<"
+        exec "!cargo run"
 	  elseif &filetype == 'typescript'
-        exec "!ts-node % "
+        "exec "!ts-node % "
+        exec "!gcc -std=c++17 -lstdc++ % -o %<"
     elseif &filetype == 'cpp'
         exec "!gcc -std=c++17 -lstdc++ % -o %<"
         "exec "!time ./%<"
@@ -123,6 +128,7 @@ function! Rotate()
     exe initial . "wincmd w"
 endfunction
 
+"nnoremap <c-w>r : call Rotate()<CR>
 
 
 

@@ -396,6 +396,5 @@ This is what it means:
 
 
 #  对比 split window
-
 :windo diffthis
 :diffoff!
