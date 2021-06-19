@@ -57,7 +57,7 @@ nmap zfp vil)iprint<esc>
 " sudo write
 "cnoremap w!! w !sudo tee > /dev/null %
 "cnoremap W !mkdir -p %:h <cr> :w
-"noremap <leader>x<CR>:set ft=xxd && %!xxd %
+"noremap <leader>x :set ft=xxd && %!xxd %
 "map zz to za in normal mode
 " nnoremap zz  za
 " select all  cmd+a

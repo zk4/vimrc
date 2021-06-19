@@ -169,6 +169,9 @@ alt-p --> :cprevious alt-n --> :nnext
 
 :0Glog 
 只看当前文件的历史，非常好用
+
+:Glog HEAD~1
+对比上一个版本
 ```
 
 how to diff version?
@@ -398,3 +401,7 @@ This is what it means:
 #  对比 split window
 :windo diffthis
 :diffoff!
+
+
+# 创建数字序列
+https://stackoverflow.com/questions/9903660/how-to-generate-a-number-sequence-in-file-using-vi-or-vim

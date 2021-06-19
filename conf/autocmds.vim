@@ -58,6 +58,10 @@ augroup Binary
   au BufWritePost *.bin set nomod | endif
 augroup END
 
+augroup msjExt
+  au!
+  au BufNewFile,BufRead *.mjs set ft=mjs
+augroup END
 
 augroup suffixes
     autocmd!

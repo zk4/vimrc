@@ -54,8 +54,6 @@ func! CompileRunGcc()
 "        exec "!time java %< "
     elseif &filetype == 'xml'
         exec "!pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
-        "exec "!source ~/.bash_profile &&    mvnexec"
-        "exec "!time java %<"
     elseif &filetype == 'sh'
         :!bash '%'
     elseif &filetype == 'python'
@@ -78,8 +76,8 @@ func! CompileRunGcc()
         exec "!chrome %.html &"
     elseif &filetype == 'vim'
         :source %
-"    else
-"        :make
+    elseif &filetype == 'mjs'
+        exec "!%"
     endif
 endfunc
 
@@ -349,4 +347,30 @@ function! LookUpwards()
 endfunction
 
 imap <silent> <C-y> <C-R><C-R>=LookUpwards()<CR>
+
+
+" 跳到日志处
+" /this/is/a/really/long/filename:line_number:name_of_function
+" demo
+" ~/.zk_vimrc/conf/functions.vim:30:LookUpwards
+function! OpenLog()
+    let line = getline(".")
+    let items = split(line, ':')
+    if filereadable(items[0])
+	    tabnew
+	    exe "e ".items[0]
+	    exe ":".items[1]
+endif
+endfunction
+
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+noremap rn :call RenameFile()<cr>
 
