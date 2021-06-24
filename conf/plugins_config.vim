@@ -241,25 +241,6 @@ function! SearchCount()
     endtry
 endfunction
 set statusline+=[%{SearchCount()}] " Nth of N when searching
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           buffer explorer
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 更好用的 buffer explorer
-"Plug 'vim-scripts/bufexplorer.zip'
-"""nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
-"nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
-"" if show help in buffer explorer
-"let g:bufExplorerDefaultHelp=0
-"let g:bufExplorerShowRelativePath=1
-"" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
-"let g:bufExplorerFindActive=1
-"" 将未命名 buffer 也显示
-"let g:bufExplorerShowNoName=1
-"" 打开时的大小
-"let g:bufExplorerSplitHorzSize=8
-"let g:bufExplorerMaxHeight=12
-"" sort by mru
-"let g:bufExplorerSortBy='mru'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           tab
@@ -400,6 +381,7 @@ augroup END
 "                           color-schema
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'morhetz/gruvbox'
+
 " Plug 'sheerun/vim-wombat-scheme'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           accelerated-jk
@@ -492,7 +474,7 @@ nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           language-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
