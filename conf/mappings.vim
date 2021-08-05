@@ -25,12 +25,6 @@ nnoremap - :vertical resize -1<cr>
 
 "nnoremap <leader>cp :CocCommand python.
 
-" add print($1)
-nnoremap zip vil)iprint<esc>
-nnoremap zild vil)ilogger.debug<esc>
-nnoremap zilf vil)ilogger.fatal<esc>
-nnoremap zile vil)ilogger.error<esc>
-nnoremap zilo vil)ilogger.exception<esc>
 
 nnoremap dc viwf(hxlds(
 nnoremap gG :!git-file-history %<cr>
@@ -41,17 +35,6 @@ noremap gc :e <cfile><cr>
 " when search with gf. it there is no suffix. try add the above
 " set suffixesadd=.js,.vue,.scss
 
-"nmap dx dix
-"nmap dw diw
-"nmap cw ciw
-"nmap cW ciW
-"nmap vw viw
-"nmap dW diW
-" 去除一层函数掉用  a(b)
-" add |($1)
-nmap ziw viwSi
-" add print($1)
-nmap zfp vil)iprint<esc>
 " 去除 函数名  a{ b }
 "nmap df diwlds{
 " sudo write
@@ -60,6 +43,7 @@ nmap zfp vil)iprint<esc>
 "noremap <leader>x :set ft=xxd && %!xxd %
 "map zz to za in normal mode
 " nnoremap zz  za
+
 " select all  cmd+a
 nnoremap <leader>a  ggVG
 "https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
@@ -104,6 +88,7 @@ vnoremap  <S-Space> <left>
 nnoremap <leader>ev :e ~/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
 nnoremap <leader>ef :e ~/.zk_vimrc/conf/plugins_mappings_config.vim<cr>
+nnoremap <leader>ea :e /Users/zk/.config/coc/ultisnips/all.snippets <cr>
 nnoremap <leader>ee :source ~/.zk_vimrc/.vimrc<cr>
 nnoremap <leader>eh :e ~/.zk_vimrc/help.md<cr>
 nnoremap <leader>et :e ~/.config/kitty/kitty.conf<cr>
@@ -157,6 +142,7 @@ inoremap <C-space> <C-n>
 "inoremap <c-k> <esc>ld$a
 inoremap ∫ <S-Left>
 inoremap ƒ <S-Right>
+
 " 在quickfix 里移动  alt+n alt+p 
 noremap ∆ :cnext<cr>
 noremap ˚ :cp<cr>
@@ -188,7 +174,7 @@ vmap ' S'
 " broken. but it is fine for me ..
 "vnoremap p "_dP
 "xnoremap <expr> p 'pgv"'.v:register.'y'
-  
+
 
 
 " max your window and restore back"
@@ -218,3 +204,12 @@ nmap <leader>h1 :.!toilet -w 200 -f term -F border<CR>
 nmap <leader>ht :.!figlet <CR>
 
 nnoremap gm :call jobstart("mpv " . expand("<cWORD>"))<CR>
+
+" 拼接字符串时不要跳光标
+nnoremap J mzJ`z
+
+" Moving text:
+" 选择一段文本,用 J,K 移动
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+

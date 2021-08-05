@@ -10,6 +10,7 @@ augroup autocmd_guard_me
     endif
 
     "autocmd BufNewFile,BufRead *.gradle   set ft=gradle
+    autocmd FileType typescriptreact  set ft=typescript
 
 
 

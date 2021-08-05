@@ -144,8 +144,8 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFi<le
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
 	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
 	autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
-	autocmd FileType js,html,vue,css  xnoremap <buffer> <leader>F :Prettier<CR>
-	autocmd FileType js.html,vue,css  nnoremap <buffer> <leader>F :Prettier<CR>
+	"autocmd FileType js,html,vue,css  xnoremap <buffer> <leader>F :Prettier<CR>
+	"autocmd FileType js.html,vue,css  nnoremap <buffer> <leader>F :Prettier<CR>
 	"autocmd FileType *  vmap <leader>f  <Plug>(coc-format-selected)
 	"autocmd FileType *  nmap <leader>f  <Plug>(coc-format-selected)
 " To enable highlight current symbol on CursorHold
@@ -459,14 +459,11 @@ function! SyncTree()
 		wincmd p
 	endif
 endfunction
+
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 " autocmd BufEnter * call SyncTree()
 nnoremap <f3> :call SyncTree()<cr>
 
-" change current file root when toggled
-" nnoremap <C-\> :NERDTreeToggle %<CR>
-" inoremap <C-\> <esc>:NERDTreeToggle %<CR>
-" always resize it to 25
 nnoremap <C-\> :NERDTreeToggle  <CR> :vertical resize 25<CR>
 inoremap <C-\> <esc>:NERDTreeToggle <cr> :vertical resize 25<CR>
 nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l

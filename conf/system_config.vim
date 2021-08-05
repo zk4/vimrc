@@ -133,3 +133,7 @@ set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 
 
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
+
