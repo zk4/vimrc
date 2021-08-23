@@ -92,3 +92,7 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+" 修复高亮丢失的问题
+autocmd BufEnter * :syntax sync fromstart
+

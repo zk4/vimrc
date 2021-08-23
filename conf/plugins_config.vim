@@ -576,12 +576,12 @@ command! -bang BTags
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-"Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
-"map K <Plug>(expand_region_expand)
+map vv <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
-"
-"let g:expand_region_use_select_mode = 1
+
+let g:expand_region_use_select_mode = 1
 let g:expand_region_text_objects = {
       \ 'i}'  :1,
       \ 'i)'  :1,
@@ -589,6 +589,9 @@ let g:expand_region_text_objects = {
       \ 'i>'  :1,
       \ 'i"'  :1,
       \ 'i''' :1,
+      \ 'il' :1,
+      \ 'ia' :1,
+      \ 'iW' :1,
       \ 'i]'  :1
       \ }
 
@@ -713,6 +716,31 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_posix_standard = 1
 let g:cpp_experimental_template_highlight = 1
 
+
+Plug 'preservim/nerdcommenter'
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' },'js': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
 call plug#end()
 
 
