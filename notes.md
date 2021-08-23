@@ -1,11 +1,11 @@
 
-# todo                            
+# todo
 - 自动补全与 snippet 总是很痛苦。。按 tab 键不是很智能
 
 - "https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
 研究一下 yank ring
 
-paste  reigster 
+paste  reigster
 https://unix.stackexchange.com/questions/88714/vim-how-can-i-do-a-change-word-using-the-current-paste-buffer
 
 研究一下 diff
@@ -16,7 +16,7 @@ git 怎么快速查看以前的文件?
 # 都应该看这本书
 Vim实用技巧（第2版）
 
-# tips                            
+# tips
 c+w 在　insert　mode　式下往回删一个单词
 fzf 带有 Ag 功能
 
@@ -28,8 +28,8 @@ Here . (the part before w) refers to the range of lines you are writing, and . i
 
 ```
 # Movement
-## move in comnand line mode 
-like emacs! 
+## move in comnand line mode
+like emacs!
 ''' vim
     cnoremap <C-A> <Home>
     cnoremap <C-F> <Right>
@@ -40,18 +40,26 @@ like emacs!
 
 # quick change tab viusal effect
 
-``` vim 
-:retab 4   " change tab width to 4
+``` vim
+    :retab 4   " change tab width to 4
 <leader>f   " format the docuemnt to take effect
 
 ```
 
-# 全局搜索
+# global search
 Don't use Ack. use Rg.
 :Rg <Keyword> --<filetype>
-^w^r   put current buffer word to command input 
+^r^w   put current buffer word to command input
 
-# 替换
+## Rg 搜索包含文件名的问题
+
+:Rg <keyword> 
+将不会搜索文件名
+
+:Rg <cr> ,然后再搜索,
+则会包含文件名
+
+# replace
 文章: https://harttle.land/2016/08/08/vim-search-in-file.html
 文章: https://speak.sh/posts/vim-cfdo-ale-and-ripgrep
 
@@ -66,15 +74,15 @@ cdo 可以针对 quickfix 里的结果做处理. 其他的还有 :bufdo :windo
 具体看 :help cdo
 
 功能如下:
-				:cfirst
-				:{cmd}
-				:cnext
-				:{cmd}
-				etc.
+        :cfirst
+        :{cmd}
+        :cnext
+        :{cmd}
+        etc.
 
 另一种从实用技巧里学来的
 ```
-args **/*.js  
+args **/*.js
 先将 js 文件搞到 args 例表
 ```
 argdo %s/xx/bb/cg  使用 argdo 执行批量命令，
@@ -83,7 +91,7 @@ argdo %s/xx/bb/cg  使用 argdo 执行批量命令，
 
 另一种也是实用技巧里来的
 ```
-/xxx 
+/xxx
 :vimgrep // **/*.txt
 :cfdo %s//bbb/gc
 :cfdo update
@@ -96,9 +104,10 @@ argdo %s/xx/bb/cg  使用 argdo 执行批量命令，
 
 ### 全局搜索 -自己输关键字
 ```
-:grep -R 'keyword' . 
+:grep -R 'keyword' .
 ```
-## o 切换 visual 的上端与下端
+#切换 visual 的上端与下端
+o
 
 ## R 可以在文字上覆盖
 
@@ -118,20 +127,8 @@ change folder , 当你需要 ack 时, pwd 就是当前工具目录了
 ## 要查询 ctrl-x 啥的
 :help ^x
 
-## 快速窗口管理
-``` bash 
-c-w c-w 快速切换 
-c-w v    =>  :vsplist
-c-w s    =>  :split
-c-w o    =>  :only
-c-w c    =>  :close
-c-w h/j/i/k   -=> 将光标移到哪个窗口
-c-w H/J/I/K   -=> 将窗口交换
-c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
-c-w </>  =>  :vertical resize +/- N
-```
 
-## plugins 
+## plugins
 kite 是一个基于 ai 的 python 补全.还行,
 
 ## tips
@@ -146,12 +143,13 @@ kite 是一个基于 ai 的 python 补全.还行,
 - 关于 coc
   跳转用的是jedi 绑定到了 gd, 但是 ctags 也会生成. 可以使用 ctrl+] 跳.
   但很明显 ctags 跳的地方不太对. 尤其是针对系统库
-  
+
+使用 c-w c-]  可以打开预览 tag 窗口
 
 
 :g will execute a command on lines which match a regex. The regex is 'blank line' and the command is :d (delete)
 
-## info 
+## info
  背景有时出现两块色是因为 colorColumn
 
 ## 每次在这打字时,总是自动出现" ,以下设置可以暂时关闭这个功能
@@ -162,12 +160,18 @@ set formatoptions-=cro     或者 set fo-=cro
 启动 vim 时使用 vim -V9vim.log
 -V[N] N 是 debug　
 
-## fugitive 
+## fugitive
 ```
 :Glog --  显示+ - 界面的 git log
 :Glog -- % 显示当前文件的git log
 :copen      fugitive 使用了 quickfix,直接用就行了
 alt-p --> :cprevious alt-n --> :nnext
+
+:0Glog 
+只看当前文件的历史，非常好用
+
+:Glog HEAD~1
+对比上一个版本
 ```
 
 how to diff version?
@@ -198,40 +202,40 @@ https://medium.com/breathe-publication/understanding-vims-jump-list-7e1bfc72cdf0
 
 
 ## 问题
-1. 当启用conda 时,python 环境变了, leaderf 用不了.          
+1. 当启用conda 时,python 环境变了, leaderf 用不了.
 
 ## 选择当前行，除去空字符
 https://stackoverflow.com/questions/20165596/select-entire-line-in-vim-without-the-new-line-character
-vil 
+vil
 val
 
-## jump to line location not include blank 
-g_   jump to end 
+## jump to line location not include blank
+g_   jump to end
 -    jump to uppper line not include space
 ^    jump to start of current line not include  space
 0    jump to start of current line include  space
 
 
-# cheet.sh 
+# cheet.sh
 超牛 b 的作弊工具
 <leader>KB 注意这里是大写
 https://github.com/chubin/cheat.sh
 
 
-##  不使用插件启动 vim 
+##  不使用插件启动 vim
 vim -u NONE
 
 
 ## search and replace
 you can serach first , then leave replace  search slot blank
  In general, an empty regular expression means to use the previously entered regular expression, so :%s//\1/g should do what you want.
- 
- 
- 
+
+
+
 ## yank to reigster  a
 V"ay
 
-# paste register a to buffer 
+# paste register a to buffer
 ```
 "ap
 
@@ -239,9 +243,9 @@ V"ay
 
 
 ```
-## repeat last colon command 
+## repeat last colon command
 @:
-further reqeat 
+further reqeat
 @@
 
 
@@ -253,9 +257,9 @@ c-u delete to the start of line
 
 ## eval string
 <c-r>=  eval your input
- 
 
-## force uppser/lower seach 
+
+## force uppser/lower seach
 /\Ca     search for A
 /\ca     search for a
 
@@ -272,9 +276,9 @@ then you can :cnext  :cprevious
 
 ## 反向搜索删除
 v/href/d
-可以删除掉里只包含 href 的行。v 的帮助见 :vglobal 
+可以删除掉里只包含 href 的行。v 的帮助见 :vglobal
 
-g/href/j 
+g/href/j
 join文件里包含 href 的行，前面的 g 代表后面是执行 norm 命令, 你可能觉得奇怪，不是说 J 才是 join么，因为j 是 ex command( 用:执行的). 如果你要执行 normal commands ，还得像上面提过的一样，用 g/xxxx/norm  commands
 
 g 的帮助写:global
@@ -284,11 +288,120 @@ g 的帮助写:global
 g$
 
 
-## if coc does not work 
+## if coc does not work
 :CocCommand workspace.showOutput
 
-or 
-check .vim  in project 
+or
+check .vim  in project
 maybe something is disabled
 
 
+这个vimrc  很精简,可以参考一下, 还带有视频
+https://www.youtube.com/watch?v=n9k9scbTuvQ
+https://github.com/erkrnt/awesome-streamerrc/blob/master/ThePrimeagen/init.vim
+
+
+##  关于 mark 的跳转
+大写的 mark 可以在文件间跳
+小写的 mark 只能在本件内跳
+
+
+## jump between files 
+ctrl-^
+
+## 快速窗口管理
+``` bash
+c-w c-w 快速切换
+c-w v    =>  :vsplist
+c-w s    =>  :split
+c-w o    =>  :only
+c-w c    =>  :close
+c-w h/j/i/k   -=> 将光标移到哪个窗口
+c-w H/J/I/K   -=> 将窗口交换
+c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
+c-w </>  =>  :vertical resize +/- N
+c-w =    =>  evenly resize your buffer
+c-w r    =>  rotate your buffers 
+```
+
+##  删除两个括号内
+d2ip
+[
+  [ 
+   hello world 
+  ]
+]
+
+## change tag in vim-surround
+<body>  hello world </body>  ----> 
+<head>  hello world </head>
+``` 
+cstthead
+```
+
+
+# tabulalize 
+https://blog.csdn.net/techfield/article/details/84186402
+Tabularize 可简化为 :Tab，以下都省略了选中区域后自动生成的 `'<,'>`：
+```
+冒号对齐：:Tab /:
+逗号对齐 :Tabularize /,
+运行上一个对齐命令 :Tab
+// 对齐（需要 escape）: :Tab /\/\/
+:Tabularize /,/r1c1l0 含义是：对齐指定区域的文本，以逗号分割。将第一个逗号前的所有文本右对齐，然后添加一个空格；将逗号居中对齐，然后添加一个空格；然后将逗号后所有文本左对齐，不添加空格（添加 0 个空格）。
+```
+
+# hex  mode
+:%!xxd        hex 模式，注意，保存时会将 hex 保存为文本，应该通过以下命令转为原文本再保存
+:%!xxd -r
+
+
+# 切目录改变当前目录，会影响 c-p 的结果
+:cd xxx
+:pwd 
+:cd - 
+
+
+# 将行移到任意位置
+zz  最常用的吧, 将当前行移到中间, 保持光标 column 不动
+ZZ  保存退出
+https://unix.stackexchange.com/questions/110251/how-to-put-current-line-at-top-center-bottom-of-screen-in-vim
+
+# coc-java language server 总是崩溃的问题
+https://github.com/neoclide/coc-java/issues/99
+```
+Version 57 of JDT Lang Sever works fine
+https://download.eclipse.org/jdtls/milestones/0.57.0/
+
+Quick hack for those who are facing this issue
+Replace all directories/files in ~/.config/coc/extensions/coc-java-data/server with directories/files from above extracted JDT lang server tar.
+```
+
+
+# 执行异步任务
+call jobstart("mpv *.mp4")
+
+
+# 在全部行尾执行 norm 命令 
+https://stackoverflow.com/questions/594448/how-can-i-add-a-string-to-the-end-of-each-line-in-vim
+
+:%norm A*
+
+This is what it means:
+
+ %       = for every line
+ norm    = type the following commands
+ A*      = append '*' to the end of current line
+
+
+ # 将 visual select 的贴到 command 
+ <c-r>*
+
+
+#  对比 split window
+:windo diffthis
+:diffoff!
+
+
+# 创建数字序列
+https://stackoverflow.com/questions/9903660/how-to-generate-a-number-sequence-in-file-using-vi-or-vim

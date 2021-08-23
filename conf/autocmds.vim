@@ -1,13 +1,17 @@
-augroup autocmd_guard_me 
+augroup autocmd_guard_me
     autocmd!
 	  " 识别 md 为 markdown
     au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 		"  auto jump to last edit location in your opend file
 		"  https://askubuntu.com/questions/202075/how-do-i-get-vim-to-remember-the-line-i-was-on-when-i-reopen-a-file/202077
-		if has("autocmd")
-			au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-		endif
+    if has("autocmd")
+      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    endif
+
+    "autocmd BufNewFile,BufRead *.gradle   set ft=gradle
+    autocmd FileType typescriptreact  set ft=typescript
+
 
 
     autocmd BufLeave,FocusLost * silent! wall
@@ -20,28 +24,58 @@ augroup autocmd_guard_me
     autocmd FileType nerdtree map <buffer> K kgo
 
     autocmd FileType vim vnoremap <F5> "ay:@a<cr>
-	  
-
-    " don`t use this, a lot of strange problems will occur
-	 " autocmd! bufwritepost ~/.vimrc source %
 
     " format after file saved
     "autocmd BufWritePre * :normal gg=G
 	"
     " 在 filetype 为 sql 时, iunmap 所有的C-C 开头的命令, 不然C-C 好慢
-    autocmd Filetype sql  <buffer>
-                \       for m in ['<C-C>R', '<C-C>L', '<C-C>l', '<C-C>c', '<C-C>v', '<C-C>p', '<C-C>t', '<C-C>s', '<C-C>T', '<C-C>o', '<C-C>f', '<C-C>k', '<C-C>a']
+    autocmd Filetype sql  for m in ['<C-C>R', '<C-C>L', '<C-C>l', '<C-C>c', '<C-C>v', '<C-C>p', '<C-C>t', '<C-C>s', '<C-C>T', '<C-C>o', '<C-C>f', '<C-C>k', '<C-C>a']
                 \       | execute('silent! iunmap <buffer> '.m)
                 \       | endfor
+    autocmd Filetype netrw  for m in ['qb', 'qf','qL','qF']
+                \       | execute('silent! nunmap <buffer> '.m)
+                \       | endfor
 
-    "  当前行背景
-   " au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-   " au WinLeave * setlocal nocursorline
+    " fastlane
+    au BufReadPost Fastfile set ft=ruby 
+    au BufReadPost *.svelte set ft=vue 
 
-    "" columcolor width 与 tw  一致
-    "  autocmd FileType * execute "setlocal colorcolumn=+1"
-    ":hi CursorLine   cterm=NONE ctermbg=gray ctermfg=white guibg=darkred guifg=white
 
+    "autocmd User CocOpenFloat call nvim_win_set_config(g:coc_last_float_win, {'relative': 'editor', 'row': 0, 'col': 0})
+    "autocmd User CocOpenFloat call nvim_win_set_width(g:coc_last_float_win, 9999)
+augroup END
+
+" auto load file as binary
+" http://vim.wikia.com/wiki/Improved_hex_editing
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+
+augroup msjExt
+  au!
+  au BufNewFile,BufRead *.mjs set ft=mjs
+augroup END
+
+augroup suffixes
+    autocmd!
+
+    let associations = [
+                \["javascript", ".js,.javascript,.es,.esx,.json"],
+                \["vue", ".vue"],
+                \["python", ".py,.pyw"]
+                \]
+
+    for ft in associations
+        execute "autocmd FileType " . ft[0] . " setlocal suffixesadd=" . ft[1]
+    endfor
 augroup END
 
 

@@ -32,10 +32,21 @@ func! CompileRunGcc()
     if &filetype == 'c'
         exec "silent ! gcc % -o %<"
         exec "!./%<"
-    elseif &filetype == 'javascript.jsx'
+		elseif &filetype == 'xxd'
+			exec "qemu-system-x86_64 % --nographic -serial mon:stdio"
+	  elseif &filetype == 'javascript'
         exec "!node %"
+		"elseif &filetype == 'typescript'
+        "exec "!tsc % --target es5 && node %:r"
+	  elseif &filetype == 'rust'
+        "exec "!rustc %"
+        "exec "!time ./%<"
+        exec "!cargo run"
+	  elseif &filetype == 'typescript'
+        "exec "!ts-node % "
+        exec "!gcc -std=c++17 -lstdc++ % -o %<"
     elseif &filetype == 'cpp'
-        exec "!g++ % -o %<"
+        exec "!gcc -std=c++17 -lstdc++ % -o %<"
         "exec "!time ./%<"
     elseif &filetype == 'java'
         "exec "!source ~/.bash_profile &&    mvnexec"
@@ -43,14 +54,18 @@ func! CompileRunGcc()
 "        exec "!time java %< "
     elseif &filetype == 'xml'
         exec "!pwd &&mvn package -DskipTests &&  java  -jar -XX:+TraceClassLoading target/*.jar "
-        "exec "!source ~/.bash_profile &&    mvnexec"
-        "exec "!time java %<"
     elseif &filetype == 'sh'
-        :!bash %
+        :!bash '%'
     elseif &filetype == 'python'
         exec "!python3 '%'"
+    elseif &filetype == 'groovy'
+        exec "!groovy '%'"
+    elseif &filetype == 'dart'
+        exec "!dart '%'"
+    elseif &filetype == 'gradle'
+        exec "!gradle hello"
     elseif &filetype == 'html'
-        exec "!open % "
+        exec "!open % &"
     elseif &filetype == 'yaml'
         exec "!kubectl apply -f % "
     elseif &filetype == 'go'
@@ -61,8 +76,8 @@ func! CompileRunGcc()
         exec "!chrome %.html &"
     elseif &filetype == 'vim'
         :source %
-"    else
-"        :make
+    elseif &filetype == 'mjs'
+        exec "!%"
     endif
 endfunc
 
@@ -111,21 +126,7 @@ function! Rotate()
     exe initial . "wincmd w"
 endfunction
 
-function! SearchCount()
-    let keyString=@/
-    let pos=getpos('.')
-    try
-        redir => nth
-        silent exe '0,.s/' . keyString . '//ne'
-        redir => cnt
-        silent exe '%s/' . keyString . '//ne'
-        redir END
-        return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
-    finally
-        call setpos('.', pos)
-    endtry
-endfunction
-set statusline+=[%{SearchCount()}] " Nth of N when searching
+"nnoremap <c-w>r : call Rotate()<CR>
 
 
 
@@ -208,6 +209,51 @@ function! s:get_visual_selection()
     return join(lines, "\n")
 endfunction
 
+" URL encode a string. ie. Percent-encode characters as necessary.
+function! UrlEncode(string)
+
+    let result = ""
+
+    let characters = split(a:string, '.\zs')
+    for character in characters
+        if character == " "
+            let result = result . "+"
+        elseif CharacterRequiresUrlEncoding(character)
+            let i = 0
+            while i < strlen(character)
+                let byte = strpart(character, i, 1)
+                let decimal = char2nr(byte)
+                let result = result . "%" . printf("%02x", decimal)
+                let i += 1
+            endwhile
+        else
+            let result = result . character
+        endif
+    endfor
+
+    return result
+
+endfunction
+
+" Returns 1 if the given character should be percent-encoded in a URL encoded
+" string.
+function! CharacterRequiresUrlEncoding(character)
+
+    let ascii_code = char2nr(a:character)
+    if ascii_code >= 48 && ascii_code <= 57
+        return 0
+    elseif ascii_code >= 65 && ascii_code <= 90
+        return 0
+    elseif ascii_code >= 97 && ascii_code <= 122
+        return 0
+    elseif a:character == "-" || a:character == "_" || a:character == "." || a:character == "~"
+        return 0
+    endif
+
+    return 1
+
+endfunction
+
 function! GoogleSearch()
 "     let searchterm =s:get_visual_selection()
      let searchterm =@"
@@ -246,13 +292,13 @@ function! KubeSearch()
      echom url
      silent exec  url
 endfunction
-function! PythonSearch()
-     let searchterm =@"
-     let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
-     silent exec  url
-endfunction
-vnoremap gg "gy<Esc>:call GoogleSearch()<CR>
-vnoremap gp "gy<Esc>:call PythonSearch()<CR>
+"function! PythonSearch()
+     "let searchterm =@"
+     "let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
+     "silent exec  url
+"endfunction
+vnoremap gG "gy<Esc>:call GoogleSearch()<CR>
+"vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 vnoremap gk "gy<Esc>:call KubeSearch()<CR>
 vnoremap ga "gy<esc>:call OpenChrome()<CR>
 
@@ -346,4 +392,30 @@ function! LookUpwards()
 endfunction
 
 imap <silent> <C-y> <C-R><C-R>=LookUpwards()<CR>
+
+
+" 跳到日志处
+" /this/is/a/really/long/filename:line_number:name_of_function
+" demo
+" ~/.zk_vimrc/conf/functions.vim:30:LookUpwards
+function! OpenLog()
+    let line = getline(".")
+    let items = split(line, ':')
+    if filereadable(items[0])
+	    tabnew
+	    exe "e ".items[0]
+	    exe ":".items[1]
+endif
+endfunction
+
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+noremap rn :call RenameFile()<cr>
 

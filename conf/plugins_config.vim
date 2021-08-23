@@ -1,21 +1,20 @@
 
-call plug#begin('~/.vim/plugged')
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           search                            
+call plug#begin('~/.vim/plugged') """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                           search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug 'easymotion/vim-easymotion'
 " nmap s <Plug>(easymotion-s)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           language -go                            
+"                           language -go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 " https://github.com/fatih/vim-go/wiki/Tutorial
 
 " split and join recommanded by vim-go author
-Plug 'AndrewRadev/splitjoin.vim'
-"gS to split the line to multiple lines 
+"Plug 'AndrewRadev/splitjoin.vim'
+"gS to split the line to multiple lines
 "gJ to join multiple lines to one line
 
 " Plug 'fatih/molokai'
@@ -27,12 +26,12 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 
 " https://github.com/fatih/vim-go/issues/2149
-" when go.mod exists, godef will not work, add the above line to solve 
+" when go.mod exists, godef will not work, add the above line to solve
 let g:go_def_mode = 'godef'
 " let g:go_def_mode = 'gopls'
 
 
-augroup guard_group 
+augroup guard_group
 	autocmd!
 	autocmd FileType go nmap <leader>t  <Plug>(go-test)
 	autocmd FileType go nmap <leader>r  <Plug>(go-run)
@@ -40,7 +39,7 @@ augroup guard_group
 	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
-	autocmd FileType go nmap <leader>v  <Plug>(go-alternate-edit)
+	autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
 	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 	autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
@@ -58,6 +57,7 @@ augroup guard_group
 	autocmd FileType go nmap <leader>di :GoDebugStep<CR>
 	autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
 	autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
+	autocmd FileType go nmap <leader>dt :GoDebugTest<CR>
 " switch between cpp and h file
   autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
   autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
@@ -74,25 +74,19 @@ function! s:build_go_files()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           code complete                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 基于 ai 的代码补全
-" 用 CocInstall coc-tabnine, but with or without coc , it`s slow and not that
-" good
-" Plug 'zxqfl/tabnine-vim'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           coc                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"                           coc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'neoclide/coc.nvim', {'commit': 'v0.0.80'}
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
-" go configuration 
+" go configuration
 " auto imports before save, so slow
-" autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd bufwritepre *.go :call cocaction('runcommand', 'editor.action.organizeimport')
 "
-" all extension source 
-" https://www.npmjs.com/search?q=keywords%3Acoc.nvim&page=2&perPage=20
+" all extension source
+" https://www.npmjs.com/search?q=keywords%3acoc.nvim&page=2&perpage=20
 "
-" gitter 
+" gitter
 " https://gitter.im/neoclide/coc-cn
 "
 " show extension
@@ -102,7 +96,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "让coc服务，在neovim启动后，500ms后才启动
 let g:coc_start_at_startup=0
 function! CocTimerStart(timer)
-    exec "CocStart"
+		exec "CocStart"
 endfunction
 call timer_start(500,'CocTimerStart',{'repeat':1})
 
@@ -115,16 +109,16 @@ endfunction
 let g:trigger_size = 0.5 * 1048576
 
 augroup hugefile
-  autocmd!
-  autocmd BufReadPre *
-        \ let size = getfsize(expand('<afile>')) |
-        \ if (size > g:trigger_size) || (size == -2) |
-        \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
-        \   exec 'CocDisable' |
-        \ else |
-        \   exec 'CocEnable' |
-        \ endif |
-        \ unlet size
+	autocmd!
+	autocmd BufReadPre *
+				\ let size = getfsize(expand('<afile>')) |
+				\ if (size > g:trigger_size) || (size == -2) |
+				\   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
+				\   exec 'CocDisable' |
+				\ else |
+				\   exec 'CocEnable' |
+				\ endif |
+				\ unlet size
 augroup END
 
 function! s:show_documentation()
@@ -139,16 +133,21 @@ augroup coc_guard
 	autocmd!
 	"  正确高亮 jsonc 的注释
 	autocmd FileType json syntax match Comment +\/\/.\+$+
-	autocmd FileType java  exec "CocDisable"
+	"autocmd FileType java  exec "CocDisable"
 	" Close preview window after completion is done
 	autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 	" Show signature help while editing
 "    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFi<le
 	" Highlight symbol under cursor on CursorHold
 "    autocmd CursorHold * silent call CocActionAsync('highlight')
-	autocmd FileType *  xnoremap <buffer> <leader>f :CocFormat<CR>
-	autocmd FileType *  nnoremap <buffer> <leader>f :CocFormat<CR>
+	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
+	autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
+	"autocmd FileType js,html,vue,css  xnoremap <buffer> <leader>F :Prettier<CR>
+	"autocmd FileType js.html,vue,css  nnoremap <buffer> <leader>F :Prettier<CR>
+	"autocmd FileType *  vmap <leader>f  <Plug>(coc-format-selected)
+	"autocmd FileType *  nmap <leader>f  <Plug>(coc-format-selected)
 " To enable highlight current symbol on CursorHold
 	autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -159,36 +158,25 @@ augroup END
 " coc snippet
 "编辑当前文件类型的snippet
 nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
+nnoremap <leader>rr <plug>(coc-rename)
+nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
-
-
-" tab for completion and jump placehoders
-" https://github.com/neoclide/coc-snippets
-" method 1
 imap <Tab> <Plug>(coc-snippets-expand-jump)
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+			\ pumvisible() ? coc#_select_confirm() :
+			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+			\ <SID>check_back_space() ? "\<TAB>" :
+			\ coc#refresh()
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
-
-" method 2 
-" this won`t trigger auto-completion if expansion is on the fly
-" and another cavet is allowing you tab after word in normal line
-" inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-" let g:coc_snippet_next = '<TAB>'
-" let g:coc_snippet_prev = '<S-TAB>'
-
-nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
-nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+"nnoremap <expr><C-f> coc#float#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+"nnoremap <expr><C-b> coc#float#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
 
 
 " Use <c-space> for trigger completion.
@@ -196,8 +184,8 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 
 nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>4 <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
+nmap <silent> <leader>4 :<C-u>CocFix<cr>
 " Remap keys for goto
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gt <Plug>(coc-type-definition)
@@ -221,10 +209,10 @@ let g:coc_global_extensions=[
  \ 'coc-json',
  \]
  " so slow with big file, called  coc#insert
-" debug  
+" debug
 " CocCommand workspace.showOutput
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                  lightline                                 
+"                                  lightline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
@@ -238,25 +226,21 @@ let g:lightline = {
             \ },
             \ }
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           buffer explorer                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 更好用的 buffer explorer
-"Plug 'vim-scripts/bufexplorer.zip'
-"""nnoremap <D-e> :BufExplorerHorizontalSplit<cr>j<cr>
-"nnoremap <leader>o :BufExplorerHorizontalSplit<cr>j
-"" if show help in buffer explorer
-"let g:bufExplorerDefaultHelp=0
-"let g:bufExplorerShowRelativePath=1
-"" 在其他窗口打开文件, 而不是在 buffer explorer 里打开
-"let g:bufExplorerFindActive=1
-"" 将未命名 buffer 也显示
-"let g:bufExplorerShowNoName=1
-"" 打开时的大小
-"let g:bufExplorerSplitHorzSize=8
-"let g:bufExplorerMaxHeight=12
-"" sort by mru
-"let g:bufExplorerSortBy='mru'
+function! SearchCount()
+    let keyString=@/
+    let pos=getpos('.')
+    try
+        redir => nth
+        silent exe '0,.s/' . keyString . '//ne'
+        redir => cnt
+        silent exe '%s/' . keyString . '//ne'
+        redir END
+        return matchstr( nth, '\d\+' ) . '/' . matchstr( cnt, '\d\+' )
+    finally
+        call setpos('.', pos)
+    endtry
+endfunction
+set statusline+=[%{SearchCount()}] " Nth of N when searching
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           tab
@@ -264,20 +248,25 @@ let g:lightline = {
 Plug 'godlygeek/tabular'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-easy-align                            
+"                           vim-easy-align
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 对齐 =号. visual 选择后, 按= 号
 "Plug 'junegunn/vim-easy-align'
 "vnoremap <silent> <Enter> :EasyAlign<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           leaderF                            
+"                           leaderF
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 " 搜索中文时会有乱码的情况。
 " https://github.com/Yggdroot/LeaderF/issues/203
 " 解决方法 git config --global core.quotepath false
-let g:Lf_ShortcutF = '<c-p>'
+"
+" ctrl-p 时开头为。
+"https://github.com/Yggdroot/LeaderF/issues/567
+let g:Lf_ShowDevIcons = 0
+
+"let g:Lf_ShortcutF = '<c-p>'
 let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
 
 "  show in pop window
@@ -308,7 +297,7 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 nnoremap <leader>g :Leaderf rg<cr>
 nnoremap <leader>G :Leaderf rg<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vimwiki                            
+"                           vimwiki
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug 'vimwiki/vimwiki'
 " autocmd FileType markdown nmap <buffer><silent> t :VimwikiTable<cr>
@@ -317,35 +306,20 @@ nnoremap <leader>G :Leaderf rg<cr>
 "                        \ 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-surround                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 教程
-"http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
-Plug 'tpope/vim-surround'
-"support vim surround repeat
-Plug 'tpope/vim-repeat'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           comment                            
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'tpope/vim-commentary'
-Plug 'suy/vim-context-commentstring'
-vnoremap <leader>c<leader> :Commentary<cr>
-nnoremap <leader>c<leader> :Commentary<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           ack                            
+"                           ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mileszs/ack.vim'
 " let g:ackhighlight = 1
 " if executable("ag")
 " 	let g:ackprg = 'ag --nogroup --nocolor --column'
 " endif
+" write ignore directory or file to ~/.ackrc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-table-format                            
+"                           vim-table-format
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " below sinpet code will align | when in insert mode. super cool , like the
-" dhruvasagar/vim-table-mode plugin does 
+" dhruvasagar/vim-table-mode plugin does
 " https://gist.github.com/tpope/287147
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 function! s:align()
@@ -360,21 +334,24 @@ function! s:align()
 endfunction
 
 
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
+""  不要在打开 markdown 时自动折叠, 没蛋用.
+"let vim_markdown_folding_disabled = 1
+
 " let g:vim_markdown_conceal=1
 " set conceallevel=2
 " let g:vim_markdown_conceal_code_blocks = 1
 
 
-Plug 'zk4/md-img-paste.vim'
-augroup markdown_vim
-" autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
-autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("")<CR>
-autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("")<CR>
-augroup END
+"Plug 'zk4/md-img-paste.vim'
+"augroup markdown_vim
+"" autocmd FileType markdown nnoremap <buffer><silent> <Leader>i :call <SID>MkdxFzfQuickfixHeaders()<Cr>
+"autocmd FileType markdown nmap <buffer><silent> p :call mdip#MarkdownClipboardImage("")<CR>
+"autocmd FileType markdown nmap <buffer><silent> P <up>:call mdip#MarkdownClipboardImage("")<CR>
+"augroup END
 
-" there are some defaults for image directory and image name, you can change them
- let g:mdip_imgdir = 'assets'
+"" there are some defaults for image directory and image name, you can change them
+ "let g:mdip_imgdir = 'assets'
 " let g:mdip_imgname = 'image'
 "Plug 'mzlogin/vim-markdown-toc'
 Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
@@ -394,33 +371,34 @@ let g:mkdp_auto_close = 0
 let g:mkdp_markdown_css="/Users/zk/vue.css"
 
 
-augroup gp_group 
+augroup gp_group
 	autocmd!
 	autocmd FileType markdown nnoremap <buffer> gp :MarkdownPreview<cr>
 
-	
+
 augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           color-schema                            
+"                           color-schema
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'morhetz/gruvbox'
+
 " Plug 'sheerun/vim-wombat-scheme'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           accelerated-jk                            
+"                           accelerated-jk
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'rhysd/accelerated-jk'
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           fugitive                            
+"                           fugitive
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'tpope/vim-fugitive'
 " make gpush async
-Plug 'tpope/vim-dispatch'
+"Plug 'tpope/vim-dispatch'
 " easy mapping for fugitive
 Plug 'tpope/vim-unimpaired'
-" for github 
+" for github
 Plug 'tpope/vim-rhubarb'
 
 set diffopt+=vertical
@@ -440,24 +418,23 @@ nnoremap <C-g>g :Ggrep<Space>
 nnoremap <C-g>m :Gmove<Space>
 nnoremap <C-g>b :Git branch<Space>
 nnoremap <C-g>o :Git checkout<Space>
-nnoremap <C-g>p :Gpush <CR>
-nnoremap <C-g>pl :!git pull <CR>
+nnoremap <C-g>p :Git push <CR>
+nnoremap <C-g>P :!x git pull <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           NERDTree                            
+"                           NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" this is better, it`s async
+" this is better one for nerdtree, it`s async
 Plug 'jojoyuji/nerdtree-async'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
 "git plugin 禁了.光标上下移动时会闪动
 let NERDTreeHijackNetrw=1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 0
+let NERDTreeDirArrows = 1
 let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$','node_modules']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__','\~$']
 let g:NERDTreeWinSize=25
+
 "open NERDTree automatically when vim starts up on opening a directory
 augroup nerdtree_guard
 	autocmd!
@@ -471,8 +448,7 @@ augroup nerdtree_guard
 		autocmd VimLeavePre * NERDTreeClose
 	endif
 augroup END
-""close vim if the only window left open is a NERDTree
-" sync file and nerdtree {{{  so many bugs
+
 " returns true if is NERDTree open/active
 function! IsNTOpen()
 	return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
@@ -485,32 +461,21 @@ function! SyncTree()
 		wincmd p
 	endif
 endfunction
+
 " 在打开 buffer 时自动将 nerdtree 滚到相应位置
 " autocmd BufEnter * call SyncTree()
+nnoremap <f3> :call SyncTree()<cr>
 
-" change current file root when toggled 
-" nnoremap <C-\> :NERDTreeToggle %<CR>
-" inoremap <C-\> <esc>:NERDTreeToggle %<CR>
-" always resize it to 25
 nnoremap <C-\> :NERDTreeToggle  <CR> :vertical resize 25<CR>
 inoremap <C-\> <esc>:NERDTreeToggle <cr> :vertical resize 25<CR>
-" nnoremap <C-\> :NERDTreeToggle <CR>
-" inoremap <C-\> <esc>:NERDTreeToggle<cr>
-
-" autocmd BufEnter * :NERDTreeToggle 
-" augroup nerdtree_guard
-" 	autocmd!
-" 	autocmd BufEnter nerdtree :vertical resize 25<CR>
-" augroup END
-
 nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           language-jsx                            
+"                           language-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           fzf                            
+"                           fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html
 " https://github.com/junegunn/fzf/wiki
@@ -523,13 +488,32 @@ let g:fzf_buffers_jump = 1
 
 set rtp+=/usr/local/opt/fzf
 
-" search md ,this is very good for search code snippets in markdown 
+nnoremap <c-p> :GFiles<CR>
+nnoremap <leader>p :Files<CR>
+"nnoremap <leader>P :Files<CR>
+"nnoremap <leader>f :Rg<CR>
+"nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+
+
+" search md ,this is very good for search code snippets in markdown
 Plug 'alok/notational-fzf-vim'
 let g:nv_search_paths = ['~/bdcloud/notes']
 " if not found, creat note with ctrl-x
 let g:nv_create_note_key = 'ctrl-x'
-nmap <leader>n  <esc>:NV<cr>
+let g:fzf_preview_window = 'right:60%'
+nnoremap <leader>n  <esc>:NV<cr>
+"nmap <c-m>  :Marks<cr>
 
+
+"command! -bang -nargs=? -complete=dir Tags
+   "\ call fzf#vim#tags(<q-args>, {'options': '--preview-window="80%" --preview "echo {4}"'}, <bang>0)
+
+"command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4.. --preview-window="80%" --preview "echo {}"'}, <bang>0)
+
+"command! -bang -nargs=* Rg
+  "\ call fzf#vim#grep(
+  "\   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  "\   fzf#vim#with_preview(), <bang>0)
 
 
 "Hide statusline
@@ -539,11 +523,10 @@ if has('nvim') && !exists('g:fzf_layout')
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-"
+
+"autocmd FileType *  xnoremap <buffer> <leader>f :Rg<CR>
+"autocmd FileType *  nnoremap <buffer> <leader>f :Rg<CR>
+
 
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
@@ -553,10 +536,10 @@ command! -bang -nargs=* GGrep
 command! -bang BTags
   \ call fzf#vim#buffer_tags('', {
   \     'down': '40%',
-  \     'options': '--with-nth 1 
-  \                 --reverse 
-  \                 --prompt "> " 
-  \                 --preview-window="80%" 
+  \     'options': '--with-nth 1
+  \                 --reverse
+  \                 --prompt "> "
+  \                 --preview-window="80%"
   \                 --preview "
   \                     tail -n +\$(echo {3} | tr -d \";\\\"\") {2}  |
   \                     head -n 16"'
@@ -564,32 +547,11 @@ command! -bang BTags
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                   ctags                                    
+"                                   ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let $GTAGSLABEL = 'native-pygments'
-" let $GTAGSCONF = '/usr/local/etc/gtags.conf'
+"Plug 'ludovicchabant/vim-gutentags'
 
-" let g:Lf_GtagsAutoGenerate = 1
-" let g:Lf_Gtagslabel = 'native-pygments'
-" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
-" 将自动生成的 ctags/gtags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-"set tags=./.tags;,.tags
-"" 当filetype 是 python 时,自动加载 python3.7 的 tag
-"augroup python
-"    autocmd!
-"    autocmd FileType python set tags+=/Users/zk/.cache/tags/python3.7.tags
-"augroup END
-"" To know when Gutentags is generating tags
-"set statusline+=%{gutentags#statusline()}
-"" set statusline+=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-"" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
-"" 仅当发现这些文件后, 才自动生成 tags!
 "let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-"let g:gutentags_exclude_filetypes = ['.json',".xlsx",".txt"]
 
 "" 所生成的数据文件的名称
 "let g:gutentags_ctags_tagfile = '.tags'
@@ -600,43 +562,41 @@ command! -bang BTags
 
 "" 配置 ctags 的参数
 "let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-""let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-""let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+"let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+"let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 "" 检测 ~/.cache/tags 不存在就新建
 "if !isdirectory(s:vim_tags)
-"    silent! call mkdir(s:vim_tags, 'p')
+   "silent! call mkdir(s:vim_tags, 'p')
 "endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           object                            
+"                           object
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-" Plug 'terryma/vim-expand-region'
+"Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
-" map K <Plug>(expand_region_expand)
+"map K <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 "
-let g:expand_region_use_select_mode = 1
+"let g:expand_region_use_select_mode = 1
 let g:expand_region_text_objects = {
-      \ 'iw'  :1,
-      \ 'iW'  :1,
+      \ 'i}'  :1,
+      \ 'i)'  :1,
+      \ 'i`'  :1,
+      \ 'i>'  :1,
       \ 'i"'  :1,
       \ 'i''' :1,
-      \ 'i]'  :1, 
-      \ 'ib'  :1, 
-      \ 'iB'  :1, 
-      \ 'il'  :1, 
-      \ 'ip'  :1,
-      \ 'ie'  :1,
+      \ 'i]'  :1
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-visual-mutli                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'mg979/vim-visual-multi'
+"Plug 'terryma/vim-multiple-cursors'
 " nmap ∆  <C-down>
 " nmap ˚  <C-up>
 " quick use
@@ -652,7 +612,7 @@ Plug 'mg979/vim-visual-multi'
 
 Plug 'wellle/targets.vim'
 let g:targets_nl = 'np'
-" a cheetsheet for that 
+" a cheetsheet for that
 " https://github.com/wellle/targets.vim/blob/master/cheatsheet.md
 
 "Targets.vim is a Vim plugin that adds various text objects to give you more targets to operate on. It expands on the idea of simple commands like di' (delete inside the single quotes around the cursor) to give you more opportunities to craft powerful commands that can be repeated reliably. One major goal is to handle all corner cases correctly.
@@ -663,6 +623,8 @@ let g:targets_nl = 'np'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I don` need this.. it navigate from kitty  vim seamlessly
 Plug 'knubie/vim-kitty-navigator'
+set title
+let &titlestring='%t - nvim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           vim-searchindex
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -670,7 +632,7 @@ Plug 'google/vim-searchindex'
 " 搜索时,显示当前匹配第几个与总匹配数
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           vim-workspace                            
+"                           vim-workspace
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "使用 leader-s 切换是否创建工程
 "在打开当前文件夹时，可以回到工程现场
@@ -687,14 +649,12 @@ Plug 'google/vim-searchindex'
 "                           vim_which-key
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" wil cause crash 
+" wil cause crash
 Plug 'liuchengxu/vim-which-key'
-"" show leader key tips, for debug purpose
-
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-"Plug 'zephod/vim-iterm2-navigator'
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           inscearch                            
+"                           inscearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'bronson/vim-visual-star-search'
 
@@ -707,7 +667,7 @@ Plug 'bronson/vim-visual-star-search'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                           others                             
+"                           others
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'stephpy/vim-yaml'
 
@@ -727,17 +687,17 @@ Plug 'junegunn/vim-peekaboo'
 " nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>
 " nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>
 " nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>
-Plug 'vim-scripts/loremipsum'
+"Plug 'vim-scripts/loremipsum'
 " Plug 'honza/vim-snippets'
 
 """"""""""""""""""""""
 "  undo history   "
 """"""""""""""""""""""
-" Plug 'mbbill/undotree'
-" if has("persistent_undo")
-"     set undodir=$HOME . "/.undodir"
-"     set undofile
-" endif
+ Plug 'mbbill/undotree'
+ if has("persistent_undo")
+		set undodir=~/.vim_undo
+		set undofile
+ endif
 
 Plug 'tpope/vim-abolish'
 " 这个插件有两个牛 b 的功能
