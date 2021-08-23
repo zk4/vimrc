@@ -256,6 +256,26 @@ vnoremap gp "gy<Esc>:call PythonSearch()<CR>
 vnoremap gk "gy<Esc>:call KubeSearch()<CR>
 vnoremap ga "gy<esc>:call OpenChrome()<CR>
 
+function! FunReference()
+   let cur_word =@"
+   exec  ":cs find c " . cur_word 
+endfunction
+function! FunReference2(cur_word)
+   exec  ":cs find c " . a:cur_word 
+endfunction
+
+function! LoadCscope()
+	echo "try load cscope"
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . "cscope.out" 
+    set cscopeverbose
+  endif
+endfunction
+
+vnoremap gr "gy<Esc>:call FunReference()<CR>
+nnoremap gr "gy<Esc>:call FunReference2(expand('<cword>'))<CR>
 
 "vnoremap gs "gy<Esc>:call StackOverFlow()<CR>
 "https://docs.python.org/3/library/functools.html

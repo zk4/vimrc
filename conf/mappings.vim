@@ -14,6 +14,7 @@ inoremap <C-c> <ESC>
 
 nnoremap <c-e> :SwitchBuffer<cr>
 
+
 vnoremap <space> <Nop>
 " 在 yank 的时候,保持光标在最下方,而不是跳加到前面
 vnoremap y y`]
@@ -26,6 +27,9 @@ nmap cw ciw
 nmap cW ciW
 nmap vw viw
 nmap dW diW
+
+nmap + :vertical resize +1<cr>
+nmap - :vertical resize -1<cr>
 
 nmap <leader>cp :CocCommand python.
 
@@ -119,6 +123,8 @@ nnoremap <C-b> <C-u>zz
 "multi paste
 xnoremap p pgvy
 
+" ctags jump to multipal match
+" nnoremap <C-]> g<C-]>
 
 "http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>
 " Replace visually selected text or word (globally with confirmation)
@@ -370,3 +376,8 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 " insert time
 " imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
 " imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>
+
+nnoremap ; :
+
+
+noremap gc :e <cfile><cr>

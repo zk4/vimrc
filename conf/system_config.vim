@@ -21,6 +21,8 @@ set foldmethod=indent
 " when scroll with track pad, cursor not move but page
 set mouse=a
 
+" set tag name
+set tags=./.tags;,.tags
 
 " show  control characters
 " set list
@@ -113,4 +115,7 @@ set nobackup                " 设置无备份文件
 set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 
-" set spell
+
+" 退出后再打开文件，可以 redo
+set undofile
+set undodir=~/.vim/undo/
