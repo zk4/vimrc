@@ -401,6 +401,7 @@ Plug 'tpope/vim-unimpaired'
 " for github
 Plug 'tpope/vim-rhubarb'
 
+Plug 'tpope/vim-surround'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd FileType gitcommit set foldmethod=syntax
@@ -741,6 +742,12 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+
+Plug 'terryma/vim-expand-region'
+
+
+" for typescript highligh , 自带的有 bug
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 

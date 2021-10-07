@@ -28,7 +28,7 @@ set autoread
 set foldmethod=indent
 
 
-let g:python_host_prog  = '/Users/zk/anaconda3/bin/python'
+let g:python_host_prog  = '/usr/local/Cellar/python@3.8/3.8.11/'
 
 " 方便 gf 跳转
 " 	This is a list of directories which will be searched when using the
