@@ -418,6 +418,20 @@ function! RenameFile()
         exec ':silent !rm ' . old_name
         redraw!
     endif
+
 endfunction
-noremap rn :call RenameFile()<cr>
+
+
+" gx 打开网页，新版的 vim 有 bug，干到 wget 里去了。
+function! HandleURL()
+  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;)]*')
+  echo s:uri
+  if s:uri != ""
+    silent exec "!open '".s:uri."'"
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+
+nnoremap gx :call HandleURL()<cr>
 

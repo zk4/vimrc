@@ -76,7 +76,6 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'commit': 'v0.0.80'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 " go configuration
@@ -92,6 +91,7 @@ Plug 'neoclide/coc.nvim', {'commit': 'v0.0.80'}
 " show extension
 " CocList extensions
 
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 "让coc服务，在neovim启动后，500ms后才启动
 let g:coc_start_at_startup=0
@@ -184,7 +184,7 @@ inoremap <silent><expr> <C-Space> coc#refresh()
 
 nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>3 :<C-u>CocList diagnostics<cr>
+nnoremap <leader>3 :CocAction<cr>
 nmap <silent> <leader>4 :<C-u>CocFix<cr>
 " Remap keys for goto
 nmap <silent> gd <Plug>(coc-definition)
@@ -405,7 +405,7 @@ Plug 'tpope/vim-surround'
 set diffopt+=vertical
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd FileType gitcommit set foldmethod=syntax
-nnoremap <C-g>s <esc>:Gstatus<cr>
+nnoremap <C-g>s <esc>:Git<cr>
 "nnoremap <C-g>p <esc>:Gpush<cr>
 nnoremap <C-g>c :Gcommit -v -q<CR>
 nnoremap <C-g>a :Gcommit --amend<CR>
@@ -497,12 +497,12 @@ nnoremap <leader>p :Files<CR>
 
 
 " search md ,this is very good for search code snippets in markdown
-Plug 'alok/notational-fzf-vim'
-let g:nv_search_paths = ['~/bdcloud/notes']
+" Plug 'alok/notational-fzf-vim'
+" let g:nv_search_paths = ['~/bdcloud/notes']
 " if not found, creat note with ctrl-x
-let g:nv_create_note_key = 'ctrl-x'
-let g:fzf_preview_window = 'right:60%'
-nnoremap <leader>n  <esc>:NV<cr>
+" let g:nv_create_note_key = 'ctrl-x'
+" let g:fzf_preview_window = 'right:60%'
+" nnoremap <leader>n  <esc>:NV<cr>
 "nmap <c-m>  :Marks<cr>
 
 
