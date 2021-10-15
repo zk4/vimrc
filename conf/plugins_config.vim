@@ -204,9 +204,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 let g:coc_global_extensions=[
  \ 'coc-snippets',
  \ 'coc-pairs',
- \ 'coc-tsserver',
- \ 'coc-eslint',
- \ 'coc-json',
+ \ 'coc-tsserver'
  \]
  " so slow with big file, called  coc#insert
 " debug
@@ -748,6 +746,12 @@ Plug 'terryma/vim-expand-region'
 
 " for typescript highligh , 自带的有 bug
 Plug 'leafgarland/typescript-vim'
+
+
+Plug 'dhruvasagar/vim-open-url'
+nmap gx <Plug>(open-url-browser)
+vmap gx <Plug>(open-url-browser)
+
 call plug#end()
 
 

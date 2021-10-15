@@ -10,7 +10,7 @@ augroup autocmd_guard_me
     endif
 
     "autocmd BufNewFile,BufRead *.gradle   set ft=gradle
-    autocmd FileType typescriptreact  set ft=typescript
+    " autocmd FileType typescriptreact  set ft=typescript.react
 
 
 
@@ -93,6 +93,6 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+
 " 修复高亮丢失的问题
 autocmd BufEnter * :syntax sync fromstart
-

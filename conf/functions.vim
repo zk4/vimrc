@@ -422,16 +422,17 @@ function! RenameFile()
 endfunction
 
 
+" 不好用，使用插件 dhruvasagar/vim-open-url
 " gx 打开网页，新版的 vim 有 bug，干到 wget 里去了。
-function! HandleURL()
-  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;)]*')
-  echo s:uri
-  if s:uri != ""
-    silent exec "!open '".s:uri."'"
-  else
-    echo "No URI found in line."
-  endif
-endfunction
-
-nnoremap gx :call HandleURL()<cr>
+" function! HandleURL()
+"   let s:uri = matchstr(getline("."), '[a-z]*:\/\/[[:alnum:]%\/_#.-]*')
+"   echo s:uri
+"   if s:uri != ""
+"     silent exec "!open '".s:uri."'"
+"   else
+"     echo "No URI found in line."
+"   endif
+" endfunction
+"
+" nnoremap gx :call HandleURL()<cr>
 
