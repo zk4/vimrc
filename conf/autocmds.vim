@@ -39,6 +39,7 @@ augroup autocmd_guard_me
     " fastlane
     au BufReadPost Fastfile set ft=ruby 
     au BufReadPost *.svelte set ft=vue 
+    au Filetype mjs set filetype=javascript
 
 
     "autocmd User CocOpenFloat call nvim_win_set_config(g:coc_last_float_win, {'relative': 'editor', 'row': 0, 'col': 0})
