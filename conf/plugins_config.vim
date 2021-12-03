@@ -584,6 +584,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
+Plug 'inside/vim-textobj-jsxattr'
 map vv <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 

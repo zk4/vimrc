@@ -235,6 +235,7 @@ vim -u NONE
 you can serach first , then leave replace  search slot blank
  In general, an empty regular expression means to use the previously entered regular expression, so :%s//\1/g should do what you want.
 
+If you `Ack! foo` and get a quickfix list of ack results, you can use `cdo` to run it for each result in the list: `:cdo %s/foo/bar/g | update`
 
 
 ## yank to reigster  a
