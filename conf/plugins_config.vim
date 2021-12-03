@@ -621,7 +621,11 @@ Plug 'mg979/vim-visual-multi'
 
 
 Plug 'wellle/targets.vim'
-let g:targets_nl = 'np'
+" for quick delete and change
+map cx cix
+map dx dix
+
+" let g:targets_nl = 'np'
 " a cheetsheet for that
 " https://github.com/wellle/targets.vim/blob/master/cheatsheet.md
 
