@@ -105,21 +105,24 @@ function! s:check_back_space() abort
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-"解决coc.nvim大文件卡死状况
-let g:trigger_size = 0.5 * 1048576
-
-augroup hugefile
-	autocmd!
-	autocmd BufReadPre *
-				\ let size = getfsize(expand('<afile>')) |
-				\ if (size > g:trigger_size) || (size == -2) |
-				\   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
-				\   exec 'CocDisable' |
-				\ else |
-				\   exec 'CocEnable' |
-				\ endif |
-				\ unlet size
-augroup END
+" 下面这段代码 java 文件在退出时会卡住, 先注了,没有用,以后就删了
+" --------------------------------------------------
+" 是为了 解决coc.nvim 大文件卡死状况 
+" let g:trigger_size = 0.5 * 1048576
+"
+" augroup hugefile
+"   autocmd!
+"   autocmd BufReadPre *
+"         \ let size = getfsize(expand('<afile>')) |
+"         \ if (size > g:trigger_size) || (size == -2) |
+"         \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
+"         \   exec 'CocDisable' |
+"         \ else |
+"         \   exec 'CocEnable' |
+"         \ endif |
+"         \ unlet size
+" augroup END
+" --------------------------------------------------
 
 function! s:show_documentation()
 	if (index(['vim','help'], &filetype) >= 0)
@@ -206,6 +209,10 @@ let g:coc_global_extensions=[
  \ 'coc-pairs',
  \ 'coc-tsserver'
  \]
+
+" let g:coc_filetype_map ={
+"   \ 'vue' :'javascript',
+"   \ }
  " so slow with big file, called  coc#insert
 " debug
 " CocCommand workspace.showOutput
@@ -577,7 +584,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
-map vv <Plug>(expand_region_expand)
+noremap vv <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 
 " let g:expand_region_use_select_mode = 1
