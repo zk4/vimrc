@@ -66,8 +66,9 @@ Don't use Ack. use Rg.
 ## 原生替换
 replace needs to use quickfix. So use Ack is better to go. Since Rg use fzf .
 - :Ack foo
-- :cdo s/foo/bar/cg
+- :cdo s/foo/bar/cg 
 这是我现在实验最好的方法,可以增量替换
+c 代表需要你确认， 如果不需要确认直接用 g
 
 解释: ack 搜出来的结果在 quickfix 里.
 cdo 可以针对 quickfix 里的结果做处理. 其他的还有 :bufdo :windo
@@ -234,9 +235,6 @@ vim -u NONE
 ## search and replace
 you can serach first , then leave replace  search slot blank
  In general, an empty regular expression means to use the previously entered regular expression, so :%s//\1/g should do what you want.
-
-If you `Ack! foo` and get a quickfix list of ack results, you can use `cdo` to run it for each result in the list: `:cdo %s/foo/bar/g | update`
-
 
 ## yank to reigster  a
 V"ay

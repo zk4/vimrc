@@ -599,7 +599,7 @@ let g:expand_region_text_objects = {
       \ 'il' :1,
       \ 'ia' :1,
       \ 'iW' :1,
-      \ 'i]'  :1
+      \ 'ip'  :1,
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -660,8 +660,8 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " wil cause crash
-Plug 'liuchengxu/vim-which-key'
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+" Plug 'liuchengxu/vim-which-key'
+" nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           inscearch

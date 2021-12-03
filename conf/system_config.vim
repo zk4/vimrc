@@ -106,7 +106,8 @@ set wildmode=full
 set history=200
 
 " 2 代表永远显示 tab
-set showtabline=2
+" 0 代表不显示
+set showtabline=0
 " 将 tab 转化为空格
 set expandtab
 " 设置tab键的显示宽度，如果有时你觉得太宽，可以打印看看当前值
