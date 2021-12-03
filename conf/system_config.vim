@@ -39,7 +39,7 @@ let g:python_host_prog='/usr/local/Cellar/python@3.8/3.8.11/'
 set mouse=a
 
 " set tag name
-set tags=./.tags;,.tags
+set tags=./.tags;,.tags,tags
 
 " set iskeyword+=-
 " -----------------------------------------

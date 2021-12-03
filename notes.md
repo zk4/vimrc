@@ -143,8 +143,13 @@ kite 是一个基于 ai 的 python 补全.还行,
 - 关于 coc
   跳转用的是jedi 绑定到了 gd, 但是 ctags 也会生成. 可以使用 ctrl+] 跳.
   但很明显 ctags 跳的地方不太对. 尤其是针对系统库
+  但是，在 ts 里，如果直接使用 gd 跳，只会跳到 d.ts ，完全没用。 这时候就要用上 ctags 了
+
+如果使用了插件： ludovicchabant/vim-gutentags
+当目录为 .git 时，会自动生成。
 
 使用 c-w c-]  可以打开预览 tag 窗口
+g ] 可以打开所找到的例表
 
 
 :g will execute a command on lines which match a regex. The regex is 'blank line' and the command is :d (delete)
