@@ -408,7 +408,7 @@ Plug 'tpope/vim-rhubarb'
 
 Plug 'tpope/vim-surround'
 set diffopt+=vertical
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd FileType gitcommit set foldmethod=syntax
 nnoremap <C-g>s <esc>:Git<cr>
 "nnoremap <C-g>p <esc>:Gpush<cr>
@@ -555,26 +555,31 @@ command! -bang BTags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                   ctags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'ludovicchabant/vim-gutentags'
-
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
-
-"" 所生成的数据文件的名称
-let g:gutentags_ctags_tagfile = '.tags'
-
-"" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-
-"" 配置 ctags 的参数
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
-
-"" 检测 ~/.cache/tags 不存在就新建
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
+" Plug 'ludovicchabant/vim-gutentags'
+"
+" " let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+"
+" " 有时候有些大型工程都是 git 管理，还是手动创建这个文件较好
+" let g:gutentags_project_root = ['+tags']
+"
+"
+" "" 所生成的数据文件的名称
+" let g:gutentags_ctags_tagfile = '.tags'
+"
+" "" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+" let s:vim_tags = expand('~/.cache/tags')
+" let g:gutentags_cache_dir = s:vim_tags
+"
+" "" 配置 ctags 的参数
+" let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+" let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+" let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+"
+"
+" "" 检测 ~/.cache/tags 不存在就新建
+" if !isdirectory(s:vim_tags)
+"    silent! call mkdir(s:vim_tags, 'p')
+" endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           object
@@ -622,8 +627,10 @@ Plug 'mg979/vim-visual-multi'
 
 Plug 'wellle/targets.vim'
 " for quick delete and change
-map cx cix
-map dx dix
+nmap cx cix
+nmap dx dix
+nmap c" ci"
+nmap c' ci'
 
 " let g:targets_nl = 'np'
 " a cheetsheet for that
@@ -670,6 +677,7 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           inscearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 使得你用 visualmodel 选择时，可以用/搜索
 Plug 'bronson/vim-visual-star-search'
 
 
@@ -685,8 +693,8 @@ Plug 'bronson/vim-visual-star-search'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'stephpy/vim-yaml'
 
-
-Plug 'junegunn/vim-peekaboo'
+"  leader 提示作用
+" Plug 'junegunn/vim-peekaboo'
 " when press  " or @, will pop the resgiter on the right side
 
 

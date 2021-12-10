@@ -40,6 +40,10 @@ set mouse=a
 
 " set tag name
 set tags=./.tags;,.tags,tags
+" 手动在 ~/node_modules, ~/Library/Caches/typescript/4.4/node_modules 里创建了 tags
+set tags+=~/node_modules/tags,~/Library/Caches/typescript/4.4/node_modules/tags
+
+set tags+=~/Library/Caches/typescript/4.4/node_modules/fs-extra/lib/tags
 
 " set iskeyword+=-
 " -----------------------------------------
