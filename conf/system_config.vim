@@ -40,6 +40,10 @@ set mouse=a
 
 " set tag name
 set tags=./.tags;,.tags,tags
+" 手动在 ~/node_modules, ~/Library/Caches/typescript/4.4/node_modules 里创建了 tags
+set tags+=~/node_modules/tags,~/Library/Caches/typescript/4.4/node_modules/tags
+
+set tags+=~/Library/Caches/typescript/4.4/node_modules/fs-extra/lib/tags
 
 set tags+=~/git/working/next_web/react/tags
 
@@ -108,7 +112,8 @@ set wildmode=full
 set history=200
 
 " 2 代表永远显示 tab
-set showtabline=2
+" 0 代表不显示
+set showtabline=0
 " 将 tab 转化为空格
 set expandtab
 " 设置tab键的显示宽度，如果有时你觉得太宽，可以打印看看当前值

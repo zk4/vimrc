@@ -408,7 +408,7 @@ Plug 'tpope/vim-rhubarb'
 
 Plug 'tpope/vim-surround'
 set diffopt+=vertical
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd FileType gitcommit set foldmethod=syntax
 nnoremap <C-g>s <esc>:Git<cr>
 "nnoremap <C-g>p <esc>:Gpush<cr>
@@ -557,7 +557,11 @@ command! -bang BTags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plug 'ludovicchabant/vim-gutentags'
 "
-" let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" " let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+"
+" " 有时候有些大型工程都是 git 管理，还是手动创建这个文件较好
+" let g:gutentags_project_root = ['+tags']
+"
 "
 " "" 所生成的数据文件的名称
 " let g:gutentags_ctags_tagfile = '.tags'
@@ -584,7 +588,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
-noremap vv <Plug>(expand_region_expand)
+Plug 'inside/vim-textobj-jsxattr'
+map vv <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 
 " let g:expand_region_use_select_mode = 1
@@ -598,7 +603,7 @@ let g:expand_region_text_objects = {
       \ 'il' :1,
       \ 'ia' :1,
       \ 'iW' :1,
-      \ 'i]'  :1
+      \ 'ip'  :1,
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -620,7 +625,13 @@ Plug 'mg979/vim-visual-multi'
 
 
 Plug 'wellle/targets.vim'
-let g:targets_nl = 'np'
+" for quick delete and change
+nmap cx cix
+nmap dx dix
+nmap c" ci"
+nmap c' ci'
+
+" let g:targets_nl = 'np'
 " a cheetsheet for that
 " https://github.com/wellle/targets.vim/blob/master/cheatsheet.md
 
@@ -659,12 +670,13 @@ Plug 'google/vim-searchindex'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " wil cause crash
-Plug 'liuchengxu/vim-which-key'
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+" Plug 'liuchengxu/vim-which-key'
+" nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           inscearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 使得你用 visualmodel 选择时，可以用/搜索
 Plug 'bronson/vim-visual-star-search'
 
 
@@ -680,8 +692,8 @@ Plug 'bronson/vim-visual-star-search'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plug 'stephpy/vim-yaml'
 
-
-Plug 'junegunn/vim-peekaboo'
+"  leader 提示作用
+" Plug 'junegunn/vim-peekaboo'
 " when press  " or @, will pop the resgiter on the right side
 
 
