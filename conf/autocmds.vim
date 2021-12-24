@@ -96,4 +96,4 @@ augroup END
 
 
 " 修复高亮丢失的问题
-autocmd BufEnter * :syntax sync fromstart
+autocmd BufEnter * :syntax sync minlines=20
