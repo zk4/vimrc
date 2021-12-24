@@ -41,6 +41,8 @@ set mouse=a
 " set tag name
 set tags=./.tags;,.tags,tags
 
+set tags+=~/git/working/next_web/react/tags
+
 " set iskeyword+=-
 " -----------------------------------------
 " show  control characters
