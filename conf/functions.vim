@@ -45,7 +45,7 @@ func! CompileRunGcc()
         "exec "!time ./%<"
         exec "!cargo run"
 	  elseif &filetype == 'typescript'
-        exec "!time ts-node % "
+        exec "!ts-node % "
         " exec "!gcc -std=c++17 -lstdc++ % -o %<"
     elseif &filetype == 'cpp'
         exec "!gcc -std=c++17 -lstdc++ % -o %<"

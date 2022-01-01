@@ -24,6 +24,7 @@ nnoremap + :vertical resize +1<cr>
 nnoremap - :vertical resize -1<cr>
 
 "nnoremap <leader>cp :CocCommand python.
+nnoremap <leader>E :e ++enc=utf-8<cr>:w!<cr>
 
 
 nnoremap dc viwf(hxlds(

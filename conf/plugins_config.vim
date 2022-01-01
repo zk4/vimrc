@@ -573,7 +573,6 @@ command! -bang BTags
 " let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 " let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 "
-"
 " "" 检测 ~/.cache/tags 不存在就新建
 " if !isdirectory(s:vim_tags)
 "    silent! call mkdir(s:vim_tags, 'p')
@@ -593,16 +592,16 @@ map vv <Plug>(expand_region_expand)
 
 " let g:expand_region_use_select_mode = 1
 let g:expand_region_text_objects = {
-      \ 'i}'  :1,
-      \ 'i)'  :1,
-      \ 'i`'  :1,
-      \ 'i>'  :1,
-      \ 'i"'  :1,
-      \ 'i''' :1,
-      \ 'il' :1,
-      \ 'ia' :1,
-      \ 'iW' :1,
-      \ 'ip'  :1,
+      \ 'iw'  :0,
+      \ 'iW'  :0,
+      \ 'i"'  :0,
+      \ 'i''' :0,
+      \ 'i]'  :1,
+      \ 'ib'  :1, 
+      \ 'iB'  :1, 
+      \ 'il'  :0, 
+      \ 'ip'  :0,
+      \ 'ie'  :0, 
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -769,6 +768,10 @@ Plug 'leafgarland/typescript-vim'
 Plug 'dhruvasagar/vim-open-url'
 nmap gx <Plug>(open-url-browser)
 vmap gx <Plug>(open-url-browser)
+
+" Plug 'mattn/emmet-vim'
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css,javascript.jsx,javascript,typescript EmmetInstall
 
 call plug#end()
 

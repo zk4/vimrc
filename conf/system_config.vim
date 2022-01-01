@@ -45,6 +45,8 @@ set tags+=~/node_modules/tags,~/Library/Caches/typescript/4.4/node_modules/tags
 
 set tags+=~/Library/Caches/typescript/4.4/node_modules/fs-extra/lib/tags
 
+set tags+=~/git/working/next_web/react/tags
+
 " set iskeyword+=-
 " -----------------------------------------
 " show  control characters
