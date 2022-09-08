@@ -204,10 +204,10 @@ command! -nargs=0 CocFormat :call CocAction('format')
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 let g:coc_global_extensions=[
  \ 'coc-snippets',
- \ 'coc-pairs',
  \ 'coc-tsserver'
  \]
 
+"  'coc-pairs',
 " let g:coc_filetype_map ={
 "   \ 'vue' :'javascript',
 "   \ }

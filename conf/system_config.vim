@@ -147,4 +147,5 @@ set foldnestmax=10
 set nofoldenable
 set foldlevel=2
 
-
+" 禁止隐藏光标，coc 貌似总有 bug 会导致光标丢失
+set nomousehide
