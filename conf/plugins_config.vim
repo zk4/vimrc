@@ -142,9 +142,9 @@ augroup coc_guard
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFi<le
 	" Highlight symbol under cursor on CursorHold
-"    autocmd CursorHold * silent call CocActionAsync('highlight')
-	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
-	autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
+  " autocmd CursorHold * silent call CocActionAsync('highlight')
+	autocmd FileType *  xnoremap <buffer> <leader>F :call CocActionAsync('format')<CR>
+	autocmd FileType *  nnoremap <buffer> <leader>F :call CocActionAsync('format')<CR>
 	"autocmd FileType js,html,vue,css  xnoremap <buffer> <leader>F :Prettier<CR>
 	"autocmd FileType js.html,vue,css  nnoremap <buffer> <leader>F :Prettier<CR>
 	"autocmd FileType *  vmap <leader>f  <Plug>(coc-format-selected)

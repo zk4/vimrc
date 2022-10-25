@@ -104,9 +104,6 @@ More detail you can check :help leaderF
 **Find the mostly used file**
 `<leader>`m
 
-## Locate word or selection
-\* # for current word search. When you cursor move away from founded word. It will automatically disable the color.  
-
 
 
 # Customize
@@ -117,7 +114,7 @@ This project is largly inspired by  https://github.com/amix/vimrc
 
 
 # QA
-**How do I debug the code ?** 
+**How do I debug the code in vim?** 
 Well, you should not depend on debug tools unless you have no other choice finding the bug.
 Use TDD, Use log. Make debug tools the final savior. If you heavily depends on debuging code .You should use a decent IDE like intellij.
 

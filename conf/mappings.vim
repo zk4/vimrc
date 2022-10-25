@@ -102,92 +102,6 @@ nnoremap <leader>e4 :e /usr/local/etc/proxychains.conf<cr>
 nnoremap <C-f> <C-d>zz
 " move page up with cursor in the middle of screen
 nnoremap <C-b> <C-u>zz
-" define operator
-" ex dp  delete  content in ()
-
-"multi paste
-"https://stackoverflow.com/questions/25267062/after-pasting-a-yanked-line-in-vim-why-cant-i-paste-it-again#:~:text=2%20Answers&text=This%20is%20because%20of%20vim's%20registers.&text=As%20a%20bonus%20%22%2By%20or,it%20is%20on%20most%20systems).
-" 貌似有点问题, 可以将它试着映射到 P ,这样替换当前,与不替换当前可以同时使用
-xnoremap p pgvy
-
-" ctags jump to multipal match
-" nnoremap <C-]> g<C-]>
-
-"http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>
-" Replace visually selected text or word (globally with confirmation)
-nnoremap <leader>s *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
-vnoremap <leader>s y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
-
-"nnoremap W :w<cr>
-" nnoremap z :wq<cr>
-nnoremap <c-s> :w<cr>
-nnoremap  <leader>w :w<cr>
-inoremap  <c-s> <esc>:w<cr>li
-
-" support emacs movement insert mode {{
-inoremap <C-w> <C-c>diwi
-inoremap <C-d> <Del>
-inoremap <C-u> <C-G>u<C-U>
-" inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
-inoremap <c-b> <left>
-inoremap <c-f> <right>
-inoremap <c-p> <up>
-inoremap <c-n> <down>
-inoremap <c-a> <home>
-inoremap <c-e> <end>
-inoremap <c-k> <c-o>d$
-inoremap <c-l> <space>
-"}}
-
-" for auto completion
-inoremap <C-space> <C-n>
-
-"inoremap <c-k> <esc>ld$a
-inoremap ∫ <S-Left>
-inoremap ƒ <S-Right>
-
-" 在quickfix 里移动  alt+n alt+p 
-noremap ∆ :cnext<cr>
-noremap ˚ :cp<cr>
-"noremap <A-n> :cn<cr>
-"noremap <A-p> :cp<cr>
-
-"move around in command line like emacs
-cnoremap <C-A> <Home>
-cnoremap <C-F> <Right>
-cnoremap <C-l> <c-e>
-"cnoremap <C-h> <c-f>
-cnoremap <C-B> <Left>
-cnoremap ∫ <S-Left>
-cnoremap ƒ <S-Right>
-
-vmap ( S)
-vmap ) S)
-vmap " S"
-vmap ' S'
-
-"nnoremap / /\v
-"nnoremap ? ?\v
-"vnoremap / /\v
-"vnoremap ? ?\v
-"https://stackoverflow.com/questions/290465/how-to-paste-over-without-overwriting-register 
-"https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
-"xnoremap <silent> p p:let @"=@0<CR>
-" make your paste as normal as other editor , but you paster register is
-" broken. but it is fine for me ..
-"vnoremap p "_dP
-"xnoremap <expr> p 'pgv"'.v:register.'y'
-
-
-
-" max your window and restore back"
-"https://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
-"without plugin 
-" <C-w>|  vertical max (common use)
-" <C-w>_  horizontal max 
-" <C-w>=  make all window the same size 
-"with plugin 
-
 
 nnoremap <C-m>o :copen<CR>
 nnoremap ;  :
@@ -240,6 +154,7 @@ inoremap <c-b> <left>
 inoremap <c-f> <right>
 inoremap <c-p> <up>
 inoremap <c-n> <down>
+
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-k> <c-o>d$
@@ -274,24 +189,6 @@ nnoremap / /\v
 nnoremap ? ?\v
 vnoremap / /\v
 vnoremap ? ?\v
-"https://stackoverflow.com/questions/290465/how-to-paste-over-without-overwriting-register 
-"https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
-"xnoremap <silent> p p:let @"=@0<CR>
-" make your paste as normal as other editor , but you paster register is
-" broken. but it is fine for me ..
-"vnoremap p "_dP
-"xnoremap <expr> p 'pgv"'.v:register.'y'
-  
-
-
-" max your window and restore back"
-"https://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
-"without plugin 
-" <C-w>|  vertical max (common use)
-" <C-w>_  horizontal max 
-" <C-w>=  make all window the same size 
-"with plugin 
-
 
 nnoremap <C-m>o :copen<CR>
 
