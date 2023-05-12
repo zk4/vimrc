@@ -76,144 +76,89 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-
-" go configuration
-" auto imports before save, so slow
-" autocmd bufwritepre *.go :call cocaction('runcommand', 'editor.action.organizeimport')
-"
-" all extension source
-" https://www.npmjs.com/search?q=keywords%3acoc.nvim&page=2&perpage=20
-"
-" gitter
-" https://gitter.im/neoclide/coc-cn
-"
-" show extension
-" CocList extensions
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+so ~/.zk_vimrc/conf/coc_config.vim
 
 "让coc服务，在neovim启动后，500ms后才启动
-let g:coc_start_at_startup=0
-function! CocTimerStart(timer)
-		exec "CocStart"
-endfunction
-call timer_start(500,'CocTimerStart',{'repeat':1})
+" let g:coc_start_at_startup=0
+" function! CocTimerStart(timer)
+"     exec "CocStart"
+" endfunction
+" call timer_start(500,'CocTimerStart',{'repeat':1})
+"
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+"
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+"
+" augroup coc_guard
+"   autocmd!
+"   autocmd FileType json syntax match Comment +\/\/.\+$+
+"   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+"
+" command! -nargs=0 Prettier :CocCommand prettier.formatFi<le
+"   " Highlight symbol under cursor on CursorHold
+" "    autocmd CursorHold * silent call CocActionAsync('highlight')
+"   autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
+"   autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
+"   autocmd CursorHold * silent call CocActionAsync('highlight')
+"
+" augroup END
+"
+" " coc snippet
+" "编辑当前文件类型的snippet
+" nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
+" nnoremap <leader>rr <plug>(coc-rename)
+" nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
+"
+" imap <Tab> <Plug>(coc-snippets-expand-jump)
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? coc#_select_confirm() :
+"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+"
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+" let g:coc_snippet_next = '<TAB>'
+" let g:coc_snippet_prev = '<S-TAB>'
+"
+" inoremap <silent><expr> <C-Space> coc#refresh()
+"
+" nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
+" nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
+" nnoremap <leader>3 :CocAction<cr>
+" nmap <silent> <leader>4 :<C-u>CocFix<cr>
+" " Remap keys for goto
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gt <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" " nmap <silent> gr <Plug>(coc-references)
+"
+" "nore Use K for show documentation in preview window
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+"
+" " Remap for rename current word
+" nmap <F2> <Plug>(coc-rename)
+"
+" " Use `:Format` for format current buffer
+" command! -nargs=0 CocFormat :call CocAction('format')
+" command! -nargs=0 Prettier :CocCommand prettier.formatFile
+" let g:coc_global_extensions=[
+"  \ 'coc-snippets',
+"  \]
 
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" 解决coc.nvim 在G后再 q大文件卡死状况 
- " let g:trigger_size = 0.5 * 1048576
- "
- " augroup hugefile
- "   autocmd!
- "   autocmd BufReadPre *
- "         \ let size = getfsize(expand('<afile>')) |
- "         \ if (size > g:trigger_size) || (size == -2) |
- "         \   echohl WarningMsg | echomsg 'WARNING: altering options for this huge file!' | echohl None |
- "         \   exec 'CocDisable' |
- "         \ else |
- "         \   exec 'CocEnable' |
- "         \ endif |
- "         \ unlet size
- " augroup END
-" --------------------------------------------------
-
-function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
-endfunction
-
-augroup coc_guard
-	autocmd!
-	"  正确高亮 jsonc 的注释
-	autocmd FileType json syntax match Comment +\/\/.\+$+
-	"autocmd FileType java  exec "CocDisable"
-	" Close preview window after completion is done
-	autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-	" Show signature help while editing
-"    autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
-
-command! -nargs=0 Prettier :CocCommand prettier.formatFi<le
-	" Highlight symbol under cursor on CursorHold
-"    autocmd CursorHold * silent call CocActionAsync('highlight')
-	autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
-	autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
-	"autocmd FileType js,html,vue,css  xnoremap <buffer> <leader>F :Prettier<CR>
-	"autocmd FileType js.html,vue,css  nnoremap <buffer> <leader>F :Prettier<CR>
-	"autocmd FileType *  vmap <leader>f  <Plug>(coc-format-selected)
-	"autocmd FileType *  nmap <leader>f  <Plug>(coc-format-selected)
-" To enable highlight current symbol on CursorHold
-	autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" delete in insert mode in html file is super slow especially in big file
-	" autocmd FileType html iunmap <bs>
-augroup END
-
-" coc snippet
-"编辑当前文件类型的snippet
-nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
-nnoremap <leader>rr <plug>(coc-rename)
-nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
-
-imap <Tab> <Plug>(coc-snippets-expand-jump)
-inoremap <silent><expr> <TAB>
-			\ pumvisible() ? coc#_select_confirm() :
-			\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-			\ <SID>check_back_space() ? "\<TAB>" :
-			\ coc#refresh()
-
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
-
-"nnoremap <expr><C-f> coc#float#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
-"nnoremap <expr><C-b> coc#float#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
-
-
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <C-Space> coc#refresh()
-
-nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
-nnoremap <leader>3 :CocAction<cr>
-nmap <silent> <leader>4 :<C-u>CocFix<cr>
-" Remap keys for goto
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gr <Plug>(coc-references)
-
-"nore Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-" Remap for rename current word
-nmap <F2> <Plug>(coc-rename)
-
-" Use `:Format` for format current buffer
-command! -nargs=0 CocFormat :call CocAction('format')
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-let g:coc_global_extensions=[
- \ 'coc-snippets',
- \ 'coc-tsserver'
- \]
-
-"  'coc-pairs',
-" let g:coc_filetype_map ={
-"   \ 'vue' :'javascript',
-"   \ }
- " so slow with big file, called  coc#insert
-" debug
-" CocCommand workspace.showOutput
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  lightline
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -597,11 +542,11 @@ let g:expand_region_text_objects = {
       \ 'i"'  :0,
       \ 'i''' :0,
       \ 'i]'  :1,
-      \ 'ib'  :1, 
-      \ 'iB'  :1, 
-      \ 'il'  :0, 
+      \ 'ib'  :1,
+      \ 'iB'  :1,
+      \ 'il'  :0,
       \ 'ip'  :0,
-      \ 'ie'  :0, 
+      \ 'ie'  :0,
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -755,7 +700,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 Plug 'terryma/vim-expand-region'
