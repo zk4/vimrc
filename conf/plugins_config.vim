@@ -584,19 +584,19 @@ Plug 'stephpy/vim-yaml'
 		set undofile
  endif
 
-Plug 'tpope/vim-abolish'
-" 这个插件有两个牛 b 的功能
+" Plug 'tpope/vim-abolish'
+" 这个插件有两个牛 b 的功能， 但因为从来不用，禁了
 " 1. ：S/{dog,man}/{man,dog}/g
 " 2. 驼峰转换
 "  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
 
 " Plug 'vifm/vifm.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_template_highlight = 1
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
+" let g:cpp_posix_standard = 1
+" let g:cpp_experimental_template_highlight = 1
 
 
 Plug 'preservim/nerdcommenter'
