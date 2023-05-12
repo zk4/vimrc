@@ -9,69 +9,69 @@ call plug#begin('~/.vim/plugged') """"""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           language -go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-" https://github.com/fatih/vim-go/wiki/Tutorial
-
-" split and join recommanded by vim-go author
-"Plug 'AndrewRadev/splitjoin.vim'
-"gS to split the line to multiple lines
-"gJ to join multiple lines to one line
-
-" Plug 'fatih/molokai'
-
-" all location list message goes to quickfix
-let g:go_list_type = "quickfix"
-
-" use goimports instad of gofmt
-let g:go_fmt_command = "goimports"
-
-" https://github.com/fatih/vim-go/issues/2149
-" when go.mod exists, godef will not work, add the above line to solve
-let g:go_def_mode = 'godef'
-" let g:go_def_mode = 'gopls'
-
-
-augroup guard_group
-	autocmd!
-	autocmd FileType go nmap <leader>t  <Plug>(go-test)
-	autocmd FileType go nmap <leader>r  <Plug>(go-run)
-	autocmd FileType go nmap <leader>tf  :GoTestFunc<cr>
-	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
-	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
-	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
-	autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
-	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-	autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
-	autocmd FileType go nmap <leader>dS :GoDebugStop<CR>
-	autocmd FileType go nmap <leader>dn :GoDebugNext<CR>
-
-	autocmd FileType go nmap <F7> :GoDebugStep<CR>
-	autocmd FileType go nmap <F8> :GoDebugNext<CR>
-	autocmd FileType go nmap <F9> :GoDebugStepOut<CR>
-
-	autocmd FileType go nmap <leader>dc :GoDebugContinue<CR>
-	autocmd FileType go nmap <leader>dd :GoDebugBreakpoint<CR>
-	autocmd FileType go nmap <leader>d<space> :GoDebugBreakpoint<CR>
-	autocmd FileType go nmap <leader>dp :GoDebugPrint
-	autocmd FileType go nmap <leader>di :GoDebugStep<CR>
-	autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
-	autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
-	autocmd FileType go nmap <leader>dt :GoDebugTest<CR>
-" switch between cpp and h file
-  autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-  autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
-augroup END
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+" " https://github.com/fatih/vim-go/wiki/Tutorial
+"
+" " split and join recommanded by vim-go author
+" "Plug 'AndrewRadev/splitjoin.vim'
+" "gS to split the line to multiple lines
+" "gJ to join multiple lines to one line
+"
+" " Plug 'fatih/molokai'
+"
+" " all location list message goes to quickfix
+" let g:go_list_type = "quickfix"
+"
+" " use goimports instad of gofmt
+" let g:go_fmt_command = "goimports"
+"
+" " https://github.com/fatih/vim-go/issues/2149
+" " when go.mod exists, godef will not work, add the above line to solve
+" let g:go_def_mode = 'godef'
+" " let g:go_def_mode = 'gopls'
+"
+"
+" augroup guard_group
+"   autocmd!
+"   autocmd FileType go nmap <leader>t  <Plug>(go-test)
+"   autocmd FileType go nmap <leader>r  <Plug>(go-run)
+"   autocmd FileType go nmap <leader>tf  :GoTestFunc<cr>
+"   autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+"   autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
+"   autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
+"   autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
+"   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+"
+"   autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
+"   autocmd FileType go nmap <leader>dS :GoDebugStop<CR>
+"   autocmd FileType go nmap <leader>dn :GoDebugNext<CR>
+"
+"   autocmd FileType go nmap <F7> :GoDebugStep<CR>
+"   autocmd FileType go nmap <F8> :GoDebugNext<CR>
+"   autocmd FileType go nmap <F9> :GoDebugStepOut<CR>
+"
+"   autocmd FileType go nmap <leader>dc :GoDebugContinue<CR>
+"   autocmd FileType go nmap <leader>dd :GoDebugBreakpoint<CR>
+"   autocmd FileType go nmap <leader>d<space> :GoDebugBreakpoint<CR>
+"   autocmd FileType go nmap <leader>dp :GoDebugPrint
+"   autocmd FileType go nmap <leader>di :GoDebugStep<CR>
+"   autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
+"   autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
+"   autocmd FileType go nmap <leader>dt :GoDebugTest<CR>
+" " switch between cpp and h file
+"   autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+"   autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+" augroup END
+"
+" " run :GoBuild or :GoTestCompile based on the go file
+" function! s:build_go_files()
+"   let l:file = expand('%')
+"   if l:file =~# '^\f\+_test\.go$'
+"     call go#test#Test(0, 1)
+"   elseif l:file =~# '^\f\+\.go$'
+"     call go#cmd#Build(0)
+"   endif
+" endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc
@@ -79,85 +79,6 @@ endfunction
 
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 so ~/.zk_vimrc/conf/coc_config.vim
-
-"让coc服务，在neovim启动后，500ms后才启动
-" let g:coc_start_at_startup=0
-" function! CocTimerStart(timer)
-"     exec "CocStart"
-" endfunction
-" call timer_start(500,'CocTimerStart',{'repeat':1})
-"
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-"
-" augroup coc_guard
-"   autocmd!
-"   autocmd FileType json syntax match Comment +\/\/.\+$+
-"   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-"
-" command! -nargs=0 Prettier :CocCommand prettier.formatFi<le
-"   " Highlight symbol under cursor on CursorHold
-" "    autocmd CursorHold * silent call CocActionAsync('highlight')
-"   autocmd FileType *  xnoremap <buffer> <leader>F :CocFormat<CR>
-"   autocmd FileType *  nnoremap <buffer> <leader>F :CocFormat<CR>
-"   autocmd CursorHold * silent call CocActionAsync('highlight')
-"
-" augroup END
-"
-" " coc snippet
-" "编辑当前文件类型的snippet
-" nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
-" nnoremap <leader>rr <plug>(coc-rename)
-" nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
-"
-" imap <Tab> <Plug>(coc-snippets-expand-jump)
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? coc#_select_confirm() :
-"       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-"
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-" let g:coc_snippet_next = '<TAB>'
-" let g:coc_snippet_prev = '<S-TAB>'
-"
-" inoremap <silent><expr> <C-Space> coc#refresh()
-"
-" nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
-" nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
-" nnoremap <leader>3 :CocAction<cr>
-" nmap <silent> <leader>4 :<C-u>CocFix<cr>
-" " Remap keys for goto
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gt <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" " nmap <silent> gr <Plug>(coc-references)
-"
-" "nore Use K for show documentation in preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-"
-" " Remap for rename current word
-" nmap <F2> <Plug>(coc-rename)
-"
-" " Use `:Format` for format current buffer
-" command! -nargs=0 CocFormat :call CocAction('format')
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" let g:coc_global_extensions=[
-"  \ 'coc-snippets',
-"  \]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                  lightline
