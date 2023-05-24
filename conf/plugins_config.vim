@@ -2,9 +2,8 @@
 call plug#begin('~/.vim/plugged') """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           search
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'easymotion/vim-easymotion'
-" nmap s <Plug>(easymotion-s)
-
+Plug 'easymotion/vim-easymotion'
+nmap s <Plug>(easymotion-s)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           language -go
@@ -39,7 +38,7 @@ augroup guard_group
 	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
 	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
 	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
-	autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
+	" autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
 	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 	autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
@@ -59,8 +58,8 @@ augroup guard_group
 	autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
 	autocmd FileType go nmap <leader>dt :GoDebugTest<CR>
 " switch between cpp and h file
-  autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-  autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+  " autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+  " autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
 augroup END
 
 " run :GoBuild or :GoTestCompile based on the go file
@@ -80,12 +79,6 @@ endfunction
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 so ~/.zk_vimrc/conf/coc_config.vim
 
-"让coc服务，在neovim启动后，500ms后才启动
-" let g:coc_start_at_startup=0
-" function! CocTimerStart(timer)
-"     exec "CocStart"
-" endfunction
-" call timer_start(500,'CocTimerStart',{'repeat':1})
 "
 " function! s:check_back_space() abort
 "   let col = col('.') - 1
@@ -115,8 +108,6 @@ so ~/.zk_vimrc/conf/coc_config.vim
 " augroup END
 "
 " " coc snippet
-" "编辑当前文件类型的snippet
-nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 " nnoremap <leader>rr <plug>(coc-rename)
 " nnoremap <leader>S :CocSearch <C-R>=expand("<cword>")<CR><CR>
 "
@@ -136,9 +127,8 @@ nnoremap <leader>es :CocCommand snippets.editSnippets<cr>
 "
 " inoremap <silent><expr> <C-Space> coc#refresh()
 "
-" nmap <silent> <leader>1 <Plug>(coc-diagnostic-prev)
-" nmap <silent> <leader>2 <Plug>(coc-diagnostic-next)
-" nnoremap <leader>3 :CocAction<cr>
+
+
 " nmap <silent> <leader>4 :<C-u>CocFix<cr>
 " " Remap keys for goto
 " nmap <silent> gd <Plug>(coc-definition)
@@ -532,6 +522,7 @@ Plug 'kana/vim-textobj-line'
 Plug 'terryma/vim-expand-region'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'inside/vim-textobj-jsxattr'
+Plug 'neoclide/vim-jsx-improve'
 map vv <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 
