@@ -1,3 +1,6 @@
+" 这个 Vim 函数名为 VisualSelection，它接受两个参数：direction 和 extra_filter。这个函数的作用是获取当前选中的文本，将其保存到寄存器中，并执行一些操作，具体操作取决于传递给函数的 direction 参数的值。
+"
+" 首先，函数会将当前选中的文本保存到寄存器中。然后，它会将选中的文本中的特殊字符进行转义，并将其保存到变量 l:pattern 中。接下来，如果 direction 参数的值为 'gv'，则函数会调用 CmdLine 函数，执行 Ack 命令来搜索匹配 l:pattern 的文本。如果 direction 参数的值为 'replace'，则函数会调用 CmdLine 函数，执行 s 命令来替换匹配 l:pattern 的文本。最后，函数会将 l:pattern 保存到寄存器 / 中，并将之前保存的寄存器内容恢复。
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -259,7 +262,7 @@ endfunction
 function! GoogleSearch()
 "     let searchterm =s:get_visual_selection()
      let searchterm =@"
-         
+
      let url =':!open "https://google.com/search?q=' . searchterm . '"'
      echom url
      silent exec  url
@@ -273,14 +276,14 @@ endfunction
 function! OpenChrome()
 "     let searchterm =s:get_visual_selection()
      let searchterm =@"
-         
+
 		 " todo extract url from current line
 		 " let cur_line=  getline('.')
-		 
+
 		if Strip(searchterm) =~ "^http"
-    		let url =':!open -a Google\ Chrome '. searchterm     
+    		let url =':!open -a Google\ Chrome '. searchterm
 		else
-    let url =':!open -a Google\ Chrome '.'https://' . searchterm     
+    let url =':!open -a Google\ Chrome '.'https://' . searchterm
 		endif
      echom url
      silent exec  url
@@ -289,7 +292,7 @@ endfunction
 function! KubeSearch()
 "     let searchterm =s:get_visual_selection()
      let searchterm =@"
-         
+
      let url =':!open "https://kubernetes.io/docs/search/?q=' . searchterm . '"'
      echom url
      silent exec  url
@@ -306,10 +309,10 @@ vnoremap ga "gy<esc>:call OpenChrome()<CR>
 
 function! FunReference()
    let cur_word =@"
-   exec  ":cs find c " . cur_word 
+   exec  ":cs find c " . cur_word
 endfunction
 function! FunReference2(cur_word)
-   exec  ":cs find c " . a:cur_word 
+   exec  ":cs find c " . a:cur_word
 endfunction
 
 function! LoadCscope()
@@ -317,7 +320,7 @@ function! LoadCscope()
   let db = findfile("cscope.out", ".;")
   if (!empty(db))
     set nocscopeverbose " suppress 'duplicate connection' error
-    exe "cs add " . "cscope.out" 
+    exe "cs add " . "cscope.out"
     set cscopeverbose
   endif
 endfunction
@@ -420,19 +423,3 @@ function! RenameFile()
     endif
 
 endfunction
-
-
-" 不好用，使用插件 dhruvasagar/vim-open-url
-" gx 打开网页，新版的 vim 有 bug，干到 wget 里去了。
-" function! HandleURL()
-"   let s:uri = matchstr(getline("."), '[a-z]*:\/\/[[:alnum:]%\/_#.-]*')
-"   echo s:uri
-"   if s:uri != ""
-"     silent exec "!open '".s:uri."'"
-"   else
-"     echo "No URI found in line."
-"   endif
-" endfunction
-"
-" nnoremap gx :call HandleURL()<cr>
-

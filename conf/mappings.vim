@@ -8,7 +8,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
-nnoremap vp viwp
+" nnoremap vp viwp
 inoremap <C-c> <ESC>
 
 nnoremap <c-e> :SwitchBuffer<cr>
@@ -36,22 +36,13 @@ noremap gc :e <cfile><cr>
 " when search with gf. it there is no suffix. try add the above
 " set suffixesadd=.js,.vue,.scss
 
-" 去除 函数名  a{ b }
-"nmap df diwlds{
-" sudo write
-"cnoremap w!! w !sudo tee > /dev/null %
-"cnoremap W !mkdir -p %:h <cr> :w
-"noremap <leader>x :set ft=xxd && %!xxd %
-"map zz to za in normal mode
-" nnoremap zz  za
-
 " select all  cmd+a
 nnoremap <leader>a  ggVG
 "https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
 nnoremap <leader>q  <C-w><C-j><C-w>c
 
-command! SelectAll  normal! ggVG 
-command! SwitchBuffer :e # 
+command! SelectAll  normal! ggVG
+command! SwitchBuffer :e #
 nnoremap Q  q
 nnoremap q <esc>:q!<cr>
 nnoremap <M-s> <esc>:w<cr>
@@ -69,23 +60,6 @@ vnoremap  <Tab> >gv
 vnoremap  <S-Tab> <gv
 vnoremap  <Space> <right>
 vnoremap  <S-Space> <left>
-" switch between tab
-" nnoremap <Tab> gt
-" nnoremap <S-Tab> gT
-" 在 insert mode 下,让 s-tab 向前 indent
-"inoremap <S-Tab> <C-d>
-"
-" 去除一层函数掉用  a(b)
-"nnoremap <leader>te :tabe<cr>
-"nnoremap <leader>u :UndotreeToggle<cr>
-" close tab
-"nnoremap <leader>tc :tabc<cr>
-" close buffer
-" nnoremap <leader>bd  <C-w>c
-" close buffer
-" nnoremap <leader>ba :bwipe<cr>
-"快速打开配置文件
-"nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>ev :e ~/.vimrc<cr>
 nnoremap <leader>ep :e ~/.bash_profile<cr>
 nnoremap <leader>ef :e ~/.zk_vimrc/conf/plugins_mappings_config.vim<cr>
@@ -107,13 +81,9 @@ nnoremap <C-m>o :copen<CR>
 nnoremap ;  :
 nnoremap :  ;
 
-"make kj into jumplist 
+"make kj into jumplist
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
-
-" insert time
-" imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
-" imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>
 
 " h 1
 nmap <leader>h1 :.!toilet -w 200 -f term -F border<CR>
@@ -192,13 +162,10 @@ vnoremap ? ?\v
 
 nnoremap <C-m>o :copen<CR>
 
-"make kj into jumplist 
+"make kj into jumplist
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
-" insert time
-" imap <silent> <C-d>d <C-R>=strftime("%Y-%m-%e %H:%M")<CR>
-" imap <silent> <C-d>c <C-R>=string(eval(input("Calculate: ")))<CR>
 
 nnoremap ; :
 

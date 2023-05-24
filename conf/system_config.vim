@@ -1,44 +1,49 @@
-"Specify the character encoding used in the script.
+"指定脚本使用的字符编码为 UTF-8。
 scriptencoding utf-8
 
-"String-encoding used internally and for |RPC| communication.
+"设置 Vim 内部和 RPC 通信使用的字符串编码为 UTF-8。
 set encoding=utf-8
 
-"	File-content encoding for the current buffer. Conversion is done with
-"	iconv() or as specified with 'charconvert'.
+"	设置当前缓冲区的文件内容编码为 UTF-8。
 set fileencoding=utf-8
 
-" List of directories to be searched for these runtime files:
+" 将 ~/.vim 目录添加到 Vim 运行时文件的搜索路径中。
 set runtimepath+=~/.vim
 
+" 禁止响铃提示。
 set noerrorbells
 
-" 设置 leader
+" 设置 Leader 键为空格键。
 let mapleader=" "
 
 "	If this many milliseconds nothing is typed the swap file will be
 " written to disk (see |crash-recovery|).  Also used for the
 " |CursorHold| autocommand event.
+" 设置光标停留多少毫秒后自动写入交换文件。
 set updatetime=300
 
-"显示颜色 在 kitty 里使分隔边框更细更好看
+" 启用终端颜色。
+" 在 kitty 里使分隔边框更细更好看
 set termguicolors
 
+" 自动读取文件修改。
 set autoread
+
+" 使用缩进来折叠代码。
 set foldmethod=indent
 
+" 设置 Python 的路径。
+" let g:python_host_prog='/usr/local/Cellar/python@3.8/3.8.11/'
 
-let g:python_host_prog='/usr/local/Cellar/python@3.8/3.8.11/'
-
-" 方便 gf 跳转
-" 	This is a list of directories which will be searched when using the
+" 将当前目录及其子目录添加到文件搜索路径中。方便 gf 跳转
+" This is a list of directories which will be searched when using the
 "	|gf|, [f, ]f, ^Wf, |:find|, |:sfind|, |:tabfind| and other commands,
 " set path+=**
 
-" when scroll with track pad, cursor not move but page
+" 启用鼠标支持。
 set mouse=a
 
-" set tag name
+" 设置标签文件的搜索路径。
 set tags=./.tags;,.tags,tags
 " 手动在 ~/node_modules, ~/Library/Caches/typescript/4.4/node_modules 里创建了 tags
 set tags+=~/node_modules/tags,~/Library/Caches/typescript/4.4/node_modules/tags
@@ -59,11 +64,14 @@ set tags+=~/git/working/next_web/react/tags
     "set showbreak=↪\
 "endif
 
+" 设置垂直分隔符的填充字符。
 set fillchars=vert:\│
 " -----------------------------------------
 
-"不显示键盘的命令
+" 禁止显示命令行。
 set noshowcmd
+
+" 禁止显示标尺。
 set noruler
 " if fold file when open . 99: don` fold   0: fold     :help foldlevelstart
 set foldlevel=99
@@ -149,3 +157,5 @@ set foldlevel=2
 
 " 禁止隐藏光标，coc 貌似总有 bug 会导致光标丢失
 set nomousehide
+
+
