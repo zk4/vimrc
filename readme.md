@@ -1,6 +1,6 @@
 Just my personal config for vim.
 
-And I am an old-fashion guy, not an IDE fan. No fancy stuff. Try use as little plugins as possible.
+Not an IDE fan. No fancy stuff. Try use as little plugins as possible.
 
 Should stick to vimscript instead of lua for a long time. The community is totally splited between nvim and vim. What a tragedy.
 
