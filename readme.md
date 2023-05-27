@@ -7,11 +7,11 @@ Should stick to vimscript instead of lua for a long time. The community is total
 And I do not like the all in one IDE-like vim config at all.
 
 What only matters:
-- AutoCompletion
-	- snippets
-	- LSP  (LSP)
+- LSP support
+- snippets
 - contextual comments
 - finding stuff
+- seamless roaming between terminal and buffers
 
 
 ``` bash
