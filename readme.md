@@ -1,6 +1,6 @@
 Just my personal config for vim.
 
-Not an IDE fan. No fancy stuff. Try use as little plugins as possible.
+And I am an old-fashion guy, not an IDE fan. No fancy stuff. Try use as little plugins as possible.
 
 Should stick to vimscript instead of lua for a long time. The community is totally splited between nvim and vim. What a tragedy.
 
@@ -26,8 +26,6 @@ There are solutions for that problem.But none of them are perfect from my experi
 Some Solutions:
 1. use tmux and tmux-plugin in vim. Then you MUST use tmux.
 2. use iterm plugin in vim.But it is slow as hell because of applescript. But if you insist, you can use my tweak version.The original repo is out of maintainence for 5 years.  [link](https://github.com/zk4/vim-iterm2-navigator)
-
-![logo](https://github.com/zk4/vimrc/blob/master/imgs/logo.png)
 
 
 # Install  (on Mac)
