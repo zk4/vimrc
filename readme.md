@@ -2,15 +2,17 @@ Just my personal config for vim.
 
 Not an IDE fan. No fancy stuff. Try use as little plugins as possible.
 
-Should stick to vimscript instead of lua for a long time. The community is totally splited between nvim and vim. What a tragedy.
-
-And I do not like the all in one IDE-like vim config at all.
 
 What only matters:
-- LSP support
-- snippets
-- contextual comments
+- vim motions
+- LSP & snippets
+	- Plug 'neoclide/coc.nvim'
+- contextual comments (handle mixed file liek JSX, TSX, vue, html)
+	- Plug 'numToStr/Comment.nvim'
+	- Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	- Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 - finding stuff
+    - fzf
 - seamless roaming between terminal and buffers
 
 

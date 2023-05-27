@@ -708,7 +708,7 @@ Plug 'stephpy/vim-yaml'
 " Plug 'terryma/vim-expand-region'
 
 " for typescript highligh , 自带的有 bug
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
 
 " Plug 'dhruvasagar/vim-open-url'
 " nmap gx <Plug>(open-url-browser)
