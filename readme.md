@@ -14,6 +14,7 @@ What only matters:
 - seamless roaming between terminal and buffers
 
 
+
 ``` bash
 git clone https://github.com/zk4/kitty_config  ~/.config/kitty
 

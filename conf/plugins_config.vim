@@ -704,7 +704,7 @@ Plug 'stephpy/vim-yaml'
 "
 " " Enable NERDCommenterToggle to check all selected lines is commented or not
 " let g:NERDToggleCheckAllLines = 1
-
+"
 " Plug 'terryma/vim-expand-region'
 
 " for typescript highligh , 自带的有 bug
@@ -718,6 +718,9 @@ Plug 'leafgarland/typescript-vim'
 " let g:user_emmet_install_global = 0
 " autocmd FileType html,css,javascript.jsx,javascript,typescript EmmetInstall
 
+Plug 'numToStr/Comment.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 call plug#end()
 
-
+"-----------------yea. for lua --------------------
