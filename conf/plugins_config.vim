@@ -355,9 +355,6 @@ Plug 'mg979/vim-visual-multi'
 "   jklm 将移动选择条
 " ctrl-n 选择当前光标下相同的单词, 按 c 改变
 
-" 会导致 vim 假死
-" Plug 'terryma/vim-multiple-cursors'
-" let g:multi_cursor_select_all_word_key = '<c-a>'
 "Plug 'junegunn/vim-easy-align'
 " 对齐 =号. visual 选择后, 按= 号
 "vnoremap <silent> <Enter> :EasyAlign<cr>
@@ -375,4 +372,3 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
 call plug#end()
 
-"-----------------yea. for lua --------------------
