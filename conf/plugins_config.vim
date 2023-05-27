@@ -8,69 +8,69 @@ nmap s <Plug>(easymotion-s)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           language -go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-" https://github.com/fatih/vim-go/wiki/Tutorial
-
-" split and join recommanded by vim-go author
-"Plug 'AndrewRadev/splitjoin.vim'
-"gS to split the line to multiple lines
-"gJ to join multiple lines to one line
-
-" Plug 'fatih/molokai'
-
-" all location list message goes to quickfix
-let g:go_list_type = "quickfix"
-
-" use goimports instad of gofmt
-let g:go_fmt_command = "goimports"
-
-" https://github.com/fatih/vim-go/issues/2149
-" when go.mod exists, godef will not work, add the above line to solve
-let g:go_def_mode = 'godef'
-" let g:go_def_mode = 'gopls'
-
-
-augroup guard_group
-	autocmd!
-	autocmd FileType go nmap <leader>t  <Plug>(go-test)
-	autocmd FileType go nmap <leader>r  <Plug>(go-run)
-	autocmd FileType go nmap <leader>tf  :GoTestFunc<cr>
-	autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
-	autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
-	autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
-	" autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
-	autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-	autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
-	autocmd FileType go nmap <leader>dS :GoDebugStop<CR>
-	autocmd FileType go nmap <leader>dn :GoDebugNext<CR>
-
-	autocmd FileType go nmap <F7> :GoDebugStep<CR>
-	autocmd FileType go nmap <F8> :GoDebugNext<CR>
-	autocmd FileType go nmap <F9> :GoDebugStepOut<CR>
-
-	autocmd FileType go nmap <leader>dc :GoDebugContinue<CR>
-	autocmd FileType go nmap <leader>dd :GoDebugBreakpoint<CR>
-	autocmd FileType go nmap <leader>d<space> :GoDebugBreakpoint<CR>
-	autocmd FileType go nmap <leader>dp :GoDebugPrint
-	autocmd FileType go nmap <leader>di :GoDebugStep<CR>
-	autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
-	autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
-	autocmd FileType go nmap <leader>dt :GoDebugTest<CR>
-" switch between cpp and h file
-  " autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-  " autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
-augroup END
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+" " https://github.com/fatih/vim-go/wiki/Tutorial
+"
+" " split and join recommanded by vim-go author
+" "Plug 'AndrewRadev/splitjoin.vim'
+" "gS to split the line to multiple lines
+" "gJ to join multiple lines to one line
+"
+" " Plug 'fatih/molokai'
+"
+" " all location list message goes to quickfix
+" let g:go_list_type = "quickfix"
+"
+" " use goimports instad of gofmt
+" let g:go_fmt_command = "goimports"
+"
+" " https://github.com/fatih/vim-go/issues/2149
+" " when go.mod exists, godef will not work, add the above line to solve
+" let g:go_def_mode = 'godef'
+" " let g:go_def_mode = 'gopls'
+"
+"
+" augroup guard_group
+"   autocmd!
+"   autocmd FileType go nmap <leader>t  <Plug>(go-test)
+"   autocmd FileType go nmap <leader>r  <Plug>(go-run)
+"   autocmd FileType go nmap <leader>tf  :GoTestFunc<cr>
+"   autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+"   autocmd FileType go nmap <leader>cb  <esc>:GoCoverageBrowser<cr>
+"   autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
+"   " autocmd FileType go nmap <leader>s  <Plug>(go-alternate-edit)
+"   autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+"
+"   autocmd FileType go nmap <leader>ds :GoDebugStart<CR>
+"   autocmd FileType go nmap <leader>dS :GoDebugStop<CR>
+"   autocmd FileType go nmap <leader>dn :GoDebugNext<CR>
+"
+"   autocmd FileType go nmap <F7> :GoDebugStep<CR>
+"   autocmd FileType go nmap <F8> :GoDebugNext<CR>
+"   autocmd FileType go nmap <F9> :GoDebugStepOut<CR>
+"
+"   autocmd FileType go nmap <leader>dc :GoDebugContinue<CR>
+"   autocmd FileType go nmap <leader>dd :GoDebugBreakpoint<CR>
+"   autocmd FileType go nmap <leader>d<space> :GoDebugBreakpoint<CR>
+"   autocmd FileType go nmap <leader>dp :GoDebugPrint
+"   autocmd FileType go nmap <leader>di :GoDebugStep<CR>
+"   autocmd FileType go nmap <leader>do :GoDebugStepOut<CR>
+"   autocmd FileType go nmap <leader>dr :GoDebugRestart<CR>
+"   autocmd FileType go nmap <leader>dt :GoDebugTest<CR>
+" " switch between cpp and h file
+"   " autocmd FileType cpp nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+"   " autocmd FileType c nnoremap <buffer> <leader>s :e %:p:s,.h$,.X123X,:s,.c$,.h,:s,.X123X$,.c,<CR>
+" augroup END
+"
+" " run :GoBuild or :GoTestCompile based on the go file
+" function! s:build_go_files()
+"   let l:file = expand('%')
+"   if l:file =~# '^\f\+_test\.go$'
+"     call go#test#Test(0, 1)
+"   elseif l:file =~# '^\f\+\.go$'
+"     call go#cmd#Build(0)
+"   endif
+" endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           coc
@@ -292,29 +292,29 @@ endfunction
  "let g:mdip_imgdir = 'assets'
 " let g:mdip_imgname = 'image'
 "Plug 'mzlogin/vim-markdown-toc'
-Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
+"Plug 'iamcco/markdown-preview.nvim',{'do': 'cd app & yarn install'}
 " config help
 " https://github.com/markdown-it/markdown-it
-let g:mkdp_preview_options = {
-    \ 'mkit': {"breaks":1,"html":1,"linkify":1},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {}
-    \ }
-let g:mkdp_auto_close = 0
-let g:mkdp_markdown_css="/Users/zk/vue.css"
+" let g:mkdp_preview_options = {
+"     \ 'mkit': {"breaks":1,"html":1,"linkify":1},
+"     \ 'katex': {},
+"     \ 'uml': {},
+"     \ 'maid': {},
+"     \ 'disable_sync_scroll': 0,
+"     \ 'sync_scroll_type': 'middle',
+"     \ 'hide_yaml_meta': 1,
+"     \ 'sequence_diagrams': {}
+"     \ }
+" let g:mkdp_auto_close = 0
+" let g:mkdp_markdown_css="/Users/zk/vue.css"
+"
 
-
-augroup gp_group
-	autocmd!
-	autocmd FileType markdown nnoremap <buffer> gp :MarkdownPreview<cr>
-
-
-augroup END
+" augroup gp_group
+"   autocmd!
+"   autocmd FileType markdown nnoremap <buffer> gp :MarkdownPreview<cr>
+"
+"
+" augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           color-schema
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -412,14 +412,14 @@ nnoremap <leader>w :cd %:p:h <cr> : NERDTreeCWD<cr>  <C-w>l
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           language-jsx
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html
 " https://github.com/junegunn/fzf/wiki
 " this is a good place to learn fzf
-Plug 'junegunn/fzf', { 'do': './install --bin' }
+" Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
 " [Buffers] Jump to the existing window if possible
@@ -611,7 +611,7 @@ Plug 'google/vim-searchindex'
 "                           inscearch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 使得你用 visualmodel 选择时，可以用/搜索
-Plug 'bronson/vim-visual-star-search'
+" Plug 'bronson/vim-visual-star-search'
 
 
 """"""""""""""""""""""
@@ -654,19 +654,19 @@ Plug 'stephpy/vim-yaml'
 		set undofile
  endif
 
-Plug 'tpope/vim-abolish'
+" Plug 'tpope/vim-abolish'
 " 这个插件有两个牛 b 的功能
 " 1. ：S/{dog,man}/{man,dog}/g
 " 2. 驼峰转换
 "  Want to turn fooBar into foo_bar? Press crs (coerce to snake_case). MixedCase (crm), camelCase (crc), snake_case (crs), UPPER_CASE (cru), dash-case (cr-), dot.case (cr.), space case (cr<space>), and Title Case (crt) are all just 3 keystrokes away.
 
 " Plug 'vifm/vifm.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-let g:cpp_posix_standard = 1
-let g:cpp_experimental_template_highlight = 1
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
+" let g:cpp_posix_standard = 1
+" let g:cpp_experimental_template_highlight = 1
 
 
 Plug 'preservim/nerdcommenter'
@@ -694,16 +694,14 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
-Plug 'terryma/vim-expand-region'
-
+" Plug 'terryma/vim-expand-region'
 
 " for typescript highligh , 自带的有 bug
 Plug 'leafgarland/typescript-vim'
 
-
-Plug 'dhruvasagar/vim-open-url'
-nmap gx <Plug>(open-url-browser)
-vmap gx <Plug>(open-url-browser)
+" Plug 'dhruvasagar/vim-open-url'
+" nmap gx <Plug>(open-url-browser)
+" vmap gx <Plug>(open-url-browser)
 
 " Plug 'mattn/emmet-vim'
 " let g:user_emmet_install_global = 0
