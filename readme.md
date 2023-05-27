@@ -4,16 +4,22 @@ Not an IDE fan. No fancy stuff. Try use as little plugins as possible.
 
 
 What only matters:
-- vim motions
+- vim moving & motions
+	- Plug 'easymotion/vim-easymotion'
 - LSP & snippets
 	- Plug 'neoclide/coc.nvim'
-- contextual comments (handle mixed file liek JSX, TSX, vue, html)
+- contextual comments (handle mixed content in a file like JSX, TSX, vue, html)
 	- Plug 'numToStr/Comment.nvim'
-	- Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	- Plug 'nvim-treesitter/nvim-treesitter'
 	- Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-- finding stuff
-    - fzf
-- seamless roaming between terminal and buffers
+- find stuff
+	- Plug 'junegunn/fzf.vim'
+    - Plug 'Yggdroot/LeaderF'
+	- Plug 'google/vim-searchindex'
+- seamless roaming
+	- kitty
+	- Plug 'knubie/vim-kitty-navigator'
+- git 
 
 
 
