@@ -9,10 +9,6 @@ augroup autocmd_guard_me
       au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
     endif
 
-    "autocmd BufNewFile,BufRead *.gradle   set ft=gradle
-    " autocmd FileType typescriptreact  set ft=typescript.react
-
-
 
     autocmd BufLeave,FocusLost * silent! wall
     autocmd FileType vim setlocal foldmethod=marker
