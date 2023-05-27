@@ -1,8 +1,17 @@
 Just my personal config for vim.
-Not a IDE fan. No fancy stuff. Try use as little plugins as possible.
-I would stick to vimscript for a long time. And I do not like the all in one IDE-like vim config at all.
 
-Open file in a blink.
+Not an IDE fan. No fancy stuff. Try use as little plugins as possible.
+
+Should stick to vimscript instead of lua for a long time. The community is totally splited between nvim and vim. What a tragedy.
+
+And I do not like the all in one IDE-like vim config at all.
+
+What only matters:
+- AutoCompletion
+	- snippets
+	- LSP  (LSP)
+- contextual comments
+- finding stuff
 
 
 ``` bash
