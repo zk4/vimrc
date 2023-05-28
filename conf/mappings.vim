@@ -43,8 +43,6 @@ nnoremap ga :Ag <c-r>=expand("<cword>")<cr><cr>
 
 " create file if file not exist when using gf command in normal mode
 " noremap gF :e <cfile><cr>
-" when search with gf. it there is no suffix. try add the above
-" set suffixesadd=.js,.vue,.scss
 
 " select all  cmd+a
 nnoremap <leader>a  ggVG
@@ -88,6 +86,8 @@ nnoremap <C-f> <C-d>zz
 nnoremap <C-b> <C-u>zz
 
 nnoremap <C-m>o :copen<CR>
+
+" swag : ;
 nnoremap ;  :
 nnoremap :  ;
 
@@ -95,12 +95,7 @@ nnoremap :  ;
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
 
-" h 1
-nmap <leader>h1 :.!toilet -w 200 -f term -F border<CR>
-" head title
-nmap <leader>ht :.!figlet <CR>
-
-nnoremap gm :call jobstart("mpv " . expand("<cWORD>"))<CR>
+" nnoremap gm :call jobstart("mpv " . expand("<cWORD>"))<CR>
 
 " 拼接字符串时不要跳光标
 nnoremap J mzJ`z
@@ -118,8 +113,8 @@ xnoremap p pgvy
 
 "http://janis-vitols.com/vim/tricks/2016/11/16/replace-word-or-selection-in-vim.html vnoremap ss y/\<C-R>=escape(@",'\/')<CR>//g<left><left>
 " Replace visually selected text or word (globally with confirmation)
-nnoremap <leader>s *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
-vnoremap <leader>s y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
+" nnoremap <leader>s *:<C-U>let replacement = input('Replace word `<C-R><C-W>` with: ') <bar> %s/\<<C-R><C-W>\>/\=replacement/gc<CR>
+" vnoremap <leader>s y*:<C-U>let replacement = input('Replace selection `<C-R>"` with: ') <bar> %s/<C-R>"/\=replacement/gc<CR>
 
 nnoremap W :w<cr>
 " nnoremap z :wq<cr>
@@ -174,46 +169,7 @@ vnoremap ? ?\v
 
 nnoremap <C-m>o :copen<CR>
 
-"make kj into jumplist
-nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
-nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+
+" nnoremap <silent> gf :call JumpOrCreateFile()<CR>
 
 
-"noremap gc :e <cfile><cr>
-
-
-
-nnoremap <silent> gf :call JumpOrCreateFile()<CR>
-
-
-function! JumpOrCreateFile()
-  " Get the filename under the cursor
-  let filename = expand("<cfile>")
-
-  " Expand the tilde in the file path
-  let expanded_filename = expand(filename)
-
-  " Check if the file path starts with "./"
-  if expanded_filename =~# '^\.\/'
-    " Get the current directory of the editing file
-    let current_directory = expand('%:p:h')
-
-    " Create the full path by appending the relative file path
-    let expanded_filename = current_directory . '/' . expanded_filename
-  endif
-
-  " Check if the file exists
-  if !filereadable(expanded_filename)
-    " Prompt the user for file creation with the full path
-    let choice = confirm('File does not exist. Create "' . expanded_filename . '"?', "&Yes\n&No", 1)
-
-    " Handle the user's choice
-    if choice == 1
-      " Create the file and open it
-      execute 'edit ' . expanded_filename
-    endif
-  else
-    " File exists, perform normal gf behavior
-    execute 'normal! gf'
-  endif
-endfunction

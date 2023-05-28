@@ -342,7 +342,6 @@ if has("persistent_undo")
 endif
 
 Plug 'morhetz/gruvbox'
-
 Plug 'godlygeek/tabular'
 
 Plug 'mg979/vim-visual-multi'
@@ -373,3 +372,4 @@ nnoremap <leader>c gcc
 
 call plug#end()
 
+so ~/.zk_vimrc/conf/lua_config.vim

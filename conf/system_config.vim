@@ -158,4 +158,10 @@ set foldlevel=2
 " 禁止隐藏光标，coc 貌似总有 bug 会导致光标丢失
 set nomousehide
 
+ "when search with gf. it there is no suffix. try add the above
+ augroup autocmd_guard_me2
+ autocmd FileType javascriptreact setlocal suffixesadd=.jsx,.js,.vue,.scss
+ augroup END
+
+colorscheme  quiet
 

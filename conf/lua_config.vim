@@ -1,13 +1,15 @@
 " Somewhere after plug#end()
 " github: https://github.com/numToStr/Comment.nvim
-
 lua << EOF
 require('Comment').setup{
-  toggler = {
+    toggler = {
         ---Line-comment toggle keymap
         line = '<leader>c<leader>'
     },
-
+   opleader = {
+        ---Line-comment keymap
+        line = '<leader>c<leader>',
+    },
 		pre_hook = function(ctx)
     local U = require "Comment.utils"
 		\
