@@ -33,8 +33,8 @@ augroup autocmd_guard_me
                 \       | endfor
 
     " fastlane
-    au BufReadPost Fastfile set ft=ruby 
-    au BufReadPost *.svelte set ft=vue 
+    au BufReadPost Fastfile set ft=ruby
+    au BufReadPost *.svelte set ft=vue
     au Filetype mjs set filetype=javascript
 
 
@@ -93,3 +93,13 @@ augroup END
 
 " 修复高亮丢失的问题
 autocmd BufEnter * :syntax sync minlines=20
+
+" 高亮 TODO , FIXME ..
+augroup vimrc_todo
+    au!
+    au Syntax * syn match MyTodo /\v<(TIPS|FIXME|NOTE|TODO|OPTIMIZE|XXX):/
+          \ containedin=.*Comment,vimCommentTitle
+augroup END
+hi def link MyTodo Todo
+
+" command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)

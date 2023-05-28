@@ -1,7 +1,13 @@
 " Somewhere after plug#end()
+" github: https://github.com/numToStr/Comment.nvim
 
 lua << EOF
 require('Comment').setup{
+  toggler = {
+        ---Line-comment toggle keymap
+        line = '<leader>c<leader>'
+    },
+
 		pre_hook = function(ctx)
     local U = require "Comment.utils"
 		\
@@ -29,7 +35,7 @@ require('nvim-treesitter.configs').setup {
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = false,
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = false, disable = { "yaml","python" } },
   context_commentstring = {
     enable = true,
     enable_autocmd = true,

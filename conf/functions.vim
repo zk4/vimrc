@@ -98,9 +98,6 @@ function! FindSelectionMeaning ()
 endfunction
 
 
-nnoremap <F5> : call CompileRunGcc()<CR>
-inoremap <F5> <esc>: call CompileRunGcc()<CR>
-" vmap <f5> y:@"<CR>
 func! ProfileStart()
     profile start profile.log
     profile func *
@@ -112,6 +109,7 @@ func! ProfileEnd()
     noautocmd qall!
 
 endfunc
+
 " rotate split
 function! Rotate()
     " save the original position, jump to the first window
@@ -134,10 +132,6 @@ endfunction
 "nnoremap <c-w>r : call Rotate()<CR>
 
 
-
-
-
-
 function! MaximizeToggle()
     if exists("s:maximize_session")
         exec "source " . s:maximize_session
@@ -153,8 +147,6 @@ function! MaximizeToggle()
         only
     endif
 endfunction
-
-" nnoremap <c-m> :call MaximizeToggle()<CR>
 
 " URL encode a string. ie. Percent-encode characters as necessary.
 function! UrlEncode(string)
@@ -297,15 +289,7 @@ function! KubeSearch()
      echom url
      silent exec  url
 endfunction
-"function! PythonSearch()
-     "let searchterm =@"
-     "let url =':!open "https://docs.python.org/3/search.html?q=' . searchterm . '"'
-     "silent exec  url
-"endfunction
-vnoremap gG "gy<Esc>:call GoogleSearch()<CR>
-"vnoremap gp "gy<Esc>:call PythonSearch()<CR>
-vnoremap gk "gy<Esc>:call KubeSearch()<CR>
-vnoremap ga "gy<esc>:call OpenChrome()<CR>
+
 
 function! FunReference()
    let cur_word =@"
@@ -325,8 +309,6 @@ function! LoadCscope()
   endif
 endfunction
 
-vnoremap gr "gy<Esc>:call FunReference()<CR>
-nnoremap gr "gy<Esc>:call FunReference2(expand('<cword>'))<CR>
 
 "vnoremap gs "gy<Esc>:call StackOverFlow()<CR>
 "https://docs.python.org/3/library/functools.html
@@ -336,7 +318,6 @@ nnoremap gr "gy<Esc>:call FunReference2(expand('<cword>'))<CR>
 "class {
 "    |
 "}
-inoremap <expr> <CR> InsertMapForEnter()
 function! InsertMapForEnter()
     if pumvisible()
         return "\<C-y>"
@@ -375,4 +356,3 @@ function! s:get_diff_files(rev)
 
 endfunction
 
-command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)

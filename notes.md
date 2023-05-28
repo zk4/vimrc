@@ -17,6 +17,8 @@ Vim实用技巧（第2版）
 
 # tips
 
+:verbose imap <tab>  查看定义
+
 c+w 在　insert　mode　式下往回删一个单词
 fzf 带有 Ag 功能
 

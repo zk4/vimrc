@@ -368,6 +368,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'numToStr/Comment.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+nnoremap <leader>c gcc
 " these 3 files configs in 'lua.vim'
 
 call plug#end()

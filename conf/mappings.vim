@@ -2,9 +2,20 @@
 "Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 " https://neovim.io/doc/user/map.html
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+" vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+" vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " 重复替换的映射, 直接按 & 即可
+
+nnoremap <F5> : call CompileRunGcc()<CR>
+inoremap <F5> <esc>: call CompileRunGcc()<CR>
+vnoremap gG "gy<Esc>:call GoogleSearch()<CR>
+vnoremap gk "gy<Esc>:call KubeSearch()<CR>
+vnoremap ga "gy<esc>:call OpenChrome()<CR>
+vnoremap gr "gy<Esc>:call FunReference()<CR>
+nnoremap gr "gy<Esc>:call FunReference2(expand('<cword>'))<CR>
+inoremap <expr> <CR> InsertMapForEnter()
+
+
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
@@ -98,6 +109,8 @@ nnoremap J mzJ`z
 " 选择一段文本,用 J,K 移动
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+
+nnoremap <leader>. :echo expand('%:p')<CR>
 
 "multi paste
 xnoremap p pgvy
