@@ -123,7 +123,7 @@ nnoremap  <leader>w :w<cr>
 inoremap  <c-s> <esc>:w<cr>li
 
 " support emacs movement insert mode {{
-inoremap <C-w> <C-c>diwi
+inoremap <C-w> <C-c>bdiwi
 inoremap <C-d> <Del>
 inoremap <C-u> <C-G>u<C-U>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
