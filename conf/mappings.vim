@@ -9,7 +9,6 @@
 nnoremap <F5> : call CompileRunGcc()<CR>
 inoremap <F5> <esc>: call CompileRunGcc()<CR>
 vnoremap gG "gy<Esc>:call GoogleSearch()<CR>
-vnoremap gk "gy<Esc>:call KubeSearch()<CR>
 vnoremap ga "gy<esc>:call OpenChrome()<CR>
 vnoremap gr "gy<Esc>:call FunReference()<CR>
 nnoremap gr "gy<Esc>:call FunReference2(expand('<cword>'))<CR>
@@ -38,7 +37,7 @@ nnoremap <leader>E :e ++enc=utf-8<cr>:w!<cr>
 
 
 nnoremap dc viwf(hxlds(
-nnoremap gG :!git-file-history %<cr>
+"nnoremap gG :!git-file-history %<cr>
 nnoremap ga :Ag <c-r>=expand("<cword>")<cr><cr>
 
 " create file if file not exist when using gf command in normal mode

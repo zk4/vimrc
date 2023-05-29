@@ -146,49 +146,7 @@ function! MaximizeToggle()
     endif
 endfunction
 
-" URL encode a string. ie. Percent-encode characters as necessary.
-function! UrlEncode(string)
 
-    let result = ""
-
-    let characters = split(a:string, '.\zs')
-    for character in characters
-        if character == " "
-            let result = result . "+"
-        elseif CharacterRequiresUrlEncoding(character)
-            let i = 0
-            while i < strlen(character) let byte = strpart(character, i, 1)
-                let decimal = char2nr(byte)
-                let result = result . "%" . printf("%02x", decimal)
-                let i += 1
-            endwhile
-        else
-            let result = result . character
-        endif
-    endfor
-
-    return result
-
-endfunction
-
-" Returns 1 if the given character should be percent-encoded in a URL encoded
-" string.
-function! CharacterRequiresUrlEncoding(character)
-
-    let ascii_code = char2nr(a:character)
-    if ascii_code >= 48 && ascii_code <= 57
-        return 0
-    elseif ascii_code >= 65 && ascii_code <= 90
-        return 0
-    elseif ascii_code >= 97 && ascii_code <= 122
-        return 0
-    elseif a:character == "-" || a:character == "_" || a:character == "." || a:character == "~"
-        return 0
-    endif
-
-    return 1
-
-endfunction
 "　直接使用 getlien(".")或者@*都不太对。。
 " 因为减贴板已经不是 vim　的默认模式了
 function! s:get_visual_selection()
@@ -204,56 +162,18 @@ function! s:get_visual_selection()
     return join(lines, "\n")
 endfunction
 
-" URL encode a string. ie. Percent-encode characters as necessary.
-function! UrlEncode(string)
 
-    let result = ""
-
-    let characters = split(a:string, '.\zs')
-    for character in characters
-        if character == " "
-            let result = result . "+"
-        elseif CharacterRequiresUrlEncoding(character)
-            let i = 0
-            while i < strlen(character)
-                let byte = strpart(character, i, 1)
-                let decimal = char2nr(byte)
-                let result = result . "%" . printf("%02x", decimal)
-                let i += 1
-            endwhile
-        else
-            let result = result . character
-        endif
-    endfor
-
-    return result
-
-endfunction
-
-" Returns 1 if the given character should be percent-encoded in a URL encoded
-" string.
-function! CharacterRequiresUrlEncoding(character)
-
-    let ascii_code = char2nr(a:character)
-    if ascii_code >= 48 && ascii_code <= 57
-        return 0
-    elseif ascii_code >= 65 && ascii_code <= 90
-        return 0
-    elseif ascii_code >= 97 && ascii_code <= 122
-        return 0
-    elseif a:character == "-" || a:character == "_" || a:character == "." || a:character == "~"
-        return 0
-    endif
-
-    return 1
-
+function! URLEncodeParam(param)
+  let encoded_param = escape(a:param, ' \\/:*?#"<>|%')
+  let encoded_param = substitute(encoded_param, ' ', '%20', 'g')
+  return encoded_param
 endfunction
 
 function! GoogleSearch()
 "     let searchterm =s:get_visual_selection()
      let searchterm =@"
 
-     let url =':!open "https://google.com/search?q=' . searchterm . '"'
+     let url =':!open "https://google.com/search?q=' . URLEncodeParam(searchterm) . '"'
      echom url
      silent exec  url
 endfunction
@@ -275,15 +195,6 @@ function! OpenChrome()
 		else
     let url =':!open -a Google\ Chrome '.'https://' . searchterm
 		endif
-     echom url
-     silent exec  url
-endfunction
-
-function! KubeSearch()
-"     let searchterm =s:get_visual_selection()
-     let searchterm =@"
-
-     let url =':!open "https://kubernetes.io/docs/search/?q=' . searchterm . '"'
      echom url
      silent exec  url
 endfunction
