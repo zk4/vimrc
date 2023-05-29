@@ -198,45 +198,45 @@ let &titlestring='%t - nvim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           find stuff
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" 搜索中文时会有乱码的情况。
-" https://github.com/Yggdroot/LeaderF/issues/203
-" 解决方法 git config --global core.quotepath false
+" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" " 搜索中文时会有乱码的情况。
+" " https://github.com/Yggdroot/LeaderF/issues/203
+" " 解决方法 git config --global core.quotepath false
+" "
+" " ctrl-p 时开头为。
+" "https://github.com/Yggdroot/LeaderF/issues/567
+" let g:Lf_ShowDevIcons = 1
 "
-" ctrl-p 时开头为。
-"https://github.com/Yggdroot/LeaderF/issues/567
-let g:Lf_ShowDevIcons = 1
-
-"let g:Lf_ShortcutF = '<c-p>'
-let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
-
-"  show in pop window
-" let g:Lf_WindowPosition = 'popup'
-
-let g:Lf_UseVersionControlTool=0
-let g:Lf_WildIgnore = {
-            \ 'dir': ["site-packages",".mypy_cache",'.svn','.git','.hg',".undodir",".*"],
-            \ 'file': ["\.",".DS_Store","NERD_tree_*",'*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
-            \}
-let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
-let g:Lf_ShowRelativePath=1
-let g:Lf_PreviewResult = {
-            \ 'File': 1,
-            \ 'Buffer': 1,
-            \ 'Mru': 1,
-            \ 'Tag': 1,
-            \ 'BufTag': 1,
-            \ 'Function': 1,
-            \ 'Line': 1,
-            \ 'Colorscheme': 1
-            \}
-"nnoremap π :LeaderfFunction!<cr>
-nnoremap <leader>m :LeaderfMru<CR>
-nnoremap <leader>i :LeaderfFunction<CR>
-
-nnoremap <leader>o :LeaderfBuffer<cr>
-nnoremap <leader>g :Leaderf rg<cr>
-nnoremap <leader>G :Leaderf rg<cr>
+" "let g:Lf_ShortcutF = '<c-p>'
+" let g:Lf_MruFileExclude = ['*.so',"*.pyc"]
+"
+" " let g:Lf_WindowPosition = 'popup'
+" let g:Lf_PreviewInPopup = 1
+"
+" let g:Lf_UseVersionControlTool=0
+" let g:Lf_WildIgnore = {
+"             \ 'dir': ["site-packages",".mypy_cache",'.svn','.git','.hg',".undodir",".*"],
+"             \ 'file': ["\.",".DS_Store","NERD_tree_*",'*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+"             \}
+" let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
+" let g:Lf_ShowRelativePath=1
+" let g:Lf_PreviewResult = {
+"             \ 'File': 1,
+"             \ 'Buffer': 1,
+"             \ 'Mru': 1,
+"             \ 'Tag': 1,
+"             \ 'BufTag': 1,
+"             \ 'Function': 1,
+"             \ 'Line': 1,
+"             \ 'Colorscheme': 1
+"             \}
+" "nnoremap π :LeaderfFunction!<cr>
+" nnoremap <leader>m :LeaderfMru<CR>
+" nnoremap <leader>i :LeaderfFunction<CR>
+"
+" nnoremap <leader>o :LeaderfBuffer<cr>
+" nnoremap <leader>g :Leaderf rg<cr>
+" nnoremap <leader>G :Leaderf rg<cr>
 
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -246,9 +246,12 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_buffers_jump = 1
 set rtp+=/usr/local/opt/fzf
 nnoremap <c-p> :GFiles<CR>
-nnoremap <leader>p :Files<CR>
-"nnoremap <leader>P :Files<CR>
-"nnoremap <leader>f :Rg<CR>
+nnoremap <leader>fp :Files<CR>
+nnoremap <leader>fr :Rg<CR>
+nnoremap <leader>fgs :GFiles?<CR>
+nnoremap <leader>fgc :BCommits?<CR>
+nnoremap <leader>fh :History<CR>
+nnoremap <leader>fhc :History:<CR>
 "nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 
 
