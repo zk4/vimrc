@@ -164,7 +164,8 @@ endfunction
 
 
 function! URLEncodeParam(param)
-  let encoded_param = escape(a:param, ' \\/:*?#"<>|%')
+  let encoded_param = substitute(a:param, '/', '%2F', 'g')
+  let encoded_param = escape(encoded_param, '\/ \\\/:*?#"<>|%')
   let encoded_param = substitute(encoded_param, ' ', '%20', 'g')
   return encoded_param
 endfunction

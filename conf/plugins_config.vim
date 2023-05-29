@@ -238,15 +238,13 @@ nnoremap <leader>o :LeaderfBuffer<cr>
 nnoremap <leader>g :Leaderf rg<cr>
 nnoremap <leader>G :Leaderf rg<cr>
 
+Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " https://bluz71.github.io/2018/12/04/fuzzy-finding-in-vim-with-fzf.html
 " https://github.com/junegunn/fzf/wiki
-" Plug 'junegunn/fzf', { 'do': './install --bin' }
-"
+
 let g:fzf_buffers_jump = 1
-
 set rtp+=/usr/local/opt/fzf
-
 nnoremap <c-p> :GFiles<CR>
 nnoremap <leader>p :Files<CR>
 "nnoremap <leader>P :Files<CR>
@@ -341,7 +339,7 @@ if has("persistent_undo")
 	set undofile
 endif
 
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'godlygeek/tabular'
 
 Plug 'mg979/vim-visual-multi'
