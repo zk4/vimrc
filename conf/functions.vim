@@ -209,6 +209,7 @@ function! CharacterRequiresUrlEncoding(character)
 
 endfunction
 
+" https://developers.google.com/custom-search/docs/xml_results_appendices?hl=en#url-escaping
 function! GoogleSearch()
    let searchterm = getreg("g")
    let searchterm = substitute(searchterm, "\n", " ", "g")
@@ -216,8 +217,7 @@ function! GoogleSearch()
    let searchterm = shellescape(searchterm, 1)
    " echo "searchterm: " . searchterm
    silent! exec "!open 'https://google.com/search?q=" . searchterm . "'"
-   " exec "!echo 'https://google.com/search?q=" . searchterm . "'"
-   " redraw!
+   redraw!
 endfunction
 
 function! Strip(input_string)
