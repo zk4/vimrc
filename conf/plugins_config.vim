@@ -250,9 +250,10 @@ nnoremap <leader>fp :Files<CR>
 nnoremap <leader>fr :Rg<CR>
 nnoremap <leader>fgs :GFiles?<CR>
 nnoremap <leader>fgc :BCommits?<CR>
-nnoremap <leader>fh :History<CR>
-nnoremap <leader>fhc :History:<CR>
-"nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+" mru
+nnoremap <leader>fm :History<CR>
+nnoremap <leader>fc :History:<CR>
+" nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 
 
 "command! -bang -nargs=? -complete=dir Tags
