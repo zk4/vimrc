@@ -29,7 +29,7 @@ require('Comment').setup{
 
 require('nvim-treesitter.configs').setup {
 	ensure_installed = {
-		'astro', 'css', 'glimmer', 'graphql',  'html', 'javascript', 'lua', 'php', 'python',  'scss', 'svelte', 'tsx', 'twig', 'typescript', 'vim', 'vue', },
+		'astro', 'css',  'html', 'javascript', 'lua', 'php', 'python',  'scss', 'tsx', 'typescript', 'vim', 'vue', },
   autopairs = {
     enable = true,
   },

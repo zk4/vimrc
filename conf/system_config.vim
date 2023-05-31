@@ -164,3 +164,4 @@ set nomousehide
  augroup END
 
 
+colorscheme lunaperche
