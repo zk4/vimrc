@@ -163,5 +163,4 @@ set nomousehide
  autocmd FileType javascriptreact setlocal suffixesadd=.jsx,.js,.vue,.scss
  augroup END
 
-colorscheme  quiet
 
