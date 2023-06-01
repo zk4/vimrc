@@ -369,12 +369,10 @@ Plug 'mg979/vim-visual-multi'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           contextual comments
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
- Plug 'numToStr/Comment.nvim'
- Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
- Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-nnoremap <leader>c gcc
+Plug 'numToStr/Comment.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 " these 3 files configs in 'lua.vim'
-
 call plug#end()
 
- so ~/.zk_vimrc/conf/lua_config.vim
+so ~/.zk_vimrc/conf/lua_config.vim

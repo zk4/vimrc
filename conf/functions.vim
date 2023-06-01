@@ -338,3 +338,4 @@ function! JumpOrCreateFile()
     execute 'normal! gf'
   endif
 endfunction
+
