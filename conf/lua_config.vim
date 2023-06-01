@@ -14,20 +14,20 @@ require('Comment').setup{
 
 }
 
--- require('nvim-treesitter.configs').setup {
--- 	ensure_installed = {
--- 		'astro', 'css',  'html', 'javascript', 'lua', 'php', 'python',  'scss', 'tsx', 'typescript', 'vim', 'vue', },
---   autopairs = {
---     enable = false,
---   },
---   highlight = {
---     enable = false, -- false will disable the whole extension
---     disable = { "" }, -- list of language that will be disabled
---     additional_vim_regex_highlighting = false,
---   },
---   indent = { enable = false, disable = { "yaml","python" } },
---   context_commentstring = {
---     enable = true,
---     enable_autocmd = false,
---   },
--- }
+require('nvim-treesitter.configs').setup {
+ensure_installed = {
+	'astro', 'css',  'html', 'javascript', 'lua', 'php', 'python',  'scss', 'tsx', 'typescript', 'vim', 'vue', },
+ autopairs = {
+	 enable = false,
+ },
+ highlight = {
+	 enable = false, -- false will disable the whole extension
+	 disable = { "" }, -- list of language that will be disabled
+	 additional_vim_regex_highlighting = false,
+ },
+ indent = { enable = true, disable = { "yaml","python" } },
+ context_commentstring = {
+	 enable = true,
+	 enable_autocmd = false,
+ },
+}
