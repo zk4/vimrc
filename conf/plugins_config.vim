@@ -343,6 +343,9 @@ if has("persistent_undo")
 	set undofile
 endif
 
+" Plug 'sainnhe/sonokai'
+
+Plug 'projekt0n/github-nvim-theme'
 " Plug 'morhetz/gruvbox'
 Plug 'godlygeek/tabular'
 
@@ -366,12 +369,12 @@ Plug 'mg979/vim-visual-multi'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           contextual comments
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'numToStr/Comment.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+ Plug 'numToStr/Comment.nvim'
+ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 nnoremap <leader>c gcc
 " these 3 files configs in 'lua.vim'
 
 call plug#end()
 
-so ~/.zk_vimrc/conf/lua_config.vim
+ so ~/.zk_vimrc/conf/lua_config.vim
