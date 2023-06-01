@@ -10,6 +10,7 @@ augroup autocmd_guard_me
     endif
 
 
+
     autocmd BufLeave,FocusLost * silent! wall
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType help noremap <buffer> q :q<cr>
@@ -97,7 +98,7 @@ autocmd BufEnter * :syntax sync minlines=20
 " 高亮 TODO , FIXME ..
 augroup vimrc_todo
     au!
-    au Syntax * syn match MyTodo /\v<(TIPS|FIXME|NOTE|TODO|OPTIMIZE|XXX):/
+    au Syntax * syn match MyTodo /\v<(TIPS|FIXME|NOTE|TODO|OPTIMIZE|WARN|WARNING|XXX):/
           \ containedin=.*Comment,vimCommentTitle
 augroup END
 hi def link MyTodo Todo
