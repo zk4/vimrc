@@ -47,6 +47,7 @@ nnoremap ga :Ag <c-r>=expand("<cword>")<cr><cr>
 nnoremap <leader>a  ggVG
 "https://stackoverflow.com/questions/1444322/how-can-i-close-a-buffer-without-closing-the-window
 nnoremap <leader>q  <C-w><C-j><C-w>c
+nnoremap <leader>Q  <C-w><C-k><C-w>c
 
 command! SelectAll  normal! ggVG
 command! SwitchBuffer :e #

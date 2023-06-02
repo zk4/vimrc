@@ -80,6 +80,7 @@ nnoremap <C-g>e :Gedit<CR>
 nnoremap <C-g>r :Gread<CR>
 nnoremap <C-g>w :Gwrite<CR><CR>
 nnoremap <C-g>p :Git! push <CR>
+nnoremap <C-g>l :Git! pull <CR>
 
 
 
