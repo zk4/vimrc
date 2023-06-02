@@ -1,4 +1,3 @@
-" Somewhere after plug#end()
 " github: https://github.com/numToStr/Comment.nvim
 lua << EOF
 require('Comment').setup{

@@ -8,16 +8,12 @@ What only matters:
 	- Plug 'easymotion/vim-easymotion'
 - LSP & snippets
 	- Plug 'neoclide/coc.nvim'
-- contextual comments (handle mixed content in a file like JSX, TSX, vue, html), and using 3 plugins is so frustrating just for better comment :(.
-	- Plug 'numToStr/Comment.nvim'
-	- Plug 'nvim-treesitter/nvim-treesitter'
-	- Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-- find stuff
+- find anything? almost
 	- Plug 'junegunn/fzf.vim'
 - seamless roaming
 	- kitty
 	- Plug 'knubie/vim-kitty-navigator'
-- git
+- version control
     - fugitive
 
 
