@@ -72,21 +72,15 @@ set diffopt+=vertical
 set statusline+=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 autocmd FileType gitcommit set foldmethod=syntax
 nnoremap <C-g>s <esc>:Git<cr>
-"nnoremap <C-g>p <esc>:Gpush<cr>
-nnoremap <C-g>c :Gcommit -v -q<CR>
-nnoremap <C-g>a :Gcommit --amend<CR>
-nnoremap <C-g>t :Gcommit -v -q %<CR>
+nnoremap <C-g>c :Git commit -v -q<CR>
+nnoremap <C-g>a :Git commit --amend<CR>
+nnoremap <C-g>t :Git commit -v -q %<CR>
 nnoremap <C-g>d :Gdiff<CR>
 nnoremap <C-g>e :Gedit<CR>
 nnoremap <C-g>r :Gread<CR>
 nnoremap <C-g>w :Gwrite<CR><CR>
 nnoremap <C-g>l :silent! 0Glog <CR>
-nnoremap <C-g>g :Ggrep<Space>
-nnoremap <C-g>m :Gmove<Space>
-nnoremap <C-g>b :Git branch<Space>
-nnoremap <C-g>o :Git checkout<Space>
-nnoremap <C-g>p :Git push <CR>
-nnoremap <C-g>P :!x git pull <CR>
+nnoremap <C-g>p :Git! push <CR>
 
 
 
@@ -158,13 +152,13 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_buffers_jump = 1
 set rtp+=/usr/local/opt/fzf
 nnoremap <c-p> :GFiles<CR>
-nnoremap <leader>fp :Files<CR>
-nnoremap <leader>fr :Rg<CR>
-nnoremap <leader>fgs :GFiles?<CR>
-nnoremap <leader>fgc :BCommits?<CR>
+nnoremap <leader>gf :GFiles<CR>
+nnoremap <leader>af :Files<CR>
+nnoremap <leader>f :Rg<CR>
+nnoremap <leader>gd :GFiles?<CR>
+nnoremap <leader>gc :BCommits<CR>
 " mru
-nnoremap <leader>fm :History<CR>
-nnoremap <leader>fc :History:<CR>
+nnoremap <leader>m :History<CR>
 
 "Hide statusline
 if has('nvim') && !exists('g:fzf_layout')
@@ -256,7 +250,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDAltDelims_java = 1
 
 " Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' },'js': { 'left': '/**','right': '*/' } }
+let g:NERDCustomDelimiters = { 'js': { 'left': '/**','right': '*/' } }
 
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
