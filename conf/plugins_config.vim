@@ -266,4 +266,5 @@ let g:NERDToggleCheckAllLines = 1
 " these 3 files configs in 'lua.vim'
 call plug#end()
 
+" TIPS: lua config should be somewhere after plug#end()
 " so ~/.zk_vimrc/conf/lua_config.vim
