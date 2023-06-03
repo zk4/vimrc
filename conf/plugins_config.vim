@@ -16,7 +16,7 @@ nmap s <Plug>(easymotion-s)
 
 
 Plug 'wellle/targets.vim'
-"DEMO:
+" DEMO:
 "1. cint  change in next tag
 
 "2.      ............
@@ -27,7 +27,7 @@ Plug 'wellle/targets.vim'
 Plug 'bps/vim-textobj-python'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-line'
-Plug 'terryma/vim-expand-region'
+
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'inside/vim-textobj-jsxattr'
 Plug 'neoclide/vim-jsx-improve'
@@ -152,11 +152,10 @@ Plug 'junegunn/fzf.vim'
 let g:fzf_buffers_jump = 1
 set rtp+=/usr/local/opt/fzf
 nnoremap <c-p> :GFiles<CR>
-nnoremap <leader>gf :GFiles<CR>
-nnoremap <leader>af :Files<CR>
-nnoremap <leader>f :Rg<CR>
-nnoremap <leader>gd :GFiles?<CR>
-nnoremap <leader>gc :BCommits<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fr :Rg<CR>
+nnoremap <leader>fc :BCommits<CR>
 " mru
 nnoremap <leader>m :History<CR>
 
@@ -229,7 +228,7 @@ if has("persistent_undo")
 endif
 
 
-" Plug 'projekt0n/github-nvim-theme'
+Plug 'projekt0n/github-nvim-theme'
 
 Plug 'mg979/vim-visual-multi'
 
