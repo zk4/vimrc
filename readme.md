@@ -1,6 +1,6 @@
 Just my personal config for vim.
 
-Not an IDE fan. No fancy stuff. Try use plugins as less as possible. Try focus on content.
+Not an IDE fan. No fancy stuff. Try use plugins as less as possible. Try focus on contents.
 
 
 What only matters:
