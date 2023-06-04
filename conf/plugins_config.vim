@@ -31,6 +31,8 @@ Plug 'kana/vim-textobj-line'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 Plug 'inside/vim-textobj-jsxattr'
 Plug 'neoclide/vim-jsx-improve'
+
+Plug 'terryma/vim-expand-region'
 map vv <Plug>(expand_region_expand)
 "map J <plug>(expand_region_shrink)
 
