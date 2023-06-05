@@ -131,7 +131,7 @@ ciw '' Esc p 加 "" 的原生方法
 r'f"r' 也是一种挺好的原生方法
 " ctrll+6 在 buffer 中来回切换
 
- 
+
 
 ###   mark 的跳转
 
@@ -153,7 +153,7 @@ g_   jump to end
   ^    jump to start of current line not include  space
   0    jump to start of current line include  space
 
-  
+
 
 ### 内容删除
 
@@ -163,15 +163,15 @@ g_   jump to end
 
 #### 删除 previous char
 
-c-h  
+c-h
 
 #### 删除 previous word
 
-c-w 
+c-w
 
 #### 删除 to the start of line
 
-c-u delete 
+c-u delete
 
 
 
@@ -180,8 +180,8 @@ c-u delete
 ```
 d2ip
 [
-  [ 
-   hello world 
+  [
+   hello world
   ]
 ]
 ```
@@ -214,11 +214,11 @@ val
 
 ### change tag in vim-surround
 
-<body>  hello world </body>  ----> 
+<body>  hello world </body>  ---->
 
 <head>  hello world </head>
 
-``` 
+```
 cstthead
 ```
 
@@ -309,7 +309,7 @@ c-w H/J/I/K   -=> 将窗口交换
 c-w +/-  =>  :resize +/-  N  也可以不用符号,那就会 resize 到绝对的大小
 c-w </>  =>  :vertical resize +/- N
 c-w =    =>  evenly resize your buffer
-c-w r    =>  rotate your buffers 
+c-w r    =>  rotate your buffers
 ```
 
 
@@ -325,7 +325,7 @@ Don't use Ack. use Rg.
 
 ### Rg 搜索包含文件名的问题
 
-:Rg <keyword> 
+:Rg <keyword>
 将不会搜索文件名
 
 :Rg <cr> ,然后再搜索,
@@ -343,7 +343,7 @@ If you don't put anything in the first field it uses the last searched pattern. 
 replace needs to use quickfix. So use Ack is better to go. Since Rg use fzf .
 
 - :Ack foo
-- :cdo s/foo/bar/cg 
+- :cdo s/foo/bar/cg
   这是我现在实验最好的方法,可以增量替换
   c 代表需要你确认， 如果不需要确认直接用 g
 
@@ -408,7 +408,7 @@ V"ay
 further reqeat
 @@
 
- 
+
 
 ## 内容对比
 
@@ -508,7 +508,7 @@ Replace all directories/files in ~/.config/coc/extensions/coc-java-data/server w
 :copen      fugitive 使用了 quickfix,直接用就行了
 alt-p --> :cprevious alt-n --> :nnext
 
-:0Glog 
+:0Glog
 只看当前文件的历史，非常好用
 
 :Glog HEAD~1
@@ -551,6 +551,8 @@ Tabularize 可简化为 :Tab，以下都省略了选中区域后自动生成的 
 
 ##  不使用插件启动 vim
 
+# 其他信息
+
 vim -u NONE
 
 
@@ -560,8 +562,6 @@ vim -u NONE
 - 当启用 conda 时,python 环境变了, leaderf 用不了
 
 
-
-# 其他信息
 
 ## kite
 
@@ -574,4 +574,12 @@ vim -u NONE
 超牛 b 的作弊工具
 <leader>KB 注意这里是大写
 https://github.com/chubin/cheat.sh
+
+
+
+## / could be part of motion
+^
+kd/mot<cr>
+=>
+motion
 

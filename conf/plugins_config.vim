@@ -10,8 +10,10 @@ nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
 
-Plug 'easymotion/vim-easymotion'
-nmap s <Plug>(easymotion-s)
+" use the built in / ? instaed. good enough, and / ? supports vim motion
+" Plug 'easymotion/vim-easymotion'
+" nmap s <Plug>(easymotion-s)
+
 
 
 
@@ -259,7 +261,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 " Plug 'numToStr/Comment.nvim'

@@ -164,4 +164,3 @@ set nomousehide
  augroup END
 
 
-colorscheme quiet
