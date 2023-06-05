@@ -52,8 +52,9 @@ nnoremap <leader>Q  <C-w><C-k><C-w>c
 command! SelectAll  normal! ggVG
 command! SwitchBuffer :e #
 nnoremap Q  q
-nnoremap q <esc>:q!<cr>
-nnoremap <M-s> <esc>:w<cr>
+nnoremap <esc>:q!<cr>
+nnoremap <c-q> <esc>:q!<cr>
+nnoremap <c-s> <esc>:w<cr>
 
 " open with system opener
 nnoremap go :!open '%'<cr>
