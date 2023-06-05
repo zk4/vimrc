@@ -2,7 +2,8 @@ Just my personal config for vim.
 
 Not an IDE fan. No fancy stuff. Try use plugins as less as possible. Try focus on contents. I would gradually reduce the plugins I use.
 
-To feel free. Simplicity makes cosistence and helps focusing.
+Keep my mind active instead of passive to feel absolutely free from typing. Simplicity makes cosistence and focusing.
+
 
 What does matters in vim:
 - vim moving & motions
