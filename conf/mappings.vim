@@ -124,8 +124,8 @@ nnoremap <c-s> :w<cr>
 nnoremap  <leader>w :w<cr>
 inoremap  <c-s> <esc>:w<cr>li
 
-" support emacs movement insert mode {{
-inoremap <C-w> <C-c>diwi
+" delete backwards, like terminal do
+inoremap <C-w> <C-c>dbcl
 inoremap <C-d> <Del>
 inoremap <C-u> <C-G>u<C-U>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
@@ -159,10 +159,14 @@ cnoremap <C-B> <Left>
 cnoremap ∫ <S-Left>
 cnoremap ƒ <S-Right>
 
-vmap ( S)
-vmap ) S)
-vmap " S"
-vmap ' S'
+" custom text object
+omap ( :normal vi)<CR>
+omap ) :normal vi)<CR>
+omap " :normal vi"<CR>
+omap ' :normal vi'<CR>
+omap t :normal vit<CR>
+
+" omap af :normal vi'<CR>
 
 " nnoremap / /\v
 " nnoremap ? ?\v

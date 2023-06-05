@@ -5,7 +5,6 @@ Not an IDE fan. No fancy stuff. Try use plugins as less as possible. Try focus o
 
 What only matters:
 - vim moving & motions
-	- Plug 'easymotion/vim-easymotion'
 - LSP & snippets
 	- Plug 'neoclide/coc.nvim'
 - find anything? almost
