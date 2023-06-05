@@ -52,7 +52,8 @@ nnoremap <leader>Q  <C-w><C-k><C-w>c
 command! SelectAll  normal! ggVG
 command! SwitchBuffer :e #
 nnoremap Q  q
-nnoremap <esc>:q!<cr>
+nnoremap q  <esc>:q!<cr>
+" nnoremap <esc>:q!<cr>
 nnoremap <c-q> <esc>:q!<cr>
 nnoremap <c-s> <esc>:w<cr>
 
@@ -163,10 +164,10 @@ vmap ) S)
 vmap " S"
 vmap ' S'
 
-nnoremap / /\v
-nnoremap ? ?\v
-vnoremap / /\v
-vnoremap ? ?\v
+" nnoremap / /\v
+" nnoremap ? ?\v
+" vnoremap / /\v
+" vnoremap ? ?\v
 
 nnoremap <C-m>o :copen<CR>
 
