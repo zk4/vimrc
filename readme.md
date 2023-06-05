@@ -2,20 +2,20 @@ Just my personal config for vim.
 
 Not an IDE fan. No fancy stuff. Try use plugins as less as possible. Try focus on contents.
 
+To feel free.
 
-What only matters:
+What does matters:
 - vim moving & motions
-- LSP & snippets
-	- Plug 'neoclide/coc.nvim'
-- find anything? almost
-	- Plug 'junegunn/fzf.vim'
+- snippets
+- find anything
 - seamless roaming
-	- kitty
-	- Plug 'knubie/vim-kitty-navigator'
 - version control
-    - fugitive
 
-
+What does not:
+- Colorscheme
+- Completions
+- LSP
+- Does not matter at all
 
 ``` bash
 git clone https://github.com/zk4/kitty_config  ~/.config/kitty
