@@ -160,11 +160,11 @@ cnoremap ∫ <S-Left>
 cnoremap ƒ <S-Right>
 
 " custom text object
-omap ( :normal vi)<CR>
-omap ) :normal vi)<CR>
-omap " :normal vi"<CR>
-omap ' :normal vi'<CR>
-omap t :normal vit<CR>
+" omap ( :normal vi)<CR>
+" omap ) :normal vi)<CR>
+" omap " :normal vi"<CR>
+" omap ' :normal vi'<CR>
+" omap t :normal vit<CR>
 
 " omap af :normal vi'<CR>
 
