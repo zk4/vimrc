@@ -1,3 +1,11 @@
+# quick swap word 
+```
+ apple pear
+^
+<cursor here> 
+```
+
+`deep`
 # todo
 
 https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text
