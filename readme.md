@@ -16,6 +16,8 @@ perhaps:
 	- auto completions
 	- quick helper and refacting tips
 - simple colorscheme
+	- constant value
+	- language key words
 
 ``` bash
 git clone https://github.com/zk4/kitty_config  ~/.config/kitty

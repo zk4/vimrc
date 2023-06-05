@@ -131,8 +131,8 @@ inoremap <C-u> <C-G>u<C-U>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
 inoremap <c-b> <left>
 inoremap <c-f> <right>
-inoremap <c-p> <up>
-inoremap <c-n> <down>
+" inoremap <c-p> <up>
+" inoremap <c-n> <down>
 
 inoremap <c-a> <home>
 inoremap <c-e> <end>

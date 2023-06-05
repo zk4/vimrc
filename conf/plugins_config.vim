@@ -55,8 +55,8 @@ let g:expand_region_text_objects = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                           LSP & snippets
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-so ~/.zk_vimrc/conf/coc_config.vim
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" so ~/.zk_vimrc/conf/coc_config.vim
 
 
 
