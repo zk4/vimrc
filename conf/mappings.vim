@@ -125,7 +125,9 @@ nnoremap  <leader>w :w<cr>
 inoremap  <c-s> <esc>:w<cr>li
 
 " delete backwards, like terminal do
-inoremap <C-w> <C-c>dbcl
+" help from :https://vi.stackexchange.com/questions/27825/how-do-delete-the-the-next-word-or-remainder-of-a-line-in-insert-mode
+inoremap <C-w> <C-o>diw
+
 inoremap <C-d> <Del>
 inoremap <C-u> <C-G>u<C-U>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
