@@ -126,20 +126,20 @@ inoremap  <c-s> <esc>:w<cr>li
 
 " delete backwards, like terminal do
 " help from :https://vi.stackexchange.com/questions/27825/how-do-delete-the-the-next-word-or-remainder-of-a-line-in-insert-mode
-inoremap <C-w> <C-o>diw
+inoremap <C-w> <C-o>db
 
 inoremap <C-d> <Del>
 inoremap <C-u> <C-G>u<C-U>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
 inoremap <c-b> <left>
 inoremap <c-f> <right>
-" inoremap <c-p> <up>
-" inoremap <c-n> <down>
+" inoremap <c-p> <c-o>k
+" inoremap <c-n> <c-o>k
 
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-k> <c-o>d$
-inoremap <c-l> <space>
+inoremap <c-l> <c-o>cl
 "}}
 
 " for auto completion

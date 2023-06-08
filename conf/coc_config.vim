@@ -33,8 +33,8 @@ call timer_start(500,'CocTimerStart',{'repeat':1})
 
 " inoremap <silent><expr> <c-y> pumvisible() ? coc#_select_confirm() : "\<c-y>"
 
-inoremap <expr><c-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-inoremap <expr><c-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-h>"
+inoremap <expr><c-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-o>k"
+inoremap <expr><c-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-o>j"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
