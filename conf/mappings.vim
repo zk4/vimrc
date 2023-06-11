@@ -104,3 +104,7 @@ inoremap <C-space> <C-n>
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
+
+" swap words between non-word characters in selected mode
+vnoremap  <C-s> :s/\%V\(\w\+\)\(\W\+\)\(\w\+\)/\3\2\1<cr>:noh<cr>
+
