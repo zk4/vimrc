@@ -138,11 +138,11 @@ inoremap <c-l> <c-o>cl
 inoremap <C-space> <C-n>
 
 "inoremap <c-k> <esc>ld$a
-inoremap ∫ <S-Left>
-inoremap ƒ <S-Right>
+" inoremap ∫ <S-Left>
+" inoremap ƒ <S-Right>
 " 在quickfix 里移动  alt+n alt+p
-noremap ∆ :cn<cr>
-noremap ˚ :cp<cr>
+" noremap ∆ :cn<cr>
+" noremap ˚ :cp<cr>
 "noremap <A-n> :cn<cr>
 "noremap <A-p> :cp<cr>
 
@@ -150,8 +150,8 @@ noremap ˚ :cp<cr>
 cnoremap <C-A> <Home>
 cnoremap <C-F> <Right>
 cnoremap <C-B> <Left>
-cnoremap ∫ <S-Left>
-cnoremap ƒ <S-Right>
+" cnoremap ∫ <S-Left>
+" cnoremap ƒ <S-Right>
 
 " custom text object
 " omap ( :normal vi)<CR>
@@ -167,7 +167,7 @@ cnoremap ƒ <S-Right>
 " vnoremap / /\v
 " vnoremap ? ?\v
 
-nnoremap <C-m>o :copen<CR>
+" nnoremap <C-m>o :copen<CR>
 
 
 " nnoremap <silent> gf :call JumpOrCreateFile()<CR>
