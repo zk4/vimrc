@@ -1,6 +1,6 @@
 Just my personal config for vim.
 
-Not an IDE fan. No fancy stuff. Try use plugins as less as possible. Try focus on contents. I would gradually reduce the plugins I use.
+Not an IDE fan. No fancy stuff.Use plugins only if I use it often. Try focus on contents. I would gradually reduce the plugins I use.
 
 Keep my mind active instead of passive to feel absolutely free from typing. Simplicity makes cosistence and focusing.
 

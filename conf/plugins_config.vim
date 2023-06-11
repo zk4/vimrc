@@ -232,7 +232,7 @@ if has("persistent_undo")
 endif
 
 
-Plug 'projekt0n/github-nvim-theme'
+" Plug 'projekt0n/github-nvim-theme'
 
 Plug 'mg979/vim-visual-multi'
 
@@ -264,6 +264,7 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
+"""""" use this for just context commenting in jsx,vue or html.
 " Plug 'numToStr/Comment.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'JoosepAlviste/nvim-ts-context-commentstring'
