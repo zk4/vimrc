@@ -1,3 +1,12 @@
+# jump back and forth by jumplist
+c-o 
+c-i
+
+# jump back and foth by change list
+g; 
+g,
+2g;
+
 # quick swap word 
 ```
  apple pear
