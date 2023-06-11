@@ -32,8 +32,8 @@ set autoread
 " 使用缩进来折叠代码。
 set foldmethod=indent
 
-" 设置 Python 的路径。
-" let g:python_host_prog='/usr/local/Cellar/python@3.8/3.8.11/'
+" 设置 Python3 的路径https://www.google.com/search?q=E319%3A+No+%22python3%22+prov+ider+found.&oq=E319%3A+No+%22python3%22+prov+ider+found.&aqs=chrome..69i57j69i58j69i60.178j0j7&sourceid=chrome&ie=UTF-8
+let g:python_host_prog='/Users/zk/miniconda3/bin/python3'
 
 " 将当前目录及其子目录添加到文件搜索路径中。方便 gf 跳转
 " This is a list of directories which will be searched when using the
@@ -148,6 +148,7 @@ set backupskip=/tmp/*,/private/tmp/*
 set noswapfile
 
 
+
 " 退出后再打开文件，可以 redo
 set undofile
 set undodir=~/.vim/undo/
@@ -162,5 +163,4 @@ set nomousehide
  augroup autocmd_guard_me2
  autocmd FileType javascriptreact setlocal suffixesadd=.jsx,.js,.vue,.scss
  augroup END
-
 
