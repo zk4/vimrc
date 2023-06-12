@@ -1,6 +1,11 @@
+
+# ''
+this jump is kind of useful 
+
 # jump back and forth by jumplist
 c-o 
 c-i
+
 
 # jump back and foth by change list
 g; 
