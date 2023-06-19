@@ -232,7 +232,7 @@ if has("persistent_undo")
 endif
 
 
-" Plug 'projekt0n/github-nvim-theme'
+Plug 'projekt0n/github-nvim-theme'
 
 Plug 'mg979/vim-visual-multi'
 

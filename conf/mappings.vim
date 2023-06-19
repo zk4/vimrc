@@ -6,6 +6,10 @@ vnoremap gr "gy<Esc>:call FunReference()<CR>
 nnoremap gr "gy<Esc>:call FunReference2(expand('<cword>'))<CR>
 inoremap <expr> <CR> InsertMapForEnter()
 
+nnoremap dc :norm diwds)<cr>
+nnoremap d] :norm diwds]<cr>
+nnoremap d} :norm diwds}<cr>
+nnoremap d) :norm diwds)<cr>
 
 " quick switch two buffers
 nnoremap <c-e> <c-^>
@@ -38,7 +42,7 @@ nnoremap q  <esc>:q!<cr>
 " open with system opener
 nnoremap go :!open '%'<cr>
 
-" terminal kitty helper 
+" terminal kitty helper
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
