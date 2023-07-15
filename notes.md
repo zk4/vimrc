@@ -4,9 +4,15 @@ Why:
 2. long jump just use /, jump back use the C-o 
 
  
+
+# ''
+this jump is kind of useful 
+
+>>>>>>> 2f7e51548cf6ae6a9dc10437313d227a7b76a987
 # jump back and forth by jumplist
 c-o 
 c-i
+
 
 # jump back and foth by change list
 g; 
