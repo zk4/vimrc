@@ -1,3 +1,9 @@
+# Stop using relative number from distraction
+Why:
+1. The number at the left side js jumping when using relative number. It distracts a lot.
+2. long jump just use /, jump back use the C-o 
+
+ 
 
 # quick new line
 <c-o> o
@@ -5,6 +11,7 @@
 # ''
 this jump is kind of useful
 
+>>>>>>> 2f7e51548cf6ae6a9dc10437313d227a7b76a987
 # jump back and forth by jumplist
 c-o
 c-i
