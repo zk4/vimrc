@@ -1,22 +1,25 @@
 
+# quick new line
+<c-o> o
+
 # ''
-this jump is kind of useful 
+this jump is kind of useful
 
 # jump back and forth by jumplist
-c-o 
+c-o
 c-i
 
 
 # jump back and foth by change list
-g; 
+g;
 g,
 2g;
 
-# quick swap word 
+# quick swap word
 ```
  apple pear
 ^
-<cursor here> 
+<cursor here>
 ```
 
 `deep`

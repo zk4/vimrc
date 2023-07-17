@@ -11,6 +11,25 @@ nnoremap d] :norm diwds]<cr>
 nnoremap d} :norm diwds}<cr>
 nnoremap d) :norm diwds)<cr>
 
+" do I need this
+nnoremap c9 ci)
+nnoremap c) ci)
+nnoremap c[ ci]
+nnoremap c] ci]
+nnoremap c' ci'
+nnoremap c" ci"
+nnoremap c{ ci{
+nnoremap c} ci}
+
+nnoremap d9 di)
+nnoremap d) di)
+nnoremap d[ di]
+nnoremap d] di]
+nnoremap d' di'
+nnoremap d" di"
+nnoremap d{ di{
+nnoremap d} di}
+
 " quick switch two buffers
 nnoremap <c-e> <c-^>
 vnoremap <space> <Nop>
@@ -85,7 +104,7 @@ inoremap <c-s> <c-o>:w<cr>
 
 " delete backwards, like terminal do
 " help from :https://vi.stackexchange.com/questions/27825/how-do-delete-the-the-next-word-or-remainder-of-a-line-in-insert-mode
-inoremap <C-w> <C-o>diw
+inoremap <C-w> <C-o>ciw
 
 inoremap <C-d> <Del>
 inoremap <C-u> <C-G>u<C-U>
