@@ -103,8 +103,8 @@ xnoremap p pgvy
 inoremap <c-s> <c-o>:w<cr>
 
 " delete backwards, like terminal do
-" help from :https://vi.stackexchange.com/questions/27825/how-do-delete-the-the-next-word-or-remainder-of-a-line-in-insert-mode
-inoremap <C-w> <C-o>ciw
+" https://vi.stackexchange.com/questions/28639/how-to-backward-kill-word-in-vim-insert-mode-like-zsh
+noremap! <S-Insert> <C-w>
 
 inoremap <C-d> <Del>
 inoremap <C-u> <C-G>u<C-U>
