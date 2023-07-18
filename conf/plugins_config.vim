@@ -92,7 +92,8 @@ nnoremap <C-g>l :Git! pull <CR>
 "                           seamless roaming                            "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " this is better one for nerdtree, it`s async
-Plug 'jojoyuji/nerdtree-async'
+" Plug 'jojoyuji/nerdtree-async'
+Plug 'preservim/nerdtree'
 "git plugin 禁了.光标上下移动时会闪动
 let NERDTreeHijackNetrw=1
 let NERDTreeAutoDeleteBuffer = 1
