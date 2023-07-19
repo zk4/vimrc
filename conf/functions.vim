@@ -62,7 +62,7 @@ func! CompileRunGcc()
     elseif &filetype == 'sh'
         :!bash '%'
     elseif &filetype == 'python'
-        exec "!python3 '%'"
+        exec "!python3 '%' %"
     elseif &filetype == 'groovy'
         exec "!groovy '%'"
     elseif &filetype == 'dart'

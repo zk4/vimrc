@@ -11,7 +11,8 @@ augroup autocmd_guard_me
 
 
 		" hello  => f{hello=}
-		autocmd FileType python vnoremap <buffer> gp cf"{<C-R>=strtrans(getreg('"'))<CR>=}"
+		autocmd FileType python vnoremap <buffer> gp cprint(f"{<C-R>=strtrans(getreg('"'))<CR>=}")<Esc>
+
 
     autocmd BufLeave,FocusLost * silent! wall
     autocmd FileType vim setlocal foldmethod=marker
