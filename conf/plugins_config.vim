@@ -14,7 +14,7 @@ nmap k <Plug>(accelerated_jk_gk)
 " Plug 'easymotion/vim-easymotion'
 " nmap s <Plug>(easymotion-s)
 
-
+Plug 'github/copilot.vim'
 
 
 Plug 'wellle/targets.vim'
@@ -272,6 +272,7 @@ let g:NERDToggleCheckAllLines = 1
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 " these 3 files configs in 'lua.vim'
+
 call plug#end()
 
 " TIPS: lua config should be somewhere after plug#end()
