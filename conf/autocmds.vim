@@ -101,7 +101,7 @@ autocmd BufEnter * :syntax sync minlines=20
 " 高亮 TODO , FIXME ..
 augroup vimrc_todo
     au!
-    au Syntax * syn match MyTodo /\v<(TIPS|FIXME|NOTE|TODO|OPTIMIZE|WARN|WARNING|XXX):/
+    au Syntax * syn match MyTodo /\v<(TIPS|FIXME|NOTE|TODO|OPTIMIZE|WARN|WARNING|XXX|TRICK):/
           \ containedin=.*Comment,vimCommentTitle
 augroup END
 hi def link MyTodo Todo
