@@ -110,9 +110,9 @@ hi def link MyTodo Todo
 augroup my_custom_highlights
     au!
     " 高亮 # GOOD 或 # GOOD（不区分大小写）为绿色背景，白色字体
-    au Syntax * syn match GoodComment /#\s*\cGOOD.*/ containedin=.*Comment
+    au Syntax * syn match GoodComment /#\s*\cGOOD/ containedin=.*Comment
     " 高亮 # BAD 或 # BAD（不区分大小写）为红色背景，黑色字体
-    au Syntax * syn match BadComment /#\s*\cBAD.*/ containedin=.*Comment
+    au Syntax * syn match BadComment /#\s*\cBAD/ containedin=.*Comment
 augroup END
 
 " 定义高亮样式
