@@ -106,4 +106,17 @@ augroup vimrc_todo
 augroup END
 hi def link MyTodo Todo
 
+
+augroup my_custom_highlights
+    au!
+    " 高亮 #GOOD 为绿色背景，白色字体
+    au Syntax * syn match GoodComment /#GOOD.*/ containedin=.*Comment
+    " 高亮 #BAD 为红色背景，黑色字体
+    au Syntax * syn match BadComment /#BAD.*/ containedin=.*Comment
+augroup END
+
+" 定义高亮样式
+hi GoodComment ctermbg=green ctermfg=white guibg=green guifg=white
+hi BadComment ctermbg=red ctermfg=black guibg=red guifg=black
+
 " command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
