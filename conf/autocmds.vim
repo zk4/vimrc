@@ -119,3 +119,39 @@ augroup END
 hi GoodComment ctermbg=green ctermfg=white guibg=green guifg=white
 hi BadComment ctermbg=red ctermfg=black guibg=red guifg=black
 " command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
+
+
+" 选择 python 关键字与冒号之间的内容
+function! SelectBetweenKeywordAndColon()
+    " Search backward for the keyword
+    let l:start = search('\v<(if|while|for|def|class|with)>', 'bc')+2
+
+    " If not found, do nothing
+    if l:start == 0
+        return
+    endif
+
+    " Move to the end of the keyword
+    normal! e2l
+
+    " Set the visual selection start point
+    normal! v
+
+    " Move forward to the colon
+    let l:end = search(':', 'c')
+
+    " If not found, clear selection and return
+    if l:end == 0
+        normal! \<Esc>
+        return
+    endif
+
+    " Adjust the selection to end before the colon
+    normal! h
+endfunction
+
+augroup PythonTextObject
+    autocmd!
+    autocmd FileType python xmap av :<C-u>call SelectBetweenKeywordAndColon()<CR>
+    autocmd FileType python xmap iv :<C-u>call SelectBetweenKeywordAndColon()<CR>
+augroup END
