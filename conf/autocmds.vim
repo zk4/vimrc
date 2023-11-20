@@ -124,7 +124,7 @@ hi BadComment ctermbg=red ctermfg=black guibg=red guifg=black
 " 选择 python 关键字与冒号之间的内容
 function! SelectBetweenKeywordAndColon()
     " Search backward for the keyword
-    let l:start = search('\v<(if|while|for|def|class|with)>', 'bc')+2
+    let l:start = search('\v<(if|elif|except|while|for|def|class|with)>', 'bc')+2
 
     " If not found, do nothing
     if l:start == 0
@@ -152,6 +152,8 @@ endfunction
 
 augroup PythonTextObject
     autocmd!
-    autocmd FileType python xmap av :<C-u>call SelectBetweenKeywordAndColon()<CR>
+    autocmd FileType python omap iv :<C-u>call SelectBetweenKeywordAndColon()<CR>
     autocmd FileType python xmap iv :<C-u>call SelectBetweenKeywordAndColon()<CR>
+    autocmd FileType python omap av :<C-u>call SelectBetweenKeywordAndColon()<CR>
+    autocmd FileType python xmap av :<C-u>call SelectBetweenKeywordAndColon()<CR>
 augroup END
