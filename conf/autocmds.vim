@@ -122,6 +122,7 @@ hi BadComment ctermbg=red ctermfg=black guibg=red guifg=black
 
 
 " 选择 python 关键字与冒号之间的内容
+" helped by AI: https://chat.openai.com/c/8a079021-6b6a-4232-9da4-7d95f66192fe
 function! SelectBetweenKeywordAndColon()
     " Search backward for the keyword
     let l:start = search('\v<(if|elif|except|while|for|def|class|with)>', 'bc')+2
